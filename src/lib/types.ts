@@ -28,3 +28,5 @@ export type Scored = Txn & {
 	bucket: Bucket;
 	conflict: boolean; // two matched rules disagree on share or bucket
 };
+
+export type Statement = { id: string; label: string; from: string; to: string; txns: Txn[]; synthetic: boolean };

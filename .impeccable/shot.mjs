@@ -3,7 +3,7 @@ const out = process.argv[2];
 const b = await chromium.launch();
 const scheme = process.env.SCHEME || 'light';
 const errs = [];
-for (const [name, w, h, act] of [['desktop', 1440, 900, null], ['mobile', 390, 844, null], ['card', 1440, 900, 'card'], ['partner', 1440, 900, 'partner'], ['rule', 1440, 900, 'rule'], ['triage', 1440, 900, 'triage'], ['triage-mobile', 390, 844, 'triage'], ['triage-move', 1440, 900, 'move'], ['rules', 1440, 900, 'rules'], ['rules-mobile', 390, 844, 'rules']]) {
+for (const [name, w, h, act] of [['desktop', 1440, 900, null], ['mobile', 390, 844, null], ['card', 1440, 900, 'card'], ['partner', 1440, 900, 'partner'], ['rule', 1440, 900, 'rule'], ['triage', 1440, 900, 'triage'], ['triage-mobile', 390, 844, 'triage'], ['triage-move', 1440, 900, 'move'], ['rules', 1440, 900, 'rules'], ['rules-mobile', 390, 844, 'rules'], ['months', 1440, 900, 'months']]) {
   const p = await b.newPage({ viewport: { width: w, height: h }, colorScheme: scheme, hasTouch: w < 500, isMobile: w < 500 });
   p.on('pageerror', (e) => errs.push(name + ': ' + e.message));
   p.on('console', (m) => m.type() === 'error' && errs.push(name + ': ' + m.text()));
@@ -23,6 +23,7 @@ for (const [name, w, h, act] of [['desktop', 1440, 900, null], ['mobile', 390, 8
     await p.locator('form[aria-label="Add a rule"] select').nth(0).selectOption('100');
     await p.getByRole('button', { name: 'Add rule' }).click();
   }
+  if (act === 'months') { await p.locator('.months button', { hasText: 'Sept 2026' }).click(); }
   if (act === 'rules') { await p.getByRole('link', { name: /^Rules/ }).click(); await p.getByRole('button', { name: 'New rule' }).click(); }
   if (act === 'move') { await p.getByRole('button', { name: /Sort \d+ unsorted/ }).click(); await p.locator('button.choice', { hasText: 'Partner' }).click(); }
   if (act === 'triage') { await p.getByRole('button', { name: /Sort \d+ unsorted/ }).click(); await p.locator('button.choice', { hasText: 'Mine' }).click(); }

@@ -1,15 +1,14 @@
 import { browser } from '$app/environment';
-import type { Income, Rule, Txn } from './types';
+import type { Income, Rule, Statement, Txn } from './types';
 
 const KEY = 'clarifi.v1';
 
-type Data = { txns: Txn[]; rules: Rule[]; incomes: Income[]; period: string; synthetic: boolean };
+type Data = { statements: Statement[]; current: string; rules: Rule[]; incomes: Income[] };
 
 const seed: Data = {
-	txns: [],
+	statements: [],
+	current: '',
 	incomes: [],
-	period: '',
-	synthetic: false,
 	rules: [
 		{ id: 'r1', name: 'Big Pak’nSave shop is partner’s', text: "pak n save", min: 50, share: 0, bucket: 'general' },
 		{ id: 'r2', name: 'Internet is partner’s', text: 'spark', share: 0, bucket: 'fixed' },
@@ -19,7 +18,24 @@ const seed: Data = {
 
 export function load(): Data {
 	if (!browser) return seed;
-	try { return { ...seed, ...JSON.parse(localStorage.getItem(KEY) ?? '{}') }; } catch { return seed; }
+	try {
+		const raw = JSON.parse(localStorage.getItem(KEY) ?? '{}');
+		if (Array.isArray(raw.txns) && raw.txns.length && !raw.statements) { // v1 shape: one statement
+			const st = makeStatement(raw.txns, !!raw.synthetic);
+			raw.statements = [st]; raw.current = st.id;
+		}
+		delete raw.txns; delete raw.synthetic; delete raw.period;
+		return { ...seed, ...raw };
+	} catch { return seed; }
+}
+
+const month = (d: string) => new Date(d).toLocaleDateString('en-NZ', { month: 'short', year: 'numeric' });
+
+/** A statement is labelled by the month its last transaction falls in; same month re-imported replaces it. */
+export function makeStatement(txns: Txn[], synthetic = false): Statement {
+	const ds = txns.map((t) => t.date).sort();
+	const to = ds[ds.length - 1];
+	return { id: to.slice(0, 7), label: month(to), from: ds[0], to, txns, synthetic };
 }
 
 export const data = $state<Data>(load());

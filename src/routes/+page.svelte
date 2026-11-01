@@ -8,8 +8,8 @@
 	import { nzd } from '#lib/money';
 	import { tweenMoney } from '#lib/motion.svelte';
 	import { score } from '#lib/rules';
-	import { SAMPLE_CSV } from '#lib/sample';
-	import { data, load, persist, uid } from '#lib/store.svelte';
+	import { SAMPLE_CSV, SAMPLE_PREV_CSV } from '#lib/sample';
+	import { data, load, makeStatement, persist, uid } from '#lib/store.svelte';
 	import { BUCKETS, type Bucket, type Rule, type Scored } from '#lib/types';
 
 	type Copy = 'card' | 'mine' | 'partner';
@@ -49,10 +49,12 @@
 	onMount(() => {
 		Object.assign(data, load());
 		readHash();
-		if (location.search.includes('sample') && (!data.txns.length || data.synthetic)) loadCsv(SAMPLE_CSV, true); // demo/screenshot entry, never over real data
+		if (location.search.includes('sample') && data.statements.every((st) => st.synthetic)) { loadCsv(SAMPLE_PREV_CSV, true); loadCsv(SAMPLE_CSV, true); } // demo/screenshot entry, never over real data
 	});
 
-	const scored = $derived(score(data.txns, data.rules));
+	const current = $derived(data.statements.find((st) => st.id === data.current) ?? data.statements[data.statements.length - 1]);
+	const txns = $derived(current?.txns ?? []);
+	const scored = $derived(score(txns, data.rules));
 	/** Payments and refunds to the card are not anyone's expense unless a rule claims them. */
 	const payments = $derived(scored.filter((r) => r.amount < 0 && !r.rule));
 	/** Charges no rule has claimed yet: the triage queue. */
@@ -73,17 +75,25 @@
 	const barTotal = $derived(spend + put + income);
 	const codeOf = (r: Rule) => `R${data.rules.findIndex((x) => x.id === r.id) + 1}`;
 	const period = $derived.by(() => {
-		if (!data.txns.length) return 'No statement yet';
-		const ds = data.txns.map((t) => t.date).sort();
+		if (!current) return 'No statement yet';
 		const f = (d: string) => new Date(d).toLocaleDateString('en-NZ', { day: 'numeric', month: 'short' });
-		return `${f(ds[0])} – ${f(ds[ds.length - 1])} ${ds[ds.length - 1].slice(0, 4)}`;
+		return `${f(current.from)} – ${f(current.to)} ${current.to.slice(0, 4)}`;
 	});
+	/** Per-statement figure on the current copy, for the trend row. */
+	const trend = $derived(data.statements.map((st) => {
+		const rows = score(st.txns, data.rules).filter((r) => r.amount > 0 && !(r.amount < 0 && !r.rule));
+		const v = rows.reduce((a, r) => a + (copy === 'card' ? r.amount : copy === 'mine' ? r.mine : r.amount - r.mine), 0);
+		return { id: st.id, label: st.label, value: v, current: st.id === current?.id };
+	}));
+	const trendMax = $derived(Math.max(1, ...trend.map((t) => t.value)));
 
 	function loadCsv(text: string, synthetic = false) {
 		try {
 			const txns = parseAnz(text);
 			if (!txns.length) throw new Error('No transactions found in that file.');
-			data.txns = txns; data.synthetic = synthetic; error = ''; persist();
+			const st = makeStatement(txns, synthetic);
+			data.statements = [...data.statements.filter((x) => x.id !== st.id), st].sort((a, b) => a.id.localeCompare(b.id));
+			data.current = st.id; error = ''; persist();
 		} catch (e) { error = e instanceof Error ? e.message : String(e); }
 	}
 	async function onfile(e: Event) {
@@ -96,7 +106,7 @@
 	function withDiff(fn: () => void) {
 		const before = new Map(scored.map((r) => [r.id, `${r.bucket}:${r.share}`]));
 		fn(); persist();
-		for (const r of score(data.txns, data.rules)) if (before.get(r.id) !== `${r.bucket}:${r.share}`) held.add(r.id);
+		for (const r of score(txns, data.rules)) if (before.get(r.id) !== `${r.bucket}:${r.share}`) held.add(r.id);
 	}
 	function addRule(r: Omit<Rule, 'id'>) {
 		withDiff(() => data.rules.push({ id: uid(), ...r }));
@@ -130,9 +140,11 @@
 		try { Object.assign(data, JSON.parse(await f.text())); persist(); error = ''; }
 		catch { error = 'That file is not a Clarifi export.'; }
 	}
-	function clearAll() {
-		if (!confirm('Remove the loaded statement and incomes? Rules stay.')) return;
-		data.txns = []; data.incomes = []; persist();
+	function removeStatement() {
+		if (!current || !confirm(`Remove the ${current.label} statement? Rules and incomes stay.`)) return;
+		data.statements = data.statements.filter((st) => st.id !== current.id);
+		data.current = data.statements[data.statements.length - 1]?.id ?? '';
+		persist();
 	}
 </script>
 
@@ -166,16 +178,25 @@
 	<section class="hero card" aria-label="Net position">
 		<div class="hero-main">
 			<div class="hero-top">
-				<span class="pill period">{period}</span>
-				{#if data.synthetic && data.txns.length}<span class="pill period">sample · synthetic data</span>{/if}
+				{#if data.statements.length > 1}
+					<nav class="months" aria-label="Statements">
+						{#each data.statements as st (st.id)}
+							<button class={['pill', 'period', { on: st.id === current?.id }]} aria-pressed={st.id === current?.id} onclick={() => { data.current = st.id; persist(); }}>{st.label}</button>
+						{/each}
+					</nav>
+				{:else}
+					<span class="pill period">{period}</span>
+				{/if}
+				{#if current?.synthetic}<span class="pill period">sample · synthetic data</span>{/if}
 			</div>
-			{#if !data.txns.length}
+			{#if !txns.length}
 				<p class="hero-label">Your share of the card, by bucket</p>
 				<p class="lede">Import your ANZ credit card CSV. Rules decide how much of each line is yours. Nothing leaves this browser.</p>
-				<button class="btn dark" onclick={() => loadCsv(SAMPLE_CSV, true)}>Try with a sample statement</button>
+				<button class="btn dark" onclick={() => { loadCsv(SAMPLE_PREV_CSV, true); loadCsv(SAMPLE_CSV, true); }}>Try with a sample statement</button>
 			{:else}
 				<p class="hero-label">
 					{#if copy === 'card'}Everything on the card{:else if copy === 'partner'}Partner's share{:else if !data.incomes.length}My share of the card{:else}Left over this statement{/if}
+					{#if data.statements.length > 1}<span class="dim">· {period}</span>{/if}
 				</p>
 				<p class={['big', 'num', { neg: headline < 0 }]}>{nzd(shown.current)}</p>
 				{#if unsorted.length && !triage}
@@ -183,7 +204,7 @@
 				{/if}
 			{/if}
 		</div>
-		{#if data.txns.length}
+		{#if txns.length}
 			<dl class="figures">
 				{#if copy === 'mine'}
 					<div><dt>Income</dt><dd class="num">{#if data.incomes.length}{nzd(shownIncome.current)}{:else}<button class="link add" onclick={focusIncome}>Add an income</button>{/if}</dd></div>
@@ -219,6 +240,20 @@
 			{#each ['fixed', 'general', 'investments', 'savings', 'mortgage'] as const as b (b)}
 				<BucketLine title={TITLES[b]} color="var(--b-{b})" rows={byBucket[b]} total={barTotal} bind:open={openB[b]} class={span(b)} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule} />
 			{/each}
+			{#if trend.length > 1}
+				<section class="trend card" aria-label="Spend by statement">
+					<div class="trend-head"><span class="t">Over time</span><span class="small">{copy === 'card' ? 'card total' : copy === 'mine' ? 'my share' : "partner's share"} per statement</span></div>
+					<ol class="bars">
+						{#each trend as t (t.id)}
+							<li class={{ on: t.current }}>
+								<span class="num v">{nzd(t.value)}</span>
+								<span class="bar"><span style="transform: scaleY({t.value / trendMax})"></span></span>
+								<button class="link" onclick={() => { data.current = t.id; persist(); }} aria-current={t.current ? 'true' : undefined}>{t.label}</button>
+							</li>
+						{/each}
+					</ol>
+				</section>
+			{/if}
 			{#if payments.length}
 				<p class="payments small">
 					Payments to the card, not counted:
@@ -238,7 +273,7 @@
 		<span>Stored in this browser only.</span>
 		<button class="link" onclick={exportJson}>Export JSON</button>
 		<label class="link">Import JSON<input type="file" accept="application/json" onchange={importJson} hidden /></label>
-		<button class="link" onclick={clearAll} disabled={!data.txns.length && !data.incomes.length}>Clear statement</button>
+		<button class="link" onclick={removeStatement} disabled={!current}>Remove this statement</button>
 	</footer>
 </main>
 
@@ -261,6 +296,23 @@
 	.figures .add { color: var(--accent-ink); font-size: 15px; text-decoration: underline; text-underline-offset: 3px; }
 	.hero-top { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
 	.hero .pill { background: rgba(4, 46, 40, 0.1); color: var(--accent-ink); }
+	.months { display: flex; gap: 6px; flex-wrap: wrap; }
+	.months .pill { border: 0; cursor: pointer; transition: background-color 150ms var(--ease), color 150ms var(--ease); }
+	.months .pill:hover { background: rgba(4, 46, 40, 0.18); }
+	.months .pill.on { background: var(--accent-ink); color: var(--accent); }
+	.hero-label .dim { opacity: 0.7; font-weight: 500; }
+	.trend { grid-column: 1 / -1; padding: 18px 20px; }
+	.trend-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; }
+	.trend-head .t { font-weight: 600; }
+	.bars { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 120px); gap: 12px; align-items: end; height: 150px; }
+	.bars li { display: grid; grid-template-rows: auto 1fr auto; gap: 6px; height: 100%; text-align: center; }
+	.bars .v { font-size: 13px; color: var(--ink-2); align-self: end; }
+	.bars li.on .v { color: var(--ink); font-weight: 600; }
+	.bars .bar { display: block; height: 100%; border-radius: 12px 12px 0 0; background: var(--surface-2); overflow: hidden; }
+	.bars .bar span { display: block; height: 100%; border-radius: inherit; background: var(--ink-2); opacity: 0.35; transform-origin: bottom; transition: transform 400ms var(--ease); }
+	.bars li.on .bar span { background: var(--accent); opacity: 1; }
+	.bars .link { font-weight: 500; }
+	.bars li.on .link { color: var(--ink); font-weight: 600; }
 	.hero-label { margin: 0; font-weight: 600; font-size: 15px; opacity: 0.8; }
 	.big { margin: 2px 0 0; font-size: clamp(40px, 6vw, 64px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; }
 	.big.neg::before { content: ''; }

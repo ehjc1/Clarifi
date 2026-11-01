@@ -17,6 +17,7 @@ npx vitest run
 
 ## How it reads
 
+- **Statements stack up.** Each import is kept by month; pills in the hero switch between them, and an "Over time" card compares your share across statements. Re-importing the same month replaces it.
 - **Overview** is the monthly read: hero figure, bucket cards, sort prompt. **Rules** (nav pill, `#rules`) holds share rules, the New rule form (collapsed until needed) and your data actions (export / import / clear).
 - **Card · Mine · Partner** switch: whose share every figure shows. Hero card shows the headline figure for that view.
 - Six bucket cards with totals and a share bar; open one to see its lines: `date · details · rule · share% · amount`.
