@@ -4,54 +4,294 @@
   "graph": {},
   "nodes": [
     {
-      "label": "shot.mjs",
-      "file_type": "code",
-      "source_file": ".impeccable/shot.mjs",
+      "label": "DESIGN.md",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "impeccable_shot",
-      "community": 11,
-      "norm_label": "shot.mjs"
+      "id": "design",
+      "community": 19,
+      "norm_label": "design.md"
     },
     {
-      "label": "errs",
-      "file_type": "code",
-      "source_file": ".impeccable/shot.mjs",
-      "source_location": "L5",
+      "label": "Design System: Clarifi",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L195",
       "_origin": "ast",
-      "id": "impeccable_shot_errs",
-      "community": 11,
-      "norm_label": "errs"
+      "id": "design_design_system_clarifi",
+      "community": 19,
+      "norm_label": "design system: clarifi"
     },
     {
-      "label": "Rules.svelte",
-      "file_type": "code",
-      "source_file": "src/lib/components/Rules.svelte",
-      "source_location": "L1",
+      "label": "Overview",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L197",
       "_origin": "ast",
-      "id": "components_rules",
-      "community": 17,
-      "norm_label": "rules.svelte"
+      "id": "design_overview",
+      "community": 19,
+      "norm_label": "overview"
     },
     {
-      "label": "#lib/rules",
-      "file_type": "code",
-      "source_file": "#lib/rules",
-      "confidence": "EXTRACTED",
+      "label": "Colors",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L215",
       "_origin": "ast",
-      "id": "rules",
-      "community": 17,
-      "norm_label": "#lib/rules"
+      "id": "design_colors",
+      "community": 19,
+      "norm_label": "colors"
     },
     {
-      "label": "#lib/types",
-      "file_type": "code",
-      "source_file": "#lib/types",
-      "confidence": "EXTRACTED",
+      "label": "Primary",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L219",
       "_origin": "ast",
-      "id": "types",
-      "community": 17,
-      "norm_label": "#lib/types"
+      "id": "design_primary",
+      "community": 19,
+      "norm_label": "primary"
+    },
+    {
+      "label": "Bucket (fixed, six)",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L224",
+      "_origin": "ast",
+      "id": "design_bucket_fixed_six",
+      "community": 19,
+      "norm_label": "bucket (fixed, six)"
+    },
+    {
+      "label": "Neutral",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L227",
+      "_origin": "ast",
+      "id": "design_neutral",
+      "community": 19,
+      "norm_label": "neutral"
+    },
+    {
+      "label": "Named Rules",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L236",
+      "_origin": "ast",
+      "id": "design_named_rules",
+      "community": 19,
+      "norm_label": "named rules"
+    },
+    {
+      "label": "Typography",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L243",
+      "_origin": "ast",
+      "id": "design_typography",
+      "community": 19,
+      "norm_label": "typography"
+    },
+    {
+      "label": "Hierarchy",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L251",
+      "_origin": "ast",
+      "id": "design_hierarchy",
+      "community": 19,
+      "norm_label": "hierarchy"
+    },
+    {
+      "label": "Named Rules",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L259",
+      "_origin": "ast",
+      "id": "design_named_rules_259",
+      "community": 19,
+      "norm_label": "named rules"
+    },
+    {
+      "label": "Layout",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L264",
+      "_origin": "ast",
+      "id": "design_layout",
+      "community": 19,
+      "norm_label": "layout"
+    },
+    {
+      "label": "Elevation & Depth",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L278",
+      "_origin": "ast",
+      "id": "design_elevation_depth",
+      "community": 19,
+      "norm_label": "elevation & depth"
+    },
+    {
+      "label": "Shadow Vocabulary",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L282",
+      "_origin": "ast",
+      "id": "design_shadow_vocabulary",
+      "community": 19,
+      "norm_label": "shadow vocabulary"
+    },
+    {
+      "label": "Named Rules",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L287",
+      "_origin": "ast",
+      "id": "design_named_rules_287",
+      "community": 19,
+      "norm_label": "named rules"
+    },
+    {
+      "label": "Shapes",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L292",
+      "_origin": "ast",
+      "id": "design_shapes",
+      "community": 19,
+      "norm_label": "shapes"
+    },
+    {
+      "label": "Components",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L296",
+      "_origin": "ast",
+      "id": "design_components",
+      "community": 20,
+      "norm_label": "components"
+    },
+    {
+      "label": "Buttons",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L298",
+      "_origin": "ast",
+      "id": "design_buttons",
+      "community": 20,
+      "norm_label": "buttons"
+    },
+    {
+      "label": "Chips",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L306",
+      "_origin": "ast",
+      "id": "design_chips",
+      "community": 20,
+      "norm_label": "chips"
+    },
+    {
+      "label": "Cards / Containers",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L316",
+      "_origin": "ast",
+      "id": "design_cards_containers",
+      "community": 20,
+      "norm_label": "cards / containers"
+    },
+    {
+      "label": "Inputs / Fields",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L323",
+      "_origin": "ast",
+      "id": "design_inputs_fields",
+      "community": 20,
+      "norm_label": "inputs / fields"
+    },
+    {
+      "label": "Navigation",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L329",
+      "_origin": "ast",
+      "id": "design_navigation",
+      "community": 20,
+      "norm_label": "navigation"
+    },
+    {
+      "label": "Bucket Card (signature)",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L335",
+      "_origin": "ast",
+      "id": "design_bucket_card_signature",
+      "community": 20,
+      "norm_label": "bucket card (signature)"
+    },
+    {
+      "label": "Rule Card (signature)",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L338",
+      "_origin": "ast",
+      "id": "design_rule_card_signature",
+      "community": 20,
+      "norm_label": "rule card (signature)"
+    },
+    {
+      "label": "Triage Card (signature)",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L341",
+      "_origin": "ast",
+      "id": "design_triage_card_signature",
+      "community": 20,
+      "norm_label": "triage card (signature)"
+    },
+    {
+      "label": "Hero (signature)",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L347",
+      "_origin": "ast",
+      "id": "design_hero_signature",
+      "community": 20,
+      "norm_label": "hero (signature)"
+    },
+    {
+      "label": "Do's and Don'ts",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L350",
+      "_origin": "ast",
+      "id": "design_do_s_and_don_ts",
+      "community": 19,
+      "norm_label": "do's and don'ts"
+    },
+    {
+      "label": "Do:",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L352",
+      "_origin": "ast",
+      "id": "design_do",
+      "community": 19,
+      "norm_label": "do:"
+    },
+    {
+      "label": "Don't:",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L363",
+      "_origin": "ast",
+      "id": "design_don_t",
+      "community": 19,
+      "norm_label": "don't:"
     },
     {
       "label": "+page.svelte",
@@ -524,6 +764,16 @@
       "norm_label": "#lib/motion.svelte"
     },
     {
+      "label": "#lib/rules",
+      "file_type": "code",
+      "source_file": "#lib/rules",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "rules",
+      "community": 17,
+      "norm_label": "#lib/rules"
+    },
+    {
       "label": "#lib/sample",
       "file_type": "code",
       "source_file": "#lib/sample",
@@ -544,14 +794,54 @@
       "norm_label": "#lib/store.svelte"
     },
     {
+      "label": "#lib/types",
+      "file_type": "code",
+      "source_file": "#lib/types",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "types",
+      "community": 17,
+      "norm_label": "#lib/types"
+    },
+    {
+      "label": "shot.mjs",
+      "file_type": "code",
+      "source_file": ".impeccable/shot.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 11,
+      "norm_label": "shot.mjs",
+      "id": "impeccable_shot"
+    },
+    {
+      "label": "errs",
+      "file_type": "code",
+      "source_file": ".impeccable/shot.mjs",
+      "source_location": "L5",
+      "_origin": "ast",
+      "community": 11,
+      "norm_label": "errs",
+      "id": "impeccable_shot_errs"
+    },
+    {
+      "label": "Rules.svelte",
+      "file_type": "code",
+      "source_file": "src/lib/components/Rules.svelte",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 17,
+      "norm_label": "rules.svelte",
+      "id": "components_rules"
+    },
+    {
       "label": "vite.config.ts",
       "file_type": "code",
       "source_file": "vite.config.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "vite_config",
       "community": 16,
-      "norm_label": "vite.config.ts"
+      "norm_label": "vite.config.ts",
+      "id": "vite_config"
     },
     {
       "label": "README.md",
@@ -602,296 +892,6 @@
       "community": 6,
       "norm_label": "status",
       "id": "readme_status"
-    },
-    {
-      "label": "DESIGN.md",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "design.md",
-      "id": "design"
-    },
-    {
-      "label": "Design System: Clarifi",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L176",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "design system: clarifi",
-      "id": "design_design_system_clarifi"
-    },
-    {
-      "label": "Overview",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L178",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "overview",
-      "id": "design_overview"
-    },
-    {
-      "label": "Colors",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L196",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "colors",
-      "id": "design_colors"
-    },
-    {
-      "label": "Primary",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L200",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "primary",
-      "id": "design_primary"
-    },
-    {
-      "label": "Bucket (fixed, six)",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L205",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "bucket (fixed, six)",
-      "id": "design_bucket_fixed_six"
-    },
-    {
-      "label": "Neutral",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L208",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "neutral",
-      "id": "design_neutral"
-    },
-    {
-      "label": "Named Rules",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L217",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "named rules",
-      "id": "design_named_rules"
-    },
-    {
-      "label": "Typography",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L224",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "typography",
-      "id": "design_typography"
-    },
-    {
-      "label": "Hierarchy",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L232",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "hierarchy",
-      "id": "design_hierarchy"
-    },
-    {
-      "label": "Named Rules",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L240",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "named rules",
-      "id": "design_named_rules_240"
-    },
-    {
-      "label": "Layout",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L245",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "layout",
-      "id": "design_layout"
-    },
-    {
-      "label": "Elevation & Depth",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L253",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "elevation & depth",
-      "id": "design_elevation_depth"
-    },
-    {
-      "label": "Shadow Vocabulary",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L257",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "shadow vocabulary",
-      "id": "design_shadow_vocabulary"
-    },
-    {
-      "label": "Named Rules",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L262",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "named rules",
-      "id": "design_named_rules_262"
-    },
-    {
-      "label": "Shapes",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L267",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "shapes",
-      "id": "design_shapes"
-    },
-    {
-      "label": "Components",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L271",
-      "_origin": "ast",
-      "community": 20,
-      "norm_label": "components",
-      "id": "design_components"
-    },
-    {
-      "label": "Buttons",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L273",
-      "_origin": "ast",
-      "community": 20,
-      "norm_label": "buttons",
-      "id": "design_buttons"
-    },
-    {
-      "label": "Chips",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L281",
-      "_origin": "ast",
-      "community": 20,
-      "norm_label": "chips",
-      "id": "design_chips"
-    },
-    {
-      "label": "Cards / Containers",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L291",
-      "_origin": "ast",
-      "community": 20,
-      "norm_label": "cards / containers",
-      "id": "design_cards_containers"
-    },
-    {
-      "label": "Inputs / Fields",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L298",
-      "_origin": "ast",
-      "community": 20,
-      "norm_label": "inputs / fields",
-      "id": "design_inputs_fields"
-    },
-    {
-      "label": "Navigation",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L304",
-      "_origin": "ast",
-      "community": 20,
-      "norm_label": "navigation",
-      "id": "design_navigation"
-    },
-    {
-      "label": "Bucket Card (signature)",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L309",
-      "_origin": "ast",
-      "community": 20,
-      "norm_label": "bucket card (signature)",
-      "id": "design_bucket_card_signature"
-    },
-    {
-      "label": "Rule Card (signature)",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L312",
-      "_origin": "ast",
-      "community": 20,
-      "norm_label": "rule card (signature)",
-      "id": "design_rule_card_signature"
-    },
-    {
-      "label": "Triage Card (signature)",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L315",
-      "_origin": "ast",
-      "community": 20,
-      "norm_label": "triage card (signature)",
-      "id": "design_triage_card_signature"
-    },
-    {
-      "label": "Hero (signature)",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L320",
-      "_origin": "ast",
-      "community": 20,
-      "norm_label": "hero (signature)",
-      "id": "design_hero_signature"
-    },
-    {
-      "label": "Do's and Don'ts",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L323",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "do's and don'ts",
-      "id": "design_do_s_and_don_ts"
-    },
-    {
-      "label": "Do:",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L325",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "do:",
-      "id": "design_do"
-    },
-    {
-      "label": "Don't:",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L335",
-      "_origin": "ast",
-      "community": 19,
-      "norm_label": "don't:",
-      "id": "design_don_t"
     },
     {
       "label": "Triage.svelte",
@@ -1888,686 +1888,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": ".impeccable/shot.mjs",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "impeccable_shot",
-      "target": "impeccable_shot_errs"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Rules.svelte",
-      "confidence_score": 1.0,
-      "source": "components_rules",
-      "target": "rules"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Rules.svelte",
-      "confidence_score": 1.0,
-      "source": "components_rules",
-      "target": "types"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Triage.svelte",
-      "confidence_score": 1.0,
-      "source": "components_triage",
-      "target": "rules"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "rules"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "types"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Triage.svelte",
-      "confidence_score": 1.0,
-      "source": "components_triage",
-      "target": "types"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "types"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "anz"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "bucketline_svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "money"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "motion_svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "reactivity"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L113",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_addincome",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L101",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_addrule",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L73",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_bartotal",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L60",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_bybucket",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L133",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_clearall",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L74",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_codeof",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L35",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_collapsed",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L31",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_draft",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L30",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_error",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L121",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_exportjson",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L43",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_focusincome",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L29",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_go",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L68",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_headline",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L127",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_importjson",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L66",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_income",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L32",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_incomedraft",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L61",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_incometotal",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L67",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_left",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L82",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_loadcsv",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L107",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_makerule",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L89",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_onfile",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L57",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_payments",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L75",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_period",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L65",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_put",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L106",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_release",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L120",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_removeincome",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L105",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_removerule",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L55",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_scored",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L69",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_shown",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L72",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_shownincome",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L71",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_shownput",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L70",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_shownspend",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L36",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_span",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L64",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_spend",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L63",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_sum",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L59",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_unsorted",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L62",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_val",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L96",
-      "weight": 1.0,
-      "source": "routes_page",
-      "target": "routes_page_withdiff",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "rules_svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "sample"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "store_svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "triage_svelte"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L103",
-      "weight": 1.0,
-      "source": "routes_page_addrule",
-      "target": "routes_page_go",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L110",
-      "weight": 1.0,
-      "source": "routes_page_makerule",
-      "target": "routes_page_go",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L92",
-      "weight": 1.0,
-      "source": "routes_page_onfile",
-      "target": "routes_page_loadcsv",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L102",
-      "weight": 1.0,
-      "source": "routes_page_addrule",
-      "target": "routes_page_withdiff",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L105",
-      "weight": 1.0,
-      "source": "routes_page_removerule",
-      "target": "routes_page_withdiff",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "dynamic_import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Triage.svelte",
-      "confidence_score": 1.0,
-      "source": "components_triage",
-      "target": "svelte"
-    },
-    {
-      "relation": "imports",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L18",
-      "weight": 1.0,
-      "context": "import",
-      "confidence_score": 1.0,
-      "source": "package_devdependencies_svelte",
-      "target": "svelte"
-    },
-    {
-      "relation": "dynamic_import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "reactivity"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "money"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Triage.svelte",
-      "confidence_score": 1.0,
-      "source": "components_triage",
-      "target": "money"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "motion_svelte"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme",
-      "target": "readme_clarifi"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L18",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme_clarifi",
-      "target": "readme_how_it_reads"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme_clarifi",
-      "target": "readme_run"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme_clarifi",
-      "target": "readme_status"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "DESIGN.md",
       "source_location": "L157",
       "weight": 1.0,
@@ -2709,21 +2029,21 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "DESIGN.md",
-      "source_location": "L240",
+      "source_location": "L259",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "design_typography",
-      "target": "design_named_rules_240"
+      "target": "design_named_rules_259",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "DESIGN.md",
-      "source_location": "L262",
+      "source_location": "L287",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "design_elevation_depth",
-      "target": "design_named_rules_262"
+      "target": "design_named_rules_287",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2844,6 +2164,686 @@
       "confidence_score": 1.0,
       "source": "design_do_s_and_don_ts",
       "target": "design_don_t"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "anz"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "bucketline_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "money"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "motion_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "reactivity"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L113",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_addincome"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L101",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_addrule"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L73",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_bartotal"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_bybucket"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L133",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_clearall"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L74",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_codeof"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_collapsed"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_draft"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_error"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L121",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_exportjson"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L43",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_focusincome"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_go"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L68",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_headline"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L127",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_importjson"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L66",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_income"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_incomedraft"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L61",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_incometotal"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_left"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L82",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_loadcsv"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L107",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_makerule"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L89",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_onfile"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L57",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_payments"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L75",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_period"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L65",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_put"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L106",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_release"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L120",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_removeincome"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L105",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_removerule"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_scored"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L69",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_shown"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L72",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_shownincome"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L71",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_shownput"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L70",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_shownspend"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_span"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L64",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_spend"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L63",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_sum"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L59",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_unsorted"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L62",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_val"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L96",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_withdiff"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "rules"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "rules_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "sample"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "store_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "triage_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "types"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L103",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page_addrule",
+      "target": "routes_page_go"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L110",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page_makerule",
+      "target": "routes_page_go"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L92",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page_onfile",
+      "target": "routes_page_loadcsv"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L102",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page_addrule",
+      "target": "routes_page_withdiff"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L105",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_page_removerule",
+      "target": "routes_page_withdiff"
+    },
+    {
+      "relation": "dynamic_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/BucketLine.svelte",
+      "confidence_score": 1.0,
+      "source": "components_bucketline",
+      "target": "svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Triage.svelte",
+      "confidence_score": 1.0,
+      "source": "components_triage",
+      "target": "svelte"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "context": "import",
+      "confidence_score": 1.0,
+      "source": "package_devdependencies_svelte",
+      "target": "svelte"
+    },
+    {
+      "relation": "dynamic_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/BucketLine.svelte",
+      "confidence_score": 1.0,
+      "source": "components_bucketline",
+      "target": "reactivity"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/BucketLine.svelte",
+      "confidence_score": 1.0,
+      "source": "components_bucketline",
+      "target": "money"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Triage.svelte",
+      "confidence_score": 1.0,
+      "source": "components_triage",
+      "target": "money"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/BucketLine.svelte",
+      "confidence_score": 1.0,
+      "source": "components_bucketline",
+      "target": "motion_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Rules.svelte",
+      "confidence_score": 1.0,
+      "source": "components_rules",
+      "target": "rules"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Triage.svelte",
+      "confidence_score": 1.0,
+      "source": "components_triage",
+      "target": "rules"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/BucketLine.svelte",
+      "confidence_score": 1.0,
+      "source": "components_bucketline",
+      "target": "types"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Rules.svelte",
+      "confidence_score": 1.0,
+      "source": "components_rules",
+      "target": "types"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Triage.svelte",
+      "confidence_score": 1.0,
+      "source": "components_triage",
+      "target": "types"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".impeccable/shot.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "impeccable_shot",
+      "target": "impeccable_shot_errs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_clarifi"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_clarifi",
+      "target": "readme_how_it_reads"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_clarifi",
+      "target": "readme_run"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_clarifi",
+      "target": "readme_status"
     },
     {
       "relation": "imports",
@@ -3885,5 +3885,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "06a4316a338865194585836d92a4d1f9f3f27f13"
+  "built_at_commit": "614ed5ec0bbd53bcb5f63566b38d1a4ac2a4a385"
 }
