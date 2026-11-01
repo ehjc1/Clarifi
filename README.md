@@ -22,6 +22,7 @@ npx vitest run
 - Two rules disagreeing on a line mark it as a conflict and name both rules; the bucket card shows a conflict chip.
 - A line moved by a new rule glows until you scroll past it.
 - Click any line's details to start a rule from it.
+- **Sort your lines**: when charges have no rule, the hero offers "Sort N unsorted lines". One line at a time, three big answers (Partner's / Split / Mine, keys 1/2/3), pick a bucket, and each answer becomes a rule so next month sorts itself.
 - Light and dark follow your system setting.
 
 ## Status

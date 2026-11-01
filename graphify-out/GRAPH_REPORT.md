@@ -1,21 +1,20 @@
 # Graph Report - Clarifi  (2026-11-01)
 
 ## Corpus Check
-- 29 files · ~12,909 words
+- 29 files · ~13,714 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 169 nodes · 174 edges · 21 communities (17 shown, 4 thin omitted)
+- 147 nodes · 151 edges · 20 communities (16 shown, 4 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `20336f42`
+- Built from commit: `4cf916d2`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_Community 0|Community 0]]
 - [[_COMMUNITY_Community 1|Community 1]]
 - [[_COMMUNITY_Community 2|Community 2]]
 - [[_COMMUNITY_Community 3|Community 3]]
@@ -49,11 +48,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (21 total, 4 thin omitted)
-
-### Community 0 - "Community 0"
-Cohesion: 0.07
-Nodes (22): #lib/anz, #lib/components/BucketLine.svelte, barTotal, headline, income, left, loadCsv(), onfile() (+14 more)
+## Communities (20 total, 4 thin omitted)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.13
@@ -68,8 +63,8 @@ Cohesion: 0.17
 Nodes (11): Brand Commitments, Capabilities and Constraints, Evidence on Hand, Operating Context, Platform, Positioning, Product, Product Principles (+3 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.20
-Nodes (9): devDependencies, playwright, svelte, svelte-check, @sveltejs/kit, @sveltejs/vite-plugin-svelte, typescript, vite (+1 more)
+Cohesion: 0.25
+Nodes (8): devDependencies, playwright, svelte-check, @sveltejs/kit, @sveltejs/vite-plugin-svelte, typescript, vite, vitest
 
 ### Community 5 - "Community 5"
 Cohesion: 0.40
@@ -84,8 +79,8 @@ Cohesion: 0.40
 Nodes (4): compilerOptions, strict, extends, include
 
 ### Community 17 - "Community 17"
-Cohesion: 0.18
-Nodes (8): bar, conflicts, n, shown, sum, #lib/money, #lib/motion.svelte, svelte/reactivity
+Cohesion: 0.11
+Nodes (17): #lib/anz, #lib/components/BucketLine.svelte, bar, conflicts, n, shown, sum, #lib/money (+9 more)
 
 ### Community 19 - "Community 19"
 Cohesion: 0.11
@@ -96,22 +91,24 @@ Cohesion: 0.22
 Nodes (9): Bucket Card (signature), Buttons, Cards / Containers, Chips, Components, Hero (signature), Inputs / Fields, Navigation (+1 more)
 
 ## Knowledge Gaps
-- **87 isolated node(s):** `Overview`, `Primary`, `Bucket (fixed, six)`, `Neutral`, `Named Rules` (+82 more)
+- **77 isolated node(s):** `errs`, `#lib/components/BucketLine.svelte`, `#lib/components/Rules.svelte`, `#lib/components/Triage.svelte`, `#lib/store.svelte` (+72 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `devDependencies` connect `Community 4` to `Community 2`?**
-  _High betweenness centrality (0.085) - this node is a cross-community bridge._
-- **What connects `Overview`, `Primary`, `Bucket (fixed, six)` to the rest of the system?**
-  _87 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.06628787878787878 - nodes in this community are weakly interconnected._
+- **Why does `devDependencies` connect `Community 4` to `Community 17`, `Community 2`?**
+  _High betweenness centrality (0.065) - this node is a cross-community bridge._
+- **Why does `svelte` connect `Community 17` to `Community 4`?**
+  _High betweenness centrality (0.052) - this node is a cross-community bridge._
+- **Why does `Design System: Clarifi` connect `Community 19` to `Community 20`?**
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
+- **What connects `errs`, `#lib/components/BucketLine.svelte`, `#lib/components/Rules.svelte` to the rest of the system?**
+  _77 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.13 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
-- **Should `Community 19` be split into smaller, more focused modules?**
-  _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
+- **Should `Community 17` be split into smaller, more focused modules?**
+  _Cohesion score 0.10507246376811594 - nodes in this community are weakly interconnected._
