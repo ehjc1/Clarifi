@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { SvelteSet } from 'svelte/reactivity';
 	import { parseAnz } from '#lib/anz';
 	import BucketLine from '#lib/components/BucketLine.svelte';
 	import Rules from '#lib/components/Rules.svelte';
 	import { nzd } from '#lib/money';
+	import { tweenMoney } from '#lib/motion.svelte';
 	import { score } from '#lib/rules';
 	import { SAMPLE_CSV } from '#lib/sample';
 	import { data, load, persist, uid } from '#lib/store.svelte';
@@ -21,6 +22,12 @@
 	let error = $state('');
 	let draft = $state({ text: '', min: '', max: '', share: '0', bucket: 'general' as Bucket, name: '' });
 	let incomeDraft = $state({ name: '', amount: '' });
+	let incomeOpen = $state(false);
+	async function focusIncome() {
+		incomeOpen = true;
+		await tick();
+		document.getElementById('income-name')?.focus();
+	}
 
 	onMount(() => {
 		Object.assign(data, load());
@@ -38,6 +45,11 @@
 	const put = $derived(sum('savings') + sum('investments'));
 	const income = $derived(incomeTotal + sum('income'));
 	const left = $derived(income - spend - put);
+	const headline = $derived(copy === 'mine' && data.incomes.length ? left : spend + put);
+	const shown = tweenMoney(() => headline);
+	const shownSpend = tweenMoney(() => spend);
+	const shownPut = tweenMoney(() => put);
+	const shownIncome = tweenMoney(() => income);
 	const barTotal = $derived(spend + put + income);
 	const codeOf = (r: Rule) => `R${data.rules.findIndex((x) => x.id === r.id) + 1}`;
 	const period = $derived.by(() => {
@@ -109,9 +121,9 @@
 				<button class={{ on: copy === c.id }} aria-pressed={copy === c.id} onclick={() => (copy = c.id)}>{c.label}</button>
 			{/each}
 		</div>
-		<label class="btn import">
+		<label class="btn import" aria-label="Import statement">
 			<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10V2M4.5 5.5 8 2l3.5 3.5M2.5 10.5v2a1.5 1.5 0 0 0 1.5 1.5h8a1.5 1.5 0 0 0 1.5-1.5v-2"/></svg>
-			Import statement
+			<span class="import-t">Import statement</span>
 			<input type="file" accept=".csv,text/csv" onchange={onfile} />
 		</label>
 	</header>
@@ -119,36 +131,36 @@
 	{#if error}<p class="error card" role="alert">{error}</p>{/if}
 
 	<section class="hero card" aria-label="Net position">
-		<div class="hero-top">
-			<span class="pill period">{period}</span>
-			{#if data.synthetic && data.txns.length}<span class="pill period">sample · synthetic data</span>{/if}
+		<div class="hero-main">
+			<div class="hero-top">
+				<span class="pill period">{period}</span>
+				{#if data.synthetic && data.txns.length}<span class="pill period">sample · synthetic data</span>{/if}
+			</div>
+			{#if !data.txns.length}
+				<p class="hero-label">Your share of the card, by bucket</p>
+				<p class="lede">Import your ANZ credit card CSV. Rules decide how much of each line is yours. Nothing leaves this browser.</p>
+				<button class="btn dark" onclick={() => loadCsv(SAMPLE_CSV, true)}>Try with a sample statement</button>
+			{:else}
+				<p class="hero-label">
+					{#if copy === 'card'}Everything on the card{:else if copy === 'partner'}Partner's share{:else if !data.incomes.length}My share of the card{:else}Left over this statement{/if}
+				</p>
+				<p class={['big', 'num', { neg: headline < 0 }]}>{nzd(shown.current)}</p>
+			{/if}
 		</div>
-		{#if !data.txns.length}
-			<p class="hero-label">Your share of the card, by bucket</p>
-			<p class="lede">Import your ANZ credit card CSV. Rules decide how much of each line is yours. Nothing leaves this browser.</p>
-			<button class="btn dark" onclick={() => loadCsv(SAMPLE_CSV, true)}>Try with a sample statement</button>
-		{:else if copy === 'card'}
-			<p class="hero-label">Everything on the card</p>
-			<p class="big num">{nzd(spend + put)}</p>
-			<div class="parts"><span class="pill">spend {nzd(spend)}</span><span class="pill">put away {nzd(put)}</span></div>
-		{:else if copy === 'partner'}
-			<p class="hero-label">Partner's share</p>
-			<p class="big num">{nzd(spend + put)}</p>
-			<div class="parts"><span class="pill">spend {nzd(spend)}</span><span class="pill">put away {nzd(put)}</span></div>
-		{:else if !data.incomes.length}
-			<p class="hero-label">My share of the card</p>
-			<p class="big num">{nzd(spend + put)}</p>
-			<div class="parts"><span class="pill">spend {nzd(spend)}</span><span class="pill">put away {nzd(put)}</span><span class="pill">add an income to see what's left</span></div>
-		{:else}
-			<p class="hero-label">Left over this statement</p>
-			<p class={['big', 'num', { neg: left < 0 }]}>{nzd(left)}</p>
-			<div class="parts"><span class="pill">income {nzd(income)}</span><span class="pill">− spend {nzd(spend)}</span><span class="pill">− put away {nzd(put)}</span></div>
+		{#if data.txns.length}
+			<dl class="figures">
+				{#if copy === 'mine'}
+					<div><dt>Income</dt><dd class="num">{#if data.incomes.length}{nzd(shownIncome.current)}{:else}<button class="link add" onclick={focusIncome}>Add an income</button>{/if}</dd></div>
+				{/if}
+				<div><dt>Spend</dt><dd class="num">{nzd(shownSpend.current)}</dd></div>
+				<div><dt>Put away</dt><dd class="num">{nzd(shownPut.current)}</dd></div>
+			</dl>
 		{/if}
 	</section>
 
 	<div class="grid">
 		<section class="buckets" aria-label="Buckets">
-			<BucketLine title={TITLES.income} color="var(--b-income)" rows={byBucket.income} extra={incomeTotal} total={barTotal} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule} open={!data.incomes.length && !!data.txns.length}>
+			<BucketLine title={TITLES.income} color="var(--b-income)" rows={byBucket.income} extra={incomeTotal} total={barTotal} emptyText="No income entered yet" bind:open={incomeOpen} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule}>
 				<ul class="incomes">
 					{#each data.incomes as i (i.id)}
 						<li><span>{i.name}</span><b class="num">{nzd(i.amount)}</b><button class="link" onclick={() => removeIncome(i.id)} aria-label="Remove income {i.name}">Remove</button></li>
@@ -156,7 +168,7 @@
 					{#if copy !== 'partner'}
 						<li>
 							<form onsubmit={addIncome} aria-label="Add an income">
-								<input bind:value={incomeDraft.name} placeholder="Salary" aria-label="Income name" />
+								<input id="income-name" bind:value={incomeDraft.name} placeholder="Salary" aria-label="Income name" />
 								<input inputmode="decimal" bind:value={incomeDraft.amount} placeholder="0.00" aria-label="Monthly amount" />
 								<button class="btn ghost" type="submit">Add income</button>
 							</form>
@@ -197,17 +209,21 @@
 	.import input { position: absolute; width: 1px; height: 1px; opacity: 0; }
 	.import:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
 	.error { margin: 0 0 16px; padding: 12px 16px; color: var(--danger); background: var(--danger-soft); box-shadow: none; }
-	.hero { background: var(--accent); color: var(--accent-ink); padding: 24px 28px 28px; border-radius: 28px; box-shadow: none; }
+	.hero { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; background: var(--accent); color: var(--accent-ink); padding: 24px 28px 28px; border-radius: 28px; box-shadow: none; }
+	.figures { display: flex; gap: 36px; margin: 0; padding: 0 8px 6px 0; }
+	.figures div { display: flex; flex-direction: column; gap: 2px; }
+	.figures dt { font-size: 13px; font-weight: 600; opacity: 0.75; }
+	.figures dd { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; }
+	.figures .add { color: var(--accent-ink); font-size: 15px; text-decoration: underline; text-underline-offset: 3px; }
 	.hero-top { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
 	.hero .pill { background: rgba(4, 46, 40, 0.1); color: var(--accent-ink); }
 	.hero-label { margin: 0; font-weight: 600; font-size: 15px; opacity: 0.8; }
-	.big { margin: 2px 0 12px; font-size: clamp(40px, 6vw, 64px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; }
+	.big { margin: 2px 0 0; font-size: clamp(40px, 6vw, 64px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; }
 	.big.neg::before { content: ''; }
 	.lede { margin: 8px 0 18px; max-width: 48ch; font-size: 17px; }
 	.btn.dark { background: var(--accent-ink); color: var(--accent); }
-	.parts { display: flex; flex-wrap: wrap; gap: 8px; }
 	.grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; margin-top: 24px; }
-	.buckets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-content: start; }
+	.buckets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: dense; gap: 12px; align-content: start; }
 	.payments { grid-column: 1 / -1; margin: 4px 4px 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 	.incomes { list-style: none; margin: 0 0 12px; padding: 0; }
 	.incomes li { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 8px 12px; border-radius: var(--r2); }
@@ -221,9 +237,13 @@
 	@media (max-width: 640px) {
 		main { padding: 12px 14px 40px; }
 		header { flex-wrap: wrap; gap: 10px; }
-		.wordmark { flex-basis: 100%; }
-		.seg { flex: 1; }
+		.seg { order: 3; flex-basis: 100%; }
 		.seg button { flex: 1; }
+		.import { padding: 10px 12px; }
+		.import-t { display: none; }
+		.hero { grid-template-columns: 1fr; align-items: start; }
+		.figures { gap: 20px; flex-wrap: wrap; padding: 0; }
+		.figures dd { font-size: 20px; }
 		.buckets { grid-template-columns: 1fr; }
 		.hero { padding: 20px; border-radius: 22px; }
 		.incomes li { grid-template-columns: 1fr auto; }

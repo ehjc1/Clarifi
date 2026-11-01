@@ -19,7 +19,7 @@ for (const [name, w, h, act] of [['desktop', 1440, 900, null], ['mobile', 390, 8
     await p.locator('form[aria-label="Add a rule"] select').nth(0).selectOption('100');
     await p.getByRole('button', { name: 'Add rule' }).click();
   }
-  await p.waitForTimeout(400);
+  await p.waitForTimeout(900);
   await p.screenshot({ path: `${out}/${name}.png`, fullPage: true });
   await p.close();
 }

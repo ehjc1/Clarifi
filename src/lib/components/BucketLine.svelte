@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { nzd, pct } from '#lib/money';
+	import { tweenMoney } from '#lib/motion.svelte';
 	import type { Scored } from '#lib/types';
 
 	type Copy = 'card' | 'mine' | 'partner';
 	let {
-		title, color, rows, copy, held, open = false, extra = 0, total: totalOf, onrelease, onmakerule, codeOf, children
+		title, color, rows, copy, held, open = $bindable(false), extra = 0, emptyText = 'No lines yet', total: totalOf, onrelease, onmakerule, codeOf, children
 	}: {
-		title: string; color: string; rows: Scored[]; copy: Copy; held: { has(id: string): boolean }; open?: boolean; extra?: number;
+		title: string; color: string; rows: Scored[]; copy: Copy; held: { has(id: string): boolean }; open?: boolean; extra?: number; emptyText?: string;
 		total: number; // total of all buckets on this copy, for the share bar
 		onrelease: (id: string) => void; onmakerule: (details: string) => void; codeOf: (r: NonNullable<Scored['rule']>) => string;
 		children?: import('svelte').Snippet;
@@ -15,8 +16,9 @@
 	const shareOf = (r: Scored) => (copy === 'partner' ? 1 - r.share : r.share);
 	const value = (r: Scored) => (copy === 'card' ? r.amount : copy === 'mine' ? r.mine : r.amount - r.mine);
 	const sum = $derived(rows.reduce((a, r) => a + value(r), 0) + extra);
+	const shown = tweenMoney(() => sum);
 	const bar = $derived(totalOf > 0 ? Math.min(1, Math.abs(sum) / totalOf) : 0);
-	const isOpen = $derived(open || rows.some((r) => held.has(r.id)));
+	let isOpen = $derived(open || rows.some((r) => held.has(r.id)));
 	const n = $derived(rows.length + (extra ? 1 : 0));
 	const conflicts = $derived(rows.filter((r) => r.conflict).length);
 
@@ -32,12 +34,17 @@
 	};
 </script>
 
-<details class="card" open={isOpen} style="--c: {color}">
+<details class="card" bind:open={isOpen} style="--c: {color}">
 	<summary>
 		<span class="head"><span class="dot"></span><span class="t">{title}</span></span>
-		<span class="count small">{#if conflicts}<span class="pill warn">{conflicts} conflict{conflicts > 1 ? 's' : ''}</span>{/if}{n} {n === 1 ? 'line' : 'lines'}</span>
-		<span class="sum num">{nzd(sum)}</span>
-		<span class="bar" aria-hidden="true"><span style="transform: scaleX({bar})"></span></span>
+		<span class="count small">{n} {n === 1 ? 'line' : 'lines'}</span>
+		<span class={['sum', 'num', { muted: n === 0 }]}>{nzd(shown.current)}</span>
+		{#if conflicts}<span class="pill warn">{conflicts} conflict{conflicts > 1 ? 's' : ''}</span>{/if}
+		{#if n === 0}
+			<span class="small none">{emptyText}</span>
+		{:else}
+			<span class="bar" aria-hidden="true"><span style="transform: scaleX({bar})"></span></span>
+		{/if}
 	</summary>
 	<div class="body">
 		{#if children}{@render children()}{/if}
@@ -45,8 +52,7 @@
 			<ul>
 				{#each rows as r (r.id)}
 					{@const s = shareOf(r)}
-					<li class={{ held: held.has(r.id), conflict: r.conflict, excluded: s === 0 }}>
-						{#if held.has(r.id)}<span class="glow" {@attach hold(r.id)} aria-hidden="true"></span>{/if}
+					<li class={{ held: held.has(r.id), conflict: r.conflict, excluded: s === 0 }} {@attach held.has(r.id) ? hold(r.id) : undefined}>
 						<span class="date small">{r.date.slice(5)}</span>
 						<span class="det">
 							<button class="det-b" onclick={() => onmakerule(r.details)} title="Start a rule from this line">{r.details}</button>
@@ -74,7 +80,11 @@
 	details[open] { grid-column: 1 / -1; }
 	summary { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; cursor: pointer; list-style: none; align-items: center; }
 	.count { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
-	.sum { grid-column: 1 / -1; }
+	.sum { grid-column: 1; }
+	.pill.warn { justify-self: end; }
+	.t { white-space: nowrap; }
+	.sum.muted { color: var(--ink-2); font-weight: 500; }
+	.none { grid-column: 1 / -1; line-height: 6px; }
 	summary::-webkit-details-marker { display: none; }
 	.head { display: flex; align-items: center; gap: 10px; min-width: 0; }
 	.t { font-weight: 600; }
@@ -86,15 +96,14 @@
 	li { position: relative; display: grid; grid-template-columns: 48px 1fr auto auto; gap: 12px; align-items: center; padding: 10px 12px; border-radius: var(--r2); transition: background-color 400ms var(--ease); }
 	li + li { margin-top: 2px; }
 	li:hover { background: var(--surface-2); }
-	li.held { background: var(--accent-soft); }
+	li.held { background: var(--accent-soft); box-shadow: 0 6px 18px var(--accent-soft); }
 	li.conflict { background: var(--danger-soft); }
 	li.excluded .det-b, li.excluded .amt b { color: var(--ink-2); font-weight: 400; }
-	.glow { position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 999px; background: var(--accent); }
 	.det { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; min-width: 0; }
 	.det-b { background: none; border: 0; padding: 0; text-align: left; font-weight: 500; }
 	.det-b:hover { color: var(--accent); }
 	.meta { display: flex; gap: 6px; }
-	.code { color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); font-family: var(--mono); font-size: 12px; }
+	.code { color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); font-size: 12px; font-weight: 600; }
 	.share { color: var(--ink-2); }
 	.share.full { color: var(--ink); }
 	.warn { color: var(--danger); background: transparent; padding-left: 0; }

@@ -82,7 +82,7 @@
 	li, form { padding: 16px 18px; }
 	.top { display: flex; align-items: center; gap: 10px; }
 	.name { font-weight: 600; flex: 1; min-width: 0; }
-	.code { font-family: var(--mono); font-size: 12px; color: var(--c, var(--accent)); background: color-mix(in srgb, var(--c, var(--accent)) 14%, transparent); }
+	.code { font-size: 12px; font-weight: 600; color: var(--c, var(--accent)); background: color-mix(in srgb, var(--c, var(--accent)) 14%, transparent); }
 	form .code { --c: var(--accent); }
 	.cond { margin: 8px 0 10px; }
 	.chips { display: flex; flex-wrap: wrap; gap: 6px; }
