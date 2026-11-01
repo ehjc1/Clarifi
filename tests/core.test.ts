@@ -54,3 +54,12 @@ describe('composeRule', () => {
 		expect(composeRule('contact energy', 0.5, 'fixed', s)).toMatchObject({ note: '', claimed: 0, rule: { text: 'contact energy', share: 0.5 } });
 	});
 });
+
+describe('statements', () => {
+	it('labels a statement by the month of its last line and keys it YYYY-MM', async () => {
+		const { makeStatement } = await import('../src/lib/store.svelte');
+		const st = makeStatement(parseAnz(csv), true);
+		expect(st).toMatchObject({ id: '2026-10', from: '2026-10-01', to: '2026-10-06', synthetic: true });
+		expect(st.label).toMatch(/Oct(ober)? 2026/);
+	});
+});
