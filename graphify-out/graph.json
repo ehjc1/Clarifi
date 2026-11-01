@@ -4,86 +4,6 @@
   "graph": {},
   "nodes": [
     {
-      "label": "shot.mjs",
-      "file_type": "code",
-      "source_file": ".impeccable/shot.mjs",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "impeccable_shot",
-      "community": 11,
-      "norm_label": "shot.mjs"
-    },
-    {
-      "label": "errs",
-      "file_type": "code",
-      "source_file": ".impeccable/shot.mjs",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "impeccable_shot_errs",
-      "community": 11,
-      "norm_label": "errs"
-    },
-    {
-      "label": "README.md",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "readme",
-      "community": 6,
-      "norm_label": "readme.md"
-    },
-    {
-      "label": "Clarifi",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "readme_clarifi",
-      "community": 6,
-      "norm_label": "clarifi"
-    },
-    {
-      "label": "Run",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "readme_run",
-      "community": 6,
-      "norm_label": "run"
-    },
-    {
-      "label": "How it reads",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L18",
-      "_origin": "ast",
-      "id": "readme_how_it_reads",
-      "community": 6,
-      "norm_label": "how it reads"
-    },
-    {
-      "label": "Status",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L30",
-      "_origin": "ast",
-      "id": "readme_status",
-      "community": 6,
-      "norm_label": "status"
-    },
-    {
-      "label": "sample.ts",
-      "file_type": "code",
-      "source_file": "src/lib/sample.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "lib_sample",
-      "community": 13,
-      "norm_label": "sample.ts"
-    },
-    {
       "label": "store.svelte.ts",
       "file_type": "code",
       "source_file": "src/lib/store.svelte.ts",
@@ -147,7 +67,7 @@
       "label": "persist()",
       "file_type": "code",
       "source_file": "src/lib/store.svelte.ts",
-      "source_location": "L43",
+      "source_location": "L44",
       "_origin": "ast",
       "id": "lib_store_svelte_persist",
       "community": 1,
@@ -157,91 +77,11 @@
       "label": "uid()",
       "file_type": "code",
       "source_file": "src/lib/store.svelte.ts",
-      "source_location": "L47",
+      "source_location": "L48",
       "_origin": "ast",
       "id": "lib_store_svelte_uid",
       "community": 1,
       "norm_label": "uid()"
-    },
-    {
-      "label": "types.ts",
-      "file_type": "code",
-      "source_file": "src/lib/types.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "lib_types",
-      "community": 1,
-      "norm_label": "types.ts"
-    },
-    {
-      "label": "BUCKETS",
-      "file_type": "code",
-      "source_file": "src/lib/types.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "lib_types_buckets",
-      "community": 1,
-      "norm_label": "buckets"
-    },
-    {
-      "label": "Bucket",
-      "file_type": "code",
-      "source_file": "src/lib/types.ts",
-      "source_location": "L2",
-      "_origin": "ast",
-      "id": "lib_types_bucket",
-      "community": 1,
-      "norm_label": "bucket"
-    },
-    {
-      "label": "Txn",
-      "file_type": "code",
-      "source_file": "src/lib/types.ts",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "lib_types_txn",
-      "community": 1,
-      "norm_label": "txn"
-    },
-    {
-      "label": "Rule",
-      "file_type": "code",
-      "source_file": "src/lib/types.ts",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "lib_types_rule",
-      "community": 1,
-      "norm_label": "rule"
-    },
-    {
-      "label": "Income",
-      "file_type": "code",
-      "source_file": "src/lib/types.ts",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "lib_types_income",
-      "community": 1,
-      "norm_label": "income"
-    },
-    {
-      "label": "Scored",
-      "file_type": "code",
-      "source_file": "src/lib/types.ts",
-      "source_location": "L23",
-      "_origin": "ast",
-      "id": "lib_types_scored",
-      "community": 1,
-      "norm_label": "scored"
-    },
-    {
-      "label": "Statement",
-      "file_type": "code",
-      "source_file": "src/lib/types.ts",
-      "source_location": "L32",
-      "_origin": "ast",
-      "id": "lib_types_statement",
-      "community": 1,
-      "norm_label": "statement"
     },
     {
       "label": "+page.svelte",
@@ -257,7 +97,7 @@
       "label": "span()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L36",
+      "source_location": "L38",
       "_origin": "ast",
       "id": "routes_page_span",
       "community": 4,
@@ -267,7 +107,7 @@
       "label": "focusIncome()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L43",
+      "source_location": "L45",
       "_origin": "ast",
       "id": "routes_page_focusincome",
       "community": 4,
@@ -277,7 +117,7 @@
       "label": "loadCsv()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L90",
+      "source_location": "L104",
       "_origin": "ast",
       "id": "routes_page_loadcsv",
       "community": 4,
@@ -287,7 +127,7 @@
       "label": "onfile()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L99",
+      "source_location": "L113",
       "_origin": "ast",
       "id": "routes_page_onfile",
       "community": 4,
@@ -297,7 +137,7 @@
       "label": "withDiff()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L106",
+      "source_location": "L120",
       "_origin": "ast",
       "id": "routes_page_withdiff",
       "community": 4,
@@ -307,7 +147,7 @@
       "label": "addRule()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L111",
+      "source_location": "L125",
       "_origin": "ast",
       "id": "routes_page_addrule",
       "community": 4,
@@ -317,7 +157,7 @@
       "label": "makeRule()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L117",
+      "source_location": "L131",
       "_origin": "ast",
       "id": "routes_page_makerule",
       "community": 4,
@@ -327,7 +167,7 @@
       "label": "addIncome()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L123",
+      "source_location": "L137",
       "_origin": "ast",
       "id": "routes_page_addincome",
       "community": 4,
@@ -337,7 +177,7 @@
       "label": "removeIncome()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L130",
+      "source_location": "L144",
       "_origin": "ast",
       "id": "routes_page_removeincome",
       "community": 4,
@@ -347,7 +187,7 @@
       "label": "exportJson()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L131",
+      "source_location": "L145",
       "_origin": "ast",
       "id": "routes_page_exportjson",
       "community": 4,
@@ -357,7 +197,7 @@
       "label": "importJson()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L137",
+      "source_location": "L151",
       "_origin": "ast",
       "id": "routes_page_importjson",
       "community": 4,
@@ -367,7 +207,7 @@
       "label": "removeStatement()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L143",
+      "source_location": "L157",
       "_origin": "ast",
       "id": "routes_page_removestatement",
       "community": 4,
@@ -454,6 +294,26 @@
       "norm_label": "#lib/motion.svelte"
     },
     {
+      "label": "svelte/motion",
+      "file_type": "code",
+      "source_file": "svelte/motion",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "motion",
+      "community": 4,
+      "norm_label": "svelte/motion"
+    },
+    {
+      "label": "svelte/easing",
+      "file_type": "code",
+      "source_file": "svelte/easing",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "easing",
+      "community": 4,
+      "norm_label": "svelte/easing"
+    },
+    {
       "label": "#lib/rules",
       "file_type": "code",
       "source_file": "#lib/rules",
@@ -492,6 +352,166 @@
       "id": "types",
       "community": 4,
       "norm_label": "#lib/types"
+    },
+    {
+      "label": "shot.mjs",
+      "file_type": "code",
+      "source_file": ".impeccable/shot.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 11,
+      "norm_label": "shot.mjs",
+      "id": "impeccable_shot"
+    },
+    {
+      "label": "errs",
+      "file_type": "code",
+      "source_file": ".impeccable/shot.mjs",
+      "source_location": "L5",
+      "_origin": "ast",
+      "community": 11,
+      "norm_label": "errs",
+      "id": "impeccable_shot_errs"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "readme.md",
+      "id": "readme"
+    },
+    {
+      "label": "Clarifi",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "clarifi",
+      "id": "readme_clarifi"
+    },
+    {
+      "label": "Run",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "run",
+      "id": "readme_run"
+    },
+    {
+      "label": "How it reads",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L18",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "how it reads",
+      "id": "readme_how_it_reads"
+    },
+    {
+      "label": "Status",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L30",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "status",
+      "id": "readme_status"
+    },
+    {
+      "label": "sample.ts",
+      "file_type": "code",
+      "source_file": "src/lib/sample.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "sample.ts",
+      "id": "lib_sample"
+    },
+    {
+      "label": "types.ts",
+      "file_type": "code",
+      "source_file": "src/lib/types.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "types.ts",
+      "id": "lib_types"
+    },
+    {
+      "label": "BUCKETS",
+      "file_type": "code",
+      "source_file": "src/lib/types.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "buckets",
+      "id": "lib_types_buckets"
+    },
+    {
+      "label": "Bucket",
+      "file_type": "code",
+      "source_file": "src/lib/types.ts",
+      "source_location": "L2",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "bucket",
+      "id": "lib_types_bucket"
+    },
+    {
+      "label": "Txn",
+      "file_type": "code",
+      "source_file": "src/lib/types.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "txn",
+      "id": "lib_types_txn"
+    },
+    {
+      "label": "Rule",
+      "file_type": "code",
+      "source_file": "src/lib/types.ts",
+      "source_location": "L11",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "rule",
+      "id": "lib_types_rule"
+    },
+    {
+      "label": "Income",
+      "file_type": "code",
+      "source_file": "src/lib/types.ts",
+      "source_location": "L21",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "income",
+      "id": "lib_types_income"
+    },
+    {
+      "label": "Scored",
+      "file_type": "code",
+      "source_file": "src/lib/types.ts",
+      "source_location": "L23",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "scored",
+      "id": "lib_types_scored"
+    },
+    {
+      "label": "Statement",
+      "file_type": "code",
+      "source_file": "src/lib/types.ts",
+      "source_location": "L32",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "statement",
+      "id": "lib_types_statement"
     },
     {
       "label": "DESIGN.md",
@@ -1559,7 +1579,7 @@
       "source_file": "src/lib/money.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
+      "community": 9,
       "norm_label": "money.ts",
       "id": "lib_money"
     },
@@ -1569,7 +1589,7 @@
       "source_file": "src/lib/money.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
+      "community": 9,
       "norm_label": "f",
       "id": "lib_money_f"
     },
@@ -1579,7 +1599,7 @@
       "source_file": "src/lib/money.ts",
       "source_location": "L2",
       "_origin": "ast",
-      "community": 1,
+      "community": 9,
       "norm_label": "nzd()",
       "id": "lib_money_nzd"
     },
@@ -1589,7 +1609,7 @@
       "source_file": "src/lib/money.ts",
       "source_location": "L3",
       "_origin": "ast",
-      "community": 1,
+      "community": 9,
       "norm_label": "pct()",
       "id": "lib_money_pct"
     },
@@ -1658,56 +1678,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": ".impeccable/shot.mjs",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "impeccable_shot",
-      "target": "impeccable_shot_errs"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme",
-      "target": "readme_clarifi"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L18",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme_clarifi",
-      "target": "readme_how_it_reads"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme_clarifi",
-      "target": "readme_run"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme_clarifi",
-      "target": "readme_status"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "src/lib/store.svelte.ts",
       "source_location": "L24",
       "weight": 1.0,
@@ -1731,9 +1701,9 @@
       "source_file": "src/lib/store.svelte.ts",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_store_svelte",
-      "target": "lib_store_svelte_makestatement",
-      "confidence_score": 1.0
+      "target": "lib_store_svelte_makestatement"
     },
     {
       "relation": "contains",
@@ -1741,9 +1711,9 @@
       "source_file": "src/lib/store.svelte.ts",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_store_svelte",
-      "target": "lib_store_svelte_month",
-      "confidence_score": 1.0
+      "target": "lib_store_svelte_month"
     },
     {
       "relation": "contains",
@@ -1815,9 +1785,9 @@
       "source_file": "src/lib/store.svelte.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_store_svelte",
-      "target": "lib_types_statement",
-      "confidence_score": 1.0
+      "target": "lib_types_statement"
     },
     {
       "relation": "imports",
@@ -1837,9 +1807,9 @@
       "source_file": "src/lib/store.svelte.ts",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_store_svelte_load",
-      "target": "lib_store_svelte_makestatement",
-      "confidence_score": 1.0
+      "target": "lib_store_svelte_makestatement"
     },
     {
       "relation": "calls",
@@ -1848,167 +1818,9 @@
       "source_file": "src/lib/store.svelte.ts",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_store_svelte_makestatement",
-      "target": "lib_store_svelte_month",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/anz.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_anz",
-      "target": "lib_types"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_rules",
-      "target": "lib_types"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/types.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_types",
-      "target": "lib_types_bucket"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/types.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_types",
-      "target": "lib_types_buckets"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/types.ts",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_types",
-      "target": "lib_types_income"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/types.ts",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_types",
-      "target": "lib_types_rule"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/types.ts",
-      "source_location": "L23",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_types",
-      "target": "lib_types_scored"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/types.ts",
-      "source_location": "L32",
-      "weight": 1.0,
-      "source": "lib_types",
-      "target": "lib_types_statement",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/types.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_types",
-      "target": "lib_types_txn"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/core.test.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tests_core_test",
-      "target": "lib_types"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/anz.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_anz",
-      "target": "lib_types_txn"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_rules",
-      "target": "lib_types_txn"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_rules",
-      "target": "lib_types_rule"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/core.test.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tests_core_test",
-      "target": "lib_types_rule"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_rules",
-      "target": "lib_types_scored"
+      "target": "lib_store_svelte_month"
     },
     {
       "relation": "imports_from",
@@ -2030,9 +1842,25 @@
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src/routes/+page.svelte",
+      "source": "routes_page",
+      "target": "easing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
       "confidence_score": 1.0,
       "source": "routes_page",
       "target": "money"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source": "routes_page",
+      "target": "motion",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -2146,9 +1974,9 @@
       "source_file": "src/routes/+page.svelte",
       "source_location": "L143",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "routes_page",
-      "target": "routes_page_removestatement",
-      "confidence_score": 1.0
+      "target": "routes_page_removestatement"
     },
     {
       "relation": "contains",
@@ -2346,6 +2174,214 @@
       "confidence_score": 1.0,
       "source": "components_triage",
       "target": "types"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".impeccable/shot.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "impeccable_shot",
+      "target": "impeccable_shot_errs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_clarifi"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_clarifi",
+      "target": "readme_how_it_reads"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_clarifi",
+      "target": "readme_run"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_clarifi",
+      "target": "readme_status"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/anz.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_anz",
+      "target": "lib_types"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_rules",
+      "target": "lib_types"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/types.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_types",
+      "target": "lib_types_bucket"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/types.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_types",
+      "target": "lib_types_buckets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/types.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_types",
+      "target": "lib_types_income"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/types.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_types",
+      "target": "lib_types_rule"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/types.ts",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_types",
+      "target": "lib_types_scored"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/types.ts",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_types",
+      "target": "lib_types_statement"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/types.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_types",
+      "target": "lib_types_txn"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/core.test.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_core_test",
+      "target": "lib_types"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/anz.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_anz",
+      "target": "lib_types_txn"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_rules",
+      "target": "lib_types_txn"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_rules",
+      "target": "lib_types_rule"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/core.test.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_core_test",
+      "target": "lib_types_rule"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_rules",
+      "target": "lib_types_scored"
     },
     {
       "relation": "contains",
@@ -3425,5 +3461,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "54868424f4525b38bfd95b7f2dcbb129ca1582ff"
+  "built_at_commit": "cae3f20dc72ed9eedd4a75db86b78df750a47879"
 }

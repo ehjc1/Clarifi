@@ -262,6 +262,9 @@
 						{#if prev}
 							<p class={['delta', 'num', { up: delta > 0 }]}>{delta > 0 ? '+' : delta < 0 ? '−' : ''}{nzd(Math.abs(delta))}</p>
 							<p class="small">vs {prev.label}</p>
+						{:else}
+							<p class="delta muted">First statement</p>
+							<p class="small">nothing earlier to compare</p>
 						{/if}
 					</div>
 					<ol class="bars">
@@ -330,6 +333,7 @@
 	.trend-text .t { font-weight: 600; }
 	.delta { margin: 14px 0 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
 	.delta.up { color: var(--danger); }
+	.delta.muted { color: var(--ink-2); font-weight: 500; }
 	.bars { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(88px, 120px); justify-content: end; gap: 12px; height: 150px; overflow-x: auto; }
 	.bars li { height: 100%; }
 	.bars button { display: grid; grid-template-rows: auto 1fr auto; gap: 6px; height: 100%; width: 100%; border: 0; background: none; padding: 0; text-align: center; border-radius: var(--r2); }

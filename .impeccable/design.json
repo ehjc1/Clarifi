@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-01T18:00:00Z",
+  "generatedAt": "2026-11-01T21:00:00Z",
   "title": "Design System: Clarifi",
   "extensions": {
     "colorMeta": {
@@ -140,7 +140,7 @@
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Bucket totals, hero contributing figures, and the triage current line; 20px on phones."
+        "purpose": "Bucket totals, hero contributing figures, the triage current line and the Over time delta; 20px on phones."
       },
       "title": {
         "displayName": "Title",
@@ -156,7 +156,7 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Pills, counts, captions, form labels, footer links."
+        "purpose": "Pills, counts, captions, form labels, footer links, Over time bar values and month labels."
       },
       "code": {
         "displayName": "Code chip",
@@ -184,12 +184,12 @@
       {
         "name": "ease",
         "value": "cubic-bezier(0.19, 1, 0.22, 1)",
-        "purpose": "Every CSS transition (150ms controls, 200ms segments and card shadow, 400ms bars and row tint)."
+        "purpose": "Every CSS transition (150ms controls and month pills, 200ms segments and card shadow, 400ms bars and row tint)."
       },
       {
         "name": "tween-money",
         "value": "500ms expoOut (svelte/motion Tween); 0ms under prefers-reduced-motion",
-        "purpose": "Hero figure and every bucket total count to the new value."
+        "purpose": "Hero figure, every bucket total and the Over time bar values count to the new value; a change in statement count snaps (0ms)."
       },
       {
         "name": "line-in",
@@ -211,7 +211,7 @@
       {
         "name": "phone",
         "value": "640px",
-        "purpose": "Single bucket column, top bar wraps (nav second row, segmented control its own row), Import pill icon-only, hero stacks."
+        "purpose": "Single bucket column, top bar wraps (nav second row, segmented control its own row), Import pill icon-only, hero stacks., Over time card drops to one column with bars justified to the start."
       }
     ]
   },
@@ -276,9 +276,9 @@
       "name": "Hero",
       "kind": "custom",
       "refersTo": "hero",
-      "description": "The accent block carrying the headline figure and its contributing figures.",
-      "html": "<section class=\"ds-hero\"><div><span class=\"ds-hero-pill\">1 Oct – 20 Oct 2026</span><p class=\"ds-hero-label\">My share of the card</p><p class=\"ds-hero-big\">$3,007.77</p></div><dl class=\"ds-figs\"><div><dt>Spend</dt><dd>$3,007.77</dd></div><div><dt>Put away</dt><dd>$0.00</dd></div></dl></section>",
-      "css": ".ds-hero { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; background: var(--accent, #00c2a8); color: var(--accent-ink, #042e28); padding: 24px 28px 28px; border-radius: 28px; font: 400 15px/1.5 'Figtree', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-hero-pill { display: inline-flex; border-radius: 999px; padding: 4px 10px; font-size: 13px; font-weight: 500; line-height: 1.2; background: rgba(4,46,40,.1); } .ds-hero-label { margin: 18px 0 0; font-weight: 600; opacity: .8; } .ds-hero-big { margin: 2px 0 0; font-size: clamp(40px, 6vw, 64px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; } .ds-figs { display: flex; gap: 36px; margin: 0; padding: 0 8px 6px 0; } .ds-figs div { display: flex; flex-direction: column; gap: 2px; } .ds-figs dt { font-size: 13px; font-weight: 600; opacity: .75; } .ds-figs dd { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; }"
+      "description": "The accent block carrying the headline figure and its contributing figures; the top row holds the month nav when several statements are loaded, with the status chip pushed to the end.",
+      "html": "<section class=\"ds-hero\"><div><div class=\"ds-hero-top\"><nav class=\"ds-months\" aria-label=\"Statements\"><button class=\"ds-hero-pill\">Aug 2026</button><button class=\"ds-hero-pill\">Sep 2026</button><button class=\"ds-hero-pill on\" aria-pressed=\"true\">Oct 2026</button></nav><span class=\"ds-hero-pill ds-status\">sample · synthetic data</span></div><p class=\"ds-hero-label\">My share of the card <span class=\"dim\">· 1 Oct – 20 Oct 2026</span></p><p class=\"ds-hero-big\">$3,007.77</p></div><dl class=\"ds-figs\"><div><dt>Spend</dt><dd>$3,007.77</dd></div><div><dt>Put away</dt><dd>$0.00</dd></div></dl></section>",
+      "css": ".ds-hero { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; background: var(--accent, #00c2a8); color: var(--accent-ink, #042e28); padding: 24px 28px 28px; border-radius: 28px; font: 400 15px/1.5 'Figtree', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-hero-top { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; } .ds-months { display: flex; gap: 4px; flex-wrap: wrap; } .ds-hero-pill { display: inline-flex; border: 0; border-radius: 999px; padding: 4px 10px; font: 500 13px/1.2 inherit; background: rgba(4,46,40,.1); color: var(--accent-ink, #042e28); } .ds-months .ds-hero-pill { background: transparent; font-weight: 600; cursor: pointer; transition: background-color 150ms cubic-bezier(0.19,1,0.22,1), color 150ms cubic-bezier(0.19,1,0.22,1); } .ds-months .ds-hero-pill:hover { background: rgba(4,46,40,.18); } .ds-months .ds-hero-pill.on { background: var(--accent-ink, #042e28); color: var(--accent, #00c2a8); } .ds-months .ds-hero-pill:focus-visible { outline: 2px solid var(--accent-ink, #042e28); outline-offset: 2px; } .ds-status { margin-left: auto; } .ds-hero-label .dim { opacity: .7; font-weight: 500; } .ds-hero-label { margin: 0; font-weight: 600; opacity: .8; } .ds-hero-big { margin: 2px 0 0; font-size: clamp(40px, 6vw, 64px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; } .ds-figs { display: flex; gap: 36px; margin: 0; padding: 0 8px 6px 0; } .ds-figs div { display: flex; flex-direction: column; gap: 2px; } .ds-figs dt { font-size: 13px; font-weight: 600; opacity: .75; } .ds-figs dd { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; }"
     },
     {
       "name": "Triage Card",
@@ -287,6 +287,14 @@
       "description": "Sort your lines: current line at headline size, three sunken choice buttons with keycaps, bucket radio chips, exact rule foot.",
       "html": "<section class=\"ds-triage\"><header class=\"ds-tr-head\"><div><h2>Sort your lines</h2><p class=\"ds-small\">Each answer becomes a rule, so next month sorts itself.</p></div><div class=\"ds-prog\"><span class=\"ds-small\">3 / 12</span><span class=\"ds-tr-bar\"><span style=\"transform:scaleX(.25)\"></span></span></div><button class=\"ds-link\">Close</button></header><div class=\"ds-tr-line\"><span class=\"ds-small\">10-14</span><span class=\"ds-tr-det\">Pak n Save Royal Oak</span><span class=\"ds-tr-det\">$84.10</span></div><div class=\"ds-choices\"><button class=\"ds-choice\"><span class=\"l\">Partner’s <kbd class=\"ds-key\">1</kbd></span><span class=\"ds-small\">leave it out</span></button><button class=\"ds-choice\"><span class=\"l\">Split <kbd class=\"ds-key\">2</kbd></span><span class=\"ds-small\">half each</span></button><button class=\"ds-choice\"><span class=\"l\">Mine <kbd class=\"ds-key\">3</kbd></span><span class=\"ds-small\">all of it</span></button></div><div class=\"ds-tr-foot\"><span class=\"ds-buckets\" role=\"radiogroup\"><button class=\"ds-bchip\" style=\"--c:#22c55e\"><i></i>Income</button><button class=\"ds-bchip on\" aria-checked=\"true\" style=\"--c:#f59e0b\"><i></i>General</button><button class=\"ds-bchip\" style=\"--c:#06b6d4\"><i></i>Savings</button></span><span class=\"ds-small\">Rule: details contain “pak n save” · <b class=\"ds-note\">under $120 only, so R2 keeps the bigger ones</b> · <button class=\"ds-link\">Skip<kbd class=\"ds-key-inline\">S</kbd></button></span></div></section>",
       "css": ".ds-triage { background: var(--surface, #fff); border-radius: 20px; box-shadow: var(--shadow, 0 10px 30px rgba(11,15,25,.06), 0 1px 2px rgba(11,15,25,.04)); padding: 20px 24px 22px; font: 400 15px/1.5 'Figtree', system-ui, sans-serif; color: var(--ink, #0b0f19); font-variant-numeric: tabular-nums; } .ds-small { font-size: 13px; color: var(--ink-2, #626b7a); } .ds-tr-head { display: flex; align-items: center; gap: 24px; } .ds-tr-head div:first-child { flex: 1; } .ds-tr-head h2 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; } .ds-tr-head p { margin: 2px 0 0; } .ds-prog { display: flex; align-items: center; gap: 10px; } .ds-tr-bar { width: 120px; height: 6px; border-radius: 999px; background: var(--surface-2, #f6f7fb); overflow: hidden; display: block; } .ds-tr-bar span { display: block; height: 100%; background: var(--accent, #00c2a8); transform-origin: left; transition: transform 400ms cubic-bezier(0.19,1,0.22,1); } .ds-link { background: none; border: 0; padding: 0; color: var(--ink-2, #626b7a); font: 500 13px/1.2 inherit; cursor: pointer; } .ds-link:hover { color: var(--ink, #0b0f19); } .ds-tr-line { display: grid; grid-template-columns: 48px 1fr auto; gap: 16px; align-items: baseline; padding: 22px 0 18px; animation: ds-in 300ms cubic-bezier(0.19,1,0.22,1); } @keyframes ds-in { from { opacity: 0; transform: translateY(6px); } } .ds-tr-det { font-size: 24px; font-weight: 600; letter-spacing: -0.02em; } .ds-choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; } .ds-choice { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 14px 16px; border: 0; border-radius: 12px; background: var(--surface-2, #f6f7fb); color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background-color 150ms cubic-bezier(0.19,1,0.22,1), transform 150ms cubic-bezier(0.19,1,0.22,1); } .ds-choice:hover { background: var(--accent-soft, rgba(0,194,168,.14)); transform: translateY(-1px); } .ds-choice:focus-visible { outline: 2px solid var(--accent, #00c2a8); outline-offset: 2px; } .ds-choice .l { display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 600; } .ds-key { font: 600 12px/1.2 inherit; padding: 1px 7px; border-radius: 999px; background: var(--surface, #fff); color: var(--ink-2, #626b7a); } .ds-key-inline { font: 600 12px/1.2 inherit; margin-left: 4px; padding: 0 5px; border-radius: 999px; background: var(--surface-2, #f6f7fb); color: var(--ink-2, #626b7a); } @media (hover: none) { .ds-key, .ds-key-inline { display: none; } } .ds-tr-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 16px; margin-top: 14px; } .ds-buckets { display: flex; flex-wrap: wrap; gap: 6px; } .ds-bchip { display: inline-flex; align-items: center; gap: 6px; border: 0; border-radius: 999px; padding: 4px 10px; font: 500 13px/1.2 inherit; background: var(--surface-2, #f6f7fb); color: var(--ink-2, #626b7a); cursor: pointer; } .ds-bchip i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); } .ds-bchip.on { background: color-mix(in srgb, var(--c) 16%, transparent); color: var(--ink, #0b0f19); font-weight: 600; } .ds-note { color: var(--ink, #0b0f19); font-weight: 600; }"
+    },
+    {
+      "name": "Over Time Card",
+      "kind": "custom",
+      "refersTo": "trend-bar-fill-on",
+      "description": "Spend per statement: delta text block and one tall bar button per month; the current month fills accent and selects the statement.",
+      "html": "<section class=\"ds-trend\" aria-label=\"Spend by statement\"><div class=\"ds-trend-text\"><span class=\"t\">Over time</span><span class=\"ds-small\">my share per statement</span><p class=\"ds-delta up\">+$312.40</p><p class=\"ds-small\">vs Sep 2026</p></div><ol class=\"ds-bars\"><li><button><span class=\"v\">$2,410.12</span><span class=\"bar\"><span style=\"transform:scaleY(.8)\"></span></span><span class=\"l\">Aug 2026</span></button></li><li><button><span class=\"v\">$2,695.37</span><span class=\"bar\"><span style=\"transform:scaleY(.9)\"></span></span><span class=\"l\">Sep 2026</span></button></li><li><button class=\"on\" aria-pressed=\"true\"><span class=\"v\">$3,007.77</span><span class=\"bar\"><span style=\"transform:scaleY(1)\"></span></span><span class=\"l\">Oct 2026</span></button></li></ol></section>",
+      "css": ".ds-trend { background: var(--surface, #fff); border-radius: 20px; box-shadow: var(--shadow, 0 10px 30px rgba(11,15,25,.06), 0 1px 2px rgba(11,15,25,.04)); padding: 18px 20px; display: grid; grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr); gap: 24px; align-items: end; font: 400 15px/1.5 'Figtree', system-ui, sans-serif; color: var(--ink, #0b0f19); font-variant-numeric: tabular-nums; } .ds-trend-text { display: flex; flex-direction: column; gap: 2px; align-self: start; } .ds-trend-text .t { font-weight: 600; } .ds-small { font-size: 13px; color: var(--ink-2, #626b7a); margin: 0; } .ds-delta { margin: 14px 0 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; } .ds-delta.up { color: var(--danger, #e5484d); } .ds-bars { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(88px, 120px); justify-content: end; gap: 12px; height: 150px; overflow-x: auto; } .ds-bars li { height: 100%; } .ds-bars button { display: grid; grid-template-rows: auto 1fr auto; gap: 6px; height: 100%; width: 100%; border: 0; background: none; padding: 0; text-align: center; border-radius: 12px; font: inherit; color: inherit; cursor: pointer; } .ds-bars button:focus-visible { outline: 2px solid var(--accent, #00c2a8); outline-offset: 2px; } .ds-bars .v { font-size: 13px; color: var(--ink-2, #626b7a); align-self: end; } .ds-bars .l { font-size: 13px; font-weight: 500; color: var(--ink-2, #626b7a); } .ds-bars button.on .v, .ds-bars button.on .l { color: var(--ink, #0b0f19); font-weight: 600; } .ds-bars .bar { display: block; height: 100%; border-radius: 12px; background: var(--surface-2, #f6f7fb); overflow: hidden; } .ds-bars .bar span { display: block; height: 100%; border-radius: inherit; background: var(--line, #e6e8ef); transform-origin: bottom; transition: transform 400ms cubic-bezier(0.19,1,0.22,1), background-color 150ms cubic-bezier(0.19,1,0.22,1); } .ds-bars button:hover .bar span { background: var(--ink-2, #626b7a); } .ds-bars button.on .bar span { background: var(--accent, #00c2a8); }"
     }
   ],
   "narrative": {
@@ -298,12 +306,13 @@
       "Figtree at every size, tabular numerals everywhere, tight negative tracking as size rises.",
       "Pill radius (999px) for every control; 20px cards; 28px hero; 12px rows and inputs.",
       "Light: soft offset shadow. Dark: 1px ring. Same tokens, swapped under prefers-color-scheme.",
-      "Figures count to new values with one 500ms expoOut tween; held rows glow accent until scrolled past."
+      "Figures count to new values with one 500ms expoOut tween; held rows glow accent until scrolled past.",
+      "Several statements live side by side: a month nav of pills on the hero and an \"Over time\" bar card beneath the buckets, both selecting the current statement."
     ],
     "rules": [
       {
         "name": "The One Block Rule",
-        "body": "The accent appears at full strength exactly twice on a screen: the hero and the primary button. Everything else that wants accent gets the 14% wash.",
+        "body": "The accent appears at full strength exactly twice on a screen: the hero and the primary button. Everything else that wants accent gets the 14% wash. The single exception is a progress or statement bar whose fill marks \"the one that is current\" (triage progress, the current month in Over time); the fill is a few pixels wide and never a surface.",
         "section": "colors"
       },
       {
@@ -346,6 +355,7 @@
       "Do mark a conflict with the danger wash and a \"conflict · A vs B\" chip; mark a freshly moved row with the accent wash and glow, released on scroll.",
       "Do show a keyboard shortcut as a 12px 600 keycap pill trailing its label, and hide it under hover: none.",
       "Do keep every bucket grid row full: collapsed cards span 2, an expanded card spans 6, trailing cards re-span to 3 or 6.",
+      "Do let the current statement be chosen from two places that agree: the month pill on the hero (accent-ink fill, accent text) and the accent bar in the Over time card; every other month is a transparent pill or a --line bar.",
       "Do switch top-level views by hash (#overview / #rules) through the pill nav; the active link is a surface pill with the card shadow, and controls that only make sense on one view (the segmented control) render only there."
     ],
     "donts": [

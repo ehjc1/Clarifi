@@ -113,6 +113,28 @@ components:
     textColor: "{colors.accent-ink}"
     rounded: "{rounded.pill}"
     padding: "4px 10px"
+  month-pill:
+    backgroundColor: "transparent"
+    textColor: "{colors.accent-ink}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
+    padding: "4px 10px"
+  month-pill-hover:
+    backgroundColor: "rgba(4, 46, 40, 0.18)"
+  month-pill-on:
+    backgroundColor: "{colors.accent-ink}"
+    textColor: "{colors.accent}"
+  trend-bar-track:
+    backgroundColor: "{colors.surface-sunken}"
+    rounded: "{rounded.row}"
+    height: "150px"
+  trend-bar-fill:
+    backgroundColor: "{colors.line}"
+    rounded: "{rounded.row}"
+  trend-bar-fill-on:
+    backgroundColor: "{colors.accent}"
+  trend-bar-fill-hover:
+    backgroundColor: "{colors.ink-muted}"
   segment-on:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.canvas}"
@@ -211,14 +233,15 @@ Confirmed rejections: no paper, ledger or printed-form metaphors; no monospace f
 - Pill radius (999px) for every control; 20px cards; 28px hero; 12px rows and inputs.
 - Light: soft offset shadow. Dark: 1px ring. Same tokens, swapped under `prefers-color-scheme`.
 - Figures count to new values with one 500ms expoOut tween; held rows glow accent until scrolled past.
+- Several statements live side by side: a month nav of pills on the hero and an "Over time" bar card beneath the buckets, both selecting the current statement.
 
 ## Colors
 
 A near-neutral stage with one teal-mint voice and six quiet bucket hues that never raise theirs.
 
 ### Primary
-- **Teal Mint** (`accent`, light `#00c2a8` / dark `#2ef2d2`): the hero block background, the primary button, the focus ring (2px outline, 2px offset), text selection, and hover colour on row detail buttons. In dark mode it brightens rather than dims so the hero still reads as a block.
-- **Deep Teal Ink** (`accent-ink`, `#042e28`, both themes): the only text colour allowed on the accent. Also the background of the inverted button that sits on the hero.
+- **Teal Mint** (`accent`, light `#00c2a8` / dark `#2ef2d2`): the hero block background, the primary button, the focus ring (2px outline, 2px offset), text selection, hover colour on row detail buttons, and the fill of the current-statement bar in the Over time card (same precedent as the triage progress bar). In dark mode it brightens rather than dims so the hero still reads as a block.
+- **Deep Teal Ink** (`accent-ink`, `#042e28`, both themes): the only text colour allowed on the accent. Also the background of the inverted button and the selected month pill that sit on the hero; the selected month pill flips its text to the accent.
 - **Mint Wash** (`accent-soft`, 14% accent): the held-row tint and its glow shadow; the tint behind the new-rule code chip.
 
 ### Bucket (fixed, six)
@@ -231,10 +254,10 @@ A near-neutral stage with one teal-mint voice and six quiet bucket hues that nev
 - **Ink** (`ink`, light `#0b0f19` / dark `#f3f4f8`): body text, figures, the selected segment's fill.
 - **Muted Ink** (`ink-muted`, light `#626b7a` / dark `#9aa3b2`): 13px labels, line counts, zero totals, placeholders, footer links, unselected segments.
 - **Line** (`line`, light `#e6e8ef` / dark `#262b38`): input hover border; in dark mode it is the 1px ring that replaces the shadow.
-- **Danger** (`danger` `#e5484d`, `danger-soft` 12%): conflict chips and rows, the error card, form errors. Same in both themes.
+- **Danger** (`danger` `#e5484d`, `danger-soft` 12%): conflict chips and rows, the error card, form errors, and the Over time delta figure when spend rose against the previous statement. Same in both themes.
 
 ### Named Rules
-**The One Block Rule.** The accent appears at full strength exactly twice on a screen: the hero and the primary button. Everything else that wants accent gets the 14% wash.
+**The One Block Rule.** The accent appears at full strength exactly twice on a screen: the hero and the primary button. Everything else that wants accent gets the 14% wash. The single exception is a progress or statement bar whose fill marks "the one that is current" (triage progress, the current month in Over time); the fill is a few pixels wide and never a surface.
 
 **The Three Outlets Rule.** A bucket colour may be a dot, a bar fill, or a chip tint. It is never a text colour outside its chip, never a border, never a card background.
 
@@ -250,11 +273,11 @@ A near-neutral stage with one teal-mint voice and six quiet bucket hues that nev
 
 ### Hierarchy
 - **Display** (700, `clamp(40px, 6vw, 64px)`, 1.05, -0.04em): the single headline figure in the hero. Nothing else uses it.
-- **Headline** (600, 24px, 1.1, -0.02em): bucket card totals and the hero's three contributing figures (20px on phones), and the current line (details and amount) in the triage card. Muted ink and 500 weight when the total is zero.
+- **Headline** (600, 24px, 1.1, -0.02em): bucket card totals and the hero's three contributing figures (20px on phones), the current line (details and amount) in the triage card, and the Over time delta ("+$312.40"), which turns danger when positive. Muted ink and 500 weight when the total is zero.
 - **Title** (600, 18px, -0.01em): the "Share rules" heading of the Rules view, the triage card title and its three choice labels. Card titles and rule names are 600 at body size (15px).
 - **Wordmark** (700, 20px, -0.03em): "Clarifi" in the top bar; the only logotype.
 - **Body** (400, 15px, 1.5): rule conditions, the empty-state lede (17px, max 48ch), row details (500).
-- **Label** (500, 13px, 1.2): pills, line counts, figure captions, form labels, footer links; usually in muted ink. Rule-code chips drop to 12px/600.
+- **Label** (500, 13px, 1.2): pills, line counts, figure captions, form labels, footer links, the values and month labels over and under the Over time bars (ink and 600 on the current month); usually in muted ink. Rule-code chips drop to 12px/600. The hero label appends "· date range" at 500 and 70% opacity when more than one statement is loaded.
 
 ### Named Rules
 **The Weight-Not-Case Rule.** Hierarchy is carried by size, weight and ink level. Nothing is uppercased or letterspaced open; the only tracking is negative and only above 15px.
@@ -267,11 +290,11 @@ A single centred column, max 1240px, with 24px side padding (14px on phones) and
 
 The top bar is a flex row with 16px gaps: wordmark left, then the pill nav (Overview, Rules with its count pill) pushed against it with `margin-right: auto`, then the segmented Card / Mine / Partner control (rendered only on Overview, since it reads the figures), then the primary Import pill. On phones the bar wraps with 10px gaps: wordmark and Import share the first row, the nav takes the second, and the segmented control drops to its own full-width row with equal-width segments; the Import pill loses its text.
 
-**Overview** is full width: the hero, the triage card when lines are unsorted, then (24px below) the bucket section, a six-column grid with 12px gaps. Collapsed cards span 2 (three per row). An expanded card spans all 6. The trailing collapsed cards after an expansion re-span to 3 or 6 so no grid cell is left empty. At 1024px and below collapsed cards span 3 (two per row); at 640px every card spans the full width and the hero stacks its figures under the headline. A "Payments to the card" strip of neutral pills spans the full grid width beneath the cards when there are credits.
+**Overview** is full width: the hero, the triage card when lines are unsorted, then (24px below) the bucket section, a six-column grid with 12px gaps. Collapsed cards span 2 (three per row). An expanded card spans all 6. The trailing collapsed cards after an expansion re-span to 3 or 6 so no grid cell is left empty. At 1024px and below collapsed cards span 3 (two per row); at 640px every card spans the full width and the hero stacks its figures under the headline. When more than one statement is loaded, an "Over time" card spans the full grid width (`grid-column: 1 / -1`) after the bucket cards: two columns `minmax(180px, 1fr) minmax(0, 2fr)` with a 24px gap, aligned to the end; a text block on the left and a 150px-tall bar row on the right whose columns are `minmax(88px, 120px)` justified to the end with 12px gaps and `overflow-x: auto` when months outgrow the width. At 640px it drops to one column and the bars justify to the start. A "Payments to the card" strip of neutral pills spans the full grid width beneath the cards when there are credits.
 
 **Rules** is a 14px vertical stack: a heading row (title 18px 600 with a label-size subline on the left, the primary "New rule" pill with a 16px stroke plus on the right, `space-between`), the inline add-rule form card when open, then a two-column grid of rule cards with 12px gaps. Under 720px the rule grid is one column. The form's field grid is three columns (10px row / 12px column gaps): details spans 3, the two amount bounds and the share select sit on one row, bucket takes one cell and name spans 2; under 720px it is two columns with details and name spanning both.
 
-The footer is shared by both views: a 13px muted-ink line ("Stored in this browser only") followed by Export JSON, Import JSON and Clear statement as link-style buttons, 16px gaps, 32px above.
+The footer is shared by both views: a 13px muted-ink line ("Stored in this browser only") followed by Export JSON, Import JSON and Remove this statement (disabled when nothing is loaded) as link-style buttons, 16px gaps, 32px above.
 
 Spacing rhythm is a loose 6/8/12/16/24/36 scale: 6px between chips, 8px inside stacks, 12px between cards and rows, 14px to 24px between sections, 36px between hero figures. Card interiors are 18px 20px (bucket) and 16px 18px (rule and rule form); the hero is 24px 28px 28px (20px on phones).
 
@@ -291,7 +314,7 @@ Hybrid, by theme. In light mode every card lifts off the canvas with one soft di
 
 ## Shapes
 
-Everything is rounded and nothing is square. Radius scales with the size of the thing: 999px for every control that reads as a chip or button (pills, buttons, segments, the share bar and its fill, the 10px dot as a circle), 12px for rows and inputs that sit inside a card, 20px for cards, 28px for the hero (22px on phones). Borders are absent in light mode; inputs use a transparent 1px border that becomes `--line` on hover and `--accent` on focus so layout never shifts. The select is a native element with its chevron drawn as two 5px gradient triangles in muted ink. No dividers between rows; 2px of air and hover tint separate them.
+Everything is rounded and nothing is square. Radius scales with the size of the thing: 999px for every control that reads as a chip or button (pills, buttons, segments, the share bar and its fill, the 10px dot as a circle), 12px for rows, inputs and the tall Over time bar tracks (and the focus shape of the button wrapping each bar) that sit inside a card, 20px for cards, 28px for the hero (22px on phones). Borders are absent in light mode; inputs use a transparent 1px border that becomes `--line` on hover and `--accent` on focus so layout never shifts. The select is a native element with its chevron drawn as two 5px gradient triangles in muted ink. No dividers between rows; 2px of air and hover tint separate them.
 
 ## Components
 
@@ -301,11 +324,12 @@ Everything is rounded and nothing is square. Radius scales with the size of the 
 - **Hover / Focus:** `brightness(1.06)` and a 1px lift, 150ms on the shared `--ease` (`cubic-bezier(0.19, 1, 0.22, 1)`); active returns to rest; focus-visible is the global 2px accent outline. Disabled drops to 45% opacity.
 - **Ghost:** sunken surface fill with ink text, hover to `--line` ("Add income").
 - **On-accent (inverted):** accent-ink fill with accent text, used only inside the hero ("Try with a sample statement", "Sort N unsorted lines").
-- **Link:** bare text, 13px 500 muted ink, hover to ink. Footer actions (Export JSON, Import JSON, Clear statement), "Remove" and "Cancel". On the hero it is accent-ink and underlined (3px offset).
+- **Link:** bare text, 13px 500 muted ink, hover to ink. Footer actions (Export JSON, Import JSON, Remove this statement), "Remove" and "Cancel". On the hero it is accent-ink and underlined (3px offset).
 
 ### Chips
 - **Style:** pill, 4px 10px, 13px 500, 6px gap, sunken surface with ink text; never wraps.
-- **On accent:** 10% accent-ink tint with accent-ink text (period, "sample · synthetic data").
+- **On accent:** 10% accent-ink tint with accent-ink text (the single period chip, "sample · synthetic data" status chip pushed to the end of the hero's top row with `margin-left: auto`).
+- **Month pill (nav on accent):** the period chip as a toggle when several statements exist: transparent at rest with accent-ink text at 600, hover to an 18% accent-ink tint, selected fills accent-ink with accent text (`aria-pressed`); 150ms colour and background on `--ease`, 4px apart.
 - **Code chip:** 12px 600, bucket colour text on a 14% mix of the same colour (R1, R2…); the new-rule form uses the accent as its colour.
 - **Share chip:** muted ink text ("0% mine"), ink when the share is 100%.
 - **Bucket chip:** dot plus capitalised bucket name, neutral fill, muted ink. As a radio in the triage card the selected chip takes a 16% `color-mix` tint of the bucket colour with ink text at 600 and no border (the colour is a tint only; Three Outlets holds). Unselected stays sunken and muted.
@@ -342,10 +366,14 @@ Surface card, 16px 18px, laid two per row (one under 720px): code chip, name (60
 "Sort your lines": a plain `.card` (surface, 20px, `--shadow`, no accent border), 20px 24px 22px, mounted between the hero and the bucket grid 16px below the hero. Header is one flex row with 24px gaps: title (18px 600) over a label-size subline, a progress group of "done / total" in label plus a 120px by 6px pill bar (sunken track, accent fill, `scaleX` over 400ms `--ease`), and a Close link. The current line sits in a 48px / 1fr / auto grid at 22px 0 18px: date in label, details and amount at headline size; each new line enters with a 300ms `--ease` fade and 6px rise, keyed per line. Three **choice** buttons share a 3-column grid with 10px gaps: sunken surface at 12px radius, 14px 16px, label 18px 600 with a trailing keycap pill, hint in label size; hover to accent wash with a 1px lift at 150ms. The foot wraps a bucket radio group (bucket chips, 6px gaps) against a label-size line stating the exact rule condition, any collision note in ink 600, and a Skip link with an inline keycap. Keys: 1 / 2 / 3 choose, S skips, Escape closes. Phone: 16px padding, header wraps and the bar stretches, line and choices stack to one column. Done state is one 18px 600 line.
 
 <!-- review: triage first pass disposition fix, seven findings, all applied; verdict pass pending at time of writing. -->
+### Over Time Card (signature)
+A plain `.card` spanning the full bucket grid, shown only when more than one statement is loaded (18px 20px). Left, a text block (2px gaps, top-aligned): "Over time" at 600 body size, a label-size subline naming the copy ("my share per statement"), the delta at headline size (24/600/-0.02em, 14px above) signed with + or − and coloured danger when spend rose, then "vs <previous month>" in label size. Right, one button per statement in a column grid: value / bar / label stacked with 6px gaps, text centred, 12px radius as the focus shape; the bar is a 12px-radius sunken track filling the 150px height, its fill `--line` scaled on Y from the bottom over 400ms `--ease` (bar height is the statement's share of the largest), hover to muted ink; the current month's fill is the accent and its value and label turn ink at 600. Clicking a bar selects that statement, the same as a month pill. Values tween with the shared 500ms expoOut; a change in statement count snaps instead of tweening.
+
+<!-- review: multi-statement (month nav, status chip, Over time card) first pass disposition fix, six findings, all applied; verdict pass pending at time of writing. -->
 <!-- review: views IA (hash nav, full-width overview, rules view) first pass disposition fix, six findings, all applied; verdict pass pending at time of writing. -->
 
 ### Hero (signature)
-Accent block, 28px radius, two columns on desktop (`1fr auto`, aligned to the end): on the left a row of on-accent pills, a 15px 600 label at 80% opacity, and the display figure; on the right a `dl` of up to three figures with 13px 600 captions at 75% opacity and 24px 600 values, 36px apart. Empty state swaps the figure for a 17px lede and the inverted button.
+Accent block, 28px radius, two columns on desktop (`1fr auto`, aligned to the end): on the left a top row (8px gaps, wrapping, 18px below) holding either the period chip or the month nav of month pills, with the status chip pushed to the row's end; then a 15px 600 label at 80% opacity (with "· date range" appended at 500 and 70% opacity when several statements are loaded) and the display figure; on the right a `dl` of up to three figures with 13px 600 captions at 75% opacity and 24px 600 values, 36px apart. Empty state swaps the figure for a 17px lede and the inverted button.
 
 ## Do's and Don'ts
 
@@ -358,6 +386,7 @@ Accent block, 28px radius, two columns on desktop (`1fr auto`, aligned to the en
 - **Do** mark a conflict with the danger wash and a "conflict · A vs B" chip; mark a freshly moved row with the accent wash and glow, released on scroll.
 - **Do** show a keyboard shortcut as a 12px 600 keycap pill trailing its label, and hide it under `hover: none`.
 - **Do** keep every bucket grid row full: collapsed cards span 2, an expanded card spans 6, trailing cards re-span to 3 or 6.
+- **Do** let the current statement be chosen from two places that agree: the month pill on the hero (accent-ink fill, accent text) and the accent bar in the Over time card; every other month is a transparent pill or a `--line` bar.
 - **Do** switch top-level views by hash (`#overview` / `#rules`) through the pill nav; the active link is a surface pill with the card shadow, and controls that only make sense on one view (the segmented control) render only there.
 
 ### Don't:
