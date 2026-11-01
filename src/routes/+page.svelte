@@ -25,7 +25,7 @@
 
 	onMount(() => {
 		Object.assign(data, load());
-		if (location.search.includes('sample')) loadCsv(SAMPLE_CSV); // demo/screenshot entry
+		if (location.search.includes('sample') && (!data.txns.length || data.synthetic)) loadCsv(SAMPLE_CSV, true); // demo/screenshot entry, never over real data
 	});
 
 	const scored = $derived(score(data.txns, data.rules));
@@ -47,11 +47,12 @@
 		return `${f(ds[0])} – ${f(ds[ds.length - 1])}`;
 	});
 
-	function loadCsv(text: string) {
+	function loadCsv(text: string, synthetic = false) {
 		try {
 			const txns = parseAnz(text);
 			if (!txns.length) throw new Error('No transactions found in that file.');
 			data.txns = txns;
+			data.synthetic = synthetic;
 			error = '';
 			persist();
 		} catch (e) {
@@ -116,7 +117,7 @@
 	<header>
 		<div class="brand">
 			<span class="wordmark">Clarifi</span>
-			<h1>{period}</h1>
+			<h1>{period} {#if data.synthetic && data.txns.length}<span class="label synth">sample statement · synthetic data</span>{/if}</h1>
 		</div>
 		<nav class="copies" aria-label="Which copy of the statement to read">
 			{#each COPIES as c (c.id)}
@@ -136,17 +137,26 @@
 			{#if !data.txns.length}
 				<div class="empty">
 					<p>Export your ANZ credit card statement as CSV and import it. Nothing leaves this browser: parsing and storage happen locally.</p>
-					<p>Or <button class="quiet" onclick={() => loadCsv(SAMPLE_CSV)}>load a sample statement</button> <span class="label">synthetic data</span> to see how rules shape the sheet.</p>
+					<p>Or <button class="quiet" onclick={() => loadCsv(SAMPLE_CSV, true)}>load a sample statement</button> <span class="label">synthetic data</span> to see how rules shape the sheet.</p>
 				</div>
 			{:else}
 				<p class="net num" aria-label="Net position">
-					<span class="dim">income {nzd(income)} − spend {nzd(spend)} − put away {nzd(put)} =</span>
-					<b class={{ neg: left < 0 }}>{nzd(left)}</b>
-					<span class="dim">left over</span>
+					{#if copy === 'card'}
+						<span class="dim">card total</span> <b>{nzd(spend + put)}</b>
+					{:else if copy === 'partner'}
+						<span class="dim">partner's share</span> <b>{nzd(spend + put)}</b>
+					{:else if !data.incomes.length}
+						<span class="dim">income</span> <b class="dim">— not entered</b>
+						<span class="dim">− spend {nzd(spend)} − put away {nzd(put)}</span>
+					{:else}
+						<span class="dim">income {nzd(income)} − spend {nzd(spend)} − put away {nzd(put)} =</span>
+						<b class={{ neg: left < 0 }}>{nzd(left)}</b>
+						<span class="dim">left over</span>
+					{/if}
 				</p>
 			{/if}
 
-			<BucketLine title="Income" rows={byBucket.income} extra={copy === 'partner' ? 0 : incomeTotal} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule} open={!!data.incomes.length || !data.txns.length}>
+			<BucketLine title="Income" rows={byBucket.income} extra={copy === 'partner' ? 0 : incomeTotal} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule} open>
 				<ul class="incomes">
 					{#each data.incomes as i (i.id)}
 						<li><span>{i.name}</span><span class="num">{nzd(i.amount)}</span><button class="quiet" onclick={() => removeIncome(i.id)} aria-label="Remove income {i.name}">remove</button></li>
@@ -173,7 +183,7 @@
 			{/if}
 		</section>
 
-		<Rules rules={data.rules} {scored} bind:draft onadd={addRule} onremove={removeRule} />
+		<Rules rules={data.rules} {scored} {copy} bind:draft onadd={addRule} onremove={removeRule} />
 	</div>
 
 	<footer>
@@ -193,6 +203,7 @@
 	header { display: grid; grid-template-columns: 1fr auto auto; gap: calc(var(--s) * 3); align-items: end; padding-bottom: calc(var(--s) * 2); border-bottom: 1px solid var(--ink); }
 	.wordmark { display: block; font-size: var(--t1); letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); font-weight: 600; }
 	h1 { margin: 2px 0 0; font-size: 22px; font-weight: 500; letter-spacing: -0.01em; }
+	.synth { display: inline-block; margin-left: 12px; vertical-align: middle; color: var(--blue); }
 	.copies { display: flex; }
 	.tab {
 		border: 1px solid var(--rule); border-bottom: 0; background: #fff; padding: 6px 16px 8px; font-size: var(--t1); font-weight: 500;

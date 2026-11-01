@@ -6,18 +6,22 @@
 	let {
 		rules,
 		scored,
+		copy,
 		draft = $bindable(),
 		onadd,
 		onremove
 	}: {
 		rules: Rule[];
 		scored: Scored[];
+		copy: 'card' | 'mine' | 'partner';
 		draft: { text: string; min: string; max: string; share: string; bucket: Bucket; name: string };
 		onadd: (r: Omit<Rule, 'id'>) => void;
 		onremove: (id: string) => void;
 	} = $props();
 
 	const fired = (r: Rule) => scored.filter((s) => s.matches.includes(r)).length;
+	const shareLabel = (share: number) =>
+		copy === 'partner' ? `${Math.round((1 - share) * 100)}% partner's` : `${Math.round(share * 100)}% mine`;
 	let error = $state('');
 
 	function submit(e: SubmitEvent) {
@@ -39,7 +43,7 @@
 </script>
 
 <aside aria-labelledby="rules-h">
-	<h2 id="rules-h" class="label">Rules · how much is mine</h2>
+	<h2 id="rules-h" class="label">Share rules</h2>
 	<ol>
 		{#each rules as r, i (r.id)}
 			<li>
@@ -48,7 +52,7 @@
 					<div class="name">{r.name}</div>
 					<div class="cond mono">{describe(r)}</div>
 					<div class="meta mono">
-						<span class="nw"><ShareMark share={r.share} /> {Math.round(r.share * 100)}% mine</span>
+						<span class="nw"><ShareMark share={copy === 'partner' ? 1 - r.share : r.share} /> {shareLabel(r.share)}</span>
 						<span>· {r.bucket}</span>
 						<span>· fired {fired(r)}</span>
 					</div>
@@ -66,12 +70,12 @@
 				<label>and amount ≥ <input class="mono" inputmode="decimal" bind:value={draft.min} placeholder="50" size="6" /></label>
 				<label>≤ <input class="mono" inputmode="decimal" bind:value={draft.max} placeholder="" size="6" /></label>
 			</div>
-			<div class="pair">
+			<div class="pair stack">
 				<label>my share
 					<select bind:value={draft.share}>
-						<option value="0">0% · partner's</option>
-						<option value="50">50% · split</option>
-						<option value="100">100% · mine</option>
+						<option value="0">0% partner</option>
+						<option value="50">50% split</option>
+						<option value="100">100% mine</option>
 						<option value="25">25%</option>
 						<option value="75">75%</option>
 					</select>
@@ -104,6 +108,7 @@
 	label { display: flex; gap: 6px; align-items: baseline; font-size: var(--t1); color: var(--ink-2); flex: 1; min-width: 0; white-space: nowrap; }
 	label input, label select { flex: 1; min-width: 0; color: var(--ink); }
 	.pair { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--s) * 2); }
+	.stack { grid-template-columns: 1fr; gap: 6px; }
 	label input, label select { width: 100%; }
 	form { min-width: 0; }
 	.err { margin: 0; color: #a3261c; font-size: var(--t1); }

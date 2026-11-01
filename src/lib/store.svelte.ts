@@ -3,12 +3,13 @@ import type { Income, Rule, Txn } from './types';
 
 const KEY = 'clarifi.v1';
 
-type Data = { txns: Txn[]; rules: Rule[]; incomes: Income[]; period: string };
+type Data = { txns: Txn[]; rules: Rule[]; incomes: Income[]; period: string; synthetic: boolean };
 
 const seed: Data = {
 	txns: [],
 	incomes: [],
 	period: '',
+	synthetic: false,
 	rules: [
 		{ id: 'r1', name: 'Big Pak’nSave shop is partner’s', text: "pak n save", min: 50, share: 0, bucket: 'general' },
 		{ id: 'r2', name: 'Internet is partner’s', text: 'spark', share: 0, bucket: 'fixed' },
