@@ -145,13 +145,13 @@
     "semantic_hash": ""
   },
   ".impeccable/design.json": {
-    "mtime": 1793509840.496802,
+    "mtime": 1793509930.2945416,
     "ast_hash": "0f36efab71bc806271ad04c1d7898114",
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1793509804.8809032,
-    "ast_hash": "341ccc78052ce5ae1c678a0d1ff70b12",
+    "mtime": 1793509930.2945416,
+    "ast_hash": "f61d66512c0343cb84242f2b70f7e971",
     "semantic_hash": ""
   },
   "src/lib/components/Triage.svelte": {
