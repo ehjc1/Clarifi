@@ -1,16 +1,16 @@
 # Graph Report - Clarifi  (2026-11-01)
 
 ## Corpus Check
-- 30 files · ~21,564 words
+- 30 files · ~21,661 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 157 nodes · 172 edges · 20 communities (16 shown, 4 thin omitted)
+- 157 nodes · 170 edges · 20 communities (16 shown, 4 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `196e9328`
+- Built from commit: `5cd3c947`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -67,8 +67,8 @@ Cohesion: 0.17
 Nodes (11): Brand Commitments, Capabilities and Constraints, Evidence on Hand, Operating Context, Platform, Positioning, Product, Product Principles (+3 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.11
-Nodes (20): #lib/anz, #lib/components/BucketLine.svelte, bar, conflicts, n, shown, sum, svelte/easing (+12 more)
+Cohesion: 0.10
+Nodes (20): #lib/anz, #lib/components/BucketLine.svelte, lines, shown, sums, total, svelte/easing, #lib/components/GroupCard.svelte (+12 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.40
@@ -91,7 +91,7 @@ Cohesion: 0.17
 Nodes (12): Bucket Card (signature), Buttons, Cards / Containers, Chips, Components, Hero (signature), Inputs / Fields, Lines List (signature) (+4 more)
 
 ## Knowledge Gaps
-- **81 isolated node(s):** `Overview`, `Primary`, `Bucket (fixed, six)`, `Neutral`, `Named Rules` (+76 more)
+- **81 isolated node(s):** `Run`, `How it reads`, `Status`, `sums`, `total` (+76 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -104,11 +104,11 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.050) - this node is a cross-community bridge._
 - **Why does `Design System: Clarifi` connect `Community 19` to `Community 20`?**
   _High betweenness centrality (0.029) - this node is a cross-community bridge._
-- **What connects `Overview`, `Primary`, `Bucket (fixed, six)` to the rest of the system?**
+- **What connects `Run`, `How it reads`, `Status` to the rest of the system?**
   _81 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.11264367816091954 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `Community 4` be split into smaller, more focused modules?**
-  _Cohesion score 0.11076923076923077 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10461538461538461 - nodes in this community are weakly interconnected._

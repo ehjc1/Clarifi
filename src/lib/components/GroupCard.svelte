@@ -5,7 +5,7 @@
 
 	type Copy = 'card' | 'mine' | 'partner';
 	type Part = { bucket: Bucket; title: string; rows: Scored[] };
-	let { title, hint, parts, copy }: { title: string; hint: string; parts: Part[]; copy: Copy } = $props();
+	let { title, parts, copy }: { title: string; parts: Part[]; copy: Copy } = $props();
 
 	const value = (r: Scored) => (copy === 'card' ? r.amount : copy === 'mine' ? r.mine : r.amount - r.mine);
 	const sums = $derived(parts.map((p) => ({ ...p, sum: p.rows.reduce((a, r) => a + value(r), 0), conflicts: p.rows.filter((r) => r.conflict).length })));
@@ -16,7 +16,7 @@
 
 <section class="card group" aria-label="{title}: {nzd(total)}">
 	<header>
-		<div><span class="t">{title}</span><span class="small">&nbsp;·&nbsp;{hint}</span></div>
+		<span class="t">{title}</span>
 		<span class="small">{lines} {lines === 1 ? 'line' : 'lines'}</span>
 	</header>
 	<p class={['sum', 'num', { muted: !lines }]}>{nzd(shown.current)}</p>

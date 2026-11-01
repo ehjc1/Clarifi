@@ -4,334 +4,104 @@
   "graph": {},
   "nodes": [
     {
-      "label": "DESIGN.md",
+      "label": "README.md",
       "file_type": "document",
-      "source_file": "DESIGN.md",
+      "source_file": "README.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "design",
-      "community": 19,
-      "norm_label": "design.md"
+      "id": "readme",
+      "community": 6,
+      "norm_label": "readme.md"
     },
     {
-      "label": "Design System: Clarifi",
+      "label": "Clarifi",
       "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L265",
-      "_origin": "ast",
-      "id": "design_design_system_clarifi",
-      "community": 19,
-      "norm_label": "design system: clarifi"
-    },
-    {
-      "label": "Overview",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L267",
-      "_origin": "ast",
-      "id": "design_overview",
-      "community": 19,
-      "norm_label": "overview"
-    },
-    {
-      "label": "Colors",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L287",
-      "_origin": "ast",
-      "id": "design_colors",
-      "community": 19,
-      "norm_label": "colors"
-    },
-    {
-      "label": "Primary",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L291",
-      "_origin": "ast",
-      "id": "design_primary",
-      "community": 19,
-      "norm_label": "primary"
-    },
-    {
-      "label": "Bucket (fixed, six)",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L296",
-      "_origin": "ast",
-      "id": "design_bucket_fixed_six",
-      "community": 19,
-      "norm_label": "bucket (fixed, six)"
-    },
-    {
-      "label": "Neutral",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L299",
-      "_origin": "ast",
-      "id": "design_neutral",
-      "community": 19,
-      "norm_label": "neutral"
-    },
-    {
-      "label": "Named Rules",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L309",
-      "_origin": "ast",
-      "id": "design_named_rules",
-      "community": 19,
-      "norm_label": "named rules"
-    },
-    {
-      "label": "Typography",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L316",
-      "_origin": "ast",
-      "id": "design_typography",
-      "community": 19,
-      "norm_label": "typography"
-    },
-    {
-      "label": "Hierarchy",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L324",
-      "_origin": "ast",
-      "id": "design_hierarchy",
-      "community": 19,
-      "norm_label": "hierarchy"
-    },
-    {
-      "label": "Named Rules",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L332",
-      "_origin": "ast",
-      "id": "design_named_rules_332",
-      "community": 19,
-      "norm_label": "named rules"
-    },
-    {
-      "label": "Layout",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L337",
-      "_origin": "ast",
-      "id": "design_layout",
-      "community": 19,
-      "norm_label": "layout"
-    },
-    {
-      "label": "Elevation & Depth",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L353",
-      "_origin": "ast",
-      "id": "design_elevation_depth",
-      "community": 19,
-      "norm_label": "elevation & depth"
-    },
-    {
-      "label": "Shadow Vocabulary",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L357",
-      "_origin": "ast",
-      "id": "design_shadow_vocabulary",
-      "community": 19,
-      "norm_label": "shadow vocabulary"
-    },
-    {
-      "label": "Named Rules",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L363",
-      "_origin": "ast",
-      "id": "design_named_rules_363",
-      "community": 19,
-      "norm_label": "named rules"
-    },
-    {
-      "label": "Shapes",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L368",
-      "_origin": "ast",
-      "id": "design_shapes",
-      "community": 19,
-      "norm_label": "shapes"
-    },
-    {
-      "label": "Components",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L372",
-      "_origin": "ast",
-      "id": "design_components",
-      "community": 20,
-      "norm_label": "components"
-    },
-    {
-      "label": "Buttons",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L374",
-      "_origin": "ast",
-      "id": "design_buttons",
-      "community": 20,
-      "norm_label": "buttons"
-    },
-    {
-      "label": "Chips",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L382",
-      "_origin": "ast",
-      "id": "design_chips",
-      "community": 20,
-      "norm_label": "chips"
-    },
-    {
-      "label": "Cards / Containers",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L395",
-      "_origin": "ast",
-      "id": "design_cards_containers",
-      "community": 20,
-      "norm_label": "cards / containers"
-    },
-    {
-      "label": "Inputs / Fields",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L402",
-      "_origin": "ast",
-      "id": "design_inputs_fields",
-      "community": 20,
-      "norm_label": "inputs / fields"
-    },
-    {
-      "label": "Navigation",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L408",
-      "_origin": "ast",
-      "id": "design_navigation",
-      "community": 20,
-      "norm_label": "navigation"
-    },
-    {
-      "label": "Bucket Card (signature)",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L414",
-      "_origin": "ast",
-      "id": "design_bucket_card_signature",
-      "community": 20,
-      "norm_label": "bucket card (signature)"
-    },
-    {
-      "label": "Lines List (signature)",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L417",
-      "_origin": "ast",
-      "id": "design_lines_list_signature",
-      "community": 20,
-      "norm_label": "lines list (signature)"
-    },
-    {
-      "label": "Rule Card (signature)",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L420",
-      "_origin": "ast",
-      "id": "design_rule_card_signature",
-      "community": 20,
-      "norm_label": "rule card (signature)"
-    },
-    {
-      "label": "Triage Card (signature)",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L423",
-      "_origin": "ast",
-      "id": "design_triage_card_signature",
-      "community": 20,
-      "norm_label": "triage card (signature)"
-    },
-    {
-      "label": "Over Time Card (signature)",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L427",
-      "_origin": "ast",
-      "id": "design_over_time_card_signature",
-      "community": 20,
-      "norm_label": "over time card (signature)"
-    },
-    {
-      "label": "Hero (signature)",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L434",
-      "_origin": "ast",
-      "id": "design_hero_signature",
-      "community": 20,
-      "norm_label": "hero (signature)"
-    },
-    {
-      "label": "Do's and Don'ts",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L437",
-      "_origin": "ast",
-      "id": "design_do_s_and_don_ts",
-      "community": 19,
-      "norm_label": "do's and don'ts"
-    },
-    {
-      "label": "Do:",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L439",
-      "_origin": "ast",
-      "id": "design_do",
-      "community": 19,
-      "norm_label": "do:"
-    },
-    {
-      "label": "Don't:",
-      "file_type": "document",
-      "source_file": "DESIGN.md",
-      "source_location": "L452",
-      "_origin": "ast",
-      "id": "design_don_t",
-      "community": 19,
-      "norm_label": "don't:"
-    },
-    {
-      "label": "Lines.svelte",
-      "file_type": "code",
-      "source_file": "src/lib/components/Lines.svelte",
+      "source_file": "README.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "components_lines",
-      "community": 4,
-      "norm_label": "lines.svelte"
+      "id": "readme_clarifi",
+      "community": 6,
+      "norm_label": "clarifi"
     },
     {
-      "label": "svelte",
-      "file_type": "code",
-      "source_file": "svelte",
-      "confidence": "EXTRACTED",
+      "label": "Run",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L9",
       "_origin": "ast",
-      "id": "svelte",
+      "id": "readme_run",
+      "community": 6,
+      "norm_label": "run"
+    },
+    {
+      "label": "How it reads",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "readme_how_it_reads",
+      "community": 6,
+      "norm_label": "how it reads"
+    },
+    {
+      "label": "Status",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "readme_status",
+      "community": 6,
+      "norm_label": "status"
+    },
+    {
+      "label": "GroupCard.svelte",
+      "file_type": "code",
+      "source_file": "src/lib/components/GroupCard.svelte",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_groupcard",
       "community": 4,
-      "norm_label": "svelte"
+      "norm_label": "groupcard.svelte"
+    },
+    {
+      "label": "sums",
+      "file_type": "code",
+      "source_file": "src/lib/components/GroupCard.svelte",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "components_groupcard_sums",
+      "community": 4,
+      "norm_label": "sums"
+    },
+    {
+      "label": "total",
+      "file_type": "code",
+      "source_file": "src/lib/components/GroupCard.svelte",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "components_groupcard_total",
+      "community": 4,
+      "norm_label": "total"
+    },
+    {
+      "label": "shown",
+      "file_type": "code",
+      "source_file": "src/lib/components/GroupCard.svelte",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "components_groupcard_shown",
+      "community": 4,
+      "norm_label": "shown"
+    },
+    {
+      "label": "lines",
+      "file_type": "code",
+      "source_file": "src/lib/components/GroupCard.svelte",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "components_groupcard_lines",
+      "community": 4,
+      "norm_label": "lines"
     },
     {
       "label": "#lib/money",
@@ -374,6 +144,16 @@
       "norm_label": "+page.svelte"
     },
     {
+      "label": "svelte",
+      "file_type": "code",
+      "source_file": "svelte",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "svelte",
+      "community": 4,
+      "norm_label": "svelte"
+    },
+    {
       "label": "svelte/reactivity",
       "file_type": "code",
       "source_file": "svelte/reactivity",
@@ -394,14 +174,14 @@
       "norm_label": "#lib/anz"
     },
     {
-      "label": "#lib/components/BucketLine.svelte",
+      "label": "#lib/components/GroupCard.svelte",
       "file_type": "code",
-      "source_file": "#lib/components/BucketLine.svelte",
+      "source_file": "#lib/components/GroupCard.svelte",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "id": "bucketline_svelte",
+      "id": "groupcard_svelte",
       "community": 4,
-      "norm_label": "#lib/components/bucketline.svelte"
+      "norm_label": "#lib/components/groupcard.svelte"
     },
     {
       "label": "#lib/components/Lines.svelte",
@@ -484,6 +264,336 @@
       "norm_label": "#lib/store.svelte"
     },
     {
+      "label": "DESIGN.md",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "design.md",
+      "id": "design"
+    },
+    {
+      "label": "Design System: Clarifi",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L265",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "design system: clarifi",
+      "id": "design_design_system_clarifi"
+    },
+    {
+      "label": "Overview",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L267",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "overview",
+      "id": "design_overview"
+    },
+    {
+      "label": "Colors",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L287",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "colors",
+      "id": "design_colors"
+    },
+    {
+      "label": "Primary",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L291",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "primary",
+      "id": "design_primary"
+    },
+    {
+      "label": "Bucket (fixed, six)",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L296",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "bucket (fixed, six)",
+      "id": "design_bucket_fixed_six"
+    },
+    {
+      "label": "Neutral",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L299",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "neutral",
+      "id": "design_neutral"
+    },
+    {
+      "label": "Named Rules",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L309",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "named rules",
+      "id": "design_named_rules"
+    },
+    {
+      "label": "Typography",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L316",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "typography",
+      "id": "design_typography"
+    },
+    {
+      "label": "Hierarchy",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L324",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "hierarchy",
+      "id": "design_hierarchy"
+    },
+    {
+      "label": "Named Rules",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L332",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "named rules",
+      "id": "design_named_rules_332"
+    },
+    {
+      "label": "Layout",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L337",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "layout",
+      "id": "design_layout"
+    },
+    {
+      "label": "Elevation & Depth",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L353",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "elevation & depth",
+      "id": "design_elevation_depth"
+    },
+    {
+      "label": "Shadow Vocabulary",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L357",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "shadow vocabulary",
+      "id": "design_shadow_vocabulary"
+    },
+    {
+      "label": "Named Rules",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L363",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "named rules",
+      "id": "design_named_rules_363"
+    },
+    {
+      "label": "Shapes",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L368",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "shapes",
+      "id": "design_shapes"
+    },
+    {
+      "label": "Components",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L372",
+      "_origin": "ast",
+      "community": 20,
+      "norm_label": "components",
+      "id": "design_components"
+    },
+    {
+      "label": "Buttons",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L374",
+      "_origin": "ast",
+      "community": 20,
+      "norm_label": "buttons",
+      "id": "design_buttons"
+    },
+    {
+      "label": "Chips",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L382",
+      "_origin": "ast",
+      "community": 20,
+      "norm_label": "chips",
+      "id": "design_chips"
+    },
+    {
+      "label": "Cards / Containers",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L395",
+      "_origin": "ast",
+      "community": 20,
+      "norm_label": "cards / containers",
+      "id": "design_cards_containers"
+    },
+    {
+      "label": "Inputs / Fields",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L402",
+      "_origin": "ast",
+      "community": 20,
+      "norm_label": "inputs / fields",
+      "id": "design_inputs_fields"
+    },
+    {
+      "label": "Navigation",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L408",
+      "_origin": "ast",
+      "community": 20,
+      "norm_label": "navigation",
+      "id": "design_navigation"
+    },
+    {
+      "label": "Bucket Card (signature)",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L414",
+      "_origin": "ast",
+      "community": 20,
+      "norm_label": "bucket card (signature)",
+      "id": "design_bucket_card_signature"
+    },
+    {
+      "label": "Lines List (signature)",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L417",
+      "_origin": "ast",
+      "community": 20,
+      "norm_label": "lines list (signature)",
+      "id": "design_lines_list_signature"
+    },
+    {
+      "label": "Rule Card (signature)",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L420",
+      "_origin": "ast",
+      "community": 20,
+      "norm_label": "rule card (signature)",
+      "id": "design_rule_card_signature"
+    },
+    {
+      "label": "Triage Card (signature)",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L423",
+      "_origin": "ast",
+      "community": 20,
+      "norm_label": "triage card (signature)",
+      "id": "design_triage_card_signature"
+    },
+    {
+      "label": "Over Time Card (signature)",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L427",
+      "_origin": "ast",
+      "community": 20,
+      "norm_label": "over time card (signature)",
+      "id": "design_over_time_card_signature"
+    },
+    {
+      "label": "Hero (signature)",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L434",
+      "_origin": "ast",
+      "community": 20,
+      "norm_label": "hero (signature)",
+      "id": "design_hero_signature"
+    },
+    {
+      "label": "Do's and Don'ts",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L437",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "do's and don'ts",
+      "id": "design_do_s_and_don_ts"
+    },
+    {
+      "label": "Do:",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L439",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "do:",
+      "id": "design_do"
+    },
+    {
+      "label": "Don't:",
+      "file_type": "document",
+      "source_file": "DESIGN.md",
+      "source_location": "L452",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "don't:",
+      "id": "design_don_t"
+    },
+    {
+      "label": "Lines.svelte",
+      "file_type": "code",
+      "source_file": "src/lib/components/Lines.svelte",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "lines.svelte",
+      "id": "components_lines"
+    },
+    {
+      "label": "#lib/components/BucketLine.svelte",
+      "file_type": "code",
+      "source_file": "#lib/components/BucketLine.svelte",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "#lib/components/bucketline.svelte",
+      "id": "bucketline_svelte"
+    },
+    {
       "label": "shot.mjs",
       "file_type": "code",
       "source_file": ".impeccable/shot.mjs",
@@ -502,116 +612,6 @@
       "community": 11,
       "norm_label": "errs",
       "id": "impeccable_shot_errs"
-    },
-    {
-      "label": "BucketLine.svelte",
-      "file_type": "code",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 4,
-      "norm_label": "bucketline.svelte",
-      "id": "components_bucketline"
-    },
-    {
-      "label": "sum",
-      "file_type": "code",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L13",
-      "_origin": "ast",
-      "community": 4,
-      "norm_label": "sum",
-      "id": "components_bucketline_sum"
-    },
-    {
-      "label": "shown",
-      "file_type": "code",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L14",
-      "_origin": "ast",
-      "community": 4,
-      "norm_label": "shown",
-      "id": "components_bucketline_shown"
-    },
-    {
-      "label": "bar",
-      "file_type": "code",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L15",
-      "_origin": "ast",
-      "community": 4,
-      "norm_label": "bar",
-      "id": "components_bucketline_bar"
-    },
-    {
-      "label": "n",
-      "file_type": "code",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L16",
-      "_origin": "ast",
-      "community": 4,
-      "norm_label": "n",
-      "id": "components_bucketline_n"
-    },
-    {
-      "label": "conflicts",
-      "file_type": "code",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L17",
-      "_origin": "ast",
-      "community": 4,
-      "norm_label": "conflicts",
-      "id": "components_bucketline_conflicts"
-    },
-    {
-      "label": "README.md",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "readme.md",
-      "id": "readme"
-    },
-    {
-      "label": "Clarifi",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "clarifi",
-      "id": "readme_clarifi"
-    },
-    {
-      "label": "Run",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L9",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "run",
-      "id": "readme_run"
-    },
-    {
-      "label": "How it reads",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L18",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "how it reads",
-      "id": "readme_how_it_reads"
-    },
-    {
-      "label": "Status",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L30",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "status",
-      "id": "readme_status"
     },
     {
       "label": "store.svelte.ts",
@@ -1578,6 +1578,329 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_clarifi"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_clarifi",
+      "target": "readme_how_it_reads"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_clarifi",
+      "target": "readme_run"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_clarifi",
+      "target": "readme_status"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/GroupCard.svelte",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "components_groupcard",
+      "target": "components_groupcard_lines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/GroupCard.svelte",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "components_groupcard",
+      "target": "components_groupcard_shown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/GroupCard.svelte",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "components_groupcard",
+      "target": "components_groupcard_sums",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/GroupCard.svelte",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "components_groupcard",
+      "target": "components_groupcard_total",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/GroupCard.svelte",
+      "source": "components_groupcard",
+      "target": "money",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/GroupCard.svelte",
+      "source": "components_groupcard",
+      "target": "motion_svelte",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/GroupCard.svelte",
+      "source": "components_groupcard",
+      "target": "types",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Lines.svelte",
+      "confidence_score": 1.0,
+      "source": "components_lines",
+      "target": "money"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Triage.svelte",
+      "confidence_score": 1.0,
+      "source": "components_triage",
+      "target": "money"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "money"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Lines.svelte",
+      "confidence_score": 1.0,
+      "source": "components_lines",
+      "target": "motion_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "motion_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Lines.svelte",
+      "confidence_score": 1.0,
+      "source": "components_lines",
+      "target": "types"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Rules.svelte",
+      "confidence_score": 1.0,
+      "source": "components_rules",
+      "target": "types"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Triage.svelte",
+      "confidence_score": 1.0,
+      "source": "components_triage",
+      "target": "types"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "types"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "anz"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "bucketline_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "easing"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source": "routes_page",
+      "target": "groupcard_svelte",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "lines_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "motion"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "reactivity"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "rules"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "rules_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "sample"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "store_svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "triage_svelte"
+    },
+    {
+      "relation": "dynamic_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Lines.svelte",
+      "confidence_score": 1.0,
+      "source": "components_lines",
+      "target": "svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Triage.svelte",
+      "confidence_score": 1.0,
+      "source": "components_triage",
+      "target": "svelte"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "context": "import",
+      "confidence_score": 1.0,
+      "source": "package_devdependencies_svelte",
+      "target": "svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Rules.svelte",
+      "confidence_score": 1.0,
+      "source": "components_rules",
+      "target": "rules"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Triage.svelte",
+      "confidence_score": 1.0,
+      "source": "components_triage",
+      "target": "rules"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "DESIGN.md",
       "source_location": "L157",
       "weight": 1.0,
@@ -1721,9 +2044,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L332",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "design_typography",
-      "target": "design_named_rules_332",
-      "confidence_score": 1.0
+      "target": "design_named_rules_332"
     },
     {
       "relation": "contains",
@@ -1731,9 +2054,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L363",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "design_elevation_depth",
-      "target": "design_named_rules_363",
-      "confidence_score": 1.0
+      "target": "design_named_rules_363"
     },
     {
       "relation": "contains",
@@ -1876,257 +2199,6 @@
       "target": "design_don_t"
     },
     {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Lines.svelte",
-      "confidence_score": 1.0,
-      "source": "components_lines",
-      "target": "money"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Lines.svelte",
-      "confidence_score": 1.0,
-      "source": "components_lines",
-      "target": "motion_svelte"
-    },
-    {
-      "relation": "dynamic_import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Lines.svelte",
-      "confidence_score": 1.0,
-      "source": "components_lines",
-      "target": "svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Lines.svelte",
-      "confidence_score": 1.0,
-      "source": "components_lines",
-      "target": "types"
-    },
-    {
-      "relation": "dynamic_import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Triage.svelte",
-      "confidence_score": 1.0,
-      "source": "components_triage",
-      "target": "svelte"
-    },
-    {
-      "relation": "imports",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L18",
-      "weight": 1.0,
-      "context": "import",
-      "confidence_score": 1.0,
-      "source": "package_devdependencies_svelte",
-      "target": "svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "money"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Triage.svelte",
-      "confidence_score": 1.0,
-      "source": "components_triage",
-      "target": "money"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "money"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "motion_svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "motion_svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "types"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Rules.svelte",
-      "confidence_score": 1.0,
-      "source": "components_rules",
-      "target": "types"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Triage.svelte",
-      "confidence_score": 1.0,
-      "source": "components_triage",
-      "target": "types"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "types"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "anz"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "bucketline_svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "easing"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "lines_svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "motion"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "reactivity"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "rules"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "rules_svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "sample"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "store_svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
-      "target": "triage_svelte"
-    },
-    {
-      "relation": "dynamic_import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "reactivity"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Rules.svelte",
-      "confidence_score": 1.0,
-      "source": "components_rules",
-      "target": "rules"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Triage.svelte",
-      "confidence_score": 1.0,
-      "source": "components_triage",
-      "target": "rules"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".impeccable/shot.mjs",
@@ -2135,96 +2207,6 @@
       "confidence_score": 1.0,
       "source": "impeccable_shot",
       "target": "impeccable_shot_errs"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L18",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "components_bucketline_bar"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "components_bucketline_conflicts"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "components_bucketline_n"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "components_bucketline_shown"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "components_bucketline_sum"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme",
-      "target": "readme_clarifi"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L18",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme_clarifi",
-      "target": "readme_how_it_reads"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme_clarifi",
-      "target": "readme_run"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme_clarifi",
-      "target": "readme_status"
     },
     {
       "relation": "contains",
@@ -3259,5 +3241,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "196e9328909b29fb8519888ecb3e227e831a4721"
+  "built_at_commit": "5cd3c947337781ee03d5a0a74a05e0f930076306"
 }

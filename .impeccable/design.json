@@ -146,7 +146,7 @@
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Bucket totals, hero contributing figures, the triage current line and the Over time delta; 20px on phones."
+        "purpose": "Group card totals, hero contributing figures, the triage current line and the Over time delta; 20px on phones."
       },
       "title": {
         "displayName": "Title",
@@ -162,7 +162,7 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Pills, filter chips, counts, the Lines summary line, captions, form labels, footer links, Over time bar values and month labels."
+        "purpose": "Pills, filter chips, counts, the group card hint and bucket-row percentages, the Lines summary line, captions, form labels, footer links, Over time bar values and month labels."
       },
       "code": {
         "displayName": "Code chip",
@@ -195,7 +195,7 @@
       {
         "name": "tween-money",
         "value": "500ms expoOut (svelte/motion Tween); 0ms under prefers-reduced-motion",
-        "purpose": "Hero figure, every bucket total and the Over time bar values count to the new value; a change in statement count snaps (0ms)."
+        "purpose": "Hero figure, both group totals and the Over time bar values count to the new value; a change in statement count snaps (0ms)."
       },
       {
         "name": "line-in",
@@ -205,15 +205,15 @@
       {
         "name": "card-lift",
         "value": "transform 150ms cubic-bezier(0.19, 1, 0.22, 1); translateY(-1px) on hover",
-        "purpose": "Bucket summary links and buttons; the bucket card title also tints accent and its chevron slides 2px right in accent."
+        "purpose": "Buttons and triage choices. Group cards do not lift; a bucket row tints sunken on hover and its chevron slides 2px right in accent."
+      },
+      {
+        "name": "stack-flex",
+        "value": "flex 400ms cubic-bezier(0.19, 1, 0.22, 1)",
+        "purpose": "Stacked-bar segments in a group card reweight to the new bucket sums."
       }
     ],
     "breakpoints": [
-      {
-        "name": "two-up",
-        "value": "1024px",
-        "purpose": "Bucket grid drops from three to two columns."
-      },
       {
         "name": "rules-stack",
         "value": "720px",
@@ -222,7 +222,7 @@
       {
         "name": "phone",
         "value": "640px",
-        "purpose": "Single bucket column, top bar wraps (nav second row, segmented control its own row), Import pill icon-only, hero stacks, Over time card drops to one column with bars justified to the start, Lines heading stacks with a full-width search; rows go two-column with the date inline before the details, the bucket chip kept, and the amount spanning both rows."
+        "purpose": "Single group-card column, top bar wraps (nav second row, segmented control its own row), Import pill icon-only, hero stacks, Over time card drops to one column with bars justified to the start, Lines heading stacks with a full-width search; rows go two-column with the date inline before the details, the bucket chip kept, and the amount spanning both rows."
       }
     ]
   },
@@ -276,20 +276,20 @@
       "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; font: 500 13px/1.5 'Figtree', system-ui, sans-serif; color: var(--ink-2, #626b7a); } .ds-input { font: 400 15px/1.5 'Figtree', system-ui, sans-serif; color: var(--ink, #0b0f19); background: var(--surface-2, #f6f7fb); border: 1px solid transparent; border-radius: 12px; padding: 9px 12px; width: 100%; transition: border-color 150ms cubic-bezier(0.19,1,0.22,1), background-color 150ms cubic-bezier(0.19,1,0.22,1); } .ds-input:hover { border-color: var(--line, #e6e8ef); } .ds-input:focus { border-color: var(--accent, #00c2a8); outline: none; background: var(--surface, #fff); } .ds-input::placeholder { color: var(--ink-2, #626b7a); }"
     },
     {
-      "name": "Bucket Card",
+      "name": "Group Card",
       "kind": "card",
-      "refersTo": "bucket-card",
-      "description": "Summary link to #lines/<bucket>: dot, title, line count with a 16px stroke chevron, tabular total, conflict count, share bar. Hover lifts 1px, tints the title accent and slides the chevron 2px right in accent; no expansion.",
-      "html": "<a class=\"ds-bcard\" href=\"#lines/general\" style=\"--c:#f59e0b\"><span class=\"ds-bk-head\"><span class=\"ds-dot\"></span><span class=\"ds-bk-t\">General</span></span><span class=\"ds-bk-n\">10 lines<svg class=\"ds-chev\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 3.5 10.5 8 6 12.5\"/></svg></span><span class=\"ds-bk-sum\">$2,902.49</span><span class=\"ds-bk-warn\">1 conflict</span><span class=\"ds-bar\"><span style=\"transform:scaleX(.72)\"></span></span></a>",
-      "css": ".ds-bcard { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; align-items: center; background: var(--surface, #fff); border-radius: 20px; box-shadow: var(--shadow, 0 10px 30px rgba(11,15,25,.06), 0 1px 2px rgba(11,15,25,.04)); padding: 18px 20px; font: 400 15px/1.5 'Figtree', system-ui, sans-serif; color: var(--ink, #0b0f19); text-decoration: none; font-variant-numeric: tabular-nums; transition: transform 150ms cubic-bezier(0.19,1,0.22,1), box-shadow 200ms cubic-bezier(0.19,1,0.22,1); } .ds-bcard:hover { transform: translateY(-1px); } .ds-bcard:hover .ds-bk-t { color: var(--accent, #00c2a8); } .ds-bcard:focus-visible { outline: 2px solid var(--accent, #00c2a8); outline-offset: 2px; } .ds-bk-head { display: flex; align-items: center; gap: 10px; min-width: 0; } .ds-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); flex: none; } .ds-bk-t { font-weight: 600; white-space: nowrap; transition: color 150ms cubic-bezier(0.19,1,0.22,1); } .ds-bk-n { font-size: 13px; color: var(--ink-2, #626b7a); white-space: nowrap; display: inline-flex; align-items: center; gap: 4px; } .ds-chev { color: var(--ink-2, #626b7a); transition: transform 150ms cubic-bezier(0.19,1,0.22,1), color 150ms cubic-bezier(0.19,1,0.22,1); } .ds-bcard:hover .ds-chev { transform: translateX(2px); color: var(--accent, #00c2a8); } .ds-bk-sum { grid-column: 1; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; } .ds-bk-warn { justify-self: end; display: inline-flex; border-radius: 999px; padding: 4px 10px; font-size: 13px; font-weight: 500; line-height: 1.2; color: var(--danger, #e5484d); background: var(--danger-soft, rgba(229,72,77,.12)); } .ds-bar { grid-column: 1 / -1; height: 6px; border-radius: 999px; background: var(--surface-2, #f6f7fb); overflow: hidden; } .ds-bar span { display: block; height: 100%; border-radius: 999px; background: var(--c); transform-origin: left; transition: transform 400ms cubic-bezier(0.19,1,0.22,1); }"
+      "refersTo": "group-card",
+      "description": "Spend or Put away: title with a hint, line count, tabular group total, an 8px stacked bar of bucket segments, then one bucket row link per bucket (dot, name, conflict chip, percent, amount, chevron) to #lines/<bucket>. Rows tint sunken on hover; the card itself does not lift.",
+      "html": "<section class=\"ds-group\" aria-label=\"Spend: $3,007.77\"><header><div><span class=\"t\">Spend</span><span class=\"ds-small\">&nbsp;·&nbsp;bills, everyday, mortgage</span></div><span class=\"ds-small\">14 lines</span></header><p class=\"sum\">$3,007.77</p><div class=\"stack\" aria-hidden=\"true\"><span style=\"--c:#3b82f6;flex:1420\"></span><span style=\"--c:#f59e0b;flex:1587\"></span></div><ul><li><a href=\"#lines/fixed\" style=\"--c:#3b82f6\"><span class=\"dot\"></span><span class=\"name\">Fixed</span><span class=\"pct ds-small\">47%</span><span class=\"v\">$1,420.00</span><svg class=\"chev\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 3.5 10.5 8 6 12.5\"/></svg></a></li><li><a href=\"#lines/general\" style=\"--c:#f59e0b\"><span class=\"dot\"></span><span class=\"name\">General</span><span class=\"ds-pill warn\">1 conflict</span><span class=\"pct ds-small\">53%</span><span class=\"v\">$1,587.77</span><svg class=\"chev\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 3.5 10.5 8 6 12.5\"/></svg></a></li><li><a href=\"#lines/mortgage\" class=\"empty\" style=\"--c:#ef4444\"><span class=\"dot\"></span><span class=\"name\">Mortgage</span><span class=\"pct ds-small\"></span><span class=\"v\">—</span><svg class=\"chev\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 3.5 10.5 8 6 12.5\"/></svg></a></li></ul></section>",
+      "css": ".ds-group { display: flex; flex-direction: column; gap: 8px; background: var(--surface, #fff); border-radius: 20px; box-shadow: var(--shadow, 0 10px 30px rgba(11,15,25,.06), 0 1px 2px rgba(11,15,25,.04)); padding: 18px 20px 10px; font: 400 15px/1.5 'Figtree', system-ui, sans-serif; color: var(--ink, #0b0f19); font-variant-numeric: tabular-nums; } .ds-group header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; } .ds-group .t { font-weight: 600; } .ds-small { font-size: 13px; color: var(--ink-2, #626b7a); } .ds-group .sum { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; } .ds-group .sum.muted { color: var(--ink-2, #626b7a); font-weight: 500; } .ds-group .stack { display: flex; gap: 3px; height: 8px; border-radius: 999px; overflow: hidden; margin: 2px 0 6px; } .ds-group .stack span { display: block; height: 100%; background: var(--c); border-radius: 999px; transition: flex 400ms cubic-bezier(0.19,1,0.22,1); } .ds-group .stack .none { flex: 1; background: var(--surface-2, #f6f7fb); } .ds-group ul { list-style: none; margin: 0 -8px; padding: 0; } .ds-group a { display: grid; grid-template-columns: 10px 1fr auto auto auto 16px; gap: 10px; align-items: center; padding: 9px 8px; border-radius: 12px; color: inherit; text-decoration: none; transition: background-color 150ms cubic-bezier(0.19,1,0.22,1); } .ds-group a:hover { background: var(--surface-2, #f6f7fb); } .ds-group a:focus-visible { outline: 2px solid var(--accent, #00c2a8); outline-offset: 2px; } .ds-group .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); } .ds-group .name { font-weight: 500; } .ds-group a.empty .name, .ds-group a.empty .v { color: var(--ink-2, #626b7a); font-weight: 400; } .ds-group .pct { min-width: 3ch; text-align: right; } .ds-group .v { font-weight: 600; } .ds-pill.warn { display: inline-flex; border-radius: 999px; padding: 4px 10px; font-size: 13px; font-weight: 500; line-height: 1.2; color: var(--danger, #e5484d); background: var(--danger-soft, rgba(229,72,77,.12)); white-space: nowrap; } .ds-group .chev { color: var(--ink-2, #626b7a); transition: transform 150ms cubic-bezier(0.19,1,0.22,1), color 150ms cubic-bezier(0.19,1,0.22,1); } .ds-group a:hover .chev { color: var(--accent, #00c2a8); transform: translateX(2px); }"
     },
     {
       "name": "Hero",
       "kind": "custom",
       "refersTo": "hero",
-      "description": "The accent block carrying the headline figure and its contributing figures; the top row holds the month nav when several statements are loaded, with the status chip pushed to the end.",
-      "html": "<section class=\"ds-hero\"><div><div class=\"ds-hero-top\"><nav class=\"ds-months\" aria-label=\"Statements\"><button class=\"ds-hero-pill\">Aug 2026</button><button class=\"ds-hero-pill\">Sep 2026</button><button class=\"ds-hero-pill on\" aria-pressed=\"true\">Oct 2026</button></nav><span class=\"ds-hero-pill ds-status\">sample · synthetic data</span></div><p class=\"ds-hero-label\">My share of the card <span class=\"dim\">· 1 Oct – 20 Oct 2026</span></p><p class=\"ds-hero-big\">$3,007.77</p></div><dl class=\"ds-figs\"><div><dt>Spend</dt><dd>$3,007.77</dd></div><div><dt>Put away</dt><dd>$0.00</dd></div></dl></section>",
-      "css": ".ds-hero { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; background: var(--accent, #00c2a8); color: var(--accent-ink, #042e28); padding: 24px 28px 28px; border-radius: 28px; font: 400 15px/1.5 'Figtree', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-hero-top { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; } .ds-months { display: flex; gap: 4px; flex-wrap: wrap; } .ds-hero-pill { display: inline-flex; border: 0; border-radius: 999px; padding: 4px 10px; font: 500 13px/1.2 inherit; background: rgba(4,46,40,.1); color: var(--accent-ink, #042e28); } .ds-months .ds-hero-pill { background: transparent; font-weight: 600; cursor: pointer; transition: background-color 150ms cubic-bezier(0.19,1,0.22,1), color 150ms cubic-bezier(0.19,1,0.22,1); } .ds-months .ds-hero-pill:hover { background: rgba(4,46,40,.18); } .ds-months .ds-hero-pill.on { background: var(--accent-ink, #042e28); color: var(--accent, #00c2a8); } .ds-months .ds-hero-pill:focus-visible { outline: 2px solid var(--accent-ink, #042e28); outline-offset: 2px; } .ds-status { margin-left: auto; } .ds-hero-label .dim { opacity: .7; font-weight: 500; } .ds-hero-label { margin: 0; font-weight: 600; opacity: .8; } .ds-hero-big { margin: 2px 0 0; font-size: clamp(40px, 6vw, 64px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; } .ds-figs { display: flex; gap: 36px; margin: 0; padding: 0 8px 6px 0; } .ds-figs div { display: flex; flex-direction: column; gap: 2px; } .ds-figs dt { font-size: 13px; font-weight: 600; opacity: .75; } .ds-figs dd { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; }"
+      "description": "The accent block carrying the headline figure and its contributing figures; the top row holds the month nav when several statements are loaded, with the status chip pushed to the end. The Income figure (Mine copy) links to #lines/income.",
+      "html": "<section class=\"ds-hero\"><div><div class=\"ds-hero-top\"><nav class=\"ds-months\" aria-label=\"Statements\"><button class=\"ds-hero-pill\">Aug 2026</button><button class=\"ds-hero-pill\">Sep 2026</button><button class=\"ds-hero-pill on\" aria-pressed=\"true\">Oct 2026</button></nav><span class=\"ds-hero-pill ds-status\">sample · synthetic data</span></div><p class=\"ds-hero-label\">My share of the card <span class=\"dim\">· 1 Oct – 20 Oct 2026</span></p><p class=\"ds-hero-big\">$3,007.77</p></div><dl class=\"ds-figs\"><div><dt>Income</dt><dd><a class=\"ds-figlink\" href=\"#lines/income\">$6,200.00</a></dd></div><div><dt>Spend</dt><dd>$3,007.77</dd></div><div><dt>Put away</dt><dd>$0.00</dd></div></dl></section>",
+      "css": ".ds-hero { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; background: var(--accent, #00c2a8); color: var(--accent-ink, #042e28); padding: 24px 28px 28px; border-radius: 28px; font: 400 15px/1.5 'Figtree', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-hero-top { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; } .ds-months { display: flex; gap: 4px; flex-wrap: wrap; } .ds-hero-pill { display: inline-flex; border: 0; border-radius: 999px; padding: 4px 10px; font: 500 13px/1.2 inherit; background: rgba(4,46,40,.1); color: var(--accent-ink, #042e28); } .ds-months .ds-hero-pill { background: transparent; font-weight: 600; cursor: pointer; transition: background-color 150ms cubic-bezier(0.19,1,0.22,1), color 150ms cubic-bezier(0.19,1,0.22,1); } .ds-months .ds-hero-pill:hover { background: rgba(4,46,40,.18); } .ds-months .ds-hero-pill.on { background: var(--accent-ink, #042e28); color: var(--accent, #00c2a8); } .ds-months .ds-hero-pill:focus-visible { outline: 2px solid var(--accent-ink, #042e28); outline-offset: 2px; } .ds-status { margin-left: auto; } .ds-hero-label .dim { opacity: .7; font-weight: 500; } .ds-hero-label { margin: 0; font-weight: 600; opacity: .8; } .ds-hero-big { margin: 2px 0 0; font-size: clamp(40px, 6vw, 64px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; } .ds-figs { display: flex; gap: 36px; margin: 0; padding: 0 8px 6px 0; } .ds-figs div { display: flex; flex-direction: column; gap: 2px; } .ds-figs dt { font-size: 13px; font-weight: 600; opacity: .75; } .ds-figs dd { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; } .ds-figlink { color: inherit; text-decoration: none; } .ds-figlink:hover { text-decoration: underline; text-underline-offset: 4px; }"
     },
     {
       "name": "Triage Card",
@@ -318,15 +318,15 @@
   ],
   "narrative": {
     "northStar": "The Trusted Balance",
-    "overview": "Clarifi is modern consumer fintech played straight, at the craft level of Revolut and Wise. The whole screen is organised to make one figure believable: a full-width teal-mint hero carries the headline number in a tight 700-weight display, and everything beneath it (six bucket summary cards on the Overview view; the line list one hash away on the Lines view; the rule cards on the Rules view) exists to explain where that number came from. Surfaces are large, white, and generously rounded; colour is scarce and rationed by role, so the one accent block, the small accent \"Sort n unsorted\" pill that points at it, and six small bucket colours do all the signalling.\n\nThe material is soft and bright in light mode (white cards floating on a cool grey canvas under a diffuse shadow) and flat and hairlined in dark mode (the same cards ringed by a 1px line on near-black). Figtree is the only face; its rounded geometry and tabular figures give the money a playful-but-precise register without ever becoming a ledger. Density is relaxed on desktop and collapses to a single column on phones without changing any component's shape.\n\nConfirmed rejections: no paper, ledger or printed-form metaphors; no monospace face; no second accent.",
+    "overview": "Clarifi is modern consumer fintech played straight, at the craft level of Revolut and Wise. The whole screen is organised to make one figure believable: a full-width teal-mint hero carries the headline number in a tight 700-weight display, and everything beneath it (two group cards, Spend and Put away, on the Overview view; the line list one hash away on the Lines view; the rule cards on the Rules view) exists to explain where that number came from. Surfaces are large, white, and generously rounded; colour is scarce and rationed by role, so the one accent block, the small accent \"Sort n unsorted\" pill that points at it, and six small bucket colours do all the signalling.\n\nThe material is soft and bright in light mode (white cards floating on a cool grey canvas under a diffuse shadow) and flat and hairlined in dark mode (the same cards ringed by a 1px line on near-black). Figtree is the only face; its rounded geometry and tabular figures give the money a playful-but-precise register without ever becoming a ledger. Density is relaxed on desktop and collapses to a single column on phones without changing any component's shape.\n\nConfirmed rejections: no paper, ledger or printed-form metaphors; no monospace face; no second accent.",
     "keyCharacteristics": [
       "One accent, used as a block (the hero) and as the primary action; nowhere else at full strength.",
-      "Six fixed bucket colours that appear only as 10px dots, 14% chip tints and 6px progress bars.",
+      "Six fixed bucket colours that appear only as 10px dots, 14% chip tints and segments of an 8px stacked bar.",
       "Figtree at every size, tabular numerals everywhere, tight negative tracking as size rises.",
       "Pill radius (999px) for every control; 20px cards; 28px hero; 12px rows and inputs.",
       "Light: soft offset shadow. Dark: 1px ring. Same tokens, swapped under `prefers-color-scheme`.",
       "Figures count to new values with one 500ms expoOut tween; held rows (on the Lines view) glow accent until scrolled past.",
-      "Bucket cards are links, not drawers: every card opens the Lines view pre-filtered to its bucket (`#lines/<bucket>`).",
+      "Bucket rows are links, not drawers: every row in a group card opens the Lines view pre-filtered to its bucket (`#lines/<bucket>`), and the hero Income figure links to `#lines/income`.",
       "Several statements live side by side: a month nav of pills on the hero and an \"Over time\" bar card beneath the buckets, both selecting the current statement."
     ],
     "rules": [
@@ -337,7 +337,7 @@
       },
       {
         "name": "The Three Outlets Rule",
-        "body": "A bucket colour may be a dot, a bar fill, or a chip tint. It is never a text colour outside its chip, never a border, never a card background.",
+        "body": "A bucket colour may be a dot, a bar fill or segment, or a chip tint. It is never a text colour outside its chip, never a border, never a card background.",
         "section": "colors"
       },
       {
@@ -369,13 +369,13 @@
     "dos": [
       "Do render every card from the one .card utility (surface, 20px, --shadow) and let the theme swap the shadow for the ring.",
       "Do keep the accent to the hero block and the primary button; use accent-soft for any other accent presence.",
-      "Do express a bucket only as its dot, its bar fill, or a 14% color-mix chip tint behind text in the full colour.",
+      "Do express a bucket only as its dot, its stacked-bar segment, or a 14% color-mix chip tint behind text in the full colour.",
       "Do use pills (999px) for every chip, button and segment, 12px for rows and inputs, 20px for cards, 28px for the hero.",
       "Do tween money with tweenMoney (500ms expoOut, 0ms under reduced motion) and run state transitions on --ease at 150 to 400ms.",
       "Do style a filter as a borderless surface pill with the card shadow and muted ink whose active state is ink on canvas; only the Conflicts filter may use danger, and its active text is danger-ink.",
       "Do mark a conflict with the danger wash and a \"conflict · A vs B\" chip; mark a freshly moved row with the accent wash and glow, released on scroll.",
       "Do show a keyboard shortcut as a 12px 600 keycap pill trailing its label, and hide it under hover: none.",
-      "Do keep bucket cards as equal summary links in a plain 3 / 2 / 1 column grid (1024px, 640px breakpoints) with a 16px stroke chevron after the line count as the only link affordance; drill-down happens on Lines, never inside a card.",
+      "Do keep the Overview as two equal group cards (Spend, Put away) in a plain 2 / 1 column grid (640px breakpoint); each bucket is a row link whose only affordance is the 16px stroke chevron and the sunken hover; drill-down happens on Lines, never inside a card.",
       "Do let the current statement be chosen from two places that agree: the month pill on the hero (accent-ink fill, accent text) and the accent bar in the Over time card; every other month is a transparent pill or a --line bar.",
       "Do switch top-level views by hash (#overview / #lines / #rules, with #lines/<filter> presetting a filter) through the pill nav; the active link is a surface pill with the card shadow, and controls that only make sense on one view (the segmented control) render only there."
     ],

@@ -217,8 +217,8 @@
 		</div>
 		{#if txns.length}
 			<dl class="figures">
-				{#if copy === 'mine'}
-					<div><dt>Income</dt><dd class="num">{#if data.incomes.length}<a class="figlink" href="#lines/income">{nzd(shownIncome.current)}</a>{:else}<button class="link add" onclick={focusIncome}>Add an income</button>{/if}</dd></div>
+				{#if copy === 'mine' || income > 0}
+					<div><dt>Income</dt><dd class="num">{#if income > 0}<a class="figlink" href="#lines/income">{nzd(shownIncome.current)}</a>{:else}<button class="link add" onclick={focusIncome}>Add an income</button>{/if}</dd></div>
 				{/if}
 				<div><dt>Spend</dt><dd class="num">{nzd(shownSpend.current)}</dd></div>
 				<div><dt>Put away</dt><dd class="num">{nzd(shownPut.current)}</dd></div>
@@ -232,12 +232,12 @@
 
 	<div class="grid">
 		<section class="buckets" aria-label="Buckets">
-			<GroupCard title="Spend" hint="bills, everyday, mortgage" {copy} parts={[
+			<GroupCard title="Spend" {copy} parts={[
 				{ bucket: 'fixed', title: TITLES.fixed, rows: byBucket.fixed },
 				{ bucket: 'general', title: TITLES.general, rows: byBucket.general },
 				{ bucket: 'mortgage', title: TITLES.mortgage, rows: byBucket.mortgage }
 			]} />
-			<GroupCard title="Put away" hint="savings, investments" {copy} parts={[
+			<GroupCard title="Put away" {copy} parts={[
 				{ bucket: 'savings', title: TITLES.savings, rows: byBucket.savings },
 				{ bucket: 'investments', title: TITLES.investments, rows: byBucket.investments }
 			]} />
