@@ -152,6 +152,25 @@ components:
   row-conflict:
     backgroundColor: "{colors.danger-soft}"
     rounded: "{rounded.row}"
+  choice:
+    backgroundColor: "{colors.surface-sunken}"
+    textColor: "{colors.ink}"
+    typography: "{typography.title}"
+    rounded: "{rounded.row}"
+    padding: "14px 16px"
+  choice-hover:
+    backgroundColor: "{colors.accent-soft}"
+  keycap:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink-muted}"
+    typography: "{typography.code}"
+    rounded: "{rounded.pill}"
+    padding: "1px 7px"
+  bucket-chip-on:
+    textColor: "{colors.ink}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
+    padding: "4px 10px"
 ---
 
 # Design System: Clarifi
@@ -212,8 +231,8 @@ A near-neutral stage with one teal-mint voice and six quiet bucket hues that nev
 
 ### Hierarchy
 - **Display** (700, `clamp(40px, 6vw, 64px)`, 1.05, -0.04em): the single headline figure in the hero. Nothing else uses it.
-- **Headline** (600, 24px, 1.1, -0.02em): bucket card totals and the hero's three contributing figures (20px on phones). Muted ink and 500 weight when the total is zero.
-- **Title** (600, 18px, -0.01em): the "Share rules" column heading. Card titles and rule names are 600 at body size (15px).
+- **Headline** (600, 24px, 1.1, -0.02em): bucket card totals and the hero's three contributing figures (20px on phones), and the current line (details and amount) in the triage card. Muted ink and 500 weight when the total is zero.
+- **Title** (600, 18px, -0.01em): the "Share rules" column heading, the triage card title and its three choice labels. Card titles and rule names are 600 at body size (15px).
 - **Wordmark** (700, 20px, -0.03em): "Clarifi" in the top bar; the only logotype.
 - **Body** (400, 15px, 1.5): rule conditions, the empty-state lede (17px, max 48ch), row details (500).
 - **Label** (500, 13px, 1.2): pills, line counts, figure captions, form labels, footer links; usually in muted ink. Rule-code chips drop to 12px/600.
@@ -256,7 +275,7 @@ Everything is rounded and nothing is square. Radius scales with the size of the 
 - **Primary:** accent fill with accent-ink text ("Import statement", "Add rule").
 - **Hover / Focus:** `brightness(1.06)` and a 1px lift, 150ms on the shared `--ease` (`cubic-bezier(0.19, 1, 0.22, 1)`); active returns to rest; focus-visible is the global 2px accent outline. Disabled drops to 45% opacity.
 - **Ghost:** sunken surface fill with ink text, hover to `--line` ("Add income").
-- **On-accent (inverted):** accent-ink fill with accent text, used only inside the hero ("Try with a sample statement").
+- **On-accent (inverted):** accent-ink fill with accent text, used only inside the hero ("Try with a sample statement", "Sort N unsorted lines").
 - **Link:** bare text, 13px 500 muted ink, hover to ink. Footer actions and "Remove". On the hero it is accent-ink and underlined (3px offset).
 
 ### Chips
@@ -264,7 +283,8 @@ Everything is rounded and nothing is square. Radius scales with the size of the 
 - **On accent:** 10% accent-ink tint with accent-ink text (period, "sample · synthetic data").
 - **Code chip:** 12px 600, bucket colour text on a 14% mix of the same colour (R1, R2…); the new-rule form uses the accent as its colour.
 - **Share chip:** muted ink text ("0% mine"), ink when the share is 100%.
-- **Bucket chip:** dot plus capitalised bucket name, neutral fill.
+- **Bucket chip:** dot plus capitalised bucket name, neutral fill, muted ink. As a radio in the triage card the selected chip takes a 16% `color-mix` tint of the bucket colour with ink text at 600 and no border (the colour is a tint only; Three Outlets holds). Unselected stays sunken and muted.
+- **Keycap:** 12px 600 pill, surface fill, muted ink, 1px 7px, trailing a label with an 8px gap (inline variant: sunken fill, 0 5px, 4px margin). Hidden under `@media (hover: none)`.
 - **Warn chip:** danger text on transparent, no left padding ("conflict · A vs B", "2 conflicts").
 - **Ghost chip:** transparent, muted ink, no left padding ("fired 1").
 
@@ -292,6 +312,11 @@ A `details` card: summary row of dot, title (600), line count (13px muted), the 
 ### Rule Card (signature)
 Surface card, 16px 18px: code chip, name (600), Remove link on one line; the condition sentence in body; a chip row of share, bucket (dot + name) and "fired n". The add-rule form is the same card with stacked labelled inputs, a pair grid, and a primary pill button aligned left.
 
+### Triage Card (signature)
+"Sort your lines": a plain `.card` (surface, 20px, `--shadow`, no accent border), 20px 24px 22px, mounted between the hero and the bucket grid 16px below the hero. Header is one flex row with 24px gaps: title (18px 600) over a label-size subline, a progress group of "done / total" in label plus a 120px by 6px pill bar (sunken track, accent fill, `scaleX` over 400ms `--ease`), and a Close link. The current line sits in a 48px / 1fr / auto grid at 22px 0 18px: date in label, details and amount at headline size; each new line enters with a 300ms `--ease` fade and 6px rise, keyed per line. Three **choice** buttons share a 3-column grid with 10px gaps: sunken surface at 12px radius, 14px 16px, label 18px 600 with a trailing keycap pill, hint in label size; hover to accent wash with a 1px lift at 150ms. The foot wraps a bucket radio group (bucket chips, 6px gaps) against a label-size line stating the exact rule condition, any collision note in ink 600, and a Skip link with an inline keycap. Keys: 1 / 2 / 3 choose, S skips, Escape closes. Phone: 16px padding, header wraps and the bar stretches, line and choices stack to one column. Done state is one 18px 600 line.
+
+<!-- review: triage first pass disposition fix, seven findings, all applied; verdict pass pending at time of writing. -->
+
 ### Hero (signature)
 Accent block, 28px radius, two columns on desktop (`1fr auto`, aligned to the end): on the left a row of on-accent pills, a 15px 600 label at 80% opacity, and the display figure; on the right a `dl` of up to three figures with 13px 600 captions at 75% opacity and 24px 600 values, 36px apart. Empty state swaps the figure for a 17px lede and the inverted button.
 
@@ -304,6 +329,7 @@ Accent block, 28px radius, two columns on desktop (`1fr auto`, aligned to the en
 - **Do** use pills (999px) for every chip, button and segment, 12px for rows and inputs, 20px for cards, 28px for the hero.
 - **Do** tween money with `tweenMoney` (500ms expoOut, 0ms under reduced motion) and run state transitions on `--ease` at 150 to 400ms.
 - **Do** mark a conflict with the danger wash and a "conflict · A vs B" chip; mark a freshly moved row with the accent wash and glow, released on scroll.
+- **Do** show a keyboard shortcut as a 12px 600 keycap pill trailing its label, and hide it under `hover: none`.
 - **Do** keep every bucket grid row full: collapsed cards span 2, an expanded card spans 6, trailing cards re-span to 3 or 6.
 
 ### Don't:

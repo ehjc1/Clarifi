@@ -1,3 +1,4 @@
+import { nzd } from './money';
 import type { Rule, Scored, Txn } from './types';
 
 export function matches(rule: Rule, t: Txn): boolean {
@@ -24,8 +25,8 @@ export const round2 = (n: number) => Math.round(n * 100) / 100;
 export function describe(r: Rule): string {
 	const parts = [];
 	if (r.text) parts.push(`contains “${r.text}”`);
-	if (r.min != null) parts.push(`≥ $${r.min}`);
-	if (r.max != null) parts.push(`≤ $${r.max}`);
+	if (r.min != null) parts.push(`≥ ${nzd(r.min)}`);
+	if (r.max != null) parts.push(`≤ ${nzd(r.max)}`);
 	return parts.join(' and ') || 'everything';
 }
 
@@ -47,8 +48,8 @@ export function composeRule(stem: string, share: number, bucket: Rule['bucket'],
 		const loFree = Math.min(...free.map((r) => r.amount)), hiFree = Math.max(...free.map((r) => r.amount));
 		const loCl = Math.min(...claimed.map((r) => r.amount)), hiCl = Math.max(...claimed.map((r) => r.amount));
 		const codes = [...new Set(claimed.map((r) => r.rule!.name))].join(', ');
-		if (hiFree < loCl) { rule.max = hiFree; note = `under $${hiFree} only, so ${codes} keeps the bigger ones`; }
-		else if (loFree > hiCl) { rule.min = loFree; note = `$${loFree} and up only, so ${codes} keeps the smaller ones`; }
+		if (hiFree < loCl) { rule.max = hiFree; note = `up to ${nzd(hiFree)} only, so ${codes} keeps the bigger ones`; }
+		else if (loFree > hiCl) { rule.min = loFree; note = `${nzd(loFree)} and up only, so ${codes} keeps the smaller ones`; }
 		else note = `also matches ${claimed.length} line${claimed.length > 1 ? 's' : ''} ${codes} already claims; that rule wins there`;
 	}
 	return { rule, note, claimed: claimed.length };

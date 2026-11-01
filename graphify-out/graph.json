@@ -4,64 +4,14 @@
   "graph": {},
   "nodes": [
     {
-      "label": "README.md",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "readme",
-      "community": 6,
-      "norm_label": "readme.md"
-    },
-    {
-      "label": "Clarifi",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "readme_clarifi",
-      "community": 6,
-      "norm_label": "clarifi"
-    },
-    {
-      "label": "Run",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "readme_run",
-      "community": 6,
-      "norm_label": "run"
-    },
-    {
-      "label": "How it reads",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L18",
-      "_origin": "ast",
-      "id": "readme_how_it_reads",
-      "community": 6,
-      "norm_label": "how it reads"
-    },
-    {
-      "label": "Status",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L28",
-      "_origin": "ast",
-      "id": "readme_status",
-      "community": 6,
-      "norm_label": "status"
-    },
-    {
       "label": "shot.mjs",
       "file_type": "code",
       "source_file": ".impeccable/shot.mjs",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "impeccable_shot",
       "community": 11,
-      "norm_label": "shot.mjs",
-      "id": "impeccable_shot"
+      "norm_label": "shot.mjs"
     },
     {
       "label": "errs",
@@ -69,9 +19,9 @@
       "source_file": ".impeccable/shot.mjs",
       "source_location": "L5",
       "_origin": "ast",
+      "id": "impeccable_shot_errs",
       "community": 11,
-      "norm_label": "errs",
-      "id": "impeccable_shot_errs"
+      "norm_label": "errs"
     },
     {
       "label": "Triage.svelte",
@@ -79,39 +29,9 @@
       "source_file": "src/lib/components/Triage.svelte",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "components_triage",
       "community": 17,
-      "norm_label": "triage.svelte",
-      "id": "components_triage"
-    },
-    {
-      "label": "#lib/money",
-      "file_type": "code",
-      "source_file": "#lib/money",
-      "confidence": "EXTRACTED",
-      "_origin": "ast",
-      "community": 17,
-      "norm_label": "#lib/money",
-      "id": "money"
-    },
-    {
-      "label": "#lib/types",
-      "file_type": "code",
-      "source_file": "#lib/types",
-      "confidence": "EXTRACTED",
-      "_origin": "ast",
-      "community": 17,
-      "norm_label": "#lib/types",
-      "id": "types"
-    },
-    {
-      "label": "+page.svelte",
-      "file_type": "code",
-      "source_file": "src/routes/+page.svelte",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 17,
-      "norm_label": "+page.svelte",
-      "id": "routes_page"
+      "norm_label": "triage.svelte"
     },
     {
       "label": "svelte",
@@ -119,69 +39,19 @@
       "source_file": "svelte",
       "confidence": "EXTRACTED",
       "_origin": "ast",
+      "id": "svelte",
       "community": 17,
-      "norm_label": "svelte",
-      "id": "svelte"
+      "norm_label": "svelte"
     },
     {
-      "label": "svelte/reactivity",
+      "label": "#lib/money",
       "file_type": "code",
-      "source_file": "svelte/reactivity",
+      "source_file": "#lib/money",
       "confidence": "EXTRACTED",
       "_origin": "ast",
+      "id": "money",
       "community": 17,
-      "norm_label": "svelte/reactivity",
-      "id": "reactivity"
-    },
-    {
-      "label": "#lib/anz",
-      "file_type": "code",
-      "source_file": "#lib/anz",
-      "confidence": "EXTRACTED",
-      "_origin": "ast",
-      "community": 17,
-      "norm_label": "#lib/anz",
-      "id": "anz"
-    },
-    {
-      "label": "#lib/components/BucketLine.svelte",
-      "file_type": "code",
-      "source_file": "#lib/components/BucketLine.svelte",
-      "confidence": "EXTRACTED",
-      "_origin": "ast",
-      "community": 17,
-      "norm_label": "#lib/components/bucketline.svelte",
-      "id": "bucketline_svelte"
-    },
-    {
-      "label": "#lib/components/Rules.svelte",
-      "file_type": "code",
-      "source_file": "#lib/components/Rules.svelte",
-      "confidence": "EXTRACTED",
-      "_origin": "ast",
-      "community": 17,
-      "norm_label": "#lib/components/rules.svelte",
-      "id": "rules_svelte"
-    },
-    {
-      "label": "#lib/components/Triage.svelte",
-      "file_type": "code",
-      "source_file": "#lib/components/Triage.svelte",
-      "confidence": "EXTRACTED",
-      "_origin": "ast",
-      "community": 17,
-      "norm_label": "#lib/components/triage.svelte",
-      "id": "triage_svelte"
-    },
-    {
-      "label": "#lib/motion.svelte",
-      "file_type": "code",
-      "source_file": "#lib/motion.svelte",
-      "confidence": "EXTRACTED",
-      "_origin": "ast",
-      "community": 17,
-      "norm_label": "#lib/motion.svelte",
-      "id": "motion_svelte"
+      "norm_label": "#lib/money"
     },
     {
       "label": "#lib/rules",
@@ -189,9 +59,159 @@
       "source_file": "#lib/rules",
       "confidence": "EXTRACTED",
       "_origin": "ast",
+      "id": "rules",
       "community": 17,
-      "norm_label": "#lib/rules",
-      "id": "rules"
+      "norm_label": "#lib/rules"
+    },
+    {
+      "label": "#lib/types",
+      "file_type": "code",
+      "source_file": "#lib/types",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "types",
+      "community": 17,
+      "norm_label": "#lib/types"
+    },
+    {
+      "label": "rules.ts",
+      "file_type": "code",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_rules",
+      "community": 1,
+      "norm_label": "rules.ts"
+    },
+    {
+      "label": "matches()",
+      "file_type": "code",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "lib_rules_matches",
+      "community": 1,
+      "norm_label": "matches()"
+    },
+    {
+      "label": "score()",
+      "file_type": "code",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "lib_rules_score",
+      "community": 1,
+      "norm_label": "score()"
+    },
+    {
+      "label": "round2()",
+      "file_type": "code",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "lib_rules_round2",
+      "community": 1,
+      "norm_label": "round2()"
+    },
+    {
+      "label": "describe()",
+      "file_type": "code",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "lib_rules_describe",
+      "community": 1,
+      "norm_label": "describe()"
+    },
+    {
+      "label": "titleCase()",
+      "file_type": "code",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "lib_rules_titlecase",
+      "community": 1,
+      "norm_label": "titlecase()"
+    },
+    {
+      "label": "composeRule()",
+      "file_type": "code",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "lib_rules_composerule",
+      "community": 1,
+      "norm_label": "composerule()"
+    },
+    {
+      "label": "+page.svelte",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "routes_page",
+      "community": 17,
+      "norm_label": "+page.svelte"
+    },
+    {
+      "label": "svelte/reactivity",
+      "file_type": "code",
+      "source_file": "svelte/reactivity",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "reactivity",
+      "community": 17,
+      "norm_label": "svelte/reactivity"
+    },
+    {
+      "label": "#lib/anz",
+      "file_type": "code",
+      "source_file": "#lib/anz",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "anz",
+      "community": 17,
+      "norm_label": "#lib/anz"
+    },
+    {
+      "label": "#lib/components/BucketLine.svelte",
+      "file_type": "code",
+      "source_file": "#lib/components/BucketLine.svelte",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "bucketline_svelte",
+      "community": 17,
+      "norm_label": "#lib/components/bucketline.svelte"
+    },
+    {
+      "label": "#lib/components/Rules.svelte",
+      "file_type": "code",
+      "source_file": "#lib/components/Rules.svelte",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "rules_svelte",
+      "community": 17,
+      "norm_label": "#lib/components/rules.svelte"
+    },
+    {
+      "label": "#lib/components/Triage.svelte",
+      "file_type": "code",
+      "source_file": "#lib/components/Triage.svelte",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "triage_svelte",
+      "community": 17,
+      "norm_label": "#lib/components/triage.svelte"
+    },
+    {
+      "label": "#lib/motion.svelte",
+      "file_type": "code",
+      "source_file": "#lib/motion.svelte",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "motion_svelte",
+      "community": 17,
+      "norm_label": "#lib/motion.svelte"
     },
     {
       "label": "#lib/sample",
@@ -199,9 +219,9 @@
       "source_file": "#lib/sample",
       "confidence": "EXTRACTED",
       "_origin": "ast",
+      "id": "sample",
       "community": 17,
-      "norm_label": "#lib/sample",
-      "id": "sample"
+      "norm_label": "#lib/sample"
     },
     {
       "label": "#lib/store.svelte",
@@ -209,9 +229,79 @@
       "source_file": "#lib/store.svelte",
       "confidence": "EXTRACTED",
       "_origin": "ast",
+      "id": "store_svelte",
       "community": 17,
-      "norm_label": "#lib/store.svelte",
-      "id": "store_svelte"
+      "norm_label": "#lib/store.svelte"
+    },
+    {
+      "label": "core.test.ts",
+      "file_type": "code",
+      "source_file": "tests/core.test.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_core_test",
+      "community": 1,
+      "norm_label": "core.test.ts"
+    },
+    {
+      "label": "rules",
+      "file_type": "code",
+      "source_file": "tests/core.test.ts",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "tests_core_test_rules",
+      "community": 1,
+      "norm_label": "rules"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "readme.md",
+      "id": "readme"
+    },
+    {
+      "label": "Clarifi",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "clarifi",
+      "id": "readme_clarifi"
+    },
+    {
+      "label": "Run",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "run",
+      "id": "readme_run"
+    },
+    {
+      "label": "How it reads",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L18",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "how it reads",
+      "id": "readme_how_it_reads"
+    },
+    {
+      "label": "Status",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L28",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "status",
+      "id": "readme_status"
     },
     {
       "label": "DESIGN.md",
@@ -949,7 +1039,7 @@
       "source_file": "package.json",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 2,
+      "community": 0,
       "norm_label": "scripts",
       "id": "package_scripts"
     },
@@ -959,7 +1049,7 @@
       "source_file": "package.json",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 2,
+      "community": 0,
       "norm_label": "dev",
       "id": "package_scripts_dev"
     },
@@ -969,7 +1059,7 @@
       "source_file": "package.json",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 2,
+      "community": 0,
       "norm_label": "build",
       "id": "package_scripts_build"
     },
@@ -979,7 +1069,7 @@
       "source_file": "package.json",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 2,
+      "community": 0,
       "norm_label": "preview",
       "id": "package_scripts_preview"
     },
@@ -989,7 +1079,7 @@
       "source_file": "package.json",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 2,
+      "community": 0,
       "norm_label": "prepare",
       "id": "package_scripts_prepare"
     },
@@ -999,7 +1089,7 @@
       "source_file": "package.json",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 2,
+      "community": 0,
       "norm_label": "check",
       "id": "package_scripts_check"
     },
@@ -1009,7 +1099,7 @@
       "source_file": "package.json",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 2,
+      "community": 0,
       "norm_label": "check:watch",
       "id": "package_scripts_check_watch"
     },
@@ -1019,7 +1109,7 @@
       "source_file": "package.json",
       "source_location": "L14",
       "_origin": "ast",
-      "community": 4,
+      "community": 2,
       "norm_label": "devdependencies",
       "id": "package_devdependencies"
     },
@@ -1029,7 +1119,7 @@
       "source_file": "package.json",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 4,
+      "community": 2,
       "norm_label": "@sveltejs/kit",
       "id": "package_devdependencies_sveltejs_kit"
     },
@@ -1039,7 +1129,7 @@
       "source_file": "package.json",
       "source_location": "L16",
       "_origin": "ast",
-      "community": 4,
+      "community": 2,
       "norm_label": "@sveltejs/vite-plugin-svelte",
       "id": "package_devdependencies_sveltejs_vite_plugin_svelte"
     },
@@ -1049,7 +1139,7 @@
       "source_file": "package.json",
       "source_location": "L17",
       "_origin": "ast",
-      "community": 4,
+      "community": 2,
       "norm_label": "playwright",
       "id": "package_devdependencies_playwright"
     },
@@ -1069,7 +1159,7 @@
       "source_file": "package.json",
       "source_location": "L19",
       "_origin": "ast",
-      "community": 4,
+      "community": 2,
       "norm_label": "svelte-check",
       "id": "package_devdependencies_svelte_check"
     },
@@ -1079,7 +1169,7 @@
       "source_file": "package.json",
       "source_location": "L20",
       "_origin": "ast",
-      "community": 4,
+      "community": 2,
       "norm_label": "typescript",
       "id": "package_devdependencies_typescript"
     },
@@ -1089,7 +1179,7 @@
       "source_file": "package.json",
       "source_location": "L21",
       "_origin": "ast",
-      "community": 4,
+      "community": 2,
       "norm_label": "vite",
       "id": "package_devdependencies_vite"
     },
@@ -1099,7 +1189,7 @@
       "source_file": "package.json",
       "source_location": "L22",
       "_origin": "ast",
-      "community": 4,
+      "community": 2,
       "norm_label": "vitest",
       "id": "package_devdependencies_vitest"
     },
@@ -1254,56 +1344,6 @@
       "id": "lib_money_pct"
     },
     {
-      "label": "rules.ts",
-      "file_type": "code",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "rules.ts",
-      "id": "lib_rules"
-    },
-    {
-      "label": "matches()",
-      "file_type": "code",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L3",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "matches()",
-      "id": "lib_rules_matches"
-    },
-    {
-      "label": "score()",
-      "file_type": "code",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L11",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "score()",
-      "id": "lib_rules_score"
-    },
-    {
-      "label": "round2()",
-      "file_type": "code",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L22",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "round2()",
-      "id": "lib_rules_round2"
-    },
-    {
-      "label": "describe()",
-      "file_type": "code",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L24",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "describe()",
-      "id": "lib_rules_describe"
-    },
-    {
       "label": "sample.ts",
       "file_type": "code",
       "source_file": "src/lib/sample.ts",
@@ -1394,26 +1434,6 @@
       "id": "src_routes_layout_ts_routes_layout"
     },
     {
-      "label": "core.test.ts",
-      "file_type": "code",
-      "source_file": "tests/core.test.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "core.test.ts",
-      "id": "tests_core_test"
-    },
-    {
-      "label": "rules",
-      "file_type": "code",
-      "source_file": "tests/core.test.ts",
-      "source_location": "L13",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "rules",
-      "id": "tests_core_test_rules"
-    },
-    {
       "label": "tsconfig.json",
       "file_type": "code",
       "source_file": "tsconfig.json",
@@ -1478,46 +1498,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme",
-      "target": "readme_clarifi"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L18",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme_clarifi",
-      "target": "readme_how_it_reads"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme_clarifi",
-      "target": "readme_run"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme_clarifi",
-      "target": "readme_status"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": ".impeccable/shot.mjs",
       "source_location": "L4",
       "weight": 1.0,
@@ -1537,9 +1517,52 @@
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src/lib/components/Triage.svelte",
+      "source": "components_triage",
+      "target": "rules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Triage.svelte",
+      "source": "components_triage",
+      "target": "svelte",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Triage.svelte",
       "confidence_score": 1.0,
       "source": "components_triage",
       "target": "types"
+    },
+    {
+      "relation": "dynamic_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/BucketLine.svelte",
+      "confidence_score": 1.0,
+      "source": "components_bucketline",
+      "target": "svelte"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "context": "import",
+      "confidence_score": 1.0,
+      "source": "package_devdependencies_svelte",
+      "target": "svelte"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "svelte"
     },
     {
       "relation": "imports_from",
@@ -1556,6 +1579,22 @@
       "confidence_score": 1.0,
       "source": "routes_page",
       "target": "money"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/Rules.svelte",
+      "confidence_score": 1.0,
+      "source": "components_rules",
+      "target": "rules"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "confidence_score": 1.0,
+      "source": "routes_page",
+      "target": "rules"
     },
     {
       "relation": "imports_from",
@@ -1580,6 +1619,154 @@
       "confidence_score": 1.0,
       "source": "routes_page",
       "target": "types"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "lib_rules",
+      "target": "lib_rules_composerule",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_rules",
+      "target": "lib_rules_describe"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_rules",
+      "target": "lib_rules_matches"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_rules",
+      "target": "lib_rules_round2"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_rules",
+      "target": "lib_rules_score"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "lib_rules",
+      "target": "lib_rules_titlecase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_rules",
+      "target": "lib_types"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_rules",
+      "target": "lib_types_rule"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_rules",
+      "target": "lib_types_scored"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_rules",
+      "target": "lib_types_txn"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/core.test.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_core_test",
+      "target": "lib_rules"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/core.test.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_core_test",
+      "target": "lib_rules_score"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/rules.ts",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "lib_rules_composerule",
+      "target": "lib_rules_titlecase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/core.test.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "tests_core_test",
+      "target": "lib_rules_composerule",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -1619,14 +1806,6 @@
       "source_file": "src/routes/+page.svelte",
       "confidence_score": 1.0,
       "source": "routes_page",
-      "target": "rules"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
       "target": "rules_svelte"
     },
     {
@@ -1651,34 +1830,7 @@
       "source_file": "src/routes/+page.svelte",
       "confidence_score": 1.0,
       "source": "routes_page",
-      "target": "svelte"
-    },
-    {
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/+page.svelte",
-      "confidence_score": 1.0,
-      "source": "routes_page",
       "target": "triage_svelte"
-    },
-    {
-      "relation": "dynamic_import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/BucketLine.svelte",
-      "confidence_score": 1.0,
-      "source": "components_bucketline",
-      "target": "svelte"
-    },
-    {
-      "relation": "imports",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L18",
-      "weight": 1.0,
-      "context": "import",
-      "confidence_score": 1.0,
-      "source": "package_devdependencies_svelte",
-      "target": "svelte"
     },
     {
       "relation": "dynamic_import",
@@ -1698,11 +1850,108 @@
     },
     {
       "relation": "imports_from",
+      "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/lib/components/Rules.svelte",
+      "source_file": "tests/core.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "components_rules",
-      "target": "rules"
+      "source": "tests_core_test",
+      "target": "lib_anz"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/core.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_core_test",
+      "target": "lib_anz_parseanz"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/core.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_core_test",
+      "target": "lib_anz_parsecsv"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/core.test.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_core_test",
+      "target": "lib_types"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/core.test.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_core_test",
+      "target": "lib_types_rule"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/core.test.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_core_test",
+      "target": "tests_core_test_rules"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_clarifi"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_clarifi",
+      "target": "readme_how_it_reads"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_clarifi",
+      "target": "readme_run"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_clarifi",
+      "target": "readme_status"
     },
     {
       "relation": "contains",
@@ -2637,17 +2886,6 @@
       "target": "lib_types_txn"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/core.test.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tests_core_test",
-      "target": "lib_anz"
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -2656,17 +2894,6 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lib_anz_parseanz",
-      "target": "lib_anz_parsecsv"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/core.test.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tests_core_test",
       "target": "lib_anz_parsecsv"
     },
     {
@@ -2679,17 +2906,6 @@
       "confidence_score": 1.0,
       "source": "lib_anz_parseanz",
       "target": "lib_anz_find"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/core.test.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tests_core_test",
-      "target": "lib_anz_parseanz"
     },
     {
       "relation": "contains",
@@ -2720,112 +2936,6 @@
       "confidence_score": 1.0,
       "source": "lib_money",
       "target": "lib_money_pct"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L24",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_rules",
-      "target": "lib_rules_describe"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_rules",
-      "target": "lib_rules_matches"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_rules",
-      "target": "lib_rules_round2"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_rules",
-      "target": "lib_rules_score"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_rules",
-      "target": "lib_types"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_rules",
-      "target": "lib_types_rule"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_rules",
-      "target": "lib_types_scored"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/rules.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_rules",
-      "target": "lib_types_txn"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/core.test.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tests_core_test",
-      "target": "lib_rules"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/core.test.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tests_core_test",
-      "target": "lib_rules_score"
     },
     {
       "relation": "contains",
@@ -2888,38 +2998,6 @@
       "target": "lib_types_txn"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/core.test.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tests_core_test",
-      "target": "lib_types"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/core.test.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tests_core_test",
-      "target": "lib_types_rule"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/core.test.ts",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "tests_core_test",
-      "target": "tests_core_test_rules"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tsconfig.json",
@@ -2961,5 +3039,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "52ec35f8274fe1baa382c6cc62619d2ddad992bd"
+  "built_at_commit": "356ece9e0a366db933db29d201e49b02107ff77f"
 }

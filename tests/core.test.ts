@@ -46,7 +46,7 @@ describe('composeRule', () => {
 		const { rule, note, claimed } = composeRule('PAK N SAVE ALBANY', 1, 'general', s);
 		expect(rule).toMatchObject({ name: 'Pak N Save Albany is mine', text: 'pak n save albany', share: 1, max: 32.1 });
 		expect(claimed).toBe(1);
-		expect(note).toContain('under $32.1');
+		expect(note).toContain('up to $32.10');
 		expect(score(parseAnz(csv), [...rules.slice(0, 1), { id: 'z', ...rule }]).some((r) => r.conflict)).toBe(false);
 	});
 	it('writes an unbounded rule when nothing else claims a match', () => {

@@ -85,6 +85,7 @@
 	.code { font-size: 12px; font-weight: 600; color: var(--c, var(--accent)); background: color-mix(in srgb, var(--c, var(--accent)) 14%, transparent); }
 	form .code { --c: var(--accent); }
 	.cond { margin: 8px 0 10px; }
+	.cond :global(.amt) { white-space: nowrap; }
 	.chips { display: flex; flex-wrap: wrap; gap: 6px; }
 	.bucket { text-transform: capitalize; }
 	.ghost { background: transparent; color: var(--ink-2); padding-left: 0; }

@@ -84,7 +84,7 @@
 			</span>
 			<span class="small">
 				Rule: details {preview ? describe(preview.rule) : ''}{#if preview?.note} · <b class="note">{preview.note}</b>{/if}
-				· <button class="link" onclick={skip}>Skip<kbd class="key-inline">S</kbd></button>
+				· <button class="link" onclick={skip}>Skip <kbd class="pill key">S</kbd></button>
 			</span>
 		</div>
 	{:else}
@@ -110,9 +110,9 @@
 	.choice:hover { background: var(--accent-soft); transform: translateY(-1px); }
 	.choice .l { display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 600; }
 	.key { font-family: inherit; font-size: 12px; padding: 1px 7px; background: var(--surface); color: var(--ink-2); }
-	.key-inline { font-family: inherit; font-size: 12px; margin-left: 4px; padding: 0 5px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); }
 	.note { color: var(--ink); font-weight: 600; }
-	@media (hover: none) { .key, .key-inline { display: none; } }
+	.link .key { background: var(--surface-2); }
+	@media (hover: none), (pointer: coarse) { .key { display: none; } }
 	.foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 16px; margin-top: 14px; }
 	.buckets { display: flex; flex-wrap: wrap; gap: 6px; }
 	.pill.b { border: 0; cursor: pointer; color: var(--ink-2); }

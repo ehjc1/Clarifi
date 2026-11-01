@@ -1,48 +1,218 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-01T00:00:00Z",
+  "generatedAt": "2026-11-01T12:00:00Z",
   "title": "Design System: Clarifi",
   "extensions": {
     "colorMeta": {
-      "accent": { "role": "primary", "displayName": "Teal Mint", "canonical": "#00c2a8", "dark": "#2ef2d2", "tonalRamp": ["oklch(22% 0.06 175)", "oklch(32% 0.09 175)", "oklch(44% 0.12 175)", "oklch(56% 0.14 175)", "oklch(72% 0.15 175)", "oklch(82% 0.13 175)", "oklch(90% 0.08 175)", "oklch(96% 0.03 175)"] },
-      "accent-ink": { "role": "primary", "displayName": "Deep Teal Ink", "canonical": "#042e28", "tonalRamp": ["oklch(15% 0.04 175)", "oklch(26% 0.05 175)", "oklch(38% 0.07 175)", "oklch(50% 0.09 175)", "oklch(62% 0.1 175)", "oklch(74% 0.09 175)", "oklch(86% 0.06 175)", "oklch(95% 0.02 175)"] },
-      "accent-soft": { "role": "primary", "displayName": "Mint Wash", "canonical": "rgba(0, 194, 168, 0.14)", "dark": "rgba(46, 242, 210, 0.14)" },
-      "canvas": { "role": "neutral", "displayName": "Cool Canvas", "canonical": "#f3f4f8", "dark": "#0b0d12", "tonalRamp": ["#0b0d12", "#151821", "#1c202b", "#262b38", "#626b7a", "#9aa3b2", "#e6e8ef", "#f3f4f8"] },
-      "surface": { "role": "neutral", "displayName": "Surface", "canonical": "#ffffff", "dark": "#151821" },
-      "surface-sunken": { "role": "neutral", "displayName": "Sunken Surface", "canonical": "#f6f7fb", "dark": "#1c202b" },
-      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0b0f19", "dark": "#f3f4f8" },
-      "ink-muted": { "role": "neutral", "displayName": "Muted Ink", "canonical": "#626b7a", "dark": "#9aa3b2" },
-      "line": { "role": "neutral", "displayName": "Line", "canonical": "#e6e8ef", "dark": "#262b38" },
-      "danger": { "role": "tertiary", "displayName": "Danger", "canonical": "#e5484d", "tonalRamp": ["oklch(22% 0.1 22)", "oklch(34% 0.15 22)", "oklch(46% 0.19 22)", "oklch(58% 0.2 22)", "oklch(68% 0.17 22)", "oklch(78% 0.12 22)", "oklch(88% 0.07 22)", "oklch(95% 0.03 22)"] },
-      "bucket-income": { "role": "bucket", "displayName": "Income Green", "canonical": "#22c55e" },
-      "bucket-fixed": { "role": "bucket", "displayName": "Fixed Blue", "canonical": "#3b82f6" },
-      "bucket-general": { "role": "bucket", "displayName": "General Amber", "canonical": "#f59e0b" },
-      "bucket-investments": { "role": "bucket", "displayName": "Investments Violet", "canonical": "#8b5cf6" },
-      "bucket-savings": { "role": "bucket", "displayName": "Savings Cyan", "canonical": "#06b6d4" },
-      "bucket-mortgage": { "role": "bucket", "displayName": "Mortgage Red", "canonical": "#ef4444" }
+      "accent": {
+        "role": "primary",
+        "displayName": "Teal Mint",
+        "canonical": "#00c2a8",
+        "dark": "#2ef2d2",
+        "tonalRamp": [
+          "oklch(22% 0.06 175)",
+          "oklch(32% 0.09 175)",
+          "oklch(44% 0.12 175)",
+          "oklch(56% 0.14 175)",
+          "oklch(72% 0.15 175)",
+          "oklch(82% 0.13 175)",
+          "oklch(90% 0.08 175)",
+          "oklch(96% 0.03 175)"
+        ]
+      },
+      "accent-ink": {
+        "role": "primary",
+        "displayName": "Deep Teal Ink",
+        "canonical": "#042e28",
+        "tonalRamp": [
+          "oklch(15% 0.04 175)",
+          "oklch(26% 0.05 175)",
+          "oklch(38% 0.07 175)",
+          "oklch(50% 0.09 175)",
+          "oklch(62% 0.1 175)",
+          "oklch(74% 0.09 175)",
+          "oklch(86% 0.06 175)",
+          "oklch(95% 0.02 175)"
+        ]
+      },
+      "accent-soft": {
+        "role": "primary",
+        "displayName": "Mint Wash",
+        "canonical": "rgba(0, 194, 168, 0.14)",
+        "dark": "rgba(46, 242, 210, 0.14)"
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Cool Canvas",
+        "canonical": "#f3f4f8",
+        "dark": "#0b0d12",
+        "tonalRamp": [
+          "#0b0d12",
+          "#151821",
+          "#1c202b",
+          "#262b38",
+          "#626b7a",
+          "#9aa3b2",
+          "#e6e8ef",
+          "#f3f4f8"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#ffffff",
+        "dark": "#151821"
+      },
+      "surface-sunken": {
+        "role": "neutral",
+        "displayName": "Sunken Surface",
+        "canonical": "#f6f7fb",
+        "dark": "#1c202b"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#0b0f19",
+        "dark": "#f3f4f8"
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#626b7a",
+        "dark": "#9aa3b2"
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "canonical": "#e6e8ef",
+        "dark": "#262b38"
+      },
+      "danger": {
+        "role": "tertiary",
+        "displayName": "Danger",
+        "canonical": "#e5484d",
+        "tonalRamp": [
+          "oklch(22% 0.1 22)",
+          "oklch(34% 0.15 22)",
+          "oklch(46% 0.19 22)",
+          "oklch(58% 0.2 22)",
+          "oklch(68% 0.17 22)",
+          "oklch(78% 0.12 22)",
+          "oklch(88% 0.07 22)",
+          "oklch(95% 0.03 22)"
+        ]
+      },
+      "bucket-income": {
+        "role": "bucket",
+        "displayName": "Income Green",
+        "canonical": "#22c55e"
+      },
+      "bucket-fixed": {
+        "role": "bucket",
+        "displayName": "Fixed Blue",
+        "canonical": "#3b82f6"
+      },
+      "bucket-general": {
+        "role": "bucket",
+        "displayName": "General Amber",
+        "canonical": "#f59e0b"
+      },
+      "bucket-investments": {
+        "role": "bucket",
+        "displayName": "Investments Violet",
+        "canonical": "#8b5cf6"
+      },
+      "bucket-savings": {
+        "role": "bucket",
+        "displayName": "Savings Cyan",
+        "canonical": "#06b6d4"
+      },
+      "bucket-mortgage": {
+        "role": "bucket",
+        "displayName": "Mortgage Red",
+        "canonical": "#ef4444"
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "The single headline figure in the hero." },
-      "headline": { "displayName": "Headline", "purpose": "Bucket totals and hero contributing figures; 20px on phones." },
-      "title": { "displayName": "Title", "purpose": "Rules column heading." },
-      "wordmark": { "displayName": "Wordmark", "purpose": "The Clarifi logotype in the top bar." },
-      "body": { "displayName": "Body", "purpose": "Rule conditions, row details, lede." },
-      "label": { "displayName": "Label", "purpose": "Pills, counts, captions, form labels, footer links." },
-      "code": { "displayName": "Code chip", "purpose": "Rule codes R1..Rn in bucket colour." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "The single headline figure in the hero."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Bucket totals, hero contributing figures, and the triage current line; 20px on phones."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Rules column heading, triage card title, triage choice labels."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "The Clarifi logotype in the top bar."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Rule conditions, row details, lede."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Pills, counts, captions, form labels, footer links."
+      },
+      "code": {
+        "displayName": "Code chip",
+        "purpose": "Rule codes R1..Rn in bucket colour; keyboard keycap pills in muted ink."
+      }
     },
     "shadows": [
-      { "name": "card-lift", "value": "0 10px 30px rgba(11, 15, 25, 0.06), 0 1px 2px rgba(11, 15, 25, 0.04)", "purpose": "Every card and the segmented control, light mode." },
-      { "name": "dark-ring", "value": "0 0 0 1px var(--line)", "purpose": "Replaces card-lift under prefers-color-scheme: dark." },
-      { "name": "held-glow", "value": "0 6px 18px var(--accent-soft)", "purpose": "A row just moved by a new rule, until scrolled past." }
+      {
+        "name": "card-lift",
+        "value": "0 10px 30px rgba(11, 15, 25, 0.06), 0 1px 2px rgba(11, 15, 25, 0.04)",
+        "purpose": "Every card and the segmented control, light mode."
+      },
+      {
+        "name": "dark-ring",
+        "value": "0 0 0 1px var(--line)",
+        "purpose": "Replaces card-lift under prefers-color-scheme: dark."
+      },
+      {
+        "name": "held-glow",
+        "value": "0 6px 18px var(--accent-soft)",
+        "purpose": "A row just moved by a new rule, until scrolled past."
+      }
     ],
     "motion": [
-      { "name": "ease", "value": "cubic-bezier(0.19, 1, 0.22, 1)", "purpose": "Every CSS transition (150ms controls, 200ms segments and card shadow, 400ms bars and row tint)." },
-      { "name": "tween-money", "value": "500ms expoOut (svelte/motion Tween); 0ms under prefers-reduced-motion", "purpose": "Hero figure and every bucket total count to the new value." }
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.19, 1, 0.22, 1)",
+        "purpose": "Every CSS transition (150ms controls, 200ms segments and card shadow, 400ms bars and row tint)."
+      },
+      {
+        "name": "tween-money",
+        "value": "500ms expoOut (svelte/motion Tween); 0ms under prefers-reduced-motion",
+        "purpose": "Hero figure and every bucket total count to the new value."
+      },
+      {
+        "name": "line-in",
+        "value": "300ms cubic-bezier(0.19, 1, 0.22, 1); opacity 0→1, translateY 6px→0",
+        "purpose": "Each new current line in the triage card, keyed per line."
+      }
     ],
     "breakpoints": [
-      { "name": "two-up", "value": "1024px", "purpose": "Collapsed bucket cards span 3 (two per row)." },
-      { "name": "stack", "value": "900px", "purpose": "Rules column drops beneath buckets." },
-      { "name": "phone", "value": "640px", "purpose": "Single column, segmented control on its own row, Import pill icon-only, hero stacks." }
+      {
+        "name": "two-up",
+        "value": "1024px",
+        "purpose": "Collapsed bucket cards span 3 (two per row)."
+      },
+      {
+        "name": "stack",
+        "value": "900px",
+        "purpose": "Rules column drops beneath buckets."
+      },
+      {
+        "name": "phone",
+        "value": "640px",
+        "purpose": "Single column, segmented control on its own row, Import pill icon-only, hero stacks."
+      }
     ]
   },
   "components": [
@@ -101,6 +271,14 @@
       "description": "The accent block carrying the headline figure and its contributing figures.",
       "html": "<section class=\"ds-hero\"><div><span class=\"ds-hero-pill\">1 Oct – 20 Oct 2026</span><p class=\"ds-hero-label\">My share of the card</p><p class=\"ds-hero-big\">$3,007.77</p></div><dl class=\"ds-figs\"><div><dt>Spend</dt><dd>$3,007.77</dd></div><div><dt>Put away</dt><dd>$0.00</dd></div></dl></section>",
       "css": ".ds-hero { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; background: var(--accent, #00c2a8); color: var(--accent-ink, #042e28); padding: 24px 28px 28px; border-radius: 28px; font: 400 15px/1.5 'Figtree', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-hero-pill { display: inline-flex; border-radius: 999px; padding: 4px 10px; font-size: 13px; font-weight: 500; line-height: 1.2; background: rgba(4,46,40,.1); } .ds-hero-label { margin: 18px 0 0; font-weight: 600; opacity: .8; } .ds-hero-big { margin: 2px 0 0; font-size: clamp(40px, 6vw, 64px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; } .ds-figs { display: flex; gap: 36px; margin: 0; padding: 0 8px 6px 0; } .ds-figs div { display: flex; flex-direction: column; gap: 2px; } .ds-figs dt { font-size: 13px; font-weight: 600; opacity: .75; } .ds-figs dd { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; }"
+    },
+    {
+      "name": "Triage Card",
+      "kind": "custom",
+      "refersTo": "choice",
+      "description": "Sort your lines: current line at headline size, three sunken choice buttons with keycaps, bucket radio chips, exact rule foot.",
+      "html": "<section class=\"ds-triage\"><header class=\"ds-tr-head\"><div><h2>Sort your lines</h2><p class=\"ds-small\">Each answer becomes a rule, so next month sorts itself.</p></div><div class=\"ds-prog\"><span class=\"ds-small\">3 / 12</span><span class=\"ds-tr-bar\"><span style=\"transform:scaleX(.25)\"></span></span></div><button class=\"ds-link\">Close</button></header><div class=\"ds-tr-line\"><span class=\"ds-small\">10-14</span><span class=\"ds-tr-det\">Pak n Save Royal Oak</span><span class=\"ds-tr-det\">$84.10</span></div><div class=\"ds-choices\"><button class=\"ds-choice\"><span class=\"l\">Partner’s <kbd class=\"ds-key\">1</kbd></span><span class=\"ds-small\">leave it out</span></button><button class=\"ds-choice\"><span class=\"l\">Split <kbd class=\"ds-key\">2</kbd></span><span class=\"ds-small\">half each</span></button><button class=\"ds-choice\"><span class=\"l\">Mine <kbd class=\"ds-key\">3</kbd></span><span class=\"ds-small\">all of it</span></button></div><div class=\"ds-tr-foot\"><span class=\"ds-buckets\" role=\"radiogroup\"><button class=\"ds-bchip\" style=\"--c:#22c55e\"><i></i>Income</button><button class=\"ds-bchip on\" aria-checked=\"true\" style=\"--c:#f59e0b\"><i></i>General</button><button class=\"ds-bchip\" style=\"--c:#06b6d4\"><i></i>Savings</button></span><span class=\"ds-small\">Rule: details contain “pak n save” · <b class=\"ds-note\">under $120 only, so R2 keeps the bigger ones</b> · <button class=\"ds-link\">Skip<kbd class=\"ds-key-inline\">S</kbd></button></span></div></section>",
+      "css": ".ds-triage { background: var(--surface, #fff); border-radius: 20px; box-shadow: var(--shadow, 0 10px 30px rgba(11,15,25,.06), 0 1px 2px rgba(11,15,25,.04)); padding: 20px 24px 22px; font: 400 15px/1.5 'Figtree', system-ui, sans-serif; color: var(--ink, #0b0f19); font-variant-numeric: tabular-nums; } .ds-small { font-size: 13px; color: var(--ink-2, #626b7a); } .ds-tr-head { display: flex; align-items: center; gap: 24px; } .ds-tr-head div:first-child { flex: 1; } .ds-tr-head h2 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; } .ds-tr-head p { margin: 2px 0 0; } .ds-prog { display: flex; align-items: center; gap: 10px; } .ds-tr-bar { width: 120px; height: 6px; border-radius: 999px; background: var(--surface-2, #f6f7fb); overflow: hidden; display: block; } .ds-tr-bar span { display: block; height: 100%; background: var(--accent, #00c2a8); transform-origin: left; transition: transform 400ms cubic-bezier(0.19,1,0.22,1); } .ds-link { background: none; border: 0; padding: 0; color: var(--ink-2, #626b7a); font: 500 13px/1.2 inherit; cursor: pointer; } .ds-link:hover { color: var(--ink, #0b0f19); } .ds-tr-line { display: grid; grid-template-columns: 48px 1fr auto; gap: 16px; align-items: baseline; padding: 22px 0 18px; animation: ds-in 300ms cubic-bezier(0.19,1,0.22,1); } @keyframes ds-in { from { opacity: 0; transform: translateY(6px); } } .ds-tr-det { font-size: 24px; font-weight: 600; letter-spacing: -0.02em; } .ds-choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; } .ds-choice { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 14px 16px; border: 0; border-radius: 12px; background: var(--surface-2, #f6f7fb); color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background-color 150ms cubic-bezier(0.19,1,0.22,1), transform 150ms cubic-bezier(0.19,1,0.22,1); } .ds-choice:hover { background: var(--accent-soft, rgba(0,194,168,.14)); transform: translateY(-1px); } .ds-choice:focus-visible { outline: 2px solid var(--accent, #00c2a8); outline-offset: 2px; } .ds-choice .l { display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 600; } .ds-key { font: 600 12px/1.2 inherit; padding: 1px 7px; border-radius: 999px; background: var(--surface, #fff); color: var(--ink-2, #626b7a); } .ds-key-inline { font: 600 12px/1.2 inherit; margin-left: 4px; padding: 0 5px; border-radius: 999px; background: var(--surface-2, #f6f7fb); color: var(--ink-2, #626b7a); } @media (hover: none) { .ds-key, .ds-key-inline { display: none; } } .ds-tr-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 16px; margin-top: 14px; } .ds-buckets { display: flex; flex-wrap: wrap; gap: 6px; } .ds-bchip { display: inline-flex; align-items: center; gap: 6px; border: 0; border-radius: 999px; padding: 4px 10px; font: 500 13px/1.2 inherit; background: var(--surface-2, #f6f7fb); color: var(--ink-2, #626b7a); cursor: pointer; } .ds-bchip i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); } .ds-bchip.on { background: color-mix(in srgb, var(--c) 16%, transparent); color: var(--ink, #0b0f19); font-weight: 600; } .ds-note { color: var(--ink, #0b0f19); font-weight: 600; }"
     }
   ],
   "narrative": {
@@ -115,13 +293,41 @@
       "Figures count to new values with one 500ms expoOut tween; held rows glow accent until scrolled past."
     ],
     "rules": [
-      { "name": "The One Block Rule", "body": "The accent appears at full strength exactly twice on a screen: the hero and the primary button. Everything else that wants accent gets the 14% wash.", "section": "colors" },
-      { "name": "The Three Outlets Rule", "body": "A bucket colour may be a dot, a bar fill, or a chip tint. It is never a text colour outside its chip, never a border, never a card background.", "section": "colors" },
-      { "name": "The Mirrored Theme Rule", "body": "Dark mode swaps neutrals and brightens the accent; bucket colours, danger and accent-ink do not change. Any new colour is defined once in light and once in the dark block, never inline.", "section": "colors" },
-      { "name": "The Weight-Not-Case Rule", "body": "Hierarchy is carried by size, weight and ink level. Nothing is uppercased or letterspaced open; the only tracking is negative and only above 15px.", "section": "typography" },
-      { "name": "The Tabular Rule", "body": "Every money figure is tabular so columns and tweened counts do not jitter. Figures are set in Figtree, never a mono.", "section": "typography" },
-      { "name": "The One Shadow Rule", "body": "There is one shadow token. Cards use it; nothing invents another. The only exception is the held-row glow, which is a state, not a surface.", "section": "elevation" },
-      { "name": "The Flush Block Rule", "body": "A full-colour block (the hero) never carries a shadow or ring; its colour is its edge.", "section": "elevation" }
+      {
+        "name": "The One Block Rule",
+        "body": "The accent appears at full strength exactly twice on a screen: the hero and the primary button. Everything else that wants accent gets the 14% wash.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three Outlets Rule",
+        "body": "A bucket colour may be a dot, a bar fill, or a chip tint. It is never a text colour outside its chip, never a border, never a card background.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mirrored Theme Rule",
+        "body": "Dark mode swaps neutrals and brightens the accent; bucket colours, danger and accent-ink do not change. Any new colour is defined once in light and once in the dark block, never inline.",
+        "section": "colors"
+      },
+      {
+        "name": "The Weight-Not-Case Rule",
+        "body": "Hierarchy is carried by size, weight and ink level. Nothing is uppercased or letterspaced open; the only tracking is negative and only above 15px.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Every money figure is tabular so columns and tweened counts do not jitter. Figures are set in Figtree, never a mono.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Shadow Rule",
+        "body": "There is one shadow token. Cards use it; nothing invents another. The only exception is the held-row glow, which is a state, not a surface.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Flush Block Rule",
+        "body": "A full-colour block (the hero) never carries a shadow or ring; its colour is its edge.",
+        "section": "elevation"
+      }
     ],
     "dos": [
       "Do render every card from the one .card utility (surface, 20px, --shadow) and let the theme swap the shadow for the ring.",
@@ -130,6 +336,7 @@
       "Do use pills (999px) for every chip, button and segment, 12px for rows and inputs, 20px for cards, 28px for the hero.",
       "Do tween money with tweenMoney (500ms expoOut, 0ms under reduced motion) and run state transitions on --ease at 150 to 400ms.",
       "Do mark a conflict with the danger wash and a \"conflict · A vs B\" chip; mark a freshly moved row with the accent wash and glow, released on scroll.",
+      "Do show a keyboard shortcut as a 12px 600 keycap pill trailing its label, and hide it under hover: none.",
       "Do keep every bucket grid row full: collapsed cards span 2, an expanded card spans 6, trailing cards re-span to 3 or 6."
     ],
     "donts": [
