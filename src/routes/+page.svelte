@@ -4,6 +4,7 @@
 	import { parseAnz } from '#lib/anz';
 	import BucketLine from '#lib/components/BucketLine.svelte';
 	import Rules from '#lib/components/Rules.svelte';
+	import Triage from '#lib/components/Triage.svelte';
 	import { nzd } from '#lib/money';
 	import { tweenMoney } from '#lib/motion.svelte';
 	import { score } from '#lib/rules';
@@ -19,6 +20,8 @@
 
 	let copy = $state<Copy>('mine');
 	const held = new SvelteSet<string>();
+	const skipped = new SvelteSet<string>();
+	let triage = $state(false);
 	let error = $state('');
 	let draft = $state({ text: '', min: '', max: '', share: '0', bucket: 'general' as Bucket, name: '' });
 	let incomeDraft = $state({ name: '', amount: '' });
@@ -46,6 +49,8 @@
 	const scored = $derived(score(data.txns, data.rules));
 	/** Payments and refunds to the card are not anyone's expense unless a rule claims them. */
 	const payments = $derived(scored.filter((r) => r.amount < 0 && !r.rule));
+	/** Charges no rule has claimed yet: the triage queue. */
+	const unsorted = $derived(scored.filter((r) => r.amount > 0 && !r.rule && !skipped.has(r.id)));
 	const byBucket = $derived(Object.fromEntries(BUCKETS.map((b) => [b, scored.filter((r) => r.bucket === b && !(r.amount < 0 && !r.rule))])) as Record<Bucket, Scored[]>);
 	const incomeTotal = $derived(copy === 'partner' ? 0 : data.incomes.reduce((a, i) => a + i.amount, 0));
 	const val = (r: Scored) => (copy === 'card' ? r.amount : copy === 'mine' ? r.mine : r.amount - r.mine);
@@ -154,6 +159,9 @@
 					{#if copy === 'card'}Everything on the card{:else if copy === 'partner'}Partner's share{:else if !data.incomes.length}My share of the card{:else}Left over this statement{/if}
 				</p>
 				<p class={['big', 'num', { neg: headline < 0 }]}>{nzd(shown.current)}</p>
+				{#if unsorted.length && !triage}
+					<button class="btn dark sort" onclick={() => (triage = true)}>Sort {unsorted.length} unsorted {unsorted.length === 1 ? 'line' : 'lines'}</button>
+				{/if}
 			{/if}
 		</div>
 		{#if data.txns.length}
@@ -166,6 +174,10 @@
 			</dl>
 		{/if}
 	</section>
+
+	{#if triage}
+		<Triage lines={unsorted} onrule={addRule} onskip={(id) => skipped.add(id)} onclose={() => (triage = false)} />
+	{/if}
 
 	<div class="grid">
 		<section class="buckets" aria-label="Buckets">
@@ -231,6 +243,7 @@
 	.big.neg::before { content: ''; }
 	.lede { margin: 8px 0 18px; max-width: 48ch; font-size: 17px; }
 	.btn.dark { background: var(--accent-ink); color: var(--accent); }
+	.sort { margin-top: 16px; }
 	.grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; margin-top: 24px; }
 	.buckets { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; align-content: start; }
 	.buckets :global(.s2) { grid-column: span 2; }

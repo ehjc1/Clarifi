@@ -13,3 +13,4 @@ Thumbs.db
 !.env.test
 .impeccable/review/
 .impeccable/live/
+.impeccable/questions/

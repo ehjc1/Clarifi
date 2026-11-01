@@ -3,7 +3,7 @@ const out = process.argv[2];
 const b = await chromium.launch();
 const scheme = process.env.SCHEME || 'light';
 const errs = [];
-for (const [name, w, h, act] of [['desktop', 1440, 900, null], ['mobile', 390, 844, null], ['card', 1440, 900, 'card'], ['partner', 1440, 900, 'partner'], ['rule', 1440, 900, 'rule']]) {
+for (const [name, w, h, act] of [['desktop', 1440, 900, null], ['mobile', 390, 844, null], ['card', 1440, 900, 'card'], ['partner', 1440, 900, 'partner'], ['rule', 1440, 900, 'rule'], ['triage', 1440, 900, 'triage'], ['triage-mobile', 390, 844, 'triage']]) {
   const p = await b.newPage({ viewport: { width: w, height: h }, colorScheme: scheme });
   p.on('pageerror', (e) => errs.push(name + ': ' + e.message));
   p.on('console', (m) => m.type() === 'error' && errs.push(name + ': ' + m.text()));
@@ -19,6 +19,7 @@ for (const [name, w, h, act] of [['desktop', 1440, 900, null], ['mobile', 390, 8
     await p.locator('form[aria-label="Add a rule"] select').nth(0).selectOption('100');
     await p.getByRole('button', { name: 'Add rule' }).click();
   }
+  if (act === 'triage') { await p.getByRole('button', { name: /Sort \d+ unsorted/ }).click(); await p.getByRole('button', { name: '3 Mine all of it' }).click(); }
   await p.waitForTimeout(900);
   await p.screenshot({ path: `${out}/${name}.png`, fullPage: true });
   await p.close();

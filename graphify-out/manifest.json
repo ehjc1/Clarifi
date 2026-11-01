@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   ".impeccable/questions/90300fef.state.json": {
-    "mtime": 1793500100.7949884,
-    "ast_hash": "a9588f563eb9c3600a89ed0c41a1c53f",
+    "mtime": 1793500326.4993024,
+    "ast_hash": "a8e005e63cc17b74ac032f0d7bcb8dee",
     "semantic_hash": ""
   },
   ".impeccable/shot.mjs": {
@@ -147,6 +147,16 @@
   "src/lib/motion.svelte.ts": {
     "mtime": 1793499847.2227771,
     "ast_hash": "3adcfd27683d0646cdec02ad568c2018",
+    "semantic_hash": ""
+  },
+  ".impeccable/design.json": {
+    "mtime": 1793500306.5969775,
+    "ast_hash": "d3db0af0b42a9e4bf5a80da0a262d8dd",
+    "semantic_hash": ""
+  },
+  "DESIGN.md": {
+    "mtime": 1793500231.7736073,
+    "ast_hash": "60fbae6ee8e77be1bd7627d55912ef7c",
     "semantic_hash": ""
   }
 }
