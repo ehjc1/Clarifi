@@ -1,16 +1,16 @@
 # Graph Report - Clarifi  (2026-11-01)
 
 ## Corpus Check
-- 27 files · ~7,153 words
+- 27 files · ~7,254 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 123 nodes · 128 edges · 17 communities (14 shown, 3 thin omitted)
+- 124 nodes · 129 edges · 17 communities (14 shown, 3 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9e57ce52`
+- Built from commit: `85679b5a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -50,7 +50,7 @@
 
 ### Community 0 - "Community 0"
 Cohesion: 0.08
-Nodes (13): #lib/anz, #lib/components/BucketLine.svelte, card, isOpen, total, #lib/money, svelte, svelte/reactivity (+5 more)
+Nodes (14): #lib/anz, #lib/components/BucketLine.svelte, card, isOpen, total, ./ShareMark.svelte, #lib/money, svelte (+6 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.13
@@ -85,7 +85,7 @@ Cohesion: 0.50
 Nodes (3): #lib/assets/favicon.svg, ../app.css, ./$types
 
 ## Knowledge Gaps
-- **54 isolated node(s):** `errs`, `Direction contract`, `PKB link (read this first)`, `Project`, `Conventions` (+49 more)
+- **55 isolated node(s):** `./ShareMark.svelte`, `Data`, `seed`, `../app.css`, `#lib/assets/favicon.svg` (+50 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -93,13 +93,13 @@ Nodes (3): #lib/assets/favicon.svg, ../app.css, ./$types
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `devDependencies` connect `Community 4` to `Community 0`, `Community 2`?**
-  _High betweenness centrality (0.108) - this node is a cross-community bridge._
+  _High betweenness centrality (0.110) - this node is a cross-community bridge._
 - **Why does `svelte` connect `Community 0` to `Community 4`?**
-  _High betweenness centrality (0.091) - this node is a cross-community bridge._
-- **What connects `errs`, `Direction contract`, `PKB link (read this first)` to the rest of the system?**
-  _54 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.093) - this node is a cross-community bridge._
+- **What connects `./ShareMark.svelte`, `Data`, `seed` to the rest of the system?**
+  _55 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.0812807881773399 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07816091954022988 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.13 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**

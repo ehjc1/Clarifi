@@ -117,7 +117,8 @@
 	<header>
 		<div class="brand">
 			<span class="wordmark">Clarifi</span>
-			<h1>{period} {#if data.synthetic && data.txns.length}<span class="label synth">sample statement · synthetic data</span>{/if}</h1>
+			<h1>{period}</h1>
+			{#if data.synthetic && data.txns.length}<span class="label synth">sample statement · synthetic data</span>{/if}
 		</div>
 		<nav class="copies" aria-label="Which copy of the statement to read">
 			{#each COPIES as c (c.id)}
@@ -146,7 +147,7 @@
 					{:else if copy === 'partner'}
 						<span class="dim">partner's share</span> <b>{nzd(spend + put)}</b>
 					{:else if !data.incomes.length}
-						<span class="dim">income</span> <b class="dim">— not entered</b>
+						<span class="dim">income — not entered</span>
 						<span class="dim">− spend {nzd(spend)} − put away {nzd(put)}</span>
 					{:else}
 						<span class="dim">income {nzd(income)} − spend {nzd(spend)} − put away {nzd(put)} =</span>
@@ -203,7 +204,9 @@
 	header { display: grid; grid-template-columns: 1fr auto auto; gap: calc(var(--s) * 3); align-items: end; padding-bottom: calc(var(--s) * 2); border-bottom: 1px solid var(--ink); }
 	.wordmark { display: block; font-size: var(--t1); letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); font-weight: 600; }
 	h1 { margin: 2px 0 0; font-size: 22px; font-weight: 500; letter-spacing: -0.01em; }
-	.synth { display: inline-block; margin-left: 12px; vertical-align: middle; color: var(--blue); }
+	.brand { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; }
+	.wordmark { flex-basis: 100%; }
+	.synth { color: var(--blue); }
 	.copies { display: flex; }
 	.tab {
 		border: 1px solid var(--rule); border-bottom: 0; background: #fff; padding: 6px 16px 8px; font-size: var(--t1); font-weight: 500;
