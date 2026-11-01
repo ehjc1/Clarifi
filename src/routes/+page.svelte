@@ -2,7 +2,7 @@
 	import { onMount, tick } from 'svelte';
 	import { SvelteSet } from 'svelte/reactivity';
 	import { parseAnz } from '#lib/anz';
-	import BucketLine from '#lib/components/BucketLine.svelte';
+	import GroupCard from '#lib/components/GroupCard.svelte';
 	import Lines, { type Filter } from '#lib/components/Lines.svelte';
 	import Rules from '#lib/components/Rules.svelte';
 	import Triage from '#lib/components/Triage.svelte';
@@ -71,7 +71,6 @@
 	const shownSpend = tweenMoney(() => spend);
 	const shownPut = tweenMoney(() => put);
 	const shownIncome = tweenMoney(() => income);
-	const barTotal = $derived(spend + put + income);
 	const codeOf = (r: Rule) => `R${data.rules.findIndex((x) => x.id === r.id) + 1}`;
 	const period = $derived.by(() => {
 		if (!current) return 'No statement yet';
@@ -219,7 +218,7 @@
 		{#if txns.length}
 			<dl class="figures">
 				{#if copy === 'mine'}
-					<div><dt>Income</dt><dd class="num">{#if data.incomes.length}{nzd(shownIncome.current)}{:else}<button class="link add" onclick={focusIncome}>Add an income</button>{/if}</dd></div>
+					<div><dt>Income</dt><dd class="num">{#if data.incomes.length}<a class="figlink" href="#lines/income">{nzd(shownIncome.current)}</a>{:else}<button class="link add" onclick={focusIncome}>Add an income</button>{/if}</dd></div>
 				{/if}
 				<div><dt>Spend</dt><dd class="num">{nzd(shownSpend.current)}</dd></div>
 				<div><dt>Put away</dt><dd class="num">{nzd(shownPut.current)}</dd></div>
@@ -233,10 +232,15 @@
 
 	<div class="grid">
 		<section class="buckets" aria-label="Buckets">
-			<BucketLine bucket="income" title={TITLES.income} color="var(--b-income)" rows={byBucket.income} extra={incomeTotal} total={barTotal} emptyText="No income entered yet" {copy} />
-			{#each ['fixed', 'general', 'investments', 'savings', 'mortgage'] as const as b (b)}
-				<BucketLine bucket={b} title={TITLES[b]} color="var(--b-{b})" rows={byBucket[b]} total={barTotal} {copy} />
-			{/each}
+			<GroupCard title="Spend" hint="bills, everyday, mortgage" {copy} parts={[
+				{ bucket: 'fixed', title: TITLES.fixed, rows: byBucket.fixed },
+				{ bucket: 'general', title: TITLES.general, rows: byBucket.general },
+				{ bucket: 'mortgage', title: TITLES.mortgage, rows: byBucket.mortgage }
+			]} />
+			<GroupCard title="Put away" hint="savings, investments" {copy} parts={[
+				{ bucket: 'savings', title: TITLES.savings, rows: byBucket.savings },
+				{ bucket: 'investments', title: TITLES.investments, rows: byBucket.investments }
+			]} />
 			{#if trend.length > 1}
 				<section class="trend card" aria-label="Spend by statement">
 					<div class="trend-text">
@@ -325,6 +329,8 @@
 	.figures dt { font-size: 13px; font-weight: 600; opacity: 0.75; }
 	.figures dd { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; }
 	.figures .add { color: var(--accent-ink); font-size: 15px; text-decoration: underline; text-underline-offset: 3px; }
+	.figlink { color: inherit; text-decoration: none; }
+	.figlink:hover { text-decoration: underline; text-underline-offset: 4px; }
 	.hero-top { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
 	.hero .pill { background: rgba(4, 46, 40, 0.1); color: var(--accent-ink); }
 	.months { display: flex; gap: 4px; flex-wrap: wrap; }
@@ -368,7 +374,7 @@
 	footer label { cursor: pointer; }
 	footer > span { flex-basis: 100%; }
 	@media (min-width: 641px) { footer > span { flex-basis: auto; } }
-	.buckets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-content: start; }
+	.buckets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-content: start; }
 	.payments { grid-column: 1 / -1; margin: 4px 4px 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 	.incomes { list-style: none; margin: 0 4px 12px; padding: 6px; border-radius: var(--r2); background: var(--surface-2); }
 	.incomes li { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 8px 12px; border-radius: var(--r2); }
@@ -376,7 +382,7 @@
 	.incomes input { background: var(--surface); }
 	.incomes form { display: contents; }
 	.incomes form input:first-child { grid-column: 1; }
-	@media (max-width: 1024px) { .buckets { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
 	@media (max-width: 640px) {
 		main { padding: 12px 14px 40px; }
 		header { flex-wrap: wrap; gap: 10px; }
