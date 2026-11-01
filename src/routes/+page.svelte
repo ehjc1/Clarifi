@@ -277,6 +277,8 @@
 	.rules-view { display: flex; flex-direction: column; gap: 24px; }
 	footer { display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline; margin-top: 32px; }
 	footer label { cursor: pointer; }
+	footer > span { flex-basis: 100%; }
+	@media (min-width: 641px) { footer > span { flex-basis: auto; } }
 	.buckets { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; align-content: start; }
 	.buckets :global(.s2) { grid-column: span 2; }
 	.buckets :global(.s3) { grid-column: span 3; }

@@ -123,6 +123,25 @@ components:
     textColor: "{colors.ink-muted}"
     rounded: "{rounded.pill}"
     padding: "7px 16px"
+  nav-pill:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink-muted}"
+    rounded: "{rounded.pill}"
+    padding: "7px 14px"
+  nav-pill-on:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.pill}"
+    padding: "7px 14px"
+  count-pill:
+    backgroundColor: "{colors.surface-sunken}"
+    textColor: "{colors.ink-muted}"
+    typography: "{typography.code}"
+    rounded: "{rounded.pill}"
+    padding: "1px 7px"
+  count-pill-on:
+    backgroundColor: "{colors.accent-soft}"
+    textColor: "{colors.ink}"
   card:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
@@ -179,7 +198,7 @@ components:
 
 **Creative North Star: "The Trusted Balance"**
 
-Clarifi is modern consumer fintech played straight, at the craft level of Revolut and Wise. The whole screen is organised to make one figure believable: a full-width teal-mint hero carries the headline number in a tight 700-weight display, and everything beneath it (six bucket cards, a rules column) exists to explain where that number came from. Surfaces are large, white, and generously rounded; colour is scarce and rationed by role, so the one accent block and six small bucket colours do all the signalling.
+Clarifi is modern consumer fintech played straight, at the craft level of Revolut and Wise. The whole screen is organised to make one figure believable: a full-width teal-mint hero carries the headline number in a tight 700-weight display, and everything beneath it (six bucket cards on the Overview view; the rule cards that live one hash away on the Rules view) exists to explain where that number came from. Surfaces are large, white, and generously rounded; colour is scarce and rationed by role, so the one accent block and six small bucket colours do all the signalling.
 
 The material is soft and bright in light mode (white cards floating on a cool grey canvas under a diffuse shadow) and flat and hairlined in dark mode (the same cards ringed by a 1px line on near-black). Figtree is the only face; its rounded geometry and tabular figures give the money a playful-but-precise register without ever becoming a ledger. Density is relaxed on desktop and collapses to a single column on phones without changing any component's shape.
 
@@ -232,7 +251,7 @@ A near-neutral stage with one teal-mint voice and six quiet bucket hues that nev
 ### Hierarchy
 - **Display** (700, `clamp(40px, 6vw, 64px)`, 1.05, -0.04em): the single headline figure in the hero. Nothing else uses it.
 - **Headline** (600, 24px, 1.1, -0.02em): bucket card totals and the hero's three contributing figures (20px on phones), and the current line (details and amount) in the triage card. Muted ink and 500 weight when the total is zero.
-- **Title** (600, 18px, -0.01em): the "Share rules" column heading, the triage card title and its three choice labels. Card titles and rule names are 600 at body size (15px).
+- **Title** (600, 18px, -0.01em): the "Share rules" heading of the Rules view, the triage card title and its three choice labels. Card titles and rule names are 600 at body size (15px).
 - **Wordmark** (700, 20px, -0.03em): "Clarifi" in the top bar; the only logotype.
 - **Body** (400, 15px, 1.5): rule conditions, the empty-state lede (17px, max 48ch), row details (500).
 - **Label** (500, 13px, 1.2): pills, line counts, figure captions, form labels, footer links; usually in muted ink. Rule-code chips drop to 12px/600.
@@ -244,11 +263,17 @@ A near-neutral stage with one teal-mint voice and six quiet bucket hues that nev
 
 ## Layout
 
-A single centred column, max 1240px, with 24px side padding (14px on phones) and 20px top. The top bar is a flex row: wordmark pushed left, the segmented control and the Import pill on the right, 16px gaps. Below it the hero spans full width, then a two-column grid of `minmax(0, 1fr) 340px` with a 24px gap: bucket cards on the left, the rules column on the right.
+A single centred column, max 1240px, with 24px side padding (14px on phones) and 20px top. One page, two views switched by the URL hash (`#overview`, default, and `#rules`); the view is read on load and on `hashchange`, so the back button works and no router is involved. Adding a rule from the Rules view returns to Overview so the rows it moved are visible.
 
-The bucket section is a six-column grid with 12px gaps. Collapsed cards span 2 (three per row). An expanded card spans all 6. The trailing collapsed cards after an expansion re-span to 3 or 6 so no grid cell is left empty. At 1024px and below collapsed cards span 3 (two per row); at 900px the rules column drops beneath the buckets; at 640px every card spans the full width, the segmented control wraps to its own full-width row, the Import pill loses its text, and the hero stacks its figures under the headline.
+The top bar is a flex row with 16px gaps: wordmark left, then the pill nav (Overview, Rules with its count pill) pushed against it with `margin-right: auto`, then the segmented Card / Mine / Partner control (rendered only on Overview, since it reads the figures), then the primary Import pill. On phones the bar wraps with 10px gaps: wordmark and Import share the first row, the nav takes the second, and the segmented control drops to its own full-width row with equal-width segments; the Import pill loses its text.
 
-Spacing rhythm is a loose 6/8/12/16/24/36 scale: 6px between chips, 8px inside stacks, 12px between cards and rows, 16px to 24px between sections, 36px between hero figures. Card interiors are 18px 20px (bucket) and 16px 18px (rule); the hero is 24px 28px 28px (20px on phones).
+**Overview** is full width: the hero, the triage card when lines are unsorted, then (24px below) the bucket section, a six-column grid with 12px gaps. Collapsed cards span 2 (three per row). An expanded card spans all 6. The trailing collapsed cards after an expansion re-span to 3 or 6 so no grid cell is left empty. At 1024px and below collapsed cards span 3 (two per row); at 640px every card spans the full width and the hero stacks its figures under the headline. A "Payments to the card" strip of neutral pills spans the full grid width beneath the cards when there are credits.
+
+**Rules** is a 14px vertical stack: a heading row (title 18px 600 with a label-size subline on the left, the primary "New rule" pill with a 16px stroke plus on the right, `space-between`), the inline add-rule form card when open, then a two-column grid of rule cards with 12px gaps. Under 720px the rule grid is one column. The form's field grid is three columns (10px row / 12px column gaps): details spans 3, the two amount bounds and the share select sit on one row, bucket takes one cell and name spans 2; under 720px it is two columns with details and name spanning both.
+
+The footer is shared by both views: a 13px muted-ink line ("Stored in this browser only") followed by Export JSON, Import JSON and Clear statement as link-style buttons, 16px gaps, 32px above.
+
+Spacing rhythm is a loose 6/8/12/16/24/36 scale: 6px between chips, 8px inside stacks, 12px between cards and rows, 14px to 24px between sections, 36px between hero figures. Card interiors are 18px 20px (bucket) and 16px 18px (rule and rule form); the hero is 24px 28px 28px (20px on phones).
 
 ## Elevation & Depth
 
@@ -272,11 +297,11 @@ Everything is rounded and nothing is square. Radius scales with the size of the 
 
 ### Buttons
 - **Shape:** full pill (999px), 10px 18px, 600 weight at 14px, 8px gap to an inline 16px stroke icon.
-- **Primary:** accent fill with accent-ink text ("Import statement", "Add rule").
+- **Primary:** accent fill with accent-ink text ("Import statement", "New rule" with a 16px 1.8-stroke plus drawn inline, "Add rule").
 - **Hover / Focus:** `brightness(1.06)` and a 1px lift, 150ms on the shared `--ease` (`cubic-bezier(0.19, 1, 0.22, 1)`); active returns to rest; focus-visible is the global 2px accent outline. Disabled drops to 45% opacity.
 - **Ghost:** sunken surface fill with ink text, hover to `--line` ("Add income").
 - **On-accent (inverted):** accent-ink fill with accent text, used only inside the hero ("Try with a sample statement", "Sort N unsorted lines").
-- **Link:** bare text, 13px 500 muted ink, hover to ink. Footer actions and "Remove". On the hero it is accent-ink and underlined (3px offset).
+- **Link:** bare text, 13px 500 muted ink, hover to ink. Footer actions (Export JSON, Import JSON, Clear statement), "Remove" and "Cancel". On the hero it is accent-ink and underlined (3px offset).
 
 ### Chips
 - **Style:** pill, 4px 10px, 13px 500, 6px gap, sunken surface with ink text; never wraps.
@@ -302,20 +327,22 @@ Everything is rounded and nothing is square. Radius scales with the size of the 
 - **Error:** a body-size line in danger below the form.
 
 ### Navigation
-- **Top bar:** wordmark (700, 20px, -0.03em) left; segmented control and primary Import pill right.
+- **Top bar:** wordmark (700, 20px, -0.03em) left; pill nav beside it; segmented control (Overview only) and primary Import pill right.
+- **Pill nav:** two anchors (`#overview`, `#rules`) at 15px 600 in muted ink, 7px 14px, 2px apart, 150ms colour and background on `--ease`. Hover lifts the text to ink; the active link (`aria-current="page"`) becomes a surface pill carrying the card shadow (dark ring in dark mode). The Rules link trails a count pill: 12px 600, 1px 7px, sunken surface and muted ink at rest, accent wash with ink text when its view is active. On phones the nav drops to the second row of the bar.
 - **Segmented control:** a surface pill with 4px inner padding and the card shadow; segments are pills at 7px 16px, 600/14px, muted ink; the selected segment fills with ink and flips text to canvas, 200ms. On phones it moves to its own row and segments share width equally.
-- **Footer:** 13px muted-ink links at baseline, 16px gaps, 32px above.
+- **Footer:** 13px muted-ink links at baseline, 16px gaps, 32px above; the same footer under both views.
 
 ### Bucket Card (signature)
 A `details` card: summary row of dot, title (600), line count (13px muted), the tweened total (headline) and an optional conflict chip; beneath, a 6px share bar (sunken track, bucket-colour fill scaled on X over 400ms) or a 13px empty text. Open, the body lists rows at 12px radius with 48px date, details, chips, amount: hover sunken; **held** rows get accent wash plus the held glow and are released by IntersectionObserver once scrolled past; **conflict** rows get danger wash and the warn chip; **excluded** (0% share) rows fade details and amount to muted ink at 400 weight. Card spans follow the Layout grid (2 / 3 / 6).
 
 ### Rule Card (signature)
-Surface card, 16px 18px: code chip, name (600), Remove link on one line; the condition sentence in body; a chip row of share, bucket (dot + name) and "fired n". The add-rule form is the same card with stacked labelled inputs, a pair grid, and a primary pill button aligned left.
+Surface card, 16px 18px, laid two per row (one under 720px): code chip, name (600), Remove link on one line; the condition sentence in label size; a chip row of share, bucket (dot + name) and "fired n". The add-rule form is the same card, revealed inline beneath the heading row by the "New rule" button and dismissed by a Cancel link: a header row of accent-tinted code chip (R n+1), "New rule" and Cancel, the three-column field grid described in Layout, an optional danger error line, and the primary "Add rule" pill aligned left. The form card is the only card on the Rules view that is not a rule.
 
 ### Triage Card (signature)
 "Sort your lines": a plain `.card` (surface, 20px, `--shadow`, no accent border), 20px 24px 22px, mounted between the hero and the bucket grid 16px below the hero. Header is one flex row with 24px gaps: title (18px 600) over a label-size subline, a progress group of "done / total" in label plus a 120px by 6px pill bar (sunken track, accent fill, `scaleX` over 400ms `--ease`), and a Close link. The current line sits in a 48px / 1fr / auto grid at 22px 0 18px: date in label, details and amount at headline size; each new line enters with a 300ms `--ease` fade and 6px rise, keyed per line. Three **choice** buttons share a 3-column grid with 10px gaps: sunken surface at 12px radius, 14px 16px, label 18px 600 with a trailing keycap pill, hint in label size; hover to accent wash with a 1px lift at 150ms. The foot wraps a bucket radio group (bucket chips, 6px gaps) against a label-size line stating the exact rule condition, any collision note in ink 600, and a Skip link with an inline keycap. Keys: 1 / 2 / 3 choose, S skips, Escape closes. Phone: 16px padding, header wraps and the bar stretches, line and choices stack to one column. Done state is one 18px 600 line.
 
 <!-- review: triage first pass disposition fix, seven findings, all applied; verdict pass pending at time of writing. -->
+<!-- review: views IA (hash nav, full-width overview, rules view) first pass disposition fix, six findings, all applied; verdict pass pending at time of writing. -->
 
 ### Hero (signature)
 Accent block, 28px radius, two columns on desktop (`1fr auto`, aligned to the end): on the left a row of on-accent pills, a 15px 600 label at 80% opacity, and the display figure; on the right a `dl` of up to three figures with 13px 600 captions at 75% opacity and 24px 600 values, 36px apart. Empty state swaps the figure for a 17px lede and the inverted button.
@@ -331,6 +358,7 @@ Accent block, 28px radius, two columns on desktop (`1fr auto`, aligned to the en
 - **Do** mark a conflict with the danger wash and a "conflict · A vs B" chip; mark a freshly moved row with the accent wash and glow, released on scroll.
 - **Do** show a keyboard shortcut as a 12px 600 keycap pill trailing its label, and hide it under `hover: none`.
 - **Do** keep every bucket grid row full: collapsed cards span 2, an expanded card spans 6, trailing cards re-span to 3 or 6.
+- **Do** switch top-level views by hash (`#overview` / `#rules`) through the pill nav; the active link is a surface pill with the card shadow, and controls that only make sense on one view (the segmented control) render only there.
 
 ### Don't:
 - **Don't** use a second accent, a gradient, or a bucket colour as a card background, border or heading colour.
