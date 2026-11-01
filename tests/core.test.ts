@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { parseAnz, parseCsv } from '../src/lib/anz';
-import { score } from '../src/lib/rules';
+import { composeRule, score } from '../src/lib/rules';
 import type { Rule } from '../src/lib/types';
 
 const csv = `Card,Type,Amount,Details,TransactionDate,ProcessedDate
@@ -37,5 +37,20 @@ describe('rules', () => {
 		expect(s[3].conflict).toBe(true);
 		expect(s[3].bucket).toBe('fixed');
 		expect(s[4].share).toBe(0);
+	});
+});
+
+describe('composeRule', () => {
+	it('bounds a triage rule so it does not collide with a rule that already claims bigger lines', () => {
+		const s = score(parseAnz(csv), rules.slice(0, 1)); // R "big shop": pak n save >= 50 is partner's
+		const { rule, note, claimed } = composeRule('PAK N SAVE ALBANY', 1, 'general', s);
+		expect(rule).toMatchObject({ name: 'Pak N Save Albany is mine', text: 'pak n save albany', share: 1, max: 32.1 });
+		expect(claimed).toBe(1);
+		expect(note).toContain('under $32.1');
+		expect(score(parseAnz(csv), [...rules.slice(0, 1), { id: 'z', ...rule }]).some((r) => r.conflict)).toBe(false);
+	});
+	it('writes an unbounded rule when nothing else claims a match', () => {
+		const s = score(parseAnz(csv), []);
+		expect(composeRule('contact energy', 0.5, 'fixed', s)).toMatchObject({ note: '', claimed: 0, rule: { text: 'contact energy', share: 0.5 } });
 	});
 });

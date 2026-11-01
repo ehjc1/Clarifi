@@ -1,9 +1,12 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import { nzd } from '#lib/money';
+	import { composeRule, describe } from '#lib/rules';
 	import { BUCKETS, type Bucket, type Rule, type Scored } from '#lib/types';
 
-	let { lines, onrule, onskip, onclose }: {
+	let { lines, scored, onrule, onskip, onclose }: {
 		lines: Scored[]; // unsorted lines, in statement order
+		scored: Scored[]; // every line, to detect rules that already claim a match
 		onrule: (r: Omit<Rule, 'id'>) => void;
 		onskip: (id: string) => void;
 		onclose: () => void;
@@ -16,23 +19,22 @@
 		{ key: '3', label: 'Mine', share: 1, hint: 'all of it' }
 	];
 	let bucket = $state<Bucket>('general');
-	let done = $state(0);
-	const total = $derived(done + lines.length);
+	const total = untrack(() => lines.length); // snapshot at open: one answer may sort several lines
+	const done = $derived(total - lines.length);
 	const line = $derived(lines[0]);
 	/** Merchant stem: drop a trailing token carrying digits (store or terminal numbers). */
 	const stem = $derived(line ? line.details.replace(/\s+\S*\d\S*$/g, '').trim() : '');
 
+	/** Preview of the rule each choice would write; shares differ only in the share field, bounds depend on it. */
+	const preview = $derived(line ? composeRule(stem, 1, bucket, scored) : null);
 	function choose(share: number) {
 		if (!line) return;
-		const label = share === 0 ? 'partner’s' : share === 1 ? 'mine' : 'split';
-		onrule({ name: `${stem} is ${label}`, text: stem.toLowerCase(), share, bucket });
-		done++;
+		onrule(composeRule(stem, share, bucket, scored).rule);
 		bucket = 'general';
 	}
 	function skip() {
 		if (!line) return;
 		onskip(line.id);
-		done++;
 	}
 	function keys(e: KeyboardEvent) {
 		if ((e.target as HTMLElement).tagName === 'INPUT') return;
@@ -69,8 +71,7 @@
 		<div class="choices">
 			{#each CHOICES as c (c.key)}
 				<button class="choice" onclick={() => choose(c.share)}>
-					<span class="k">{c.key}</span>
-					<span class="l">{c.label}</span>
+					<span class="l">{c.label} <kbd class="pill key">{c.key}</kbd></span>
 					<span class="small">{c.hint}</span>
 				</button>
 			{/each}
@@ -81,7 +82,10 @@
 					<button class={['pill', 'b', { on: bucket === b }]} role="radio" aria-checked={bucket === b} style="--c: var(--b-{b})" onclick={() => (bucket = b)}><span class="dot"></span>{TITLES[b]}</button>
 				{/each}
 			</span>
-			<span class="small">Rule will match lines containing “{stem.toLowerCase()}” · <button class="link" onclick={skip}>Skip (S)</button></span>
+			<span class="small">
+				Rule: details {preview ? describe(preview.rule) : ''}{#if preview?.note} · <b class="note">{preview.note}</b>{/if}
+				· <button class="link" onclick={skip}>Skip<kbd class="key-inline">S</kbd></button>
+			</span>
 		</div>
 	{:else}
 		<p class="done">All sorted. Every line now has a rule.</p>
@@ -89,7 +93,7 @@
 </section>
 
 <style>
-	.triage { padding: 20px 24px 22px; margin-top: 16px; border: 2px solid var(--accent); }
+	.triage { padding: 20px 24px 22px; margin-top: 16px; }
 	header { display: flex; align-items: center; gap: 24px; }
 	header div:first-child { flex: 1; }
 	h2 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
@@ -104,12 +108,15 @@
 	.choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 	.choice { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 14px 16px; border: 0; border-radius: var(--r2); background: var(--surface-2); text-align: left; transition: background-color 150ms var(--ease), transform 150ms var(--ease); }
 	.choice:hover { background: var(--accent-soft); transform: translateY(-1px); }
-	.choice .k { font-size: 12px; font-weight: 600; color: var(--ink-2); }
-	.choice .l { font-size: 18px; font-weight: 600; }
+	.choice .l { display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 600; }
+	.key { font-family: inherit; font-size: 12px; padding: 1px 7px; background: var(--surface); color: var(--ink-2); }
+	.key-inline { font-family: inherit; font-size: 12px; margin-left: 4px; padding: 0 5px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); }
+	.note { color: var(--ink); font-weight: 600; }
+	@media (hover: none) { .key, .key-inline { display: none; } }
 	.foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 16px; margin-top: 14px; }
 	.buckets { display: flex; flex-wrap: wrap; gap: 6px; }
-	.pill.b { border: 1px solid transparent; cursor: pointer; }
-	.pill.b.on { background: color-mix(in srgb, var(--c) 16%, transparent); border-color: var(--c); }
+	.pill.b { border: 0; cursor: pointer; color: var(--ink-2); }
+	.pill.b.on { background: color-mix(in srgb, var(--c) 16%, transparent); color: var(--ink); font-weight: 600; }
 	.done { margin: 20px 0 4px; font-size: 18px; font-weight: 600; }
 	@media (max-width: 640px) {
 		.triage { padding: 16px; }

@@ -176,7 +176,7 @@
 	</section>
 
 	{#if triage}
-		<Triage lines={unsorted} onrule={addRule} onskip={(id) => skipped.add(id)} onclose={() => (triage = false)} />
+		<Triage lines={unsorted} {scored} onrule={addRule} onskip={(id) => skipped.add(id)} onclose={() => (triage = false)} />
 	{/if}
 
 	<div class="grid">

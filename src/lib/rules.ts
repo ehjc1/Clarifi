@@ -28,3 +28,28 @@ export function describe(r: Rule): string {
 	if (r.max != null) parts.push(`≤ $${r.max}`);
 	return parts.join(' and ') || 'everything';
 }
+
+/** Title-case a merchant stem for a readable rule name. */
+export const titleCase = (s: string) => s.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
+
+/**
+ * Compose a share rule on a merchant stem without silently colliding with rules that already
+ * claim some matching lines: bound it by amount when the claimed and unclaimed lines separate cleanly.
+ */
+export function composeRule(stem: string, share: number, bucket: Rule['bucket'], scored: Scored[]) {
+	const text = stem.toLowerCase();
+	const hits = scored.filter((r) => r.amount > 0 && r.details.toLowerCase().includes(text));
+	const claimed = hits.filter((r) => r.rule && r.rule.share !== share);
+	const free = hits.filter((r) => !r.rule);
+	const rule: Omit<Rule, 'id'> = { name: `${titleCase(stem)} is ${share === 0 ? 'partner’s' : share === 1 ? 'mine' : 'split'}`, text, share, bucket };
+	let note = '';
+	if (claimed.length && free.length) {
+		const loFree = Math.min(...free.map((r) => r.amount)), hiFree = Math.max(...free.map((r) => r.amount));
+		const loCl = Math.min(...claimed.map((r) => r.amount)), hiCl = Math.max(...claimed.map((r) => r.amount));
+		const codes = [...new Set(claimed.map((r) => r.rule!.name))].join(', ');
+		if (hiFree < loCl) { rule.max = hiFree; note = `under $${hiFree} only, so ${codes} keeps the bigger ones`; }
+		else if (loFree > hiCl) { rule.min = loFree; note = `$${loFree} and up only, so ${codes} keeps the smaller ones`; }
+		else note = `also matches ${claimed.length} line${claimed.length > 1 ? 's' : ''} ${codes} already claims; that rule wins there`;
+	}
+	return { rule, note, claimed: claimed.length };
+}

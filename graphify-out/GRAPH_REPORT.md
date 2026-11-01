@@ -1,7 +1,7 @@
 # Graph Report - Clarifi  (2026-11-01)
 
 ## Corpus Check
-- 29 files · ~13,714 words
+- 29 files · ~13,759 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4cf916d2`
+- Built from commit: `52ec35f8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -36,8 +36,8 @@
 3. `Components` - 9 edges
 4. `scripts` - 7 edges
 5. `Colors` - 5 edges
-6. `Clarifi — Project Context` - 4 edges
-7. `Clarifi` - 4 edges
+6. `Clarifi` - 4 edges
+7. `Clarifi — Project Context` - 4 edges
 8. `parseAnz()` - 4 edges
 9. `Txn` - 4 edges
 10. `Rule` - 4 edges
@@ -91,7 +91,7 @@ Cohesion: 0.22
 Nodes (9): Bucket Card (signature), Buttons, Cards / Containers, Chips, Components, Hero (signature), Inputs / Fields, Navigation (+1 more)
 
 ## Knowledge Gaps
-- **77 isolated node(s):** `errs`, `#lib/components/BucketLine.svelte`, `#lib/components/Rules.svelte`, `#lib/components/Triage.svelte`, `#lib/store.svelte` (+72 more)
+- **77 isolated node(s):** `Run`, `How it reads`, `Status`, `errs`, `#lib/components/BucketLine.svelte` (+72 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -104,7 +104,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.052) - this node is a cross-community bridge._
 - **Why does `Design System: Clarifi` connect `Community 19` to `Community 20`?**
   _High betweenness centrality (0.028) - this node is a cross-community bridge._
-- **What connects `errs`, `#lib/components/BucketLine.svelte`, `#lib/components/Rules.svelte` to the rest of the system?**
+- **What connects `Run`, `How it reads`, `Status` to the rest of the system?**
   _77 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.13 - nodes in this community are weakly interconnected._
