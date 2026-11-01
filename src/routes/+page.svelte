@@ -25,7 +25,8 @@
 	type View = 'overview' | 'rules';
 	let view = $state<View>('overview');
 	let adding = $state(false);
-	const go = (v: View) => { view = v; history.replaceState(null, '', v === 'rules' ? '#rules' : location.pathname + location.search); };
+	const readHash = () => (view = location.hash === '#rules' ? 'rules' : 'overview');
+	const go = (v: View) => { location.hash = v === 'rules' ? 'rules' : 'overview'; };
 	let error = $state('');
 	let draft = $state({ text: '', min: '', max: '', share: '0', bucket: 'general' as Bucket, name: '' });
 	let incomeDraft = $state({ name: '', amount: '' });
@@ -47,7 +48,7 @@
 
 	onMount(() => {
 		Object.assign(data, load());
-		if (location.hash === '#rules') view = 'rules';
+		readHash();
 		if (location.search.includes('sample') && (!data.txns.length || data.synthetic)) loadCsv(SAMPLE_CSV, true); // demo/screenshot entry, never over real data
 	});
 
@@ -97,7 +98,10 @@
 		fn(); persist();
 		for (const r of score(data.txns, data.rules)) if (before.get(r.id) !== `${r.bucket}:${r.share}`) held.add(r.id);
 	}
-	const addRule = (r: Omit<Rule, 'id'>) => withDiff(() => data.rules.push({ id: uid(), ...r }));
+	function addRule(r: Omit<Rule, 'id'>) {
+		withDiff(() => data.rules.push({ id: uid(), ...r }));
+		if (view === 'rules') go('overview'); // show the rows the new rule moved
+	}
 	const removeRule = (id: string) => withDiff(() => (data.rules = data.rules.filter((r) => r.id !== id)));
 	const release = (id: string) => held.delete(id);
 	function makeRule(details: string) {
@@ -133,13 +137,14 @@
 </script>
 
 <svelte:head><title>Clarifi</title></svelte:head>
+<svelte:window onhashchange={readHash} />
 
 <main>
 	<header>
 		<span class="wordmark">Clarifi</span>
 		<nav class="views" aria-label="Sections">
-			<button class={{ on: view === 'overview' }} aria-current={view === 'overview' ? 'page' : undefined} onclick={() => go('overview')}>Overview</button>
-			<button class={{ on: view === 'rules' }} aria-current={view === 'rules' ? 'page' : undefined} onclick={() => go('rules')}>Rules <span class="n">{data.rules.length}</span></button>
+			<a href="#overview" class={{ on: view === 'overview' }} aria-current={view === 'overview' ? 'page' : undefined}>Overview</a>
+			<a href="#rules" class={{ on: view === 'rules' }} aria-current={view === 'rules' ? 'page' : undefined}>Rules <span class="n">{data.rules.length}</span></a>
 		</nav>
 		{#if view === 'overview'}
 		<div class="seg" role="group" aria-label="Which share to read">
@@ -225,20 +230,16 @@
 	</div>
 	{:else}
 	<div class="rules-view">
-		<Rules rules={data.rules} {scored} {copy} bind:draft bind:adding onadd={addRule} onremove={removeRule} />
-		<section class="data card" aria-labelledby="data-h">
-			<div>
-				<h2 id="data-h">Your data</h2>
-				<p class="small">Everything stays in this browser. Export a backup before clearing it.</p>
-			</div>
-			<div class="actions">
-				<button class="btn ghost" onclick={exportJson}>Export JSON</button>
-				<label class="btn ghost">Import JSON<input type="file" accept="application/json" onchange={importJson} hidden /></label>
-				<button class="btn ghost danger" onclick={clearAll} disabled={!data.txns.length && !data.incomes.length}>Clear statement</button>
-			</div>
-		</section>
+		<Rules rules={data.rules} {scored} bind:draft bind:adding onadd={addRule} onremove={removeRule} />
 	</div>
 	{/if}
+
+	<footer class="small">
+		<span>Stored in this browser only.</span>
+		<button class="link" onclick={exportJson}>Export JSON</button>
+		<label class="link">Import JSON<input type="file" accept="application/json" onchange={importJson} hidden /></label>
+		<button class="link" onclick={clearAll} disabled={!data.txns.length && !data.incomes.length}>Clear statement</button>
+	</footer>
 </main>
 
 <style>
@@ -268,18 +269,14 @@
 	.sort { margin-top: 16px; }
 	.grid { margin-top: 24px; }
 	.views { display: flex; gap: 2px; margin-right: auto; }
-	.views button { border: 0; background: transparent; border-radius: 999px; padding: 7px 14px; font-weight: 600; font-size: 15px; color: var(--ink-2); display: inline-flex; align-items: center; gap: 6px; transition: color 150ms var(--ease), background-color 150ms var(--ease); }
-	.views button:hover { color: var(--ink); }
-	.views button.on { color: var(--ink); background: var(--surface); box-shadow: var(--shadow); }
+	.views a { text-decoration: none; border-radius: 999px; padding: 7px 14px; font-weight: 600; font-size: 15px; color: var(--ink-2); display: inline-flex; align-items: center; gap: 6px; transition: color 150ms var(--ease), background-color 150ms var(--ease); }
+	.views a:hover { color: var(--ink); }
+	.views a.on { color: var(--ink); background: var(--surface); box-shadow: var(--shadow); }
 	.views .n { font-size: 12px; padding: 1px 7px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); }
-	.views button.on .n { background: var(--accent-soft); color: var(--ink); }
+	.views a.on .n { background: var(--accent-soft); color: var(--ink); }
 	.rules-view { display: flex; flex-direction: column; gap: 24px; }
-	.data { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 20px; flex-wrap: wrap; }
-	.data h2 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
-	.data p { margin: 2px 0 0; }
-	.actions { display: flex; gap: 8px; flex-wrap: wrap; }
-	.actions label { cursor: pointer; }
-	.btn.danger { color: var(--danger); }
+	footer { display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline; margin-top: 32px; }
+	footer label { cursor: pointer; }
 	.buckets { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; align-content: start; }
 	.buckets :global(.s2) { grid-column: span 2; }
 	.buckets :global(.s3) { grid-column: span 3; }

@@ -4,14 +4,64 @@
   "graph": {},
   "nodes": [
     {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "readme",
+      "community": 6,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Clarifi",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "readme_clarifi",
+      "community": 6,
+      "norm_label": "clarifi"
+    },
+    {
+      "label": "Run",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "readme_run",
+      "community": 6,
+      "norm_label": "run"
+    },
+    {
+      "label": "How it reads",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "readme_how_it_reads",
+      "community": 6,
+      "norm_label": "how it reads"
+    },
+    {
+      "label": "Status",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "readme_status",
+      "community": 6,
+      "norm_label": "status"
+    },
+    {
       "label": "shot.mjs",
       "file_type": "code",
       "source_file": ".impeccable/shot.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "impeccable_shot",
       "community": 11,
-      "norm_label": "shot.mjs"
+      "norm_label": "shot.mjs",
+      "id": "impeccable_shot"
     },
     {
       "label": "errs",
@@ -19,9 +69,9 @@
       "source_file": ".impeccable/shot.mjs",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "impeccable_shot_errs",
       "community": 11,
-      "norm_label": "errs"
+      "norm_label": "errs",
+      "id": "impeccable_shot_errs"
     },
     {
       "label": "DESIGN.md",
@@ -29,9 +79,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "design",
       "community": 19,
-      "norm_label": "design.md"
+      "norm_label": "design.md",
+      "id": "design"
     },
     {
       "label": "Design System: Clarifi",
@@ -39,9 +89,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L176",
       "_origin": "ast",
-      "id": "design_design_system_clarifi",
       "community": 19,
-      "norm_label": "design system: clarifi"
+      "norm_label": "design system: clarifi",
+      "id": "design_design_system_clarifi"
     },
     {
       "label": "Overview",
@@ -49,9 +99,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L178",
       "_origin": "ast",
-      "id": "design_overview",
       "community": 19,
-      "norm_label": "overview"
+      "norm_label": "overview",
+      "id": "design_overview"
     },
     {
       "label": "Colors",
@@ -59,9 +109,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L196",
       "_origin": "ast",
-      "id": "design_colors",
       "community": 19,
-      "norm_label": "colors"
+      "norm_label": "colors",
+      "id": "design_colors"
     },
     {
       "label": "Primary",
@@ -69,9 +119,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L200",
       "_origin": "ast",
-      "id": "design_primary",
       "community": 19,
-      "norm_label": "primary"
+      "norm_label": "primary",
+      "id": "design_primary"
     },
     {
       "label": "Bucket (fixed, six)",
@@ -79,9 +129,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L205",
       "_origin": "ast",
-      "id": "design_bucket_fixed_six",
       "community": 19,
-      "norm_label": "bucket (fixed, six)"
+      "norm_label": "bucket (fixed, six)",
+      "id": "design_bucket_fixed_six"
     },
     {
       "label": "Neutral",
@@ -89,9 +139,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L208",
       "_origin": "ast",
-      "id": "design_neutral",
       "community": 19,
-      "norm_label": "neutral"
+      "norm_label": "neutral",
+      "id": "design_neutral"
     },
     {
       "label": "Named Rules",
@@ -99,9 +149,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L217",
       "_origin": "ast",
-      "id": "design_named_rules",
       "community": 19,
-      "norm_label": "named rules"
+      "norm_label": "named rules",
+      "id": "design_named_rules"
     },
     {
       "label": "Typography",
@@ -109,9 +159,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L224",
       "_origin": "ast",
-      "id": "design_typography",
       "community": 19,
-      "norm_label": "typography"
+      "norm_label": "typography",
+      "id": "design_typography"
     },
     {
       "label": "Hierarchy",
@@ -119,9 +169,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L232",
       "_origin": "ast",
-      "id": "design_hierarchy",
       "community": 19,
-      "norm_label": "hierarchy"
+      "norm_label": "hierarchy",
+      "id": "design_hierarchy"
     },
     {
       "label": "Named Rules",
@@ -129,9 +179,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L240",
       "_origin": "ast",
-      "id": "design_named_rules_240",
       "community": 19,
-      "norm_label": "named rules"
+      "norm_label": "named rules",
+      "id": "design_named_rules_240"
     },
     {
       "label": "Layout",
@@ -139,9 +189,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L245",
       "_origin": "ast",
-      "id": "design_layout",
       "community": 19,
-      "norm_label": "layout"
+      "norm_label": "layout",
+      "id": "design_layout"
     },
     {
       "label": "Elevation & Depth",
@@ -149,9 +199,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L253",
       "_origin": "ast",
-      "id": "design_elevation_depth",
       "community": 19,
-      "norm_label": "elevation & depth"
+      "norm_label": "elevation & depth",
+      "id": "design_elevation_depth"
     },
     {
       "label": "Shadow Vocabulary",
@@ -159,9 +209,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L257",
       "_origin": "ast",
-      "id": "design_shadow_vocabulary",
       "community": 19,
-      "norm_label": "shadow vocabulary"
+      "norm_label": "shadow vocabulary",
+      "id": "design_shadow_vocabulary"
     },
     {
       "label": "Named Rules",
@@ -169,9 +219,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L262",
       "_origin": "ast",
-      "id": "design_named_rules_262",
       "community": 19,
-      "norm_label": "named rules"
+      "norm_label": "named rules",
+      "id": "design_named_rules_262"
     },
     {
       "label": "Shapes",
@@ -179,9 +229,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L267",
       "_origin": "ast",
-      "id": "design_shapes",
       "community": 19,
-      "norm_label": "shapes"
+      "norm_label": "shapes",
+      "id": "design_shapes"
     },
     {
       "label": "Components",
@@ -189,9 +239,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L271",
       "_origin": "ast",
-      "id": "design_components",
       "community": 20,
-      "norm_label": "components"
+      "norm_label": "components",
+      "id": "design_components"
     },
     {
       "label": "Buttons",
@@ -199,9 +249,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L273",
       "_origin": "ast",
-      "id": "design_buttons",
       "community": 20,
-      "norm_label": "buttons"
+      "norm_label": "buttons",
+      "id": "design_buttons"
     },
     {
       "label": "Chips",
@@ -209,9 +259,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L281",
       "_origin": "ast",
-      "id": "design_chips",
       "community": 20,
-      "norm_label": "chips"
+      "norm_label": "chips",
+      "id": "design_chips"
     },
     {
       "label": "Cards / Containers",
@@ -219,9 +269,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L291",
       "_origin": "ast",
-      "id": "design_cards_containers",
       "community": 20,
-      "norm_label": "cards / containers"
+      "norm_label": "cards / containers",
+      "id": "design_cards_containers"
     },
     {
       "label": "Inputs / Fields",
@@ -229,9 +279,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L298",
       "_origin": "ast",
-      "id": "design_inputs_fields",
       "community": 20,
-      "norm_label": "inputs / fields"
+      "norm_label": "inputs / fields",
+      "id": "design_inputs_fields"
     },
     {
       "label": "Navigation",
@@ -239,9 +289,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L304",
       "_origin": "ast",
-      "id": "design_navigation",
       "community": 20,
-      "norm_label": "navigation"
+      "norm_label": "navigation",
+      "id": "design_navigation"
     },
     {
       "label": "Bucket Card (signature)",
@@ -249,9 +299,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L309",
       "_origin": "ast",
-      "id": "design_bucket_card_signature",
       "community": 20,
-      "norm_label": "bucket card (signature)"
+      "norm_label": "bucket card (signature)",
+      "id": "design_bucket_card_signature"
     },
     {
       "label": "Rule Card (signature)",
@@ -259,9 +309,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L312",
       "_origin": "ast",
-      "id": "design_rule_card_signature",
       "community": 20,
-      "norm_label": "rule card (signature)"
+      "norm_label": "rule card (signature)",
+      "id": "design_rule_card_signature"
     },
     {
       "label": "Triage Card (signature)",
@@ -269,9 +319,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L315",
       "_origin": "ast",
-      "id": "design_triage_card_signature",
       "community": 20,
-      "norm_label": "triage card (signature)"
+      "norm_label": "triage card (signature)",
+      "id": "design_triage_card_signature"
     },
     {
       "label": "Hero (signature)",
@@ -279,9 +329,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L320",
       "_origin": "ast",
-      "id": "design_hero_signature",
       "community": 20,
-      "norm_label": "hero (signature)"
+      "norm_label": "hero (signature)",
+      "id": "design_hero_signature"
     },
     {
       "label": "Do's and Don'ts",
@@ -289,9 +339,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L323",
       "_origin": "ast",
-      "id": "design_do_s_and_don_ts",
       "community": 19,
-      "norm_label": "do's and don'ts"
+      "norm_label": "do's and don'ts",
+      "id": "design_do_s_and_don_ts"
     },
     {
       "label": "Do:",
@@ -299,9 +349,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L325",
       "_origin": "ast",
-      "id": "design_do",
       "community": 19,
-      "norm_label": "do:"
+      "norm_label": "do:",
+      "id": "design_do"
     },
     {
       "label": "Don't:",
@@ -309,9 +359,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L335",
       "_origin": "ast",
-      "id": "design_don_t",
       "community": 19,
-      "norm_label": "don't:"
+      "norm_label": "don't:",
+      "id": "design_don_t"
     },
     {
       "label": "Rules.svelte",
@@ -319,9 +369,9 @@
       "source_file": "src/lib/components/Rules.svelte",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "components_rules",
       "community": 17,
-      "norm_label": "rules.svelte"
+      "norm_label": "rules.svelte",
+      "id": "components_rules"
     },
     {
       "label": "#lib/rules",
@@ -329,9 +379,9 @@
       "source_file": "#lib/rules",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "id": "rules",
       "community": 17,
-      "norm_label": "#lib/rules"
+      "norm_label": "#lib/rules",
+      "id": "rules"
     },
     {
       "label": "#lib/types",
@@ -339,9 +389,9 @@
       "source_file": "#lib/types",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "id": "types",
       "community": 17,
-      "norm_label": "#lib/types"
+      "norm_label": "#lib/types",
+      "id": "types"
     },
     {
       "label": "Triage.svelte",
@@ -349,9 +399,9 @@
       "source_file": "src/lib/components/Triage.svelte",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "components_triage",
       "community": 17,
-      "norm_label": "triage.svelte"
+      "norm_label": "triage.svelte",
+      "id": "components_triage"
     },
     {
       "label": "svelte",
@@ -359,9 +409,9 @@
       "source_file": "svelte",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "id": "svelte",
       "community": 17,
-      "norm_label": "svelte"
+      "norm_label": "svelte",
+      "id": "svelte"
     },
     {
       "label": "#lib/money",
@@ -369,9 +419,9 @@
       "source_file": "#lib/money",
       "confidence": "EXTRACTED",
       "_origin": "ast",
-      "id": "money",
       "community": 17,
-      "norm_label": "#lib/money"
+      "norm_label": "#lib/money",
+      "id": "money"
     },
     {
       "label": "rules.ts",
@@ -379,9 +429,9 @@
       "source_file": "src/lib/rules.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "lib_rules",
       "community": 1,
-      "norm_label": "rules.ts"
+      "norm_label": "rules.ts",
+      "id": "lib_rules"
     },
     {
       "label": "matches()",
@@ -389,9 +439,9 @@
       "source_file": "src/lib/rules.ts",
       "source_location": "L4",
       "_origin": "ast",
-      "id": "lib_rules_matches",
       "community": 1,
-      "norm_label": "matches()"
+      "norm_label": "matches()",
+      "id": "lib_rules_matches"
     },
     {
       "label": "score()",
@@ -399,9 +449,9 @@
       "source_file": "src/lib/rules.ts",
       "source_location": "L12",
       "_origin": "ast",
-      "id": "lib_rules_score",
       "community": 1,
-      "norm_label": "score()"
+      "norm_label": "score()",
+      "id": "lib_rules_score"
     },
     {
       "label": "round2()",
@@ -409,9 +459,9 @@
       "source_file": "src/lib/rules.ts",
       "source_location": "L23",
       "_origin": "ast",
-      "id": "lib_rules_round2",
       "community": 1,
-      "norm_label": "round2()"
+      "norm_label": "round2()",
+      "id": "lib_rules_round2"
     },
     {
       "label": "describe()",
@@ -419,9 +469,9 @@
       "source_file": "src/lib/rules.ts",
       "source_location": "L25",
       "_origin": "ast",
-      "id": "lib_rules_describe",
       "community": 1,
-      "norm_label": "describe()"
+      "norm_label": "describe()",
+      "id": "lib_rules_describe"
     },
     {
       "label": "titleCase()",
@@ -429,9 +479,9 @@
       "source_file": "src/lib/rules.ts",
       "source_location": "L34",
       "_origin": "ast",
-      "id": "lib_rules_titlecase",
       "community": 1,
-      "norm_label": "titlecase()"
+      "norm_label": "titlecase()",
+      "id": "lib_rules_titlecase"
     },
     {
       "label": "composeRule()",
@@ -439,9 +489,9 @@
       "source_file": "src/lib/rules.ts",
       "source_location": "L40",
       "_origin": "ast",
-      "id": "lib_rules_composerule",
       "community": 1,
-      "norm_label": "composerule()"
+      "norm_label": "composerule()",
+      "id": "lib_rules_composerule"
     },
     {
       "label": "core.test.ts",
@@ -449,9 +499,9 @@
       "source_file": "tests/core.test.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "tests_core_test",
       "community": 1,
-      "norm_label": "core.test.ts"
+      "norm_label": "core.test.ts",
+      "id": "tests_core_test"
     },
     {
       "label": "rules",
@@ -459,9 +509,9 @@
       "source_file": "tests/core.test.ts",
       "source_location": "L13",
       "_origin": "ast",
-      "id": "tests_core_test_rules",
       "community": 1,
-      "norm_label": "rules"
+      "norm_label": "rules",
+      "id": "tests_core_test_rules"
     },
     {
       "label": "+page.svelte",
@@ -552,56 +602,6 @@
       "community": 17,
       "norm_label": "#lib/store.svelte",
       "id": "store_svelte"
-    },
-    {
-      "label": "README.md",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "readme.md",
-      "id": "readme"
-    },
-    {
-      "label": "Clarifi",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "clarifi",
-      "id": "readme_clarifi"
-    },
-    {
-      "label": "Run",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L9",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "run",
-      "id": "readme_run"
-    },
-    {
-      "label": "How it reads",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L18",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "how it reads",
-      "id": "readme_how_it_reads"
-    },
-    {
-      "label": "Status",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L28",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "status",
-      "id": "readme_status"
     },
     {
       "label": "BucketLine.svelte",
@@ -1508,6 +1508,46 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_clarifi"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_clarifi",
+      "target": "readme_how_it_reads"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_clarifi",
+      "target": "readme_run"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_clarifi",
+      "target": "readme_status"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": ".impeccable/shot.mjs",
       "source_location": "L4",
       "weight": 1.0,
@@ -1661,9 +1701,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L240",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "design_typography",
-      "target": "design_named_rules_240",
-      "confidence_score": 1.0
+      "target": "design_named_rules_240"
     },
     {
       "relation": "contains",
@@ -1671,9 +1711,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L262",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "design_elevation_depth",
-      "target": "design_named_rules_262",
-      "confidence_score": 1.0
+      "target": "design_named_rules_262"
     },
     {
       "relation": "contains",
@@ -1771,9 +1811,9 @@
       "source_file": "DESIGN.md",
       "source_location": "L315",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "design_components",
-      "target": "design_triage_card_signature",
-      "confidence_score": 1.0
+      "target": "design_triage_card_signature"
     },
     {
       "relation": "contains",
@@ -1917,9 +1957,9 @@
       "source_file": "src/lib/rules.ts",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_rules",
-      "target": "lib_money_nzd",
-      "confidence_score": 1.0
+      "target": "lib_money_nzd"
     },
     {
       "relation": "contains",
@@ -2213,46 +2253,6 @@
       "confidence_score": 1.0,
       "source": "components_bucketline",
       "target": "motion_svelte"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme",
-      "target": "readme_clarifi"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L18",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme_clarifi",
-      "target": "readme_how_it_reads"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme_clarifi",
-      "target": "readme_run"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "readme_clarifi",
-      "target": "readme_status"
     },
     {
       "relation": "contains",
@@ -3070,5 +3070,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "674219ae7daf272af03c64838d06f5a335ccea04"
+  "built_at_commit": "893996549cbac027796c9400c79bfb1883754359"
 }

@@ -1,7 +1,7 @@
 # Graph Report - Clarifi  (2026-11-01)
 
 ## Corpus Check
-- 29 files · ~15,230 words
+- 29 files · ~15,687 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `674219ae`
+- Built from commit: `89399654`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -91,7 +91,7 @@ Cohesion: 0.20
 Nodes (10): Bucket Card (signature), Buttons, Cards / Containers, Chips, Components, Hero (signature), Inputs / Fields, Navigation (+2 more)
 
 ## Knowledge Gaps
-- **78 isolated node(s):** `errs`, `Overview`, `Primary`, `Bucket (fixed, six)`, `Neutral` (+73 more)
+- **78 isolated node(s):** `Run`, `How it reads`, `Status`, `errs`, `Overview` (+73 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -104,7 +104,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.050) - this node is a cross-community bridge._
 - **Why does `Design System: Clarifi` connect `Community 19` to `Community 20`?**
   _High betweenness centrality (0.028) - this node is a cross-community bridge._
-- **What connects `errs`, `Overview`, `Primary` to the rest of the system?**
+- **What connects `Run`, `How it reads`, `Status` to the rest of the system?**
   _78 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.1225071225071225 - nodes in this community are weakly interconnected._

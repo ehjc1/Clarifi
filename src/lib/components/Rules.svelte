@@ -2,16 +2,15 @@
 	import { describe } from '#lib/rules';
 	import { BUCKETS, type Bucket, type Rule, type Scored } from '#lib/types';
 
-	let { rules, scored, copy, draft = $bindable(), adding = $bindable(false), onadd, onremove }: {
-		rules: Rule[]; scored: Scored[]; copy: 'card' | 'mine' | 'partner';
+	let { rules, scored, draft = $bindable(), adding = $bindable(false), onadd, onremove }: {
+		rules: Rule[]; scored: Scored[];
 		draft: { text: string; min: string; max: string; share: string; bucket: Bucket; name: string };
 		adding?: boolean;
 		onadd: (r: Omit<Rule, 'id'>) => void; onremove: (id: string) => void;
 	} = $props();
 
 	const fired = (r: Rule) => scored.filter((s) => s.matches.includes(r)).length;
-	const shareLabel = (share: number) =>
-		copy === 'partner' ? `${Math.round((1 - share) * 100)}% partner's` : `${Math.round(share * 100)}% mine`;
+	const shareLabel = (share: number) => `${Math.round(share * 100)}% mine`;
 	let error = $state('');
 
 	function submit(e: SubmitEvent) {
@@ -36,7 +35,7 @@
 			<h2 id="rules-h">Share rules</h2>
 			<p class="small">How much of each line is mine. The first matching rule wins; clashes show as conflicts.</p>
 		</div>
-		{#if !adding}<button class="btn" onclick={() => (adding = true)}>+ New rule</button>{/if}
+		{#if !adding}<button class="btn" onclick={() => (adding = true)}><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>New rule</button>{/if}
 	</div>
 
 	{#if adding}
@@ -105,7 +104,8 @@
 	.ghost { background: transparent; color: var(--ink-2); padding-left: 0; }
 	form { display: flex; flex-direction: column; gap: 12px; }
 	.fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 12px; }
-	.fields label:first-child, .fields label:last-child { grid-column: span 3; }
+	.fields label:first-child, .fields label:last-child { grid-column: span 2; }
+	.fields label:nth-child(5) { grid-column: 1; }
 	label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 500; color: var(--ink-2); }
 	.err { margin: 0; color: var(--danger); }
 	form .btn { align-self: flex-start; }
@@ -114,5 +114,6 @@
 		ol { grid-template-columns: 1fr; }
 		.fields { grid-template-columns: 1fr 1fr; }
 		.fields label:first-child, .fields label:last-child { grid-column: span 2; }
+		.fields label:nth-child(5) { grid-column: auto; }
 	}
 </style>
