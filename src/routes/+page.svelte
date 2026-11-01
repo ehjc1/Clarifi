@@ -3,6 +3,7 @@
 	import { SvelteSet } from 'svelte/reactivity';
 	import { parseAnz } from '#lib/anz';
 	import BucketLine from '#lib/components/BucketLine.svelte';
+	import Lines, { type Filter } from '#lib/components/Lines.svelte';
 	import Rules from '#lib/components/Rules.svelte';
 	import Triage from '#lib/components/Triage.svelte';
 	import { nzd } from '#lib/money';
@@ -24,26 +25,22 @@
 	const held = new SvelteSet<string>();
 	const skipped = new SvelteSet<string>();
 	let triage = $state(false);
-	type View = 'overview' | 'rules';
+	type View = 'overview' | 'lines' | 'rules';
 	let view = $state<View>('overview');
+	let filter = $state<Filter>('all');
 	let adding = $state(false);
-	const readHash = () => (view = location.hash === '#rules' ? 'rules' : 'overview');
-	const go = (v: View) => { location.hash = v === 'rules' ? 'rules' : 'overview'; };
+	/** #overview · #lines · #lines/<bucket|unsorted|conflicts> · #rules */
+	function readHash() {
+		const [v, f] = location.hash.slice(1).split('/');
+		view = v === 'rules' || v === 'lines' ? v : 'overview';
+		if (v === 'lines') filter = (f as Filter) || 'all';
+	}
+	const go = (v: View, f?: Filter) => { location.hash = f ? `${v}/${f}` : v; };
 	let error = $state('');
 	let draft = $state({ text: '', min: '', max: '', share: '0', bucket: 'general' as Bucket, name: '' });
 	let incomeDraft = $state({ name: '', amount: '' });
-	/** Open state per bucket, so collapsed cards can re-span and leave no hole beside an expanded one. */
-	let openB = $state<Record<Bucket, boolean>>({ income: false, fixed: false, general: false, investments: false, savings: false, mortgage: false });
-	const collapsed = $derived(BUCKETS.filter((b) => !openB[b]));
-	function span(b: Bucket) {
-		if (openB[b]) return 's6';
-		const i = collapsed.indexOf(b), n = collapsed.length, rem = n % 3;
-		if (rem === 2 && i >= n - 2) return 's3';
-		if (rem === 1 && i === n - 1) return 's6';
-		return 's2';
-	}
 	async function focusIncome() {
-		openB.income = true;
+		go('lines', 'income');
 		await tick();
 		document.getElementById('income-name')?.focus();
 	}
@@ -124,7 +121,7 @@
 	}
 	function addRule(r: Omit<Rule, 'id'>) {
 		withDiff(() => data.rules.push({ id: uid(), ...r }));
-		if (view === 'rules') go('overview'); // show the rows the new rule moved
+		if (view === 'rules') go('lines'); // show the rows the new rule moved
 	}
 	const removeRule = (id: string) => withDiff(() => (data.rules = data.rules.filter((r) => r.id !== id)));
 	const release = (id: string) => held.delete(id);
@@ -170,9 +167,10 @@
 		<span class="wordmark">Clarifi</span>
 		<nav class="views" aria-label="Sections">
 			<a href="#overview" class={{ on: view === 'overview' }} aria-current={view === 'overview' ? 'page' : undefined}>Overview</a>
+			<a href="#lines" class={{ on: view === 'lines' }} aria-current={view === 'lines' ? 'page' : undefined}>Lines</a>
 			<a href="#rules" class={{ on: view === 'rules' }} aria-current={view === 'rules' ? 'page' : undefined}>Rules <span class="n">{data.rules.length}</span></a>
 		</nav>
-		{#if view === 'overview'}
+		{#if view !== 'rules'}
 		<div class="seg" role="group" aria-label="Which share to read">
 			{#each COPIES as c (c.id)}
 				<button class={{ on: copy === c.id }} aria-pressed={copy === c.id} onclick={() => (copy = c.id)}>{c.label}</button>
@@ -235,24 +233,9 @@
 
 	<div class="grid">
 		<section class="buckets" aria-label="Buckets">
-			<BucketLine title={TITLES.income} color="var(--b-income)" rows={byBucket.income} extra={incomeTotal} total={barTotal} emptyText="No income entered yet" bind:open={openB.income} class={span('income')} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule}>
-				<ul class="incomes">
-					{#each data.incomes as i (i.id)}
-						<li><span>{i.name}</span><b class="num">{nzd(i.amount)}</b><button class="link" onclick={() => removeIncome(i.id)} aria-label="Remove income {i.name}">Remove</button></li>
-					{/each}
-					{#if copy !== 'partner'}
-						<li>
-							<form onsubmit={addIncome} aria-label="Add an income">
-								<input id="income-name" bind:value={incomeDraft.name} placeholder="Salary" aria-label="Income name" />
-								<input inputmode="decimal" bind:value={incomeDraft.amount} placeholder="0.00" aria-label="Monthly amount" />
-								<button class="btn ghost" type="submit">Add income</button>
-							</form>
-						</li>
-					{/if}
-				</ul>
-			</BucketLine>
+			<BucketLine bucket="income" title={TITLES.income} color="var(--b-income)" rows={byBucket.income} extra={incomeTotal} total={barTotal} emptyText="No income entered yet" {copy} />
 			{#each ['fixed', 'general', 'investments', 'savings', 'mortgage'] as const as b (b)}
-				<BucketLine title={TITLES[b]} color="var(--b-{b})" rows={byBucket[b]} total={barTotal} bind:open={openB[b]} class={span(b)} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule} />
+				<BucketLine bucket={b} title={TITLES[b]} color="var(--b-{b})" rows={byBucket[b]} total={barTotal} {copy} />
 			{/each}
 			{#if trend.length > 1}
 				<section class="trend card" aria-label="Spend by statement">
@@ -289,6 +272,25 @@
 		</section>
 
 	</div>
+	{:else if view === 'lines'}
+	<Lines scored={scored.filter((r) => !(r.amount < 0 && !r.rule))} {copy} {held} bind:filter {codeOf} onrelease={release} onmakerule={makeRule}>
+		{#snippet income()}
+			<ul class="incomes">
+				{#each data.incomes as i (i.id)}
+					<li><span>{i.name}</span><b class="num">{nzd(i.amount)}</b><button class="link" onclick={() => removeIncome(i.id)} aria-label="Remove income {i.name}">Remove</button></li>
+				{/each}
+				{#if copy !== 'partner'}
+					<li>
+						<form onsubmit={addIncome} aria-label="Add an income">
+							<input id="income-name" bind:value={incomeDraft.name} placeholder="Salary" aria-label="Income name" />
+							<input inputmode="decimal" bind:value={incomeDraft.amount} placeholder="0.00" aria-label="Monthly amount" />
+							<button class="btn ghost" type="submit">Add income</button>
+						</form>
+					</li>
+				{/if}
+			</ul>
+		{/snippet}
+	</Lines>
 	{:else}
 	<div class="rules-view">
 		<Rules rules={data.rules} {scored} bind:draft bind:adding onadd={addRule} onremove={removeRule} />
@@ -362,17 +364,14 @@
 	footer label { cursor: pointer; }
 	footer > span { flex-basis: 100%; }
 	@media (min-width: 641px) { footer > span { flex-basis: auto; } }
-	.buckets { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; align-content: start; }
-	.buckets :global(.s2) { grid-column: span 2; }
-	.buckets :global(.s3) { grid-column: span 3; }
-	.buckets :global(.s6) { grid-column: 1 / -1; }
+	.buckets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-content: start; }
 	.payments { grid-column: 1 / -1; margin: 4px 4px 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-	.incomes { list-style: none; margin: 0 0 12px; padding: 0; }
+	.incomes { list-style: none; margin: 0 4px 12px; padding: 0 0 12px; border-bottom: 1px solid var(--line); }
 	.incomes li { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 8px 12px; border-radius: var(--r2); }
 	.incomes li:hover { background: var(--surface-2); }
 	.incomes form { display: contents; }
 	.incomes form input:first-child { grid-column: 1; }
-	@media (max-width: 1024px) { .buckets :global(.s2), .buckets :global(.s3) { grid-column: span 3; } }
+	@media (max-width: 1024px) { .buckets { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 	@media (max-width: 640px) {
 		main { padding: 12px 14px 40px; }
 		header { flex-wrap: wrap; gap: 10px; }
@@ -385,7 +384,7 @@
 		.hero { grid-template-columns: 1fr; align-items: start; }
 		.figures { gap: 20px; flex-wrap: wrap; padding: 0; }
 		.figures dd { font-size: 20px; }
-		.buckets :global(.s2), .buckets :global(.s3) { grid-column: 1 / -1; }
+		.buckets { grid-template-columns: 1fr; }
 		.hero { padding: 20px; border-radius: 22px; }
 		.trend { grid-template-columns: 1fr; }
 		.bars { justify-content: start; }
