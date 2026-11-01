@@ -17,12 +17,12 @@ npx vitest run
 
 ## How it reads
 
-- **Card · Mine · Partner** tabs are the three copies of a carbonless statement. Mine is canary, Partner is pink. Switching recomputes every line.
-- Each line: `date · details · rule code · share mark · $card × share% = $yours`.
-- Share marks: hollow 0%, half 50%, filled 100%, struck when excluded.
-- Two rules disagreeing on a line cross-hatch it and name both rules.
-- A line moved by a new rule holds a highlight until you scroll past it.
+- **Card · Mine · Partner** switch: whose share every figure shows. Hero card shows the headline figure for that view.
+- Six bucket cards with totals and a share bar; open one to see its lines: `date · details · rule · share% · amount`.
+- Two rules disagreeing on a line mark it as a conflict and name both rules; the bucket card shows a conflict chip.
+- A line moved by a new rule glows until you scroll past it.
 - Click any line's details to start a rule from it.
+- Light and dark follow your system setting.
 
 ## Status
 

@@ -12,7 +12,7 @@ Read it at the start of a Clarifi session. Record lasting decisions there. Code 
 - Stack: SvelteKit 3 (Svelte 5 runes, TypeScript), `@sveltejs/adapter-static`, browser-only. Data in localStorage, JSON export/import. No backend, no network calls with financial data.
 - Layout: `src/lib/anz.ts` (CSV parser), `src/lib/rules.ts` (share rules), `src/lib/store.svelte.ts` (state + persistence), `src/lib/components/` (BucketLine, Rules, ShareMark), `src/routes/+page.svelte` (the sheet). `tests/` vitest.
 - Run: `npm run dev`; `npm run build` then `npm run preview`; `npx vitest run`. `?sample` on the URL loads a synthetic statement.
-- Design: Impeccable artifacts in `PRODUCT.md`, `DESIGN.md`, `.impeccable/`. Direction: "Payslip Arithmetic" (carbonless triplicate sheet, Card/Mine/Partner copies, every line shows card × share = mine). Follow `DESIGN.md` for any UI change.
+- Design: Impeccable artifacts in `PRODUCT.md`, `DESIGN.md`, `.impeccable/`. Direction: modern consumer fintech at Revolut/Wise craft level (Eugene's standing preference), light + dark via `prefers-color-scheme`, Figtree self-hosted, one teal-mint accent, six fixed bucket colours. Follow `DESIGN.md` for any UI change. Screenshots: `node .impeccable/shot.mjs "$PWD/.impeccable/review"` (set `SCHEME=dark` for dark) against `npm run preview` on port 4173.
 
 ## Conventions
 - Svelte 5 runes only; use `class={{ ... }}` objects, `{@attach}` not `use:`; keyed `{#each}`.
