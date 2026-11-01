@@ -1,0 +1,316 @@
+---
+name: Clarifi
+description: One big number you can trust, six bucket cards, rules as chips. Modern consumer fintech, played straight, light and dark.
+colors:
+  canvas: "#f3f4f8"
+  surface: "#ffffff"
+  surface-sunken: "#f6f7fb"
+  ink: "#0b0f19"
+  ink-muted: "#626b7a"
+  line: "#e6e8ef"
+  accent: "#00c2a8"
+  accent-ink: "#042e28"
+  accent-soft: "rgba(0, 194, 168, 0.14)"
+  danger: "#e5484d"
+  danger-soft: "rgba(229, 72, 77, 0.12)"
+  bucket-income: "#22c55e"
+  bucket-fixed: "#3b82f6"
+  bucket-general: "#f59e0b"
+  bucket-investments: "#8b5cf6"
+  bucket-savings: "#06b6d4"
+  bucket-mortgage: "#ef4444"
+  dark-canvas: "#0b0d12"
+  dark-surface: "#151821"
+  dark-surface-sunken: "#1c202b"
+  dark-ink: "#f3f4f8"
+  dark-ink-muted: "#9aa3b2"
+  dark-line: "#262b38"
+  dark-accent: "#2ef2d2"
+  dark-accent-soft: "rgba(46, 242, 210, 0.14)"
+typography:
+  display:
+    fontFamily: "Figtree, system-ui, -apple-system, 'Segoe UI', sans-serif"
+    fontSize: "clamp(40px, 6vw, 64px)"
+    fontWeight: 700
+    lineHeight: 1.05
+    letterSpacing: "-0.04em"
+  headline:
+    fontFamily: "Figtree, system-ui, -apple-system, 'Segoe UI', sans-serif"
+    fontSize: "24px"
+    fontWeight: 600
+    lineHeight: 1.1
+    letterSpacing: "-0.02em"
+  title:
+    fontFamily: "Figtree, system-ui, -apple-system, 'Segoe UI', sans-serif"
+    fontSize: "18px"
+    fontWeight: 600
+    lineHeight: 1.5
+    letterSpacing: "-0.01em"
+  wordmark:
+    fontFamily: "Figtree, system-ui, -apple-system, 'Segoe UI', sans-serif"
+    fontSize: "20px"
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: "-0.03em"
+  body:
+    fontFamily: "Figtree, system-ui, -apple-system, 'Segoe UI', sans-serif"
+    fontSize: "15px"
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: "normal"
+  label:
+    fontFamily: "Figtree, system-ui, -apple-system, 'Segoe UI', sans-serif"
+    fontSize: "13px"
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: "normal"
+  code:
+    fontFamily: "Figtree, system-ui, -apple-system, 'Segoe UI', sans-serif"
+    fontSize: "12px"
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: "normal"
+rounded:
+  row: "12px"
+  card: "20px"
+  hero: "28px"
+  pill: "999px"
+spacing:
+  xs: "6px"
+  sm: "8px"
+  md: "12px"
+  lg: "16px"
+  xl: "24px"
+  xxl: "36px"
+components:
+  button-primary:
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.accent-ink}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
+    padding: "10px 18px"
+  button-ghost:
+    backgroundColor: "{colors.surface-sunken}"
+    textColor: "{colors.ink}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
+    padding: "10px 18px"
+  button-ghost-hover:
+    backgroundColor: "{colors.line}"
+  button-on-accent:
+    backgroundColor: "{colors.accent-ink}"
+    textColor: "{colors.accent}"
+    rounded: "{rounded.pill}"
+    padding: "10px 18px"
+  pill:
+    backgroundColor: "{colors.surface-sunken}"
+    textColor: "{colors.ink}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
+    padding: "4px 10px"
+  pill-on-accent:
+    backgroundColor: "rgba(4, 46, 40, 0.1)"
+    textColor: "{colors.accent-ink}"
+    rounded: "{rounded.pill}"
+    padding: "4px 10px"
+  segment-on:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.canvas}"
+    rounded: "{rounded.pill}"
+    padding: "7px 16px"
+  segment-off:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink-muted}"
+    rounded: "{rounded.pill}"
+    padding: "7px 16px"
+  card:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.card}"
+    padding: "18px 20px"
+  hero:
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.accent-ink}"
+    rounded: "{rounded.hero}"
+    padding: "24px 28px 28px"
+  input:
+    backgroundColor: "{colors.surface-sunken}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.row}"
+    padding: "9px 12px"
+  input-focus:
+    backgroundColor: "{colors.surface}"
+  row:
+    backgroundColor: "transparent"
+    rounded: "{rounded.row}"
+    padding: "10px 12px"
+  row-hover:
+    backgroundColor: "{colors.surface-sunken}"
+  row-held:
+    backgroundColor: "{colors.accent-soft}"
+    rounded: "{rounded.row}"
+  row-conflict:
+    backgroundColor: "{colors.danger-soft}"
+    rounded: "{rounded.row}"
+---
+
+# Design System: Clarifi
+
+## Overview
+
+**Creative North Star: "The Trusted Balance"**
+
+Clarifi is modern consumer fintech played straight, at the craft level of Revolut and Wise. The whole screen is organised to make one figure believable: a full-width teal-mint hero carries the headline number in a tight 700-weight display, and everything beneath it (six bucket cards, a rules column) exists to explain where that number came from. Surfaces are large, white, and generously rounded; colour is scarce and rationed by role, so the one accent block and six small bucket colours do all the signalling.
+
+The material is soft and bright in light mode (white cards floating on a cool grey canvas under a diffuse shadow) and flat and hairlined in dark mode (the same cards ringed by a 1px line on near-black). Figtree is the only face; its rounded geometry and tabular figures give the money a playful-but-precise register without ever becoming a ledger. Density is relaxed on desktop and collapses to a single column on phones without changing any component's shape.
+
+Confirmed rejections: no paper, ledger or printed-form metaphors; no monospace face; no second accent.
+
+**Key Characteristics:**
+- One accent, used as a block (the hero) and as the primary action; nowhere else at full strength.
+- Six fixed bucket colours that appear only as 10px dots, 14% chip tints and 6px progress bars.
+- Figtree at every size, tabular numerals everywhere, tight negative tracking as size rises.
+- Pill radius (999px) for every control; 20px cards; 28px hero; 12px rows and inputs.
+- Light: soft offset shadow. Dark: 1px ring. Same tokens, swapped under `prefers-color-scheme`.
+- Figures count to new values with one 500ms expoOut tween; held rows glow accent until scrolled past.
+
+## Colors
+
+A near-neutral stage with one teal-mint voice and six quiet bucket hues that never raise theirs.
+
+### Primary
+- **Teal Mint** (`accent`, light `#00c2a8` / dark `#2ef2d2`): the hero block background, the primary button, the focus ring (2px outline, 2px offset), text selection, and hover colour on row detail buttons. In dark mode it brightens rather than dims so the hero still reads as a block.
+- **Deep Teal Ink** (`accent-ink`, `#042e28`, both themes): the only text colour allowed on the accent. Also the background of the inverted button that sits on the hero.
+- **Mint Wash** (`accent-soft`, 14% accent): the held-row tint and its glow shadow; the tint behind the new-rule code chip.
+
+### Bucket (fixed, six)
+- **Income Green** (`bucket-income`), **Fixed Blue** (`bucket-fixed`), **General Amber** (`bucket-general`), **Investments Violet** (`bucket-investments`), **Savings Cyan** (`bucket-savings`), **Mortgage Red** (`bucket-mortgage`). Each bucket card sets `--c` to its colour and the colour reaches the surface only three ways: the 10px dot beside the title, the share bar fill, and the rule-code chip (`color-mix(in srgb, var(--c) 14%, transparent)` behind text in the full colour). Identical in light and dark.
+
+### Neutral
+- **Cool Canvas** (`canvas`, light `#f3f4f8` / dark `#0b0d12`): page background; also the text colour of the selected segment.
+- **Surface** (`surface`, light `#ffffff` / dark `#151821`): every card, the segmented control, and the focused input.
+- **Sunken Surface** (`surface-sunken`, light `#f6f7fb` / dark `#1c202b`): resting inputs, neutral pills, ghost buttons, row hover, share-bar track.
+- **Ink** (`ink`, light `#0b0f19` / dark `#f3f4f8`): body text, figures, the selected segment's fill.
+- **Muted Ink** (`ink-muted`, light `#626b7a` / dark `#9aa3b2`): 13px labels, line counts, zero totals, placeholders, footer links, unselected segments.
+- **Line** (`line`, light `#e6e8ef` / dark `#262b38`): input hover border; in dark mode it is the 1px ring that replaces the shadow.
+- **Danger** (`danger` `#e5484d`, `danger-soft` 12%): conflict chips and rows, the error card, form errors. Same in both themes.
+
+### Named Rules
+**The One Block Rule.** The accent appears at full strength exactly twice on a screen: the hero and the primary button. Everything else that wants accent gets the 14% wash.
+
+**The Three Outlets Rule.** A bucket colour may be a dot, a bar fill, or a chip tint. It is never a text colour outside its chip, never a border, never a card background.
+
+**The Mirrored Theme Rule.** Dark mode swaps neutrals and brightens the accent; bucket colours, danger and accent-ink do not change. Any new colour is defined once in light and once in the dark block, never inline.
+
+## Typography
+
+**Display Font:** Figtree (with system-ui, -apple-system, Segoe UI, sans-serif)
+**Body Font:** Figtree (same face)
+**Label/Mono Font:** none; figures use Figtree with `font-variant-numeric: tabular-nums` set on `body`.
+
+**Character:** One rounded geometric sans at four self-hosted weights (400/500/600/700, latin woff2, `font-display: swap`). Tracking tightens as size grows, so big money looks set rather than typed.
+
+### Hierarchy
+- **Display** (700, `clamp(40px, 6vw, 64px)`, 1.05, -0.04em): the single headline figure in the hero. Nothing else uses it.
+- **Headline** (600, 24px, 1.1, -0.02em): bucket card totals and the hero's three contributing figures (20px on phones). Muted ink and 500 weight when the total is zero.
+- **Title** (600, 18px, -0.01em): the "Share rules" column heading. Card titles and rule names are 600 at body size (15px).
+- **Wordmark** (700, 20px, -0.03em): "Clarifi" in the top bar; the only logotype.
+- **Body** (400, 15px, 1.5): rule conditions, the empty-state lede (17px, max 48ch), row details (500).
+- **Label** (500, 13px, 1.2): pills, line counts, figure captions, form labels, footer links; usually in muted ink. Rule-code chips drop to 12px/600.
+
+### Named Rules
+**The Weight-Not-Case Rule.** Hierarchy is carried by size, weight and ink level. Nothing is uppercased or letterspaced open; the only tracking is negative and only above 15px.
+
+**The Tabular Rule.** Every money figure is tabular so columns and tweened counts do not jitter. Figures are set in Figtree, never a mono.
+
+## Layout
+
+A single centred column, max 1240px, with 24px side padding (14px on phones) and 20px top. The top bar is a flex row: wordmark pushed left, the segmented control and the Import pill on the right, 16px gaps. Below it the hero spans full width, then a two-column grid of `minmax(0, 1fr) 340px` with a 24px gap: bucket cards on the left, the rules column on the right.
+
+The bucket section is a six-column grid with 12px gaps. Collapsed cards span 2 (three per row). An expanded card spans all 6. The trailing collapsed cards after an expansion re-span to 3 or 6 so no grid cell is left empty. At 1024px and below collapsed cards span 3 (two per row); at 900px the rules column drops beneath the buckets; at 640px every card spans the full width, the segmented control wraps to its own full-width row, the Import pill loses its text, and the hero stacks its figures under the headline.
+
+Spacing rhythm is a loose 6/8/12/16/24/36 scale: 6px between chips, 8px inside stacks, 12px between cards and rows, 16px to 24px between sections, 36px between hero figures. Card interiors are 18px 20px (bucket) and 16px 18px (rule); the hero is 24px 28px 28px (20px on phones).
+
+## Elevation & Depth
+
+Hybrid, by theme. In light mode every card lifts off the canvas with one soft diffuse shadow (`0 10px 30px rgba(11,15,25,.06), 0 1px 2px rgba(11,15,25,.04)`); there are no borders. In dark mode the same `--shadow` token becomes a 1px ring of `--line`, so depth is a hairline rather than a glow. The hero, as the one solid colour block, sits flush with `box-shadow: none` in both themes. Within a card, depth is tonal: sunken surface for inputs, hover rows and bar tracks; accent wash for held rows; danger wash for conflicts.
+
+### Shadow Vocabulary
+- **Card lift** (`box-shadow: 0 10px 30px rgba(11, 15, 25, 0.06), 0 1px 2px rgba(11, 15, 25, 0.04)`): every `.card` and the segmented control, light mode only.
+- **Dark ring** (`box-shadow: 0 0 0 1px var(--line)`): the same elements under `prefers-color-scheme: dark`.
+- **Held glow** (`box-shadow: 0 6px 18px var(--accent-soft)`): a row just moved by a new rule, until it scrolls past (IntersectionObserver release).
+
+### Named Rules
+**The One Shadow Rule.** There is one shadow token. Cards use it; nothing invents another. The only exception is the held-row glow, which is a state, not a surface.
+
+**The Flush Block Rule.** A full-colour block (the hero) never carries a shadow or ring; its colour is its edge.
+
+## Shapes
+
+Everything is rounded and nothing is square. Radius scales with the size of the thing: 999px for every control that reads as a chip or button (pills, buttons, segments, the share bar and its fill, the 10px dot as a circle), 12px for rows and inputs that sit inside a card, 20px for cards, 28px for the hero (22px on phones). Borders are absent in light mode; inputs use a transparent 1px border that becomes `--line` on hover and `--accent` on focus so layout never shifts. The select is a native element with its chevron drawn as two 5px gradient triangles in muted ink. No dividers between rows; 2px of air and hover tint separate them.
+
+## Components
+
+### Buttons
+- **Shape:** full pill (999px), 10px 18px, 600 weight at 14px, 8px gap to an inline 16px stroke icon.
+- **Primary:** accent fill with accent-ink text ("Import statement", "Add rule").
+- **Hover / Focus:** `brightness(1.06)` and a 1px lift, 150ms on the shared `--ease` (`cubic-bezier(0.19, 1, 0.22, 1)`); active returns to rest; focus-visible is the global 2px accent outline. Disabled drops to 45% opacity.
+- **Ghost:** sunken surface fill with ink text, hover to `--line` ("Add income").
+- **On-accent (inverted):** accent-ink fill with accent text, used only inside the hero ("Try with a sample statement").
+- **Link:** bare text, 13px 500 muted ink, hover to ink. Footer actions and "Remove". On the hero it is accent-ink and underlined (3px offset).
+
+### Chips
+- **Style:** pill, 4px 10px, 13px 500, 6px gap, sunken surface with ink text; never wraps.
+- **On accent:** 10% accent-ink tint with accent-ink text (period, "sample · synthetic data").
+- **Code chip:** 12px 600, bucket colour text on a 14% mix of the same colour (R1, R2…); the new-rule form uses the accent as its colour.
+- **Share chip:** muted ink text ("0% mine"), ink when the share is 100%.
+- **Bucket chip:** dot plus capitalised bucket name, neutral fill.
+- **Warn chip:** danger text on transparent, no left padding ("conflict · A vs B", "2 conflicts").
+- **Ghost chip:** transparent, muted ink, no left padding ("fired 1").
+
+### Cards / Containers
+- **Corner Style:** 20px; hero 28px.
+- **Background:** surface; hero is accent with accent-ink text; error card is danger-soft with danger text and no shadow.
+- **Shadow Strategy:** the single card lift (light) or dark ring; see Elevation.
+- **Border:** none.
+- **Internal Padding:** 18px 20px (bucket), 16px 18px (rule), 24px 28px 28px (hero).
+
+### Inputs / Fields
+- **Style:** sunken surface, transparent 1px border, 12px radius, 9px 12px, inherits body font; full width; placeholder in muted ink. Labels sit above at 13px 500 muted ink with a 6px gap; paired fields split 1fr 1fr with 10px gap.
+- **Focus:** border to accent, background to surface, 150ms; no extra outline.
+- **Hover:** border to `--line`.
+- **Error:** a body-size line in danger below the form.
+
+### Navigation
+- **Top bar:** wordmark (700, 20px, -0.03em) left; segmented control and primary Import pill right.
+- **Segmented control:** a surface pill with 4px inner padding and the card shadow; segments are pills at 7px 16px, 600/14px, muted ink; the selected segment fills with ink and flips text to canvas, 200ms. On phones it moves to its own row and segments share width equally.
+- **Footer:** 13px muted-ink links at baseline, 16px gaps, 32px above.
+
+### Bucket Card (signature)
+A `details` card: summary row of dot, title (600), line count (13px muted), the tweened total (headline) and an optional conflict chip; beneath, a 6px share bar (sunken track, bucket-colour fill scaled on X over 400ms) or a 13px empty text. Open, the body lists rows at 12px radius with 48px date, details, chips, amount: hover sunken; **held** rows get accent wash plus the held glow and are released by IntersectionObserver once scrolled past; **conflict** rows get danger wash and the warn chip; **excluded** (0% share) rows fade details and amount to muted ink at 400 weight. Card spans follow the Layout grid (2 / 3 / 6).
+
+### Rule Card (signature)
+Surface card, 16px 18px: code chip, name (600), Remove link on one line; the condition sentence in body; a chip row of share, bucket (dot + name) and "fired n". The add-rule form is the same card with stacked labelled inputs, a pair grid, and a primary pill button aligned left.
+
+### Hero (signature)
+Accent block, 28px radius, two columns on desktop (`1fr auto`, aligned to the end): on the left a row of on-accent pills, a 15px 600 label at 80% opacity, and the display figure; on the right a `dl` of up to three figures with 13px 600 captions at 75% opacity and 24px 600 values, 36px apart. Empty state swaps the figure for a 17px lede and the inverted button.
+
+## Do's and Don'ts
+
+### Do:
+- **Do** render every card from the one `.card` utility (surface, 20px, `--shadow`) and let the theme swap the shadow for the ring.
+- **Do** keep the accent to the hero block and the primary button; use `accent-soft` for any other accent presence.
+- **Do** express a bucket only as its dot, its bar fill, or a 14% `color-mix` chip tint behind text in the full colour.
+- **Do** use pills (999px) for every chip, button and segment, 12px for rows and inputs, 20px for cards, 28px for the hero.
+- **Do** tween money with `tweenMoney` (500ms expoOut, 0ms under reduced motion) and run state transitions on `--ease` at 150 to 400ms.
+- **Do** mark a conflict with the danger wash and a "conflict · A vs B" chip; mark a freshly moved row with the accent wash and glow, released on scroll.
+- **Do** keep every bucket grid row full: collapsed cards span 2, an expanded card spans 6, trailing cards re-span to 3 or 6.
+
+### Don't:
+- **Don't** use a second accent, a gradient, or a bucket colour as a card background, border or heading colour.
+- **Don't** add borders or dividers in light mode; separation is shadow, radius and sunken tint.
+- **Don't** use a monospace face, uppercase labels, or open letterspacing; hierarchy is weight, size and ink level.
+- **Don't** put a shadow or ring on a solid colour block (the hero).
+- **Don't** add a side stripe to held or conflict rows; the tint and chip are the state.
+- **Don't** reintroduce paper, ledger, grid-paper or printed-form metaphors.
+- **Don't** hard-code theme colours; every colour is a `--token` defined in both the light root and the dark block.

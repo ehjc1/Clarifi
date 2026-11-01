@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-01T00:00:00Z",
+  "title": "Design System: Clarifi",
+  "extensions": {
+    "colorMeta": {
+      "accent": { "role": "primary", "displayName": "Teal Mint", "canonical": "#00c2a8", "dark": "#2ef2d2", "tonalRamp": ["oklch(22% 0.06 175)", "oklch(32% 0.09 175)", "oklch(44% 0.12 175)", "oklch(56% 0.14 175)", "oklch(72% 0.15 175)", "oklch(82% 0.13 175)", "oklch(90% 0.08 175)", "oklch(96% 0.03 175)"] },
+      "accent-ink": { "role": "primary", "displayName": "Deep Teal Ink", "canonical": "#042e28", "tonalRamp": ["oklch(15% 0.04 175)", "oklch(26% 0.05 175)", "oklch(38% 0.07 175)", "oklch(50% 0.09 175)", "oklch(62% 0.1 175)", "oklch(74% 0.09 175)", "oklch(86% 0.06 175)", "oklch(95% 0.02 175)"] },
+      "accent-soft": { "role": "primary", "displayName": "Mint Wash", "canonical": "rgba(0, 194, 168, 0.14)", "dark": "rgba(46, 242, 210, 0.14)" },
+      "canvas": { "role": "neutral", "displayName": "Cool Canvas", "canonical": "#f3f4f8", "dark": "#0b0d12", "tonalRamp": ["#0b0d12", "#151821", "#1c202b", "#262b38", "#626b7a", "#9aa3b2", "#e6e8ef", "#f3f4f8"] },
+      "surface": { "role": "neutral", "displayName": "Surface", "canonical": "#ffffff", "dark": "#151821" },
+      "surface-sunken": { "role": "neutral", "displayName": "Sunken Surface", "canonical": "#f6f7fb", "dark": "#1c202b" },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0b0f19", "dark": "#f3f4f8" },
+      "ink-muted": { "role": "neutral", "displayName": "Muted Ink", "canonical": "#626b7a", "dark": "#9aa3b2" },
+      "line": { "role": "neutral", "displayName": "Line", "canonical": "#e6e8ef", "dark": "#262b38" },
+      "danger": { "role": "tertiary", "displayName": "Danger", "canonical": "#e5484d", "tonalRamp": ["oklch(22% 0.1 22)", "oklch(34% 0.15 22)", "oklch(46% 0.19 22)", "oklch(58% 0.2 22)", "oklch(68% 0.17 22)", "oklch(78% 0.12 22)", "oklch(88% 0.07 22)", "oklch(95% 0.03 22)"] },
+      "bucket-income": { "role": "bucket", "displayName": "Income Green", "canonical": "#22c55e" },
+      "bucket-fixed": { "role": "bucket", "displayName": "Fixed Blue", "canonical": "#3b82f6" },
+      "bucket-general": { "role": "bucket", "displayName": "General Amber", "canonical": "#f59e0b" },
+      "bucket-investments": { "role": "bucket", "displayName": "Investments Violet", "canonical": "#8b5cf6" },
+      "bucket-savings": { "role": "bucket", "displayName": "Savings Cyan", "canonical": "#06b6d4" },
+      "bucket-mortgage": { "role": "bucket", "displayName": "Mortgage Red", "canonical": "#ef4444" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The single headline figure in the hero." },
+      "headline": { "displayName": "Headline", "purpose": "Bucket totals and hero contributing figures; 20px on phones." },
+      "title": { "displayName": "Title", "purpose": "Rules column heading." },
+      "wordmark": { "displayName": "Wordmark", "purpose": "The Clarifi logotype in the top bar." },
+      "body": { "displayName": "Body", "purpose": "Rule conditions, row details, lede." },
+      "label": { "displayName": "Label", "purpose": "Pills, counts, captions, form labels, footer links." },
+      "code": { "displayName": "Code chip", "purpose": "Rule codes R1..Rn in bucket colour." }
+    },
+    "shadows": [
+      { "name": "card-lift", "value": "0 10px 30px rgba(11, 15, 25, 0.06), 0 1px 2px rgba(11, 15, 25, 0.04)", "purpose": "Every card and the segmented control, light mode." },
+      { "name": "dark-ring", "value": "0 0 0 1px var(--line)", "purpose": "Replaces card-lift under prefers-color-scheme: dark." },
+      { "name": "held-glow", "value": "0 6px 18px var(--accent-soft)", "purpose": "A row just moved by a new rule, until scrolled past." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(0.19, 1, 0.22, 1)", "purpose": "Every CSS transition (150ms controls, 200ms segments and card shadow, 400ms bars and row tint)." },
+      { "name": "tween-money", "value": "500ms expoOut (svelte/motion Tween); 0ms under prefers-reduced-motion", "purpose": "Hero figure and every bucket total count to the new value." }
+    ],
+    "breakpoints": [
+      { "name": "two-up", "value": "1024px", "purpose": "Collapsed bucket cards span 3 (two per row)." },
+      { "name": "stack", "value": "900px", "purpose": "Rules column drops beneath buckets." },
+      { "name": "phone", "value": "640px", "purpose": "Single column, segmented control on its own row, Import pill icon-only, hero stacks." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Accent pill for the primary action (Import statement, Add rule).",
+      "html": "<button class=\"ds-btn\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M8 10V2M4.5 5.5 8 2l3.5 3.5M2.5 10.5v2a1.5 1.5 0 0 0 1.5 1.5h8a1.5 1.5 0 0 0 1.5-1.5v-2\"/></svg>Import statement</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 8px; border: 0; border-radius: 999px; padding: 10px 18px; font: 600 14px/1.5 'Figtree', system-ui, sans-serif; background: var(--accent, #00c2a8); color: var(--accent-ink, #042e28); cursor: pointer; transition: transform 150ms cubic-bezier(0.19,1,0.22,1), filter 150ms cubic-bezier(0.19,1,0.22,1); } .ds-btn:hover { filter: brightness(1.06); transform: translateY(-1px); } .ds-btn:active { transform: translateY(0); } .ds-btn:focus-visible { outline: 2px solid var(--accent, #00c2a8); outline-offset: 2px; } .ds-btn:disabled { cursor: default; opacity: 0.45; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Sunken-surface pill for secondary actions (Add income).",
+      "html": "<button class=\"ds-btn-ghost\">Add income</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 8px; border: 0; border-radius: 999px; padding: 10px 18px; font: 600 14px/1.5 'Figtree', system-ui, sans-serif; background: var(--surface-2, #f6f7fb); color: var(--ink, #0b0f19); cursor: pointer; transition: background-color 150ms cubic-bezier(0.19,1,0.22,1), transform 150ms cubic-bezier(0.19,1,0.22,1); } .ds-btn-ghost:hover { background: var(--line, #e6e8ef); transform: translateY(-1px); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--accent, #00c2a8); outline-offset: 2px; }"
+    },
+    {
+      "name": "Segmented Control",
+      "kind": "nav",
+      "refersTo": "segment-on",
+      "description": "Card / Mine / Partner switch; selected segment fills with ink.",
+      "html": "<div class=\"ds-seg\" role=\"group\"><button>Card</button><button class=\"on\" aria-pressed=\"true\">Mine</button><button>Partner</button></div>",
+      "css": ".ds-seg { display: inline-flex; padding: 4px; border-radius: 999px; background: var(--surface, #fff); box-shadow: var(--shadow, 0 10px 30px rgba(11,15,25,.06), 0 1px 2px rgba(11,15,25,.04)); } .ds-seg button { border: 0; background: transparent; border-radius: 999px; padding: 7px 16px; font: 600 14px/1.5 'Figtree', system-ui, sans-serif; color: var(--ink-2, #626b7a); cursor: pointer; transition: background-color 200ms cubic-bezier(0.19,1,0.22,1), color 200ms cubic-bezier(0.19,1,0.22,1); } .ds-seg button.on { background: var(--ink, #0b0f19); color: var(--bg, #f3f4f8); } .ds-seg button:hover:not(.on) { color: var(--ink, #0b0f19); } .ds-seg button:focus-visible { outline: 2px solid var(--accent, #00c2a8); outline-offset: 2px; }"
+    },
+    {
+      "name": "Pill",
+      "kind": "chip",
+      "refersTo": "pill",
+      "description": "Neutral chip; code variant tints with the bucket colour via color-mix.",
+      "html": "<span class=\"ds-pill\">0% mine</span> <span class=\"ds-pill ds-pill-code\" style=\"--c:#3b82f6\">R2</span> <span class=\"ds-pill ds-pill-warn\">conflict · R1 vs R3</span>",
+      "css": ".ds-pill { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 4px 10px; font: 500 13px/1.2 'Figtree', system-ui, sans-serif; background: var(--surface-2, #f6f7fb); color: var(--ink, #0b0f19); white-space: nowrap; } .ds-pill-code { font-size: 12px; font-weight: 600; color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); } .ds-pill-warn { color: var(--danger, #e5484d); background: transparent; padding-left: 0; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Sunken field; border appears on hover, turns accent and lifts to surface on focus.",
+      "html": "<label class=\"ds-field\">Details contain<input class=\"ds-input\" placeholder=\"pak n save\" /></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; font: 500 13px/1.5 'Figtree', system-ui, sans-serif; color: var(--ink-2, #626b7a); } .ds-input { font: 400 15px/1.5 'Figtree', system-ui, sans-serif; color: var(--ink, #0b0f19); background: var(--surface-2, #f6f7fb); border: 1px solid transparent; border-radius: 12px; padding: 9px 12px; width: 100%; transition: border-color 150ms cubic-bezier(0.19,1,0.22,1), background-color 150ms cubic-bezier(0.19,1,0.22,1); } .ds-input:hover { border-color: var(--line, #e6e8ef); } .ds-input:focus { border-color: var(--accent, #00c2a8); outline: none; background: var(--surface, #fff); } .ds-input::placeholder { color: var(--ink-2, #626b7a); }"
+    },
+    {
+      "name": "Bucket Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Dot, title, line count, tabular total, share bar; held and conflict rows inside.",
+      "html": "<div class=\"ds-card\" style=\"--c:#f59e0b\"><div class=\"ds-bk-head\"><span class=\"ds-dot\"></span><span class=\"ds-bk-t\">General</span><span class=\"ds-bk-n\">10 lines</span></div><div class=\"ds-bk-sum\">$2,902.49</div><div class=\"ds-bar\"><span style=\"transform:scaleX(.72)\"></span></div><ul class=\"ds-rows\"><li class=\"ds-row\"><span>Countdown</span><b>$84.10</b></li><li class=\"ds-row held\"><span>Pak n Save</span><b>$0.00</b></li><li class=\"ds-row conflict\"><span>Contact Energy</span><b>$120.00</b></li></ul></div>",
+      "css": ".ds-card { background: var(--surface, #fff); border-radius: 20px; box-shadow: var(--shadow, 0 10px 30px rgba(11,15,25,.06), 0 1px 2px rgba(11,15,25,.04)); padding: 18px 20px; font: 400 15px/1.5 'Figtree', system-ui, sans-serif; color: var(--ink, #0b0f19); font-variant-numeric: tabular-nums; } .ds-bk-head { display: flex; align-items: center; gap: 10px; } .ds-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); flex: none; } .ds-bk-t { font-weight: 600; } .ds-bk-n { margin-left: auto; font-size: 13px; color: var(--ink-2, #626b7a); } .ds-bk-sum { margin: 8px 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; } .ds-bar { height: 6px; border-radius: 999px; background: var(--surface-2, #f6f7fb); overflow: hidden; } .ds-bar span { display: block; height: 100%; border-radius: 999px; background: var(--c); transform-origin: left; transition: transform 400ms cubic-bezier(0.19,1,0.22,1); } .ds-rows { list-style: none; margin: 14px 0 0; padding: 0; } .ds-row { display: flex; justify-content: space-between; gap: 12px; padding: 10px 12px; border-radius: 12px; transition: background-color 400ms cubic-bezier(0.19,1,0.22,1); } .ds-row + .ds-row { margin-top: 2px; } .ds-row:hover { background: var(--surface-2, #f6f7fb); } .ds-row.held { background: var(--accent-soft, rgba(0,194,168,.14)); box-shadow: 0 6px 18px var(--accent-soft, rgba(0,194,168,.14)); } .ds-row.conflict { background: var(--danger-soft, rgba(229,72,77,.12)); } .ds-row b { font-weight: 600; }"
+    },
+    {
+      "name": "Hero",
+      "kind": "custom",
+      "refersTo": "hero",
+      "description": "The accent block carrying the headline figure and its contributing figures.",
+      "html": "<section class=\"ds-hero\"><div><span class=\"ds-hero-pill\">1 Oct – 20 Oct 2026</span><p class=\"ds-hero-label\">My share of the card</p><p class=\"ds-hero-big\">$3,007.77</p></div><dl class=\"ds-figs\"><div><dt>Spend</dt><dd>$3,007.77</dd></div><div><dt>Put away</dt><dd>$0.00</dd></div></dl></section>",
+      "css": ".ds-hero { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; background: var(--accent, #00c2a8); color: var(--accent-ink, #042e28); padding: 24px 28px 28px; border-radius: 28px; font: 400 15px/1.5 'Figtree', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-hero-pill { display: inline-flex; border-radius: 999px; padding: 4px 10px; font-size: 13px; font-weight: 500; line-height: 1.2; background: rgba(4,46,40,.1); } .ds-hero-label { margin: 18px 0 0; font-weight: 600; opacity: .8; } .ds-hero-big { margin: 2px 0 0; font-size: clamp(40px, 6vw, 64px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; } .ds-figs { display: flex; gap: 36px; margin: 0; padding: 0 8px 6px 0; } .ds-figs div { display: flex; flex-direction: column; gap: 2px; } .ds-figs dt { font-size: 13px; font-weight: 600; opacity: .75; } .ds-figs dd { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Trusted Balance",
+    "overview": "Clarifi is modern consumer fintech played straight, at the craft level of Revolut and Wise. The whole screen is organised to make one figure believable: a full-width teal-mint hero carries the headline number in a tight 700-weight display, and everything beneath it (six bucket cards, a rules column) exists to explain where that number came from. Surfaces are large, white, and generously rounded; colour is scarce and rationed by role, so the one accent block and six small bucket colours do all the signalling.\n\nThe material is soft and bright in light mode (white cards floating on a cool grey canvas under a diffuse shadow) and flat and hairlined in dark mode (the same cards ringed by a 1px line on near-black). Figtree is the only face; its rounded geometry and tabular figures give the money a playful-but-precise register without ever becoming a ledger. Density is relaxed on desktop and collapses to a single column on phones without changing any component's shape.\n\nConfirmed rejections: no paper, ledger or printed-form metaphors; no monospace face; no second accent.",
+    "keyCharacteristics": [
+      "One accent, used as a block (the hero) and as the primary action; nowhere else at full strength.",
+      "Six fixed bucket colours that appear only as 10px dots, 14% chip tints and 6px progress bars.",
+      "Figtree at every size, tabular numerals everywhere, tight negative tracking as size rises.",
+      "Pill radius (999px) for every control; 20px cards; 28px hero; 12px rows and inputs.",
+      "Light: soft offset shadow. Dark: 1px ring. Same tokens, swapped under prefers-color-scheme.",
+      "Figures count to new values with one 500ms expoOut tween; held rows glow accent until scrolled past."
+    ],
+    "rules": [
+      { "name": "The One Block Rule", "body": "The accent appears at full strength exactly twice on a screen: the hero and the primary button. Everything else that wants accent gets the 14% wash.", "section": "colors" },
+      { "name": "The Three Outlets Rule", "body": "A bucket colour may be a dot, a bar fill, or a chip tint. It is never a text colour outside its chip, never a border, never a card background.", "section": "colors" },
+      { "name": "The Mirrored Theme Rule", "body": "Dark mode swaps neutrals and brightens the accent; bucket colours, danger and accent-ink do not change. Any new colour is defined once in light and once in the dark block, never inline.", "section": "colors" },
+      { "name": "The Weight-Not-Case Rule", "body": "Hierarchy is carried by size, weight and ink level. Nothing is uppercased or letterspaced open; the only tracking is negative and only above 15px.", "section": "typography" },
+      { "name": "The Tabular Rule", "body": "Every money figure is tabular so columns and tweened counts do not jitter. Figures are set in Figtree, never a mono.", "section": "typography" },
+      { "name": "The One Shadow Rule", "body": "There is one shadow token. Cards use it; nothing invents another. The only exception is the held-row glow, which is a state, not a surface.", "section": "elevation" },
+      { "name": "The Flush Block Rule", "body": "A full-colour block (the hero) never carries a shadow or ring; its colour is its edge.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do render every card from the one .card utility (surface, 20px, --shadow) and let the theme swap the shadow for the ring.",
+      "Do keep the accent to the hero block and the primary button; use accent-soft for any other accent presence.",
+      "Do express a bucket only as its dot, its bar fill, or a 14% color-mix chip tint behind text in the full colour.",
+      "Do use pills (999px) for every chip, button and segment, 12px for rows and inputs, 20px for cards, 28px for the hero.",
+      "Do tween money with tweenMoney (500ms expoOut, 0ms under reduced motion) and run state transitions on --ease at 150 to 400ms.",
+      "Do mark a conflict with the danger wash and a \"conflict · A vs B\" chip; mark a freshly moved row with the accent wash and glow, released on scroll.",
+      "Do keep every bucket grid row full: collapsed cards span 2, an expanded card spans 6, trailing cards re-span to 3 or 6."
+    ],
+    "donts": [
+      "Don't use a second accent, a gradient, or a bucket colour as a card background, border or heading colour.",
+      "Don't add borders or dividers in light mode; separation is shadow, radius and sunken tint.",
+      "Don't use a monospace face, uppercase labels, or open letterspacing; hierarchy is weight, size and ink level.",
+      "Don't put a shadow or ring on a solid colour block (the hero).",
+      "Don't add a side stripe to held or conflict rows; the tint and chip are the state.",
+      "Don't reintroduce paper, ledger, grid-paper or printed-form metaphors.",
+      "Don't hard-code theme colours; every colour is a --token defined in both the light root and the dark block."
+    ]
+  }
+}
