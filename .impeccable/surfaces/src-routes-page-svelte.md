@@ -7,18 +7,20 @@ related_targets: []
 
 # Surface: Clarifi app (dashboard + statement import)
 
-Scope: the single-page app at `/`. Mode: Operate. Audience: Eugene, monthly, laptop at home. Task: import ANZ CSV, see my share per bucket, fix gaps by adding a rule. Must not change: local-only data, six buckets, share rules as the mechanism. Unresolved: real ANZ column names, PDF import, income entry model.
+Scope: the single-page app at `/`. Mode: Operate. Audience: Eugene, monthly, laptop or phone at home. Task: import ANZ CSV, see my share per bucket, fix gaps by adding a rule. Must not change: local-only data, six buckets, share rules as the mechanism. Unresolved: real ANZ column names, PDF import, income entry model.
+
+Direction history: "Payslip Arithmetic" (seed 734c3c8a) built, reviewed, then rejected by the user on 2026-11-01 ("It looks horrible, I want something modern"). Replaced by the standing exit: the category standard at Revolut / Wise craft level. Canon is now the commitment, recorded in PRODUCT.md.
 
 ## Direction contract
 
-THESIS: The budget is a payslip: every figure shows the sum that produced it. Refuses the KPI-card-plus-donut dashboard.
+THESIS: Modern consumer fintech, played straight: one big number you can trust, six bucket cards, rules as chips. Refuses paper, ledger and form metaphors.
 
-OWN-WORLD: Carbonless triplicate paper. Sheet #FBFBF8, ink #1C2230, carbon blue #2F4A8A for actions and rule codes, canary #F6DD8C (Mine copy) and pink #F3C4C4 (Partner copy) as whole-sheet tints, 1px hairlines #D9D6CE on an 8px grid, zero radius, no shadows. Red Hat Text for labels, Red Hat Mono tabular for every figure. Two type sizes in tables. Share state as printed marks: hollow 0%, half 50%, filled 100%, struck excluded. Conflict rows cross-hatched.
+OWN-WORLD: Light and dark themes via prefers-color-scheme. Surfaces #FFFFFF on #F3F4F8 (light) / #151821 on #0B0D12 (dark). One accent, teal-mint (#00C2A8 light, #2EF2D2 dark) carrying the hero block and primary action. Six fixed bucket colours as dots, chips and progress bars. Geist for everything, tabular figures. 20px card radius, 999px pills, soft offset shadow in light, hairline border in dark.
 
-STORY: "This is the card, this is mine, this is why."
+STORY: "Here is what is mine this month, by bucket, and the rules that decided it."
 
-FIRST VIEWPORT: Top band: period, three copy tabs (Card · Mine · Partner), Import statement as filled blue box top right. Below: net position arithmetic line, then six bucket lines each reading card × share = mine. Right margin: numbered rule boxes.
+FIRST VIEWPORT: Top bar with wordmark, segmented Card · Mine · Partner control, Import pill. Below, a full-width accent hero card: the headline figure (left over / card total / partner's share) with the three contributing figures as pills. Then a 3-column grid of bucket cards (total, line count, share bar), rules column to the right.
 
-FORM: Payslip Arithmetic, candidate 6 of 7, seed 734c3c8a. Signature interaction: switching copy tab tints the whole sheet and recomputes every line; a row moved by a new rule holds canary until scrolled past.
+FORM: Category canon (standing exit), bar set by Revolut and Wise. Signature interaction: segmented control switches copy; hero figure and every card total count to the new value; a row moved by a new rule glows accent until scrolled past.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.

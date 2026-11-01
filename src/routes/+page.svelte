@@ -11,11 +11,10 @@
 	import { BUCKETS, type Bucket, type Rule, type Scored } from '#lib/types';
 
 	type Copy = 'card' | 'mine' | 'partner';
-	const COPIES: { id: Copy; label: string; hint: string }[] = [
-		{ id: 'card', label: 'Card', hint: 'every line on the statement' },
-		{ id: 'mine', label: 'Mine', hint: 'my share of each line' },
-		{ id: 'partner', label: 'Partner', hint: 'what is not mine' }
+	const COPIES: { id: Copy; label: string }[] = [
+		{ id: 'card', label: 'Card' }, { id: 'mine', label: 'Mine' }, { id: 'partner', label: 'Partner' }
 	];
+	const TITLES: Record<Bucket, string> = { income: 'Income', fixed: 'Fixed expenses', general: 'General', investments: 'Investments', savings: 'Savings', mortgage: 'Mortgage' };
 
 	let copy = $state<Copy>('mine');
 	const held = new SvelteSet<string>();
@@ -32,46 +31,40 @@
 	/** Payments and refunds to the card are not anyone's expense unless a rule claims them. */
 	const payments = $derived(scored.filter((r) => r.amount < 0 && !r.rule));
 	const byBucket = $derived(Object.fromEntries(BUCKETS.map((b) => [b, scored.filter((r) => r.bucket === b && !(r.amount < 0 && !r.rule))])) as Record<Bucket, Scored[]>);
-	const incomeTotal = $derived(data.incomes.reduce((a, i) => a + i.amount, 0));
+	const incomeTotal = $derived(copy === 'partner' ? 0 : data.incomes.reduce((a, i) => a + i.amount, 0));
 	const val = (r: Scored) => (copy === 'card' ? r.amount : copy === 'mine' ? r.mine : r.amount - r.mine);
 	const sum = (b: Bucket) => byBucket[b].reduce((a, r) => a + val(r), 0);
 	const spend = $derived(sum('fixed') + sum('general') + sum('mortgage'));
 	const put = $derived(sum('savings') + sum('investments'));
-	const income = $derived((copy === 'partner' ? 0 : incomeTotal) + sum('income'));
+	const income = $derived(incomeTotal + sum('income'));
 	const left = $derived(income - spend - put);
+	const barTotal = $derived(spend + put + income);
 	const codeOf = (r: Rule) => `R${data.rules.findIndex((x) => x.id === r.id) + 1}`;
 	const period = $derived.by(() => {
-		if (!data.txns.length) return 'No statement loaded';
+		if (!data.txns.length) return 'No statement yet';
 		const ds = data.txns.map((t) => t.date).sort();
-		const f = (d: string) => new Date(d).toLocaleDateString('en-NZ', { day: 'numeric', month: 'short', year: 'numeric' });
-		return `${f(ds[0])} – ${f(ds[ds.length - 1])}`;
+		const f = (d: string) => new Date(d).toLocaleDateString('en-NZ', { day: 'numeric', month: 'short' });
+		return `${f(ds[0])} – ${f(ds[ds.length - 1])} ${ds[ds.length - 1].slice(0, 4)}`;
 	});
 
 	function loadCsv(text: string, synthetic = false) {
 		try {
 			const txns = parseAnz(text);
 			if (!txns.length) throw new Error('No transactions found in that file.');
-			data.txns = txns;
-			data.synthetic = synthetic;
-			error = '';
-			persist();
-		} catch (e) {
-			error = e instanceof Error ? e.message : String(e);
-		}
+			data.txns = txns; data.synthetic = synthetic; error = ''; persist();
+		} catch (e) { error = e instanceof Error ? e.message : String(e); }
 	}
 	async function onfile(e: Event) {
-		const f = (e.currentTarget as HTMLInputElement).files?.[0];
+		const input = e.currentTarget as HTMLInputElement;
+		const f = input.files?.[0];
 		if (f) loadCsv(await f.text());
-		(e.currentTarget as HTMLInputElement).value = '';
+		input.value = '';
 	}
-
-	/** Rule edits: remember which rows changed bucket or share so they can hold their highlight. */
+	/** Rule edits: remember which rows changed bucket or share so they can hold their glow. */
 	function withDiff(fn: () => void) {
 		const before = new Map(scored.map((r) => [r.id, `${r.bucket}:${r.share}`]));
-		fn();
-		persist();
-		const changed = score(data.txns, data.rules).filter((r) => before.get(r.id) !== `${r.bucket}:${r.share}`).map((r) => r.id);
-		for (const id of changed) held.add(id);
+		fn(); persist();
+		for (const r of score(data.txns, data.rules)) if (before.get(r.id) !== `${r.bucket}:${r.share}`) held.add(r.id);
 	}
 	const addRule = (r: Omit<Rule, 'id'>) => withDiff(() => data.rules.push({ id: uid(), ...r }));
 	const removeRule = (id: string) => withDiff(() => (data.rules = data.rules.filter((r) => r.id !== id)));
@@ -85,19 +78,14 @@
 		const amount = Number(incomeDraft.amount);
 		if (!incomeDraft.name || Number.isNaN(amount) || amount <= 0) return;
 		data.incomes.push({ id: uid(), name: incomeDraft.name, amount, monthly: true });
-		incomeDraft = { name: '', amount: '' };
-		persist();
+		incomeDraft = { name: '', amount: '' }; persist();
 	}
-	function removeIncome(id: string) {
-		data.incomes = data.incomes.filter((i) => i.id !== id);
-		persist();
-	}
+	function removeIncome(id: string) { data.incomes = data.incomes.filter((i) => i.id !== id); persist(); }
 	function exportJson() {
 		const a = document.createElement('a');
 		a.href = URL.createObjectURL(new Blob([JSON.stringify($state.snapshot(data), null, 2)], { type: 'application/json' }));
 		a.download = `clarifi-${new Date().toISOString().slice(0, 10)}.json`;
-		a.click();
-		URL.revokeObjectURL(a.href);
+		a.click(); URL.revokeObjectURL(a.href);
 	}
 	async function importJson(e: Event) {
 		const f = (e.currentTarget as HTMLInputElement).files?.[0];
@@ -113,73 +101,76 @@
 
 <svelte:head><title>Clarifi</title></svelte:head>
 
-<main data-copy={copy}>
+<main>
 	<header>
-		<div class="brand">
-			<span class="wordmark">Clarifi</span>
-			<h1>{period}</h1>
-			{#if data.synthetic && data.txns.length}<span class="label synth">sample statement · synthetic data</span>{/if}
-		</div>
-		<nav class="copies" aria-label="Which copy of the statement to read">
+		<span class="wordmark">Clarifi</span>
+		<div class="seg" role="group" aria-label="Which share to read">
 			{#each COPIES as c (c.id)}
-				<button class={['tab', { on: copy === c.id }]} data-copy={c.id} aria-pressed={copy === c.id} onclick={() => (copy = c.id)} title={c.hint}>{c.label}</button>
+				<button class={{ on: copy === c.id }} aria-pressed={copy === c.id} onclick={() => (copy = c.id)}>{c.label}</button>
 			{/each}
-		</nav>
+		</div>
 		<label class="btn import">
+			<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10V2M4.5 5.5 8 2l3.5 3.5M2.5 10.5v2a1.5 1.5 0 0 0 1.5 1.5h8a1.5 1.5 0 0 0 1.5-1.5v-2"/></svg>
 			Import statement
 			<input type="file" accept=".csv,text/csv" onchange={onfile} />
 		</label>
 	</header>
 
-	{#if error}<p class="error" role="alert">{error}</p>{/if}
+	{#if error}<p class="error card" role="alert">{error}</p>{/if}
 
-	<div class="sheet">
-		<section class="lines" aria-label="Budget lines">
-			{#if !data.txns.length}
-				<div class="empty">
-					<p>Export your ANZ credit card statement as CSV and import it. Nothing leaves this browser: parsing and storage happen locally.</p>
-					<p>Or <button class="quiet" onclick={() => loadCsv(SAMPLE_CSV, true)}>load a sample statement</button> <span class="label">synthetic data</span> to see how rules shape the sheet.</p>
-				</div>
-			{:else}
-				<p class="net num" aria-label="Net position">
-					{#if copy === 'card'}
-						<span class="dim">card total</span> <b>{nzd(spend + put)}</b>
-					{:else if copy === 'partner'}
-						<span class="dim">partner's share</span> <b>{nzd(spend + put)}</b>
-					{:else if !data.incomes.length}
-						<span class="dim">income — not entered</span>
-						<span class="dim">− spend {nzd(spend)} − put away {nzd(put)}</span>
-					{:else}
-						<span class="dim">income {nzd(income)} − spend {nzd(spend)} − put away {nzd(put)} =</span>
-						<b class={{ neg: left < 0 }}>{nzd(left)}</b>
-						<span class="dim">left over</span>
-					{/if}
-				</p>
-			{/if}
+	<section class="hero card" aria-label="Net position">
+		<div class="hero-top">
+			<span class="pill period">{period}</span>
+			{#if data.synthetic && data.txns.length}<span class="pill period">sample · synthetic data</span>{/if}
+		</div>
+		{#if !data.txns.length}
+			<p class="hero-label">Your share of the card, by bucket</p>
+			<p class="lede">Import your ANZ credit card CSV. Rules decide how much of each line is yours. Nothing leaves this browser.</p>
+			<button class="btn dark" onclick={() => loadCsv(SAMPLE_CSV, true)}>Try with a sample statement</button>
+		{:else if copy === 'card'}
+			<p class="hero-label">Everything on the card</p>
+			<p class="big num">{nzd(spend + put)}</p>
+			<div class="parts"><span class="pill">spend {nzd(spend)}</span><span class="pill">put away {nzd(put)}</span></div>
+		{:else if copy === 'partner'}
+			<p class="hero-label">Partner's share</p>
+			<p class="big num">{nzd(spend + put)}</p>
+			<div class="parts"><span class="pill">spend {nzd(spend)}</span><span class="pill">put away {nzd(put)}</span></div>
+		{:else if !data.incomes.length}
+			<p class="hero-label">My share of the card</p>
+			<p class="big num">{nzd(spend + put)}</p>
+			<div class="parts"><span class="pill">spend {nzd(spend)}</span><span class="pill">put away {nzd(put)}</span><span class="pill">add an income to see what's left</span></div>
+		{:else}
+			<p class="hero-label">Left over this statement</p>
+			<p class={['big', 'num', { neg: left < 0 }]}>{nzd(left)}</p>
+			<div class="parts"><span class="pill">income {nzd(income)}</span><span class="pill">− spend {nzd(spend)}</span><span class="pill">− put away {nzd(put)}</span></div>
+		{/if}
+	</section>
 
-			<BucketLine title="Income" rows={byBucket.income} extra={copy === 'partner' ? 0 : incomeTotal} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule} open>
+	<div class="grid">
+		<section class="buckets" aria-label="Buckets">
+			<BucketLine title={TITLES.income} color="var(--b-income)" rows={byBucket.income} extra={incomeTotal} total={barTotal} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule} open={!data.incomes.length && !!data.txns.length}>
 				<ul class="incomes">
 					{#each data.incomes as i (i.id)}
-						<li><span>{i.name}</span><span class="num">{nzd(i.amount)}</span><button class="quiet" onclick={() => removeIncome(i.id)} aria-label="Remove income {i.name}">remove</button></li>
+						<li><span>{i.name}</span><b class="num">{nzd(i.amount)}</b><button class="link" onclick={() => removeIncome(i.id)} aria-label="Remove income {i.name}">Remove</button></li>
 					{/each}
-					<li>
-						<form onsubmit={addIncome} aria-label="Add an income">
-							<input bind:value={incomeDraft.name} placeholder="Salary" aria-label="Income name" />
-							<input class="mono" inputmode="decimal" bind:value={incomeDraft.amount} placeholder="0.00" size="9" aria-label="Monthly amount" />
-							<button class="quiet" type="submit">add income</button>
-						</form>
-					</li>
+					{#if copy !== 'partner'}
+						<li>
+							<form onsubmit={addIncome} aria-label="Add an income">
+								<input bind:value={incomeDraft.name} placeholder="Salary" aria-label="Income name" />
+								<input inputmode="decimal" bind:value={incomeDraft.amount} placeholder="0.00" aria-label="Monthly amount" />
+								<button class="btn ghost" type="submit">Add income</button>
+							</form>
+						</li>
+					{/if}
 				</ul>
 			</BucketLine>
-			<BucketLine title="Fixed expenses" rows={byBucket.fixed} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule} open />
-			<BucketLine title="General expenses" rows={byBucket.general} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule} open />
-			<BucketLine title="Investments" rows={byBucket.investments} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule} />
-			<BucketLine title="Savings" rows={byBucket.savings} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule} />
-			<BucketLine title="Mortgage" rows={byBucket.mortgage} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule} />
+			{#each ['fixed', 'general', 'investments', 'savings', 'mortgage'] as const as b (b)}
+				<BucketLine title={TITLES[b]} color="var(--b-{b})" rows={byBucket[b]} total={barTotal} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule} />
+			{/each}
 			{#if payments.length}
-				<p class="payments mono" aria-label="Payments and credits to the card">
-					<span class="dim">payments to the card, not counted:</span>
-					{#each payments as r (r.id)}<span class="pay">{r.date.slice(5)} {r.details} <b>{nzd(-r.amount)}</b></span>{/each}
+				<p class="payments small">
+					Payments to the card, not counted:
+					{#each payments as r (r.id)}<span class="pill">{r.details} · {nzd(-r.amount)}</span>{/each}
 				</p>
 			{/if}
 		</section>
@@ -187,61 +178,56 @@
 		<Rules rules={data.rules} {scored} {copy} bind:draft onadd={addRule} onremove={removeRule} />
 	</div>
 
-	<footer>
-		<span class="label">Stored in this browser only</span>
-		<button class="quiet" onclick={exportJson}>export JSON</button>
-		<label class="quiet">import JSON<input type="file" accept="application/json" onchange={importJson} hidden /></label>
-		<button class="quiet" onclick={clearAll} disabled={!data.txns.length && !data.incomes.length}>clear statement</button>
+	<footer class="small">
+		<span>Stored in this browser only.</span>
+		<button class="link" onclick={exportJson}>Export JSON</button>
+		<label class="link">Import JSON<input type="file" accept="application/json" onchange={importJson} hidden /></label>
+		<button class="link" onclick={clearAll} disabled={!data.txns.length && !data.incomes.length}>Clear statement</button>
 	</footer>
 </main>
 
 <style>
-	main {
-		max-width: 1280px; margin: 24px auto; padding: calc(var(--s) * 3) calc(var(--s) * 4) calc(var(--s) * 4);
-		background: var(--sheet); border: 1px solid var(--rule); min-height: calc(100vh - 48px);
-		transition: background-color 250ms var(--ease), border-color 250ms var(--ease);
-	}
-	header { display: grid; grid-template-columns: 1fr auto auto; gap: calc(var(--s) * 3); align-items: end; padding-bottom: calc(var(--s) * 2); border-bottom: 1px solid var(--ink); }
-	.wordmark { display: block; font-size: var(--t1); letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); font-weight: 600; }
-	h1 { margin: 2px 0 0; font-size: 22px; font-weight: 500; letter-spacing: -0.01em; }
-	.brand { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; }
-	.wordmark { flex-basis: 100%; }
-	.synth { color: var(--blue); }
-	.copies { display: flex; }
-	.tab {
-		border: 1px solid var(--rule); border-bottom: 0; background: #fff; padding: 6px 16px 8px; font-size: var(--t1); font-weight: 500;
-		margin-bottom: -1px; margin-left: -1px; position: relative; transition: transform 150ms var(--ease);
-	}
-	.tab[data-copy='mine'] { background: var(--canary); }
-	.tab[data-copy='partner'] { background: var(--pink); }
-	.tab.on { border-color: var(--ink); z-index: 1; transform: translateY(-3px); box-shadow: 0 1px 0 var(--sheet); }
-	.import input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+	main { max-width: 1240px; margin: 0 auto; padding: 20px 24px 48px; }
+	header { display: flex; align-items: center; gap: 16px; padding: 8px 0 20px; }
+	.wordmark { font-weight: 700; font-size: 20px; letter-spacing: -0.03em; margin-right: auto; }
+	.seg { display: inline-flex; padding: 4px; border-radius: 999px; background: var(--surface); box-shadow: var(--shadow); }
+	.seg button { border: 0; background: transparent; border-radius: 999px; padding: 7px 16px; font-weight: 600; font-size: 14px; color: var(--ink-2); transition: background-color 200ms var(--ease), color 200ms var(--ease); }
+	.seg button.on { background: var(--ink); color: var(--bg); }
 	.import { position: relative; }
-	.import:focus-within { outline: 2px solid var(--blue); outline-offset: 2px; }
-	.error { margin: var(--s) 0 0; padding: var(--s); border: 1px solid #a3261c; color: #a3261c; font-size: var(--t1); }
-	.sheet { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: calc(var(--s) * 4); margin-top: calc(var(--s) * 2); }
-	.net { margin: 0 0 calc(var(--s) * 2); padding: var(--s) 0; font-size: var(--t2); text-align: left; white-space: normal; }
-	.payments { margin: 0; padding: calc(var(--s) * 1.5) 0 0 8px; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 4px calc(var(--s) * 2); color: var(--ink-2); }
-	.payments b { font-weight: 500; color: var(--ink); }
-	.net b { font-weight: 500; font-size: 22px; margin: 0 6px; }
-	.net .neg { color: #a3261c; }
-	.dim { color: var(--ink-2); }
-	.empty { padding: calc(var(--s) * 2) 0 calc(var(--s) * 3); max-width: 60ch; }
-	.empty p { margin: 0 0 var(--s); }
-	.incomes { list-style: none; margin: 0 0 var(--s) 8px; padding: 0; }
-	.incomes li { display: grid; grid-template-columns: 1fr auto auto; gap: calc(var(--s) * 2); padding: 5px 0; border-top: 1px solid var(--rule); align-items: baseline; }
+	.import input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+	.import:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+	.error { margin: 0 0 16px; padding: 12px 16px; color: var(--danger); background: var(--danger-soft); box-shadow: none; }
+	.hero { background: var(--accent); color: var(--accent-ink); padding: 24px 28px 28px; border-radius: 28px; box-shadow: none; }
+	.hero-top { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+	.hero .pill { background: rgba(4, 46, 40, 0.1); color: var(--accent-ink); }
+	.hero-label { margin: 0; font-weight: 600; font-size: 15px; opacity: 0.8; }
+	.big { margin: 2px 0 12px; font-size: clamp(40px, 6vw, 64px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; }
+	.big.neg::before { content: ''; }
+	.lede { margin: 8px 0 18px; max-width: 48ch; font-size: 17px; }
+	.btn.dark { background: var(--accent-ink); color: var(--accent); }
+	.parts { display: flex; flex-wrap: wrap; gap: 8px; }
+	.grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; margin-top: 24px; }
+	.buckets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-content: start; }
+	.payments { grid-column: 1 / -1; margin: 4px 4px 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+	.incomes { list-style: none; margin: 0 0 12px; padding: 0; }
+	.incomes li { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 8px 12px; border-radius: var(--r2); }
+	.incomes li:hover { background: var(--surface-2); }
 	.incomes form { display: contents; }
-	footer { display: flex; gap: calc(var(--s) * 3); align-items: baseline; margin-top: calc(var(--s) * 4); padding-top: var(--s); border-top: 1px solid var(--rule); }
+	.incomes form input:first-child { grid-column: 1; }
+	footer { display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline; margin-top: 32px; }
 	footer label { cursor: pointer; }
-	@media (max-width: 900px) {
-		.sheet { grid-template-columns: 1fr; }
-		header { grid-template-columns: 1fr auto; }
-		.import { grid-column: 1 / -1; justify-self: start; }
-	}
-	@media (max-width: 520px) {
-		main { margin: 0; padding: calc(var(--s) * 2); border: 0; }
-		header { grid-template-columns: 1fr; }
-		.copies { justify-self: start; }
-		.net b { display: block; margin: 4px 0; }
+	@media (max-width: 1024px) { .buckets { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+	@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+	@media (max-width: 640px) {
+		main { padding: 12px 14px 40px; }
+		header { flex-wrap: wrap; gap: 10px; }
+		.wordmark { flex-basis: 100%; }
+		.seg { flex: 1; }
+		.seg button { flex: 1; }
+		.buckets { grid-template-columns: 1fr; }
+		.hero { padding: 20px; border-radius: 22px; }
+		.incomes li { grid-template-columns: 1fr auto; }
+		.incomes form { display: grid; grid-column: 1 / -1; grid-template-columns: 1fr 1fr; gap: 8px; }
+		.incomes form .btn { grid-column: 1 / -1; justify-content: center; }
 	}
 </style>

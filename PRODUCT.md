@@ -40,7 +40,9 @@ Share rules, not categories, are the primary mechanism. Every budgeting app cate
 
 ## Brand Commitments
 
-Name: Clarifi. README tagline: "A simple, minimal and robust financial tracker for your personal needs. Giving freedom and flexibility back to the user!" Repo: github.com/ehjc1/Clarifi. No logo, palette, or type decided.
+Name: Clarifi. README tagline: "A simple, minimal and robust financial tracker for your personal needs. Giving freedom and flexibility back to the user!" Repo: github.com/ehjc1/Clarifi. No logo.
+
+Standing visual preference (Eugene, 2026-11-01, after rejecting the "Payslip Arithmetic" direction as "horrible, I want something modern"): the category standard for modern consumer fintech, executed at the craft level of Revolut and Wise. Bold colour blocks, large rounded cards, playful but precise. Light and dark themes following the system setting. No paper, ledger, or printed-form metaphors.
 
 ## Evidence on Hand
 
