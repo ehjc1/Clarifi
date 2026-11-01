@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { nzd, pct } from '#lib/money';
+	import { tweenMoney } from '#lib/motion.svelte';
 	import { BUCKETS, type Bucket, type Scored } from '#lib/types';
 
 	type Copy = 'card' | 'mine' | 'partner';
 	export type Filter = 'all' | 'unsorted' | 'conflicts' | Bucket;
-	let { scored, copy, held, filter = $bindable('all'), onrelease, onmakerule, codeOf, income }: {
+	let { scored, copy, held, filter = $bindable('all'), onrelease, onmakerule, onsort, codeOf, income }: {
 		scored: Scored[]; copy: Copy; held: { has(id: string): boolean }; filter?: Filter;
-		onrelease: (id: string) => void; onmakerule: (details: string) => void; codeOf: (r: NonNullable<Scored['rule']>) => string;
+		onrelease: (id: string) => void; onmakerule: (details: string) => void; onsort: () => void; codeOf: (r: NonNullable<Scored['rule']>) => string;
 		income?: import('svelte').Snippet;
 	} = $props();
 
@@ -22,6 +23,8 @@
 	).sort((a, b) => a.date.localeCompare(b.date)));
 	const cardSum = $derived(rows.reduce((a, r) => a + r.amount, 0));
 	const sum = $derived(rows.reduce((a, r) => a + value(r), 0));
+	const shownCard = tweenMoney(() => cardSum);
+	const shownSum = tweenMoney(() => sum);
 
 	/** Row keeps its glow until it has been seen and then scrolled out of view once. */
 	const hold = (id: string) => (node: HTMLElement) => {
@@ -57,23 +60,24 @@
 	<div class="card list">
 		{#if filter === 'income' && income}{@render income()}{/if}
 		<p class="sumline small">
-			<span>{rows.length} {rows.length === 1 ? 'line' : 'lines'}</span>
-			<span class="num">card {nzd(cardSum)}{#if copy !== 'card'} · {copy === 'mine' ? 'mine' : "partner's"} <b>{nzd(sum)}</b>{/if}</span>
+			<span>{rows.length} {rows.length === 1 ? 'line' : 'lines'}{#if unsorted && (filter === 'all' || filter === 'unsorted')}&nbsp;·&nbsp;<button class="link sort" onclick={onsort}>Sort {unsorted} unsorted</button>{/if}</span>
+			<span class="num">card {nzd(shownCard.current)}{#if copy !== 'card'}&nbsp;·&nbsp;{copy === 'mine' ? 'mine' : "partner's"} <b>{nzd(shownSum.current)}</b>{/if}</span>
 		</p>
 		{#if rows.length}
 			<ul>
 				{#each rows as r (r.id)}
 					{@const s = shareOf(r)}
-					<li class={{ held: held.has(r.id), conflict: r.conflict, excluded: s === 0 }} style="--c: var(--b-{r.bucket})" {@attach held.has(r.id) ? hold(r.id) : undefined}>
+					<li class={{ held: held.has(r.id), conflict: r.conflict, excluded: s === 0, unsorted: !r.rule }} style="--c: var(--b-{r.bucket})" {@attach held.has(r.id) ? hold(r.id) : undefined}>
 						<span class="date small">{r.date.slice(5)}</span>
 						<span class="det">
+							<span class="date-inline small">{r.date.slice(5)}</span>
 							<button class="det-b" onclick={() => onmakerule(r.details)} title="Start a rule from this line">{r.details}</button>
 							{#if r.conflict}<span class="pill warn">conflict · {r.matches.map((m) => m.name).join(' vs ')}</span>{/if}
 						</span>
 						<span class="meta">
 							<span class="pill bucket"><span class="dot"></span>{TITLES[r.bucket]}</span>
-							{#if r.rule}<span class="pill code" title={r.rule.name}>{codeOf(r.rule)}</span>{/if}
-							{#if copy !== 'card'}<span class={['pill', 'share', { full: s === 1 }]}>{pct(s)}</span>{/if}
+							{#if r.rule}<span class="pill code" title={r.rule.name}>{codeOf(r.rule)}</span>{:else}<span class="pill norule">no rule</span>{/if}
+							{#if copy !== 'card' && s !== 1}<span class="pill share">{pct(s)}</span>{:else}<span></span>{/if}
 						</span>
 						<span class="amt num">
 							{#if copy !== 'card' && s !== 1}<span class="small">{nzd(r.amount)}</span>{/if}
@@ -96,17 +100,20 @@
 	.search { width: 260px; }
 	.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 	.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-	.f { border: 0; cursor: pointer; color: var(--ink-2); transition: background-color 150ms var(--ease), color 150ms var(--ease); }
+	.f { border: 0; cursor: pointer; color: var(--ink-2); background: var(--surface); box-shadow: var(--shadow); transition: background-color 150ms var(--ease), color 150ms var(--ease); }
 	.f:hover { color: var(--ink); }
 	.f.on { background: var(--ink); color: var(--bg); }
 	.f.on .dot { background: var(--bg); }
 	.f .n { font-size: 12px; opacity: 0.7; }
 	.f.warn { color: var(--danger); }
-	.f.warn.on { background: var(--danger); color: #fff; }
+	.f.warn.on { background: var(--danger); color: var(--danger-ink); }
 	.sep { width: 1px; height: 18px; background: var(--line); margin: 0 4px; }
 	.list { padding: 12px 8px; }
 	.sumline { display: flex; justify-content: space-between; gap: 12px; margin: 0 12px 6px; }
 	.sumline b { color: var(--ink); font-weight: 600; }
+	.sort { color: var(--accent-ink); background: var(--accent); padding: 2px 10px; border-radius: 999px; font-weight: 600; }
+	@media (prefers-color-scheme: dark) { .sort { color: var(--accent-ink); } }
+	.sort:hover { filter: brightness(1.06); color: var(--accent-ink); }
 	ul { list-style: none; margin: 0; padding: 0; }
 	li { position: relative; display: grid; grid-template-columns: 48px 1fr auto auto; gap: 12px; align-items: center; padding: 10px 12px; border-radius: var(--r2); transition: background-color 400ms var(--ease); }
 	li + li { margin-top: 2px; }
@@ -117,11 +124,14 @@
 	.det { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; min-width: 0; }
 	.det-b { background: none; border: 0; padding: 0; text-align: left; font-weight: 500; }
 	.det-b:hover { color: var(--accent); }
-	.meta { display: flex; gap: 6px; }
+	.meta { display: grid; grid-template-columns: 112px 44px 52px; gap: 6px; justify-items: start; }
+	.meta .share { justify-self: end; }
 	.bucket { color: var(--ink-2); }
+	li.unsorted .bucket { opacity: 0.6; }
+	.norule { background: transparent; color: var(--ink-2); padding-left: 0; font-weight: 500; }
+	.date-inline { display: none; }
 	.code { color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); font-size: 12px; font-weight: 600; }
 	.share { color: var(--ink-2); }
-	.share.full { color: var(--ink); }
 	.warn { color: var(--danger); background: transparent; padding-left: 0; }
 	.amt { display: flex; gap: 8px; align-items: baseline; justify-content: flex-end; white-space: nowrap; }
 	.amt b { font-weight: 600; }
@@ -131,8 +141,8 @@
 		.search { width: 100%; }
 		li { grid-template-columns: 1fr auto; }
 		.date { display: none; }
-		.meta { grid-column: 1; }
-		.bucket { display: none; }
+		.date-inline { display: inline; }
+		.meta { grid-column: 1; grid-template-columns: auto auto auto; }
 		.amt { grid-column: 2; grid-row: 1 / span 2; align-self: center; flex-direction: column; align-items: flex-end; gap: 0; }
 	}
 </style>

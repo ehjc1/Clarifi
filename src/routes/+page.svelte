@@ -273,7 +273,10 @@
 
 	</div>
 	{:else if view === 'lines'}
-	<Lines scored={scored.filter((r) => !(r.amount < 0 && !r.rule))} {copy} {held} bind:filter {codeOf} onrelease={release} onmakerule={makeRule}>
+	{#if triage}
+		<Triage lines={unsorted} {scored} onrule={addRule} onskip={(id) => skipped.add(id)} onclose={() => (triage = false)} />
+	{/if}
+	<Lines scored={scored.filter((r) => !(r.amount < 0 && !r.rule))} {copy} {held} bind:filter {codeOf} onrelease={release} onmakerule={makeRule} onsort={() => { triage = true; window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
 		{#snippet income()}
 			<ul class="incomes">
 				{#each data.incomes as i (i.id)}
@@ -360,15 +363,16 @@
 	.views .n { font-size: 12px; padding: 1px 7px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); }
 	.views a.on .n { background: var(--accent-soft); color: var(--ink); }
 	.rules-view { display: flex; flex-direction: column; gap: 24px; }
+	main > :global(.triage + .lines) { margin-top: 24px; }
 	footer { display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline; margin-top: 32px; }
 	footer label { cursor: pointer; }
 	footer > span { flex-basis: 100%; }
 	@media (min-width: 641px) { footer > span { flex-basis: auto; } }
 	.buckets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-content: start; }
 	.payments { grid-column: 1 / -1; margin: 4px 4px 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-	.incomes { list-style: none; margin: 0 4px 12px; padding: 0 0 12px; border-bottom: 1px solid var(--line); }
+	.incomes { list-style: none; margin: 0 4px 12px; padding: 6px; border-radius: var(--r2); background: var(--surface-2); }
 	.incomes li { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 8px 12px; border-radius: var(--r2); }
-	.incomes li:hover { background: var(--surface-2); }
+	.incomes li:hover { background: var(--surface); }
 	.incomes form { display: contents; }
 	.incomes form input:first-child { grid-column: 1; }
 	@media (max-width: 1024px) { .buckets { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
