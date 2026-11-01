@@ -22,6 +22,10 @@
 	const held = new SvelteSet<string>();
 	const skipped = new SvelteSet<string>();
 	let triage = $state(false);
+	type View = 'overview' | 'rules';
+	let view = $state<View>('overview');
+	let adding = $state(false);
+	const go = (v: View) => { view = v; history.replaceState(null, '', v === 'rules' ? '#rules' : location.pathname + location.search); };
 	let error = $state('');
 	let draft = $state({ text: '', min: '', max: '', share: '0', bucket: 'general' as Bucket, name: '' });
 	let incomeDraft = $state({ name: '', amount: '' });
@@ -43,6 +47,7 @@
 
 	onMount(() => {
 		Object.assign(data, load());
+		if (location.hash === '#rules') view = 'rules';
 		if (location.search.includes('sample') && (!data.txns.length || data.synthetic)) loadCsv(SAMPLE_CSV, true); // demo/screenshot entry, never over real data
 	});
 
@@ -97,7 +102,9 @@
 	const release = (id: string) => held.delete(id);
 	function makeRule(details: string) {
 		draft.text = details.replace(/\s+\S*\d\S*$/g, '').trim(); // drop trailing store numbers
-		document.getElementById('rules-h')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		adding = true;
+		go('rules');
+		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
 	function addIncome(e: SubmitEvent) {
 		e.preventDefault();
@@ -130,11 +137,17 @@
 <main>
 	<header>
 		<span class="wordmark">Clarifi</span>
+		<nav class="views" aria-label="Sections">
+			<button class={{ on: view === 'overview' }} aria-current={view === 'overview' ? 'page' : undefined} onclick={() => go('overview')}>Overview</button>
+			<button class={{ on: view === 'rules' }} aria-current={view === 'rules' ? 'page' : undefined} onclick={() => go('rules')}>Rules <span class="n">{data.rules.length}</span></button>
+		</nav>
+		{#if view === 'overview'}
 		<div class="seg" role="group" aria-label="Which share to read">
 			{#each COPIES as c (c.id)}
 				<button class={{ on: copy === c.id }} aria-pressed={copy === c.id} onclick={() => (copy = c.id)}>{c.label}</button>
 			{/each}
 		</div>
+		{/if}
 		<label class="btn import" aria-label="Import statement">
 			<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10V2M4.5 5.5 8 2l3.5 3.5M2.5 10.5v2a1.5 1.5 0 0 0 1.5 1.5h8a1.5 1.5 0 0 0 1.5-1.5v-2"/></svg>
 			<span class="import-t">Import statement</span>
@@ -144,6 +157,7 @@
 
 	{#if error}<p class="error card" role="alert">{error}</p>{/if}
 
+	{#if view === 'overview'}
 	<section class="hero card" aria-label="Net position">
 		<div class="hero-main">
 			<div class="hero-top">
@@ -208,21 +222,29 @@
 			{/if}
 		</section>
 
-		<Rules rules={data.rules} {scored} {copy} bind:draft onadd={addRule} onremove={removeRule} />
 	</div>
-
-	<footer class="small">
-		<span>Stored in this browser only.</span>
-		<button class="link" onclick={exportJson}>Export JSON</button>
-		<label class="link">Import JSON<input type="file" accept="application/json" onchange={importJson} hidden /></label>
-		<button class="link" onclick={clearAll} disabled={!data.txns.length && !data.incomes.length}>Clear statement</button>
-	</footer>
+	{:else}
+	<div class="rules-view">
+		<Rules rules={data.rules} {scored} {copy} bind:draft bind:adding onadd={addRule} onremove={removeRule} />
+		<section class="data card" aria-labelledby="data-h">
+			<div>
+				<h2 id="data-h">Your data</h2>
+				<p class="small">Everything stays in this browser. Export a backup before clearing it.</p>
+			</div>
+			<div class="actions">
+				<button class="btn ghost" onclick={exportJson}>Export JSON</button>
+				<label class="btn ghost">Import JSON<input type="file" accept="application/json" onchange={importJson} hidden /></label>
+				<button class="btn ghost danger" onclick={clearAll} disabled={!data.txns.length && !data.incomes.length}>Clear statement</button>
+			</div>
+		</section>
+	</div>
+	{/if}
 </main>
 
 <style>
 	main { max-width: 1240px; margin: 0 auto; padding: 20px 24px 48px; }
 	header { display: flex; align-items: center; gap: 16px; padding: 8px 0 20px; }
-	.wordmark { font-weight: 700; font-size: 20px; letter-spacing: -0.03em; margin-right: auto; }
+	.wordmark { font-weight: 700; font-size: 20px; letter-spacing: -0.03em; }
 	.seg { display: inline-flex; padding: 4px; border-radius: 999px; background: var(--surface); box-shadow: var(--shadow); }
 	.seg button { border: 0; background: transparent; border-radius: 999px; padding: 7px 16px; font-weight: 600; font-size: 14px; color: var(--ink-2); transition: background-color 200ms var(--ease), color 200ms var(--ease); }
 	.seg button.on { background: var(--ink); color: var(--bg); }
@@ -244,7 +266,20 @@
 	.lede { margin: 8px 0 18px; max-width: 48ch; font-size: 17px; }
 	.btn.dark { background: var(--accent-ink); color: var(--accent); }
 	.sort { margin-top: 16px; }
-	.grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; margin-top: 24px; }
+	.grid { margin-top: 24px; }
+	.views { display: flex; gap: 2px; margin-right: auto; }
+	.views button { border: 0; background: transparent; border-radius: 999px; padding: 7px 14px; font-weight: 600; font-size: 15px; color: var(--ink-2); display: inline-flex; align-items: center; gap: 6px; transition: color 150ms var(--ease), background-color 150ms var(--ease); }
+	.views button:hover { color: var(--ink); }
+	.views button.on { color: var(--ink); background: var(--surface); box-shadow: var(--shadow); }
+	.views .n { font-size: 12px; padding: 1px 7px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); }
+	.views button.on .n { background: var(--accent-soft); color: var(--ink); }
+	.rules-view { display: flex; flex-direction: column; gap: 24px; }
+	.data { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 20px; flex-wrap: wrap; }
+	.data h2 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+	.data p { margin: 2px 0 0; }
+	.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+	.actions label { cursor: pointer; }
+	.btn.danger { color: var(--danger); }
 	.buckets { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; align-content: start; }
 	.buckets :global(.s2) { grid-column: span 2; }
 	.buckets :global(.s3) { grid-column: span 3; }
@@ -255,14 +290,13 @@
 	.incomes li:hover { background: var(--surface-2); }
 	.incomes form { display: contents; }
 	.incomes form input:first-child { grid-column: 1; }
-	footer { display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline; margin-top: 32px; }
-	footer label { cursor: pointer; }
 	@media (max-width: 1024px) { .buckets :global(.s2), .buckets :global(.s3) { grid-column: span 3; } }
-	@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
 	@media (max-width: 640px) {
 		main { padding: 12px 14px 40px; }
 		header { flex-wrap: wrap; gap: 10px; }
-		.seg { order: 3; flex-basis: 100%; }
+		.views { order: 2; }
+		.import { order: 3; margin-left: auto; }
+		.seg { order: 4; flex-basis: 100%; }
 		.seg button { flex: 1; }
 		.import { padding: 10px 12px; }
 		.import-t { display: none; }

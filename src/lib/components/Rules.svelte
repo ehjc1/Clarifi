@@ -2,9 +2,10 @@
 	import { describe } from '#lib/rules';
 	import { BUCKETS, type Bucket, type Rule, type Scored } from '#lib/types';
 
-	let { rules, scored, copy, draft = $bindable(), onadd, onremove }: {
+	let { rules, scored, copy, draft = $bindable(), adding = $bindable(false), onadd, onremove }: {
 		rules: Rule[]; scored: Scored[]; copy: 'card' | 'mine' | 'partner';
 		draft: { text: string; min: string; max: string; share: string; bucket: Bucket; name: string };
+		adding?: boolean;
 		onadd: (r: Omit<Rule, 'id'>) => void; onremove: (id: string) => void;
 	} = $props();
 
@@ -25,11 +26,47 @@
 			share, bucket: draft.bucket
 		});
 		draft = { text: '', min: '', max: '', share: '0', bucket: 'general', name: '' };
+		adding = false;
 	}
 </script>
 
-<aside aria-labelledby="rules-h">
-	<h2 id="rules-h">Share rules</h2>
+<section aria-labelledby="rules-h">
+	<div class="head">
+		<div>
+			<h2 id="rules-h">Share rules</h2>
+			<p class="small">How much of each line is mine. The first matching rule wins; clashes show as conflicts.</p>
+		</div>
+		{#if !adding}<button class="btn" onclick={() => (adding = true)}>+ New rule</button>{/if}
+	</div>
+
+	{#if adding}
+	<form class="card" onsubmit={submit} aria-label="Add a rule">
+		<div class="top"><span class="pill code">R{rules.length + 1}</span><span class="name">New rule</span><button class="link" type="button" onclick={() => (adding = false)}>Cancel</button></div>
+		<div class="fields">
+			<label>Details contain<input bind:value={draft.text} placeholder="pak n save" /></label>
+			<label>Amount ≥<input inputmode="decimal" bind:value={draft.min} placeholder="50" /></label>
+			<label>Amount ≤<input inputmode="decimal" bind:value={draft.max} placeholder="any" /></label>
+			<label>My share
+				<select bind:value={draft.share}>
+					<option value="0">0% · partner's</option>
+					<option value="50">50% · split</option>
+					<option value="100">100% · mine</option>
+					<option value="25">25%</option>
+					<option value="75">75%</option>
+				</select>
+			</label>
+			<label>Bucket
+				<select bind:value={draft.bucket}>
+					{#each BUCKETS as b (b)}<option value={b}>{b}</option>{/each}
+				</select>
+			</label>
+			<label>Name<input bind:value={draft.name} placeholder="Big grocery shop is partner's" /></label>
+		</div>
+		{#if error}<p class="err small" role="alert">{error}</p>{/if}
+		<button class="btn" type="submit">Add rule</button>
+	</form>
+	{/if}
+
 	<ol>
 		{#each rules as r, i (r.id)}
 			<li class="card" style="--c: var(--b-{r.bucket})">
@@ -47,38 +84,15 @@
 			</li>
 		{/each}
 	</ol>
-
-	<form class="card" onsubmit={submit} aria-label="Add a rule">
-		<div class="top"><span class="pill code">R{rules.length + 1}</span><span class="name">New rule</span></div>
-		<label>Details contain<input bind:value={draft.text} placeholder="pak n save" /></label>
-		<div class="pair">
-			<label>Amount ≥<input inputmode="decimal" bind:value={draft.min} placeholder="50" /></label>
-			<label>Amount ≤<input inputmode="decimal" bind:value={draft.max} placeholder="any" /></label>
-		</div>
-		<label>My share
-			<select bind:value={draft.share}>
-				<option value="0">0% · partner's</option>
-				<option value="50">50% · split</option>
-				<option value="100">100% · mine</option>
-				<option value="25">25%</option>
-				<option value="75">75%</option>
-			</select>
-		</label>
-		<label>Bucket
-			<select bind:value={draft.bucket}>
-				{#each BUCKETS as b (b)}<option value={b}>{b}</option>{/each}
-			</select>
-		</label>
-		<label>Name<input bind:value={draft.name} placeholder="Big grocery shop is partner's" /></label>
-		{#if error}<p class="err small" role="alert">{error}</p>{/if}
-		<button class="btn" type="submit">Add rule</button>
-	</form>
-</aside>
+	{#if !rules.length}<p class="small empty">No rules yet. Sort your lines on the overview, or add one here.</p>{/if}
+</section>
 
 <style>
-	aside { display: flex; flex-direction: column; gap: 12px; }
-	h2 { margin: 0 0 4px; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
-	ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+	section { display: flex; flex-direction: column; gap: 14px; }
+	.head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+	h2 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+	.head p { margin: 2px 0 0; }
+	ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 	li, form { padding: 16px 18px; }
 	.top { display: flex; align-items: center; gap: 10px; }
 	.name { font-weight: 600; flex: 1; min-width: 0; }
@@ -89,9 +103,16 @@
 	.chips { display: flex; flex-wrap: wrap; gap: 6px; }
 	.bucket { text-transform: capitalize; }
 	.ghost { background: transparent; color: var(--ink-2); padding-left: 0; }
-	form { display: flex; flex-direction: column; gap: 10px; }
+	form { display: flex; flex-direction: column; gap: 12px; }
+	.fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 12px; }
+	.fields label:first-child, .fields label:last-child { grid-column: span 3; }
 	label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 500; color: var(--ink-2); }
-	.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 	.err { margin: 0; color: var(--danger); }
-	form .btn { align-self: flex-start; margin-top: 4px; }
+	form .btn { align-self: flex-start; }
+	.empty { margin: 0; }
+	@media (max-width: 720px) {
+		ol { grid-template-columns: 1fr; }
+		.fields { grid-template-columns: 1fr 1fr; }
+		.fields label:first-child, .fields label:last-child { grid-column: span 2; }
+	}
 </style>

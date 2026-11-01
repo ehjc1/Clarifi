@@ -3,7 +3,7 @@ const out = process.argv[2];
 const b = await chromium.launch();
 const scheme = process.env.SCHEME || 'light';
 const errs = [];
-for (const [name, w, h, act] of [['desktop', 1440, 900, null], ['mobile', 390, 844, null], ['card', 1440, 900, 'card'], ['partner', 1440, 900, 'partner'], ['rule', 1440, 900, 'rule'], ['triage', 1440, 900, 'triage'], ['triage-mobile', 390, 844, 'triage'], ['triage-move', 1440, 900, 'move']]) {
+for (const [name, w, h, act] of [['desktop', 1440, 900, null], ['mobile', 390, 844, null], ['card', 1440, 900, 'card'], ['partner', 1440, 900, 'partner'], ['rule', 1440, 900, 'rule'], ['triage', 1440, 900, 'triage'], ['triage-mobile', 390, 844, 'triage'], ['triage-move', 1440, 900, 'move'], ['rules', 1440, 900, 'rules'], ['rules-mobile', 390, 844, 'rules']]) {
   const p = await b.newPage({ viewport: { width: w, height: h }, colorScheme: scheme, hasTouch: w < 500, isMobile: w < 500 });
   p.on('pageerror', (e) => errs.push(name + ': ' + e.message));
   p.on('console', (m) => m.type() === 'error' && errs.push(name + ': ' + m.text()));
@@ -11,14 +11,19 @@ for (const [name, w, h, act] of [['desktop', 1440, 900, null], ['mobile', 390, 8
   await p.waitForTimeout(500);
   if (act === 'card' || act === 'partner') await p.getByRole('button', { name: act === 'card' ? 'Card' : 'Partner', exact: true }).click();
   if (act === 'rule') { // add a rule that conflicts with R3 and moves Sharesies to investments
+    await p.getByRole('button', { name: /^Rules/ }).click();
+    await p.getByRole('button', { name: '+ New rule' }).click();
     await p.getByPlaceholder('pak n save').fill('sharesies');
     await p.locator('form[aria-label="Add a rule"] select').nth(1).selectOption('investments');
     await p.locator('form[aria-label="Add a rule"] select').nth(0).selectOption('100');
     await p.getByRole('button', { name: 'Add rule' }).click();
+    await p.getByRole('button', { name: '+ New rule' }).click();
     await p.getByPlaceholder('pak n save').fill('contact');
     await p.locator('form[aria-label="Add a rule"] select').nth(0).selectOption('100');
     await p.getByRole('button', { name: 'Add rule' }).click();
+    await p.getByRole('button', { name: 'Overview' }).click();
   }
+  if (act === 'rules') { await p.getByRole('button', { name: /^Rules/ }).click(); await p.getByRole('button', { name: '+ New rule' }).click(); }
   if (act === 'move') { await p.getByRole('button', { name: /Sort \d+ unsorted/ }).click(); await p.locator('button.choice', { hasText: 'Partner' }).click(); }
   if (act === 'triage') { await p.getByRole('button', { name: /Sort \d+ unsorted/ }).click(); await p.locator('button.choice', { hasText: 'Mine' }).click(); }
   await p.waitForTimeout(900);
