@@ -104,8 +104,8 @@
 	.ghost { background: transparent; color: var(--ink-2); padding-left: 0; }
 	form { display: flex; flex-direction: column; gap: 12px; }
 	.fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 12px; }
-	.fields label:first-child, .fields label:last-child { grid-column: span 2; }
-	.fields label:nth-child(5) { grid-column: 1; }
+	.fields label:first-child { grid-column: span 3; }
+	.fields label:last-child { grid-column: span 2; }
 	label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 500; color: var(--ink-2); }
 	.err { margin: 0; color: var(--danger); }
 	form .btn { align-self: flex-start; }
@@ -114,6 +114,5 @@
 		ol { grid-template-columns: 1fr; }
 		.fields { grid-template-columns: 1fr 1fr; }
 		.fields label:first-child, .fields label:last-child { grid-column: span 2; }
-		.fields label:nth-child(5) { grid-column: auto; }
 	}
 </style>
