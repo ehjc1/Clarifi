@@ -1,0 +1,55 @@
+:root {
+	--sheet: #fbfbf8;
+	--ink: #1c2230;
+	--ink-2: #5b6372;
+	--blue: #2f4a8a;
+	--canary: #f6dd8c;
+	--pink: #f3c4c4;
+	--rule: #d9d6ce;
+	--mono: 'Red Hat Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+	--sans: 'Red Hat Text', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--s: 8px;
+	--t1: 13px;
+	--t2: 15px;
+	--ease: cubic-bezier(0.19, 1, 0.22, 1);
+}
+:root { --held: var(--canary); }
+[data-copy='mine'] { --sheet: #fbf0c4; --rule: #d9c98a; --held: #ffffff; }
+[data-copy='partner'] { --sheet: #f9dcdc; --rule: #d9a9a9; }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+	background: #e9e7e1;
+	color: var(--ink);
+	font: var(--t2)/1.45 var(--sans);
+	font-variant-numeric: tabular-nums;
+	-webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--blue); color: #fff; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
+button, input, select { font: inherit; color: inherit; border-radius: 0; }
+button { cursor: pointer; }
+button:disabled { cursor: default; opacity: 0.45; }
+input, select {
+	background: transparent;
+	border: 0; border-bottom: 1px solid var(--rule);
+	padding: 2px 0;
+	min-width: 0;
+}
+input:hover, select:hover { border-bottom-color: var(--ink-2); }
+input:focus, select:focus { border-bottom-color: var(--blue); outline: none; }
+input::placeholder { color: var(--ink-2); }
+.mono { font-family: var(--mono); font-size: var(--t1); }
+.num { font-family: var(--mono); font-size: var(--t1); text-align: right; white-space: nowrap; }
+.label { font-size: var(--t1); color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.08em; }
+.btn {
+	background: var(--blue); color: #fff; border: 1px solid var(--blue);
+	padding: 6px 14px; font-weight: 500; font-size: var(--t1); letter-spacing: 0.02em;
+	transition: background-color 150ms var(--ease), color 150ms var(--ease);
+}
+.btn:hover { background: #24396d; }
+.btn.ghost { background: transparent; color: var(--blue); }
+.btn.ghost:hover { background: var(--blue); color: #fff; }
+.quiet { background: none; border: 0; padding: 0; color: var(--ink-2); font-size: var(--t1); text-decoration: underline; text-underline-offset: 3px; }
+.quiet:hover { color: var(--ink); }

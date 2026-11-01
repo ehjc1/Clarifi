@@ -1,0 +1,141 @@
+{
+  "title": "Choose Clarifi's visual world",
+  "question": "The roll assigned the Payslip Arithmetic direction. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Payslip Arithmetic",
+      "kicker": "THE ROLL",
+      "lineage": "NZ payslips and IRD form arithmetic on carbonless triplicate paper",
+      "thesis": "Your budget is a payslip: every line shows the sum that produced it, so nothing on the page is a number you have to trust.",
+      "palette": ["#FBFBF8", "#1C2230", "#2F4A8A", "#F6DD8C", "#F3C4C4", "#D9D6CE"],
+      "materials": ["carbonless triplicate paper (white, canary, pink copies)", "carbon-blue ink", "1px ruled boxes", "tabular mono figures"],
+      "viewport": "One white sheet, full width. Top band: statement period and a three-copy tab (Card · Mine · Partner) like the white/canary/pink sheets of a triplicate set. Below, the six buckets as payslip lines: description, rule code, card amount × share = mine, each sum written out. Right margin: the rules that fired, as numbered box codes. Primary action, 'Import statement', is a filled carbon-blue box at the sheet's top right.",
+      "risk": "Can read as bureaucratic if the ruling is heavy or the type timid; the arithmetic must feel like reassurance, not a tax form.",
+      "raised": [
+        {"from": "challenger-gate-board", "raise": "A row changed by a new rule moves to its new bucket in place and holds a canary highlight until you scroll past it."},
+        {"from": "challenger-zone-sheets", "raise": "Two rules matching one row cross-hatch that row instead of silently taking the first match; the conflict is visible and resolvable inline."},
+        {"from": "challenger-plate-section", "raise": "Every rule, box and divider is a true 1px hairline on an 8px grid; no shadows, no radius, no fills except the three copy tints."},
+        {"from": "challenger-centre-rail", "raise": "States are printed marks: a share box is hollow at 0%, half-filled at 50%, filled at 100%, struck through when a row is excluded."},
+        {"from": "challenger-slide-rack", "raise": "Two type sizes only across all tables; rank is carried by weight, case and the tint of the copy sheet."}
+      ],
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "period + copy tabs", "x": 0, "y": 0, "w": 9, "h": 1},
+        {"label": "Import statement", "x": 9, "y": 0, "w": 3, "h": 1, "accent": true},
+        {"label": "net position line", "x": 0, "y": 1, "w": 9, "h": 1},
+        {"label": "six bucket lines, each with its arithmetic", "x": 0, "y": 2, "w": 9, "h": 8},
+        {"label": "rules that fired (box codes)", "x": 9, "y": 1, "w": 3, "h": 9}
+      ]},
+      "comp": ".impeccable/mocks/decision/assigned.png"
+    },
+    {
+      "id": "model-pick",
+      "label": "Flat Whiteboard Tally",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "the shared-flat kitchen whiteboard: columns per person, bills tallied, items struck when settled",
+      "thesis": "The shared card as the flat's whiteboard: one column per person, each line written to whoever owes it.",
+      "palette": ["#F4F6F7", "#17202A", "#1E63D1", "#D9342B", "#20915C"],
+      "materials": ["gloss whiteboard", "marker in three colours", "magnet strip"],
+      "viewport": "Three marker columns (Card, Mine, Partner) across the whole width; each transaction is a line written into a column, bills split across two. Rules are magnets pinned at the top of each column.",
+      "risk": "Familiar: close to Splitwise and bill-split apps, so it reads as a known category rather than Clarifi's own.",
+      "comp": ".impeccable/mocks/decision/model-pick.png"
+    },
+    {
+      "id": "challenger-gate-board",
+      "label": "Boarding Pass and Gate Board",
+      "verdict": "competitive",
+      "lineage": "airport departure boards",
+      "thesis": "Transactions as a departure board: rows rerank by bucket and a changed row stays lit until noticed.",
+      "palette": ["#111111", "#F2F2F2", "#FFB400"],
+      "materials": ["high-contrast panels", "monospaced scannable block"],
+      "viewport": "A ranked board of transactions in fixed columns; the statement itself as a segmented boarding pass above.",
+      "case": "Fuses well on clarity: live rerank with persistent change state is exactly what a new rule does to rows. Loses on audience: a household budget is not an airport.",
+      "risk": "Reads as novelty when the board grammar is loosened.",
+      "hero": "https://impeccable.style/worlds/cards/vernacular-ephemera-boarding-pass-and-gate-board-hero.webp",
+      "comp": ".impeccable/mocks/decision/challenger-gate-board.png"
+    },
+    {
+      "id": "challenger-zone-sheets",
+      "label": "Exposure Record Zone Sheets",
+      "verdict": "competitive",
+      "lineage": "darkroom printers' exposure records on tracing-paper overlays",
+      "thesis": "Rules as translucent overlays on the statement; overlapping rules cross-hatch to show conflict.",
+      "palette": ["#0E0E0E", "#3A3A3A", "#8A8A8A", "#E8E8E8", "#D9009E"],
+      "materials": ["backlit eleven-step grey ramp", "tracing paper", "hatching"],
+      "viewport": "The statement as a backlit field; each rule a sheet laid over it, hatched regions showing which rows it claims.",
+      "case": "Wins on one axis: conflict rendered as cross-hatching is the clearest treatment of overlapping rules on the table. Loses on audience: a darkroom means nothing to a household budgeter.",
+      "risk": "Grey-ramp world reads cold for money.",
+      "hero": "https://impeccable.style/worlds/cards/operate-b-exposure-record-zone-sheets-hero.webp",
+      "comp": ".impeccable/mocks/decision/challenger-zone-sheets.png"
+    },
+    {
+      "id": "challenger-plate-section",
+      "label": "Design Annual Plate Section",
+      "verdict": "declined",
+      "lineage": "design annual plate pages with registration marks",
+      "thesis": "The budget as a plate section with registration furniture.",
+      "palette": ["#F5F4F6", "#16181A", "#DCDDF3", "#C9C7C4"],
+      "materials": ["uncoated near-white stock", "hairlines", "crosshairs"],
+      "viewport": "Buckets as plates in a 12-column grid with crosshair corners.",
+      "case": "Loses both: designers' annuals are not the audience's world and registration marks say nothing about money.",
+      "kept": "Hairline ruling discipline: every rule 1px on an 8px grid.",
+      "risk": "Pure decoration for this task.",
+      "hero": "https://impeccable.style/worlds/cards/design-annual-s-plate-section-hero.webp"
+    },
+    {
+      "id": "challenger-centre-rail",
+      "label": "Centre Rail Reference Setting",
+      "verdict": "declined",
+      "lineage": "scholarly reference editions with a central key rail",
+      "thesis": "The budget as a reference edition with a vermilion rail of keys.",
+      "palette": ["#F3EEE3", "#1A1A1A", "#C8351E"],
+      "materials": ["bone paper", "iron-black ink", "vermilion rubric"],
+      "viewport": "Two text columns around a rail of rule keys.",
+      "case": "Loses both: a scholarly edition is foreign to the audience and two-column prose fights tabular money.",
+      "kept": "States as printed marks: hollow, half, filled, struck.",
+      "risk": "Bookish cream-and-serif default.",
+      "hero": "https://impeccable.style/worlds/cards/rw-centre-rail-reference-setting-hero.webp"
+    },
+    {
+      "id": "challenger-slide-rack",
+      "label": "Timetable Slide Rack",
+      "verdict": "declined",
+      "lineage": "1971 pocket airline timetable on a light table",
+      "thesis": "Buckets as raked glass slides on a goldenrod bed.",
+      "palette": ["#E8A317", "#2E3A48", "#F6F1E1", "#C8351E", "#1F5B3A"],
+      "materials": ["tinted glass", "goldenrod stock", "acetate ruler"],
+      "viewport": "A lateral rack of raked slides, one per bucket.",
+      "case": "Loses both: 11-degree rake fights tabular figures and the airline world is not the household's.",
+      "kept": "Two type sizes only; rank by weight and case.",
+      "risk": "Rake makes numbers hard to read.",
+      "hero": "https://impeccable.style/worlds/cards/rw-timetable-slide-rack-hero.webp"
+    },
+    {
+      "id": "challenger-character-catalog",
+      "label": "Character Goods Catalog",
+      "verdict": "declined",
+      "lineage": "pastel mascot roster catalog",
+      "thesis": "Buckets as ranked mascots with name plates.",
+      "palette": ["#FDE2E4", "#CDE7F0", "#FFF1C1", "#FFFFFF", "#F26B8A"],
+      "materials": ["pastel grounds", "white keylines", "one ribbon colour per character"],
+      "viewport": "A pastel grid of bucket mascots.",
+      "case": "Loses both: mascots undercut trust in money figures and the audience is not collecting characters.",
+      "kept": "One flat colour per bucket, used only as a ribbon, never as fill.",
+      "risk": "Toy-like for finance.",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-character-goods-catalog-hero.webp"
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code", "toggle": false},
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "The fintech dashboard everyone ships: sidebar, KPI cards, donut by category, transactions table.",
+    "palette": ["#FFFFFF", "#111827", "#2563EB", "#F3F4F6"],
+    "materials": ["soft cards", "rounded corners", "category chips"],
+    "viewport": "Four KPI cards, a donut, a bar chart, a paginated table.",
+    "risk": "Indistinguishable from every budgeting app by design.",
+    "comp": ".impeccable/mocks/decision/canon.png"
+  },
+  "steer": true
+}
