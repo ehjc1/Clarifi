@@ -111,11 +111,11 @@
 	.list { padding: 12px 8px; }
 	.sumline { display: flex; justify-content: space-between; gap: 12px; margin: 0 12px 6px; }
 	.sumline b { color: var(--ink); font-weight: 600; }
-	.sort { color: var(--accent-ink); background: var(--accent); padding: 2px 10px; border-radius: 999px; font-weight: 600; }
-	@media (prefers-color-scheme: dark) { .sort { color: var(--accent-ink); } }
-	.sort:hover { filter: brightness(1.06); color: var(--accent-ink); }
+	.sort { color: var(--ink); background: var(--accent-soft); padding: 2px 10px; border-radius: 999px; font-weight: 600; }
+	.sort:hover { background: var(--accent); color: var(--accent-ink); }
+	.sumline .num { white-space: nowrap; }
 	ul { list-style: none; margin: 0; padding: 0; }
-	li { position: relative; display: grid; grid-template-columns: 48px 1fr auto auto; gap: 12px; align-items: center; padding: 10px 12px; border-radius: var(--r2); transition: background-color 400ms var(--ease); }
+	li { position: relative; display: grid; grid-template-columns: 48px 1fr auto 168px; gap: 12px; align-items: center; padding: 10px 12px; border-radius: var(--r2); transition: background-color 400ms var(--ease); }
 	li + li { margin-top: 2px; }
 	li:hover { background: var(--surface-2); }
 	li.held { background: var(--accent-soft); box-shadow: 0 6px 18px var(--accent-soft); }
@@ -129,7 +129,7 @@
 	.bucket { color: var(--ink-2); }
 	li.unsorted .bucket { opacity: 0.6; }
 	.norule { background: transparent; color: var(--ink-2); padding-left: 0; font-weight: 500; }
-	.date-inline { display: none; }
+	.date-inline { display: none; white-space: nowrap; }
 	.code { color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); font-size: 12px; font-weight: 600; }
 	.share { color: var(--ink-2); }
 	.warn { color: var(--danger); background: transparent; padding-left: 0; }
@@ -140,6 +140,7 @@
 		.head { flex-direction: column; }
 		.search { width: 100%; }
 		li { grid-template-columns: 1fr auto; }
+		.sumline { flex-wrap: wrap; }
 		.date { display: none; }
 		.date-inline { display: inline; }
 		.meta { grid-column: 1; grid-template-columns: auto auto auto; }

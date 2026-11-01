@@ -373,6 +373,7 @@
 	.incomes { list-style: none; margin: 0 4px 12px; padding: 6px; border-radius: var(--r2); background: var(--surface-2); }
 	.incomes li { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 8px 12px; border-radius: var(--r2); }
 	.incomes li:hover { background: var(--surface); }
+	.incomes input { background: var(--surface); }
 	.incomes form { display: contents; }
 	.incomes form input:first-child { grid-column: 1; }
 	@media (max-width: 1024px) { .buckets { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
