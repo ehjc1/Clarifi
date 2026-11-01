@@ -22,9 +22,18 @@
 	let error = $state('');
 	let draft = $state({ text: '', min: '', max: '', share: '0', bucket: 'general' as Bucket, name: '' });
 	let incomeDraft = $state({ name: '', amount: '' });
-	let incomeOpen = $state(false);
+	/** Open state per bucket, so collapsed cards can re-span and leave no hole beside an expanded one. */
+	let openB = $state<Record<Bucket, boolean>>({ income: false, fixed: false, general: false, investments: false, savings: false, mortgage: false });
+	const collapsed = $derived(BUCKETS.filter((b) => !openB[b]));
+	function span(b: Bucket) {
+		if (openB[b]) return 's6';
+		const i = collapsed.indexOf(b), n = collapsed.length, rem = n % 3;
+		if (rem === 2 && i >= n - 2) return 's3';
+		if (rem === 1 && i === n - 1) return 's6';
+		return 's2';
+	}
 	async function focusIncome() {
-		incomeOpen = true;
+		openB.income = true;
 		await tick();
 		document.getElementById('income-name')?.focus();
 	}
@@ -160,7 +169,7 @@
 
 	<div class="grid">
 		<section class="buckets" aria-label="Buckets">
-			<BucketLine title={TITLES.income} color="var(--b-income)" rows={byBucket.income} extra={incomeTotal} total={barTotal} emptyText="No income entered yet" bind:open={incomeOpen} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule}>
+			<BucketLine title={TITLES.income} color="var(--b-income)" rows={byBucket.income} extra={incomeTotal} total={barTotal} emptyText="No income entered yet" bind:open={openB.income} class={span('income')} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule}>
 				<ul class="incomes">
 					{#each data.incomes as i (i.id)}
 						<li><span>{i.name}</span><b class="num">{nzd(i.amount)}</b><button class="link" onclick={() => removeIncome(i.id)} aria-label="Remove income {i.name}">Remove</button></li>
@@ -177,7 +186,7 @@
 				</ul>
 			</BucketLine>
 			{#each ['fixed', 'general', 'investments', 'savings', 'mortgage'] as const as b (b)}
-				<BucketLine title={TITLES[b]} color="var(--b-{b})" rows={byBucket[b]} total={barTotal} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule} />
+				<BucketLine title={TITLES[b]} color="var(--b-{b})" rows={byBucket[b]} total={barTotal} bind:open={openB[b]} class={span(b)} {copy} {held} {codeOf} onrelease={release} onmakerule={makeRule} />
 			{/each}
 			{#if payments.length}
 				<p class="payments small">
@@ -223,7 +232,10 @@
 	.lede { margin: 8px 0 18px; max-width: 48ch; font-size: 17px; }
 	.btn.dark { background: var(--accent-ink); color: var(--accent); }
 	.grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; margin-top: 24px; }
-	.buckets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: dense; gap: 12px; align-content: start; }
+	.buckets { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; align-content: start; }
+	.buckets :global(.s2) { grid-column: span 2; }
+	.buckets :global(.s3) { grid-column: span 3; }
+	.buckets :global(.s6) { grid-column: 1 / -1; }
 	.payments { grid-column: 1 / -1; margin: 4px 4px 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 	.incomes { list-style: none; margin: 0 0 12px; padding: 0; }
 	.incomes li { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 8px 12px; border-radius: var(--r2); }
@@ -232,7 +244,7 @@
 	.incomes form input:first-child { grid-column: 1; }
 	footer { display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline; margin-top: 32px; }
 	footer label { cursor: pointer; }
-	@media (max-width: 1024px) { .buckets { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+	@media (max-width: 1024px) { .buckets :global(.s2), .buckets :global(.s3) { grid-column: span 3; } }
 	@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
 	@media (max-width: 640px) {
 		main { padding: 12px 14px 40px; }
@@ -244,7 +256,7 @@
 		.hero { grid-template-columns: 1fr; align-items: start; }
 		.figures { gap: 20px; flex-wrap: wrap; padding: 0; }
 		.figures dd { font-size: 20px; }
-		.buckets { grid-template-columns: 1fr; }
+		.buckets :global(.s2), .buckets :global(.s3) { grid-column: 1 / -1; }
 		.hero { padding: 20px; border-radius: 22px; }
 		.incomes li { grid-template-columns: 1fr auto; }
 		.incomes form { display: grid; grid-column: 1 / -1; grid-template-columns: 1fr 1fr; gap: 8px; }

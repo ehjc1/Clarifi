@@ -5,9 +5,9 @@
 
 	type Copy = 'card' | 'mine' | 'partner';
 	let {
-		title, color, rows, copy, held, open = $bindable(false), extra = 0, emptyText = 'No lines yet', total: totalOf, onrelease, onmakerule, codeOf, children
+		title, color, rows, copy, held, open = $bindable(false), extra = 0, emptyText = 'No lines yet', total: totalOf, class: cls = '', onrelease, onmakerule, codeOf, children
 	}: {
-		title: string; color: string; rows: Scored[]; copy: Copy; held: { has(id: string): boolean }; open?: boolean; extra?: number; emptyText?: string;
+		title: string; class?: string; color: string; rows: Scored[]; copy: Copy; held: { has(id: string): boolean }; open?: boolean; extra?: number; emptyText?: string;
 		total: number; // total of all buckets on this copy, for the share bar
 		onrelease: (id: string) => void; onmakerule: (details: string) => void; codeOf: (r: NonNullable<Scored['rule']>) => string;
 		children?: import('svelte').Snippet;
@@ -18,7 +18,9 @@
 	const sum = $derived(rows.reduce((a, r) => a + value(r), 0) + extra);
 	const shown = tweenMoney(() => sum);
 	const bar = $derived(totalOf > 0 ? Math.min(1, Math.abs(sum) / totalOf) : 0);
-	let isOpen = $derived(open || rows.some((r) => held.has(r.id)));
+	$effect(() => {
+		if (rows.some((r) => held.has(r.id))) open = true; // a moved row opens its new bucket
+	});
 	const n = $derived(rows.length + (extra ? 1 : 0));
 	const conflicts = $derived(rows.filter((r) => r.conflict).length);
 
@@ -34,7 +36,7 @@
 	};
 </script>
 
-<details class="card" bind:open={isOpen} style="--c: {color}">
+<details class={['card', cls]} bind:open style="--c: {color}">
 	<summary>
 		<span class="head"><span class="dot"></span><span class="t">{title}</span></span>
 		<span class="count small">{n} {n === 1 ? 'line' : 'lines'}</span>
@@ -77,7 +79,6 @@
 
 <style>
 	details { padding: 18px 20px; transition: box-shadow 200ms var(--ease); }
-	details[open] { grid-column: 1 / -1; }
 	summary { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; cursor: pointer; list-style: none; align-items: center; }
 	.count { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
 	.sum { grid-column: 1; }

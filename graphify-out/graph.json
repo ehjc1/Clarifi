@@ -187,7 +187,7 @@
       "label": "value()",
       "file_type": "code",
       "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L16",
+      "source_location": "L17",
       "_origin": "ast",
       "id": "components_bucketline_value",
       "community": 17,
@@ -197,17 +197,27 @@
       "label": "sum",
       "file_type": "code",
       "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L17",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "components_bucketline_sum",
       "community": 17,
       "norm_label": "sum"
     },
     {
+      "label": "shown",
+      "file_type": "code",
+      "source_file": "src/lib/components/BucketLine.svelte",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "components_bucketline_shown",
+      "community": 17,
+      "norm_label": "shown"
+    },
+    {
       "label": "bar",
       "file_type": "code",
       "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L18",
+      "source_location": "L20",
       "_origin": "ast",
       "id": "components_bucketline_bar",
       "community": 17,
@@ -217,7 +227,7 @@
       "label": "isOpen",
       "file_type": "code",
       "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L19",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "components_bucketline_isopen",
       "community": 17,
@@ -227,7 +237,7 @@
       "label": "n",
       "file_type": "code",
       "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L20",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "components_bucketline_n",
       "community": 17,
@@ -237,7 +247,7 @@
       "label": "conflicts",
       "file_type": "code",
       "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L21",
+      "source_location": "L23",
       "_origin": "ast",
       "id": "components_bucketline_conflicts",
       "community": 17,
@@ -247,7 +257,7 @@
       "label": "hold()",
       "file_type": "code",
       "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L24",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "components_bucketline_hold",
       "community": 17,
@@ -257,11 +267,21 @@
       "label": "children()",
       "file_type": "code",
       "source_file": "src/lib/components/BucketLine.svelte",
-      "source_location": "L43",
+      "source_location": "L50",
       "_origin": "ast",
       "id": "components_bucketline_children",
       "community": 17,
       "norm_label": "children()"
+    },
+    {
+      "label": "s",
+      "file_type": "code",
+      "source_file": "src/lib/components/BucketLine.svelte",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "components_bucketline_s",
+      "community": 17,
+      "norm_label": "s"
     },
     {
       "label": "svelte",
@@ -282,6 +302,16 @@
       "id": "money",
       "community": 17,
       "norm_label": "#lib/money"
+    },
+    {
+      "label": "#lib/motion.svelte",
+      "file_type": "code",
+      "source_file": "#lib/motion.svelte",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "motion_svelte",
+      "community": 17,
+      "norm_label": "#lib/motion.svelte"
     },
     {
       "label": "#lib/types",
@@ -314,6 +344,26 @@
       "norm_label": "#lib/rules"
     },
     {
+      "label": "motion.svelte.ts",
+      "file_type": "code",
+      "source_file": "src/lib/motion.svelte.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_motion_svelte",
+      "community": 18,
+      "norm_label": "motion.svelte.ts"
+    },
+    {
+      "label": "tweenMoney()",
+      "file_type": "code",
+      "source_file": "src/lib/motion.svelte.ts",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "lib_motion_svelte_tweenmoney",
+      "community": 18,
+      "norm_label": "tweenmoney()"
+    },
+    {
       "label": "+page.svelte",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
@@ -324,10 +374,190 @@
       "norm_label": "+page.svelte"
     },
     {
+      "label": "sum()",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "routes_page_sum",
+      "community": 0,
+      "norm_label": "sum()"
+    },
+    {
+      "label": "spend",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "routes_page_spend",
+      "community": 0,
+      "norm_label": "spend"
+    },
+    {
+      "label": "put",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "routes_page_put",
+      "community": 0,
+      "norm_label": "put"
+    },
+    {
+      "label": "income",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "routes_page_income",
+      "community": 0,
+      "norm_label": "income"
+    },
+    {
+      "label": "left",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "routes_page_left",
+      "community": 0,
+      "norm_label": "left"
+    },
+    {
+      "label": "headline",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "routes_page_headline",
+      "community": 0,
+      "norm_label": "headline"
+    },
+    {
+      "label": "shown",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "routes_page_shown",
+      "community": 0,
+      "norm_label": "shown"
+    },
+    {
+      "label": "shownSpend",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "routes_page_shownspend",
+      "community": 0,
+      "norm_label": "shownspend"
+    },
+    {
+      "label": "shownPut",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "routes_page_shownput",
+      "community": 0,
+      "norm_label": "shownput"
+    },
+    {
+      "label": "shownIncome",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "routes_page_shownincome",
+      "community": 0,
+      "norm_label": "shownincome"
+    },
+    {
+      "label": "barTotal",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "routes_page_bartotal",
+      "community": 0,
+      "norm_label": "bartotal"
+    },
+    {
+      "label": "codeOf()",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "routes_page_codeof",
+      "community": 0,
+      "norm_label": "codeof()"
+    },
+    {
+      "label": "period",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "routes_page_period",
+      "community": 0,
+      "norm_label": "period"
+    },
+    {
+      "label": "loadCsv()",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "routes_page_loadcsv",
+      "community": 0,
+      "norm_label": "loadcsv()"
+    },
+    {
+      "label": "onfile()",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L69",
+      "_origin": "ast",
+      "id": "routes_page_onfile",
+      "community": 0,
+      "norm_label": "onfile()"
+    },
+    {
+      "label": "withDiff()",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "routes_page_withdiff",
+      "community": 0,
+      "norm_label": "withdiff()"
+    },
+    {
+      "label": "removeRule()",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L82",
+      "_origin": "ast",
+      "id": "routes_page_removerule",
+      "community": 0,
+      "norm_label": "removerule()"
+    },
+    {
+      "label": "release()",
+      "file_type": "code",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L83",
+      "_origin": "ast",
+      "id": "routes_page_release",
+      "community": 0,
+      "norm_label": "release()"
+    },
+    {
       "label": "makeRule()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L72",
+      "source_location": "L84",
       "_origin": "ast",
       "id": "routes_page_makerule",
       "community": 0,
@@ -337,7 +567,7 @@
       "label": "addIncome()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L76",
+      "source_location": "L88",
       "_origin": "ast",
       "id": "routes_page_addincome",
       "community": 0,
@@ -347,7 +577,7 @@
       "label": "removeIncome()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L83",
+      "source_location": "L95",
       "_origin": "ast",
       "id": "routes_page_removeincome",
       "community": 0,
@@ -357,7 +587,7 @@
       "label": "exportJson()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L84",
+      "source_location": "L96",
       "_origin": "ast",
       "id": "routes_page_exportjson",
       "community": 0,
@@ -367,7 +597,7 @@
       "label": "importJson()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L90",
+      "source_location": "L102",
       "_origin": "ast",
       "id": "routes_page_importjson",
       "community": 0,
@@ -377,7 +607,7 @@
       "label": "clearAll()",
       "file_type": "code",
       "source_file": "src/routes/+page.svelte",
-      "source_location": "L96",
+      "source_location": "L108",
       "_origin": "ast",
       "id": "routes_page_clearall",
       "community": 0,
@@ -1361,9 +1591,9 @@
       "source_file": "src/lib/components/BucketLine.svelte",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_bucketline",
-      "target": "components_bucketline_bar",
-      "confidence_score": 1.0
+      "target": "components_bucketline_bar"
     },
     {
       "relation": "contains",
@@ -1381,9 +1611,9 @@
       "source_file": "src/lib/components/BucketLine.svelte",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_bucketline",
-      "target": "components_bucketline_conflicts",
-      "confidence_score": 1.0
+      "target": "components_bucketline_conflicts"
     },
     {
       "relation": "contains",
@@ -1411,8 +1641,28 @@
       "source_file": "src/lib/components/BucketLine.svelte",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_bucketline",
-      "target": "components_bucketline_n",
+      "target": "components_bucketline_n"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/BucketLine.svelte",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "components_bucketline",
+      "target": "components_bucketline_s",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/BucketLine.svelte",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "components_bucketline",
+      "target": "components_bucketline_shown",
       "confidence_score": 1.0
     },
     {
@@ -1421,9 +1671,9 @@
       "source_file": "src/lib/components/BucketLine.svelte",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_bucketline",
-      "target": "components_bucketline_sum",
-      "confidence_score": 1.0
+      "target": "components_bucketline_sum"
     },
     {
       "relation": "contains",
@@ -1442,6 +1692,14 @@
       "confidence_score": 1.0,
       "source": "components_bucketline",
       "target": "money"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/components/BucketLine.svelte",
+      "source": "components_bucketline",
+      "target": "motion_svelte",
+      "confidence_score": 1.0
     },
     {
       "relation": "dynamic_import",
@@ -1497,6 +1755,14 @@
     {
       "relation": "imports_from",
       "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source": "routes_page",
+      "target": "motion_svelte",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
       "source_file": "src/lib/components/Rules.svelte",
       "confidence_score": 1.0,
       "source": "components_rules",
@@ -1525,6 +1791,16 @@
       "confidence_score": 1.0,
       "source": "routes_page",
       "target": "rules"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/motion.svelte.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "lib_motion_svelte",
+      "target": "lib_motion_svelte_tweenmoney",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -1564,11 +1840,31 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/routes/+page.svelte",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_bartotal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
       "source_location": "L107",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "routes_page",
       "target": "routes_page_clearall"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_codeof",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1584,11 +1880,51 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/routes/+page.svelte",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_headline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
       "source_location": "L101",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "routes_page",
       "target": "routes_page_importjson"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_income",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_left",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_loadcsv",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1604,11 +1940,131 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/routes/+page.svelte",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_onfile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_period",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_put",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_release",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
       "source_location": "L90",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "routes_page",
       "target": "routes_page_removeincome"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_removerule",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_shown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_shownincome",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_shownput",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_shownspend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_spend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_sum",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "routes_page",
+      "target": "routes_page_withdiff",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -1633,6 +2089,28 @@
       "confidence_score": 1.0,
       "source": "routes_page",
       "target": "store_svelte"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "routes_page_onfile",
+      "target": "routes_page_loadcsv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/+page.svelte",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "routes_page_removerule",
+      "target": "routes_page_withdiff",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2451,5 +2929,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d2d08d290b79f3e8a4902be904a98ca505f9cf03"
+  "built_at_commit": "1f4b34b3cfdc0ca657b87effe6611b348da0c356"
 }

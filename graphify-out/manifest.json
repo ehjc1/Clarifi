@@ -10,13 +10,13 @@
     "semantic_hash": ""
   },
   ".impeccable/questions/90300fef.state.json": {
-    "mtime": 1793499630.8592374,
-    "ast_hash": "ada278b0e6fd1dbdaef406848b5b1f6e",
+    "mtime": 1793499931.4131656,
+    "ast_hash": "ee3bdc8e05c7f6b5a928f470cc3f78b3",
     "semantic_hash": ""
   },
   ".impeccable/shot.mjs": {
-    "mtime": 1793499454.2019272,
-    "ast_hash": "807fe33e5306cae01679758a6dde4193",
+    "mtime": 1793499905.8343003,
+    "ast_hash": "b80fa6819663791e845f5f93f0917c71",
     "semantic_hash": ""
   },
   ".vscode/extensions.json": {
@@ -40,13 +40,13 @@
     "semantic_hash": ""
   },
   "src/lib/components/BucketLine.svelte": {
-    "mtime": 1793499528.869157,
-    "ast_hash": "1f14344498f9404ceb3cd1a4623b7128",
+    "mtime": 1793499905.8301628,
+    "ast_hash": "17771739987b38f7e43a1c3687eb0b6d",
     "semantic_hash": ""
   },
   "src/lib/components/Rules.svelte": {
-    "mtime": 1793499200.5904584,
-    "ast_hash": "186d25e364046ff8d3eeb673bfdb7f53",
+    "mtime": 1793499847.2227771,
+    "ast_hash": "55de8cf484dc8940348306100332049b",
     "semantic_hash": ""
   },
   "src/lib/index.ts": {
@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "src/routes/+page.svelte": {
-    "mtime": 1793499260.3415947,
-    "ast_hash": "01567038d6015a793532227fb1424a90",
+    "mtime": 1793499905.8343003,
+    "ast_hash": "1f49a99a35556be42f507455d501521b",
     "semantic_hash": ""
   },
   "tests/core.test.ts": {
@@ -110,8 +110,8 @@
     "semantic_hash": ""
   },
   ".impeccable/surfaces/src-routes-page-svelte.md": {
-    "mtime": 1793499138.6788383,
-    "ast_hash": "b5e1abdf52700f909f63b01f30d8b30d",
+    "mtime": 1793499847.2227771,
+    "ast_hash": "1b83ca93812c3ff335c64480898558e9",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -120,8 +120,8 @@
     "semantic_hash": ""
   },
   "PRODUCT.md": {
-    "mtime": 1793499138.6665468,
-    "ast_hash": "340a9adf2dee355905eb65253bcdc592",
+    "mtime": 1793499847.2227771,
+    "ast_hash": "c4f2c4cf6add4713b21f3afa183fdf89",
     "semantic_hash": ""
   },
   "README.md": {
@@ -142,6 +142,11 @@
   "src/lib/assets/favicon.svg": {
     "mtime": 1793495486.0769486,
     "ast_hash": "a0d1b540c1b9a2a920d5f6cae983118a",
+    "semantic_hash": ""
+  },
+  "src/lib/motion.svelte.ts": {
+    "mtime": 1793499847.2227771,
+    "ast_hash": "3adcfd27683d0646cdec02ad568c2018",
     "semantic_hash": ""
   }
 }

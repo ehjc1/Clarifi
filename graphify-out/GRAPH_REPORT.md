@@ -1,16 +1,16 @@
 # Graph Report - Clarifi  (2026-11-01)
 
 ## Corpus Check
-- 26 files · ~7,418 words
+- 27 files · ~7,743 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 121 nodes · 125 edges · 18 communities (14 shown, 4 thin omitted)
+- 144 nodes · 150 edges · 19 communities (15 shown, 4 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d2d08d29`
+- Built from commit: `1f4b34b3`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -39,7 +39,7 @@
 7. `Rule` - 4 edges
 8. `parseCsv()` - 3 edges
 9. `Surface: Clarifi app (dashboard + statement import)` - 2 edges
-10. `svelte` - 2 edges
+10. `#lib/motion.svelte` - 2 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
@@ -47,11 +47,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (18 total, 4 thin omitted)
+## Communities (19 total, 4 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.14
-Nodes (7): #lib/anz, #lib/components/BucketLine.svelte, #lib/rules, #lib/components/Rules.svelte, #lib/sample, #lib/store.svelte, #lib/types
+Cohesion: 0.07
+Nodes (22): #lib/anz, #lib/components/BucketLine.svelte, barTotal, headline, income, left, loadCsv(), onfile() (+14 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.13
@@ -82,11 +82,11 @@ Cohesion: 0.40
 Nodes (4): compilerOptions, strict, extends, include
 
 ### Community 17 - "Community 17"
-Cohesion: 0.18
-Nodes (7): bar, conflicts, isOpen, n, sum, #lib/money, svelte/reactivity
+Cohesion: 0.14
+Nodes (10): bar, conflicts, isOpen, n, s, shown, sum, #lib/money (+2 more)
 
 ## Knowledge Gaps
-- **55 isolated node(s):** `errs`, `Direction contract`, `Platform`, `Stack`, `Users` (+50 more)
+- **68 isolated node(s):** `errs`, `Direction contract`, `Platform`, `Stack`, `Users` (+63 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -94,12 +94,14 @@ Nodes (7): bar, conflicts, isOpen, n, sum, #lib/money, svelte/reactivity
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `devDependencies` connect `Community 4` to `Community 2`?**
-  _High betweenness centrality (0.109) - this node is a cross-community bridge._
+  _High betweenness centrality (0.124) - this node is a cross-community bridge._
 - **What connects `errs`, `Direction contract`, `Platform` to the rest of the system?**
-  _55 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _68 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06628787878787878 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.13 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
+- **Should `Community 17` be split into smaller, more focused modules?**
+  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
