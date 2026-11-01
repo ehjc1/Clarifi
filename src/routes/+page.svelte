@@ -7,6 +7,8 @@
 	import Triage from '#lib/components/Triage.svelte';
 	import { nzd } from '#lib/money';
 	import { tweenMoney } from '#lib/motion.svelte';
+	import { Tween } from 'svelte/motion';
+	import { expoOut } from 'svelte/easing';
 	import { score } from '#lib/rules';
 	import { SAMPLE_CSV, SAMPLE_PREV_CSV } from '#lib/sample';
 	import { data, load, makeStatement, persist, uid } from '#lib/store.svelte';
@@ -86,6 +88,18 @@
 		return { id: st.id, label: st.label, value: v, current: st.id === current?.id };
 	}));
 	const trendMax = $derived(Math.max(1, ...trend.map((t) => t.value)));
+	/** Trend values count to new figures on copy switch; a change in statement count snaps. */
+	const trendShown = new Tween<number[]>([], { duration: 500, easing: expoOut });
+	$effect(() => {
+		const next = trend.map((t) => t.value);
+		if (next.length !== trendShown.current.length) trendShown.set(next, { duration: 0 });
+		else trendShown.target = next;
+	});
+	const prev = $derived.by(() => {
+		const i = trend.findIndex((t) => t.current);
+		return i > 0 ? trend[i - 1] : null;
+	});
+	const delta = $derived(prev ? trend.find((t) => t.current)!.value - prev.value : 0);
 
 	function loadCsv(text: string, synthetic = false) {
 		try {
@@ -187,7 +201,7 @@
 				{:else}
 					<span class="pill period">{period}</span>
 				{/if}
-				{#if current?.synthetic}<span class="pill period">sample · synthetic data</span>{/if}
+				{#if current?.synthetic}<span class="pill period status">sample · synthetic data</span>{/if}
 			</div>
 			{#if !txns.length}
 				<p class="hero-label">Your share of the card, by bucket</p>
@@ -242,13 +256,22 @@
 			{/each}
 			{#if trend.length > 1}
 				<section class="trend card" aria-label="Spend by statement">
-					<div class="trend-head"><span class="t">Over time</span><span class="small">{copy === 'card' ? 'card total' : copy === 'mine' ? 'my share' : "partner's share"} per statement</span></div>
+					<div class="trend-text">
+						<span class="t">Over time</span>
+						<span class="small">{copy === 'card' ? 'card total' : copy === 'mine' ? 'my share' : "partner's share"} per statement</span>
+						{#if prev}
+							<p class={['delta', 'num', { up: delta > 0 }]}>{delta > 0 ? '+' : delta < 0 ? '−' : ''}{nzd(Math.abs(delta))}</p>
+							<p class="small">vs {prev.label}</p>
+						{/if}
+					</div>
 					<ol class="bars">
-						{#each trend as t (t.id)}
-							<li class={{ on: t.current }}>
-								<span class="num v">{nzd(t.value)}</span>
-								<span class="bar"><span style="transform: scaleY({t.value / trendMax})"></span></span>
-								<button class="link" onclick={() => { data.current = t.id; persist(); }} aria-current={t.current ? 'true' : undefined}>{t.label}</button>
+						{#each trend as t, i (t.id)}
+							<li>
+								<button class={{ on: t.current }} aria-pressed={t.current} onclick={() => { data.current = t.id; persist(); }}>
+									<span class="num v">{nzd(trendShown.current[i] ?? t.value)}</span>
+									<span class="bar"><span style="transform: scaleY({t.value / trendMax})"></span></span>
+									<span class="l">{t.label}</span>
+								</button>
 							</li>
 						{/each}
 					</ol>
@@ -296,23 +319,27 @@
 	.figures .add { color: var(--accent-ink); font-size: 15px; text-decoration: underline; text-underline-offset: 3px; }
 	.hero-top { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
 	.hero .pill { background: rgba(4, 46, 40, 0.1); color: var(--accent-ink); }
-	.months { display: flex; gap: 6px; flex-wrap: wrap; }
-	.months .pill { border: 0; cursor: pointer; transition: background-color 150ms var(--ease), color 150ms var(--ease); }
+	.months { display: flex; gap: 4px; flex-wrap: wrap; }
+	.months .pill { border: 0; cursor: pointer; background: transparent; font-weight: 600; transition: background-color 150ms var(--ease), color 150ms var(--ease); }
 	.months .pill:hover { background: rgba(4, 46, 40, 0.18); }
 	.months .pill.on { background: var(--accent-ink); color: var(--accent); }
+	.hero-top .status { margin-left: auto; }
 	.hero-label .dim { opacity: 0.7; font-weight: 500; }
-	.trend { grid-column: 1 / -1; padding: 18px 20px; }
-	.trend-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; }
-	.trend-head .t { font-weight: 600; }
-	.bars { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 120px); gap: 12px; align-items: end; height: 150px; }
-	.bars li { display: grid; grid-template-rows: auto 1fr auto; gap: 6px; height: 100%; text-align: center; }
+	.trend { grid-column: 1 / -1; padding: 18px 20px; display: grid; grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr); gap: 24px; align-items: end; }
+	.trend-text { display: flex; flex-direction: column; gap: 2px; align-self: start; }
+	.trend-text .t { font-weight: 600; }
+	.delta { margin: 14px 0 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
+	.delta.up { color: var(--danger); }
+	.bars { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(88px, 120px); justify-content: end; gap: 12px; height: 150px; overflow-x: auto; }
+	.bars li { height: 100%; }
+	.bars button { display: grid; grid-template-rows: auto 1fr auto; gap: 6px; height: 100%; width: 100%; border: 0; background: none; padding: 0; text-align: center; border-radius: var(--r2); }
+	.bars button:hover .bar span { background: var(--ink-2); }
 	.bars .v { font-size: 13px; color: var(--ink-2); align-self: end; }
-	.bars li.on .v { color: var(--ink); font-weight: 600; }
-	.bars .bar { display: block; height: 100%; border-radius: 12px 12px 0 0; background: var(--surface-2); overflow: hidden; }
-	.bars .bar span { display: block; height: 100%; border-radius: inherit; background: var(--ink-2); opacity: 0.35; transform-origin: bottom; transition: transform 400ms var(--ease); }
-	.bars li.on .bar span { background: var(--accent); opacity: 1; }
-	.bars .link { font-weight: 500; }
-	.bars li.on .link { color: var(--ink); font-weight: 600; }
+	.bars .l { font-size: 13px; font-weight: 500; color: var(--ink-2); }
+	.bars button.on .v, .bars button.on .l { color: var(--ink); font-weight: 600; }
+	.bars .bar { display: block; height: 100%; border-radius: var(--r2); background: var(--surface-2); overflow: hidden; }
+	.bars .bar span { display: block; height: 100%; border-radius: inherit; background: var(--line); transform-origin: bottom; transition: transform 400ms var(--ease), background-color 150ms var(--ease); }
+	.bars button.on .bar span { background: var(--accent); }
 	.hero-label { margin: 0; font-weight: 600; font-size: 15px; opacity: 0.8; }
 	.big { margin: 2px 0 0; font-size: clamp(40px, 6vw, 64px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; }
 	.big.neg::before { content: ''; }
@@ -356,6 +383,8 @@
 		.figures dd { font-size: 20px; }
 		.buckets :global(.s2), .buckets :global(.s3) { grid-column: 1 / -1; }
 		.hero { padding: 20px; border-radius: 22px; }
+		.trend { grid-template-columns: 1fr; }
+		.bars { justify-content: start; }
 		.incomes li { grid-template-columns: 1fr auto; }
 		.incomes form { display: grid; grid-column: 1 / -1; grid-template-columns: 1fr 1fr; gap: 8px; }
 		.incomes form .btn { grid-column: 1 / -1; justify-content: center; }

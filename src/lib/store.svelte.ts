@@ -33,6 +33,7 @@ const month = (d: string) => new Date(d).toLocaleDateString('en-NZ', { month: 's
 
 /** A statement is labelled by the month its last transaction falls in; same month re-imported replaces it. */
 export function makeStatement(txns: Txn[], synthetic = false): Statement {
+	if (!txns.length) throw new Error('A statement needs at least one transaction.');
 	const ds = txns.map((t) => t.date).sort();
 	const to = ds[ds.length - 1];
 	return { id: to.slice(0, 7), label: month(to), from: ds[0], to, txns, synthetic };
