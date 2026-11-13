@@ -1,0 +1,21 @@
+{
+  "title": "Clarifi's visual world: resolved",
+  "question": "Direction stays Revolut / Wise. Your steer, 'modern, minimalistic, aesthetic', is now a polish brief on the current beta design and is being built. Nothing more to choose here; press Done and close this tab.",
+  "options": [
+    {
+      "id": "done",
+      "label": "Done",
+      "kicker": "RESOLVED",
+      "lineage": "Revolut / Wise canon, polished toward modern minimal",
+      "thesis": "Keep the direction; strip chrome, raise whitespace and type precision, let the figures carry the page.",
+      "palette": ["#FFFFFF", "#0B0F14", "#00C2A8", "#F3F4F6"],
+      "materials": ["fewer borders", "larger quiet surfaces", "tabular figures", "one accent"],
+      "viewport": "The current overview, quieter.",
+      "risk": "Minimal can tip into empty; every removal must leave the task as readable as before."
+    }
+  ],
+  "reroll": false,
+  "buildPath": {"value": "code", "toggle": false},
+  "canon": false,
+  "steer": false
+}

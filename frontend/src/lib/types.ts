@@ -1,8 +1,12 @@
 export const BUCKETS = ['income', 'fixed', 'general', 'investments', 'savings', 'mortgage'] as const;
 export type Bucket = (typeof BUCKETS)[number];
 
+export type Bank = 'anz' | 'amex';
+
 export type Txn = {
 	id: string;
+	source?: Bank; // which bank the line came from; absent on old data = anz
+	card?: string; // card number (masked) or card member as the export gives it; a statement may hold several
 	date: string; // ISO yyyy-mm-dd
 	details: string;
 	amount: number; // positive = money out (charge), negative = money in (payment/refund)

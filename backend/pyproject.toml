@@ -1,0 +1,12 @@
+[project]
+name = "clarifi-backend"
+version = "0.1.0"
+description = "Clarifi Django backend"
+requires-python = ">=3.12"
+dependencies = [
+    "Django>=5.2,<6.0",
+    "djangorestframework>=3.15,<4.0",
+    "django-cors-headers>=4.4,<5.0",
+    "dj-database-url>=2.2,<3.0",
+    "psycopg[binary]>=3.2,<4.0",
+]

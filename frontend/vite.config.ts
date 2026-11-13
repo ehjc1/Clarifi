@@ -2,7 +2,12 @@ import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
+/** The Django API (backend/) serves /api; same origin in dev and preview so cookies need no CORS setup. */
+const proxy = { '/api': process.env.API_URL ?? 'http://localhost:8000' };
+
 export default defineConfig({
+	server: { proxy },
+	preview: { proxy },
 	plugins: [
 		sveltekit({
 			compilerOptions: {

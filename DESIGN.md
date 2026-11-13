@@ -1,39 +1,48 @@
 ---
 name: Clarifi
-description: One big number you can trust, two group cards, rules as chips. Modern consumer fintech, played straight, light and dark.
+description: One safe-to-spend number, a pay-cycle calendar, and a pile of shared purchases to swipe. The "Clarifi Hybrid" direction from claude.ai/design, light and dark.
 colors:
-  canvas: "#f3f4f8"
+  canvas: "#f4f4f6"
+  canvas-grid: "#e9e9ee"
   surface: "#ffffff"
-  surface-sunken: "#f6f7fb"
-  ink: "#0b0f19"
-  ink-muted: "#626b7a"
-  line: "#e6e8ef"
-  accent: "#00c2a8"
-  accent-ink: "#042e28"
-  accent-soft: "rgba(0, 194, 168, 0.14)"
-  danger: "#e5484d"
-  danger-soft: "rgba(229, 72, 77, 0.12)"
-  danger-ink: "#ffffff"
+  surface-sunken: "#f1f1f4"
+  ink: "#17171c"
+  ink-muted: "#6b6b78"
+  ink-faint: "#9a9aa6"
+  line: "#e4e4ea"
+  accent: "#6d4aff"
+  accent-hover: "#5536d6"
+  accent-ink: "#ffffff"
+  accent-soft: "#f1edff"
+  accent-deep: "#4a2fc2"
+  accent-light: "#c4b5ff"
+  danger: "#c0392b"
+  danger-soft: "#fdeaea"
+  danger-deep: "#a52a2a"
+  dark-panel: "#17171c"
+  dark-panel-2: "#24242c"
+  dark-panel-line: "#3a3a45"
+  dark-panel-ink-muted: "#b8b8c4"
   bucket-income: "#22c55e"
-  bucket-fixed: "#3b82f6"
-  bucket-general: "#f59e0b"
-  bucket-investments: "#8b5cf6"
-  bucket-savings: "#06b6d4"
-  bucket-mortgage: "#ef4444"
-  dark-canvas: "#0b0d12"
-  dark-surface: "#151821"
-  dark-surface-sunken: "#1c202b"
-  dark-ink: "#f3f4f8"
-  dark-ink-muted: "#9aa3b2"
-  dark-line: "#262b38"
-  dark-accent: "#2ef2d2"
-  dark-accent-soft: "rgba(46, 242, 210, 0.14)"
+  bucket-fixed: "#4f9df7"
+  bucket-general: "#6d4aff"
+  bucket-investments: "#2bb3a3"
+  bucket-savings: "#f2c94c"
+  bucket-mortgage: "#e2527a"
+  dark-canvas: "#0e0e12"
+  dark-surface: "#17171c"
+  dark-surface-sunken: "#24242c"
+  dark-ink: "#f4f4f6"
+  dark-ink-muted: "#b8b8c4"
+  dark-line: "#2c2c35"
+  dark-accent: "#8b6dff"
+  dark-accent-soft: "rgba(139, 109, 255, 0.18)"
 typography:
   display:
     fontFamily: "Figtree, system-ui, -apple-system, 'Segoe UI', sans-serif"
-    fontSize: "clamp(40px, 6vw, 64px)"
-    fontWeight: 700
-    lineHeight: 1.05
+    fontSize: "clamp(52px, 7vw, 72px)"
+    fontWeight: 800
+    lineHeight: 0.95
     letterSpacing: "-0.04em"
   headline:
     fontFamily: "Figtree, system-ui, -apple-system, 'Segoe UI', sans-serif"
@@ -73,8 +82,9 @@ typography:
     letterSpacing: "normal"
 rounded:
   row: "12px"
-  card: "20px"
-  hero: "28px"
+  tile: "16px"
+  card: "24px"
+  frame: "24px"
   pill: "999px"
 spacing:
   xs: "6px"
@@ -91,16 +101,16 @@ components:
     rounded: "{rounded.pill}"
     padding: "10px 18px"
   button-ghost:
-    backgroundColor: "{colors.surface-sunken}"
+    backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
     typography: "{typography.label}"
     rounded: "{rounded.pill}"
     padding: "10px 18px"
   button-ghost-hover:
     backgroundColor: "{colors.line}"
-  button-on-accent:
-    backgroundColor: "{colors.accent-ink}"
-    textColor: "{colors.accent}"
+  button-dark:
+    backgroundColor: "{colors.dark-panel}"
+    textColor: "#ffffff"
     rounded: "{rounded.pill}"
     padding: "10px 18px"
   pill:
@@ -271,6 +281,32 @@ components:
 
 # Design System: Clarifi
 
+## Hybrid redesign (2026-11-08) — read this first
+
+Rebuilt from the claude.ai/design project "Budget app design request", file `Clarifi Hybrid.dc.html` (web app and phone views). Where a section below contradicts this one, this one wins; the sections below still describe component internals (Lines list, Rule card, Group card, Import dialog) that carried over with the new tokens.
+
+**Palette.** One violet accent `#6d4aff` on white; canvas `#f4f4f6` ruled with a 96px grid of `#e9e9ee` hairlines behind the app frame; ink `#17171c`, muted `#6b6b78`, faint `#9a9aa6`, line `#e4e4ea`, sunken `#f1f1f4`; accent wash `#f1edff` with deep accent text `#4a2fc2`; a near-black panel `#17171c` for the what-if card with `#b8b8c4` text and `#c4b5ff` figures; danger `#c0392b` for a negative safe-to-spend figure, `#fdeaea`/`#a52a2a` for the behind-pace pill. Dark theme swaps canvas to `#0e0e12`, surfaces to `#17171c`/`#24242c`, the accent to `#8b6dff`, and the shadow to a 1px ring. Bucket colours moved to the design's category set (general = accent).
+
+**Type.** Figtree 400–800 self-hosted (800 added for the display figure). Display: `clamp(52px, 7vw, 72px)` 800, −0.04em, line 0.95. Section labels are **eyebrows**: 12px 600 uppercase 0.08em in muted ink (`.eyebrow`). Card titles 14–15px 700. Amount on the pile card 22px 800; merchant 17px 700.
+
+**Shapes.** Cards are bordered, not shadowed: `.card` = surface, 1px `--line`, 24px radius. Rows and tiles 12–16px. Pills 999px. Inputs are pills with a 1px line border. The app frame is a 1240px white card with a 1px line, 24px radius and a soft `0 24px 60px -24px` shadow floating on the gridded canvas; it drops the frame and the grid under 900px.
+
+**Shell.** A 220px sidebar (1px right border, 20px 14px): brand (26px accent disc with a 10px white dot + "Clarifi" 17px 700), then a vertical nav of five items at 14px 600 with 18px 2.5-stroke icons: Runway (`#overview`, badge = unsorted count), Activity (`#lines`), Shared card (`#card`), Rules (`#rules`, badge = rule count), Pots (`#pots`). Active item = accent wash with deep accent text, badge inverts to accent. The account control sits at the sidebar foot (popover opens upward). Main is 24px 32px with a **tools row**: statement pills (selected = ink fill), the synthetic chip, a **card picker** when the statement holds more than one card (a sunken segmented control: "All cards" then one segment per card labelled by its last four digits "····1234" or the Amex card member; the chosen segment fills accent with white text; the choice is saved and filters every view and the Over time card), then right-aligned the Card / Mine / Partner segmented control (sunken track, white selected segment) and the primary Import pill. Under 900px the sidebar becomes a header: brand and account on one row, the nav as a horizontal scrolling pill row beneath; the Import pill drops its text and the segmented control takes a full row.
+
+**Runway view (signature).** A two-column grid, 28px gap, under a full-width hero. Hero: eyebrow "Safe to spend today" (or "Left at the end of the cycle"), the display figure (danger ink when negative), then a chip row: pace pill (accent wash/deep text with a 6px dot; danger wash when behind) and a "$X unsorted · counted as mine" pill in the sunken tint; right-aligned a label column: **$X** (20px) "left this cycle", "N days to the end of the cycle", "Budget $X · change". Without a budget the figure is replaced by a one-line explanation, a 140px input and the primary "Start the runway". Left column: the **cycle calendar** card (16px; "Cycle · 1 Oct – 30 Oct" 14px 700 against "Even · $1,800"; a 7-column grid of day buttons with an 11px day number (faint for future, ink for past, 800 today), a 24px well with a dot that grows with the day's general spend — 4px line-grey when nothing, 7–24px by square root of share of the biggest day, accent under the allowance, ink over — and a 9px faint projected figure under future days; today has a 2px inset accent ring, the selected day an accent wash; legend "under allowance / over / projected"), then the **what-if** panel (dark panel, 24px radius, 14px 16px: "If I spend [84px pill input] today, tomorrow is **$X**" with chips Nothing/$25/$60/$120/$250 as outlined pills that fill accent when selected; hidden once a day or none remains), then the **selected day** (eyebrow row of day label and total; rows at 16px radius with a 1px line: 32px initial tile, details 14px 600, a 12px sub-line naming the bucket and "your share of $X" or "unsorted, counted in full", amount 700; unsorted rows at 60%). Right column: the **pile** and **Auto-sorting**. On phones the columns stack in the order hero, pile, calendar, what-if, selected day, rules.
+
+**Pile (signature, replaces the Triage card).** Always open on the Runway while lines are unsorted; on Activity it still opens from "Sort n unsorted" and has a Close. Header: "N unsorted lines to sort" 15px 700, right "done / total" and an accent **Undo** link. A 172px deck: the next line as a 95%-scaled ghost 12px lower at 80%, the current line as a white 24px card with a 1px line and `0 12px 30px -16px` shadow: a 12px muted meta row (bucket dot and name left, "Mon, 5 Oct · ANZ" right), then a 40px ink tile with the merchant initial in white 800, the merchant at 17px 700 ellipsised, the amount at 22px 800, and a 12px impact line ("Partner's → +$32/day · Split → +$16/day", plus "+ n more lines like this"), then an 11px faint swipe legend "← Partner's · ↑ Split · ↓ Skip · Mine →". Drag follows the pointer with dx/20 degrees of rotation; four uppercase 12px 800 stamps (Mine top-right in accent, Partner's top-left in ink, Split centred, Skip bottom in line-grey) fade in with the pull; past 90px the card flies off over 320ms ease-in. Four buttons in one row (6px gaps, 14px radius, 9px 4px, 13px): Partner's, Skip (muted 600), Split, **Mine** (accent fill, white). Keycaps 1/S/2/3 trail the labels on pointer devices. Below, the bucket radio chips and the rule-preview line. Empty state: a sunken 20px strip with a 30px accent tick: "All sorted — this number is exact."
+
+**Auto-sorting.** Eyebrow + one sunken 12px row per rule: **text** → who (partner's / split / me / n% me, with the bucket when not general), the hit count "n×" in muted, and an × remove; an "All rules" link to the Rules view.
+
+**Shared card view.** Eyebrow "Statements" over a `minmax(300px, 1fr)` grid of statement cards (label 15px 700, "1 Oct – 20 Oct · 13 lines" small, a wrapping row of bank and card chips in the accent wash beneath, charges total right; the current one ringed in accent), then the Over time card, the "Payments to the card" pill strip, and the "Remove the <month> statement" link.
+
+**Pots view.** A row of eyebrow-captioned figures at 32px 800 (Income — or an accent "Add an income" link —, Spend, Put away, Left over on the Mine copy with incomes), then the two group cards.
+
+**Empty state (no statement).** Eyebrow, a line-grey "$—" display figure, the lede, the primary "Import a statement" and an accent-link "Try with a sample statement".
+
+Superseded by this section: the teal accent, the accent hero block and its inverted buttons, the top pill nav, the three-view hash scheme (now five), the "no borders on cards" and "no uppercase labels" rules, the shadowed `.card`, the single-card Runway and Triage cards.
+
 ## Overview
 
 **Creative North Star: "The Trusted Balance"**
@@ -413,7 +449,9 @@ Everything is rounded and nothing is square. Radius scales with the size of the 
 - **Error:** a body-size line in danger below the form.
 
 ### Navigation
-- **Top bar:** wordmark (700, 20px, -0.03em) left; pill nav beside it; segmented control (Overview and Lines) and primary Import pill right.
+- **Top bar:** wordmark (700, 20px, -0.03em) left; pill nav beside it; segmented control (Overview and Lines), primary Import pill, and the account control right.
+- **Import dialog:** the primary Import pill (and the hero's "Import a statement" button in the empty state) opens a native `<dialog>` card, 560px or the viewport minus 28px, 24px padding, over a 50% dimmed blurred backdrop: a 20px 600 title and a label-size explanation, a dashed drop zone (16px radius, sunken, 2px dashed `--line`, accent border and wash on hover or drag-over) with the upload glyph at 28px, "Drop CSV files here" at 16px 600 and "or choose files · ANZ and Amex" in label; accepts several files at once. Each parsed file is a sunken 12px panel: bank chip (accent wash, 12px 600: ANZ or Amex), filename at 14px 600 ellipsised, a Remove link, a four-column `dl` of Lines, Period, Charges and Payments (12px muted captions over 15px 600 tabular figures), and a note in ink ("New Oct 2026 statement", "Joins the Oct 2026 statement", "Replaces 12 ANZ lines in Oct 2026"). A file that fails to parse gets a 1px danger inset ring and the error in danger label text. Footer: the primary "Import statement" / "Import n statements" pill (disabled until one file parses) and a Cancel link. Escape, backdrop click and Cancel close and clear. Phone: 18px padding, the `dl` drops to two columns.
+- **Account control:** signed out, a ghost pill "Sign in" that opens a popover card (absolute, 8px under the bar, right-aligned, 400px or the viewport minus 28px, z-index 2) holding Username and Password fields in a 1fr 1fr grid, a primary "Sign in", link-style "Create account" and "Cancel", the error line in danger, and a 13px muted explanation. Signed in, a 600-weight sunken pill with the username and a link-style "Sign out". Hidden entirely when no API answers, so the local-only app looks as before. The footer line reads "Saved to <user>'s account and this browser." while signed in and turns danger-coloured with the message when a save fails.
 - **Pill nav:** three anchors (`#overview`, `#lines`, `#rules`) at 15px 600 in muted ink, 7px 14px, 2px apart, 150ms colour and background on `--ease`. Hover lifts the text to ink; the active link (`aria-current="page"`) becomes a surface pill carrying the card shadow (dark ring in dark mode). The Rules link trails a count pill: 12px 600, 1px 7px, sunken surface and muted ink at rest, accent wash with ink text when its view is active. On phones the nav drops to the second row of the bar.
 - **Segmented control:** shown on Overview and Lines; a surface pill with 4px inner padding and the card shadow; segments are pills at 7px 16px, 600/14px, muted ink; the selected segment fills with ink and flips text to canvas, 200ms. On phones it moves to its own row and segments share width equally.
 - **Footer:** 13px muted-ink links at baseline, 16px gaps, 32px above; the same footer under both views.
@@ -428,9 +466,12 @@ The Lines view's single list card, 12px 8px, carrying a 13px summary line (count
 Surface card, 16px 18px, laid two per row (one under 720px): code chip, name (600), Remove link on one line; the condition sentence in label size; a chip row of share, bucket (dot + name) and "fired n". The add-rule form is the same card, revealed inline beneath the heading row by the "New rule" button and dismissed by a Cancel link: a header row of accent-tinted code chip (R n+1), "New rule" and Cancel, the three-column field grid described in Layout, an optional danger error line, and the primary "Add rule" pill aligned left. The form card is the only card on the Rules view that is not a rule.
 
 ### Triage Card (signature)
-"Sort your lines": a plain `.card` (surface, 20px, `--shadow`, no accent border), 20px 24px 22px, mounted between the hero and the bucket grid 16px below the hero. Header is one flex row with 24px gaps: title (18px 600) over a label-size subline, a progress group of "done / total" in label plus a 120px by 6px pill bar (sunken track, accent fill, `scaleX` over 400ms `--ease`), and a Close link. The current line sits in a 48px / 1fr / auto grid at 22px 0 18px: date in label, details and amount at headline size; each new line enters with a 300ms `--ease` fade and 6px rise, keyed per line. Three **choice** buttons share a 3-column grid with 10px gaps: sunken surface at 12px radius, 14px 16px, label 18px 600 with a trailing keycap pill, hint in label size; hover to accent wash with a 1px lift at 150ms. The foot wraps a bucket radio group (bucket chips, 6px gaps) against a label-size line stating the exact rule condition, any collision note in ink 600, and a Skip link with an inline keycap. Keys: 1 / 2 / 3 choose, S skips, Escape closes. Phone: 16px padding, header wraps and the bar stretches, line and choices stack to one column. Done state is one 18px 600 line.
+"Sort your lines": a plain `.card` (surface, 20px, `--shadow`, no accent border), 20px 24px 22px, mounted between the hero and the bucket grid 16px below the hero. Header is one flex row with 24px gaps: title (18px 600) over a label-size subline, a progress group of "done / total" in label plus a 120px by 6px pill bar (sunken track, accent fill, `scaleX` over 400ms `--ease`), and a Close link. The current line is a sunken 12px panel (18px 20px) in a 48px / 1fr / auto grid: date in label, details and amount at headline size, and a label-size "+ n more lines like this" note when the same answer sorts other unsorted lines; each new line enters with a 300ms `--ease` fade and 6px rise, keyed per line. The panel is a swipe card: drag it right for Mine, left for Partner's, up for Split, down for Skip (90px threshold, `touch-action: none`); it follows the pointer with a slight rotation (dx / 18 degrees) and four corner stamps (surface pills, 2px border, 13px 600: Mine top-right with an accent border, Partner's top-left, Split centred, Skip bottom dashed) fade in with the pull; past the threshold it is thrown off in that direction over 220ms ease-in before the answer lands, and the next line waits behind it at 96% scale, 10px lower, 50% opacity. A centred label-size legend ("← Partner's · ↑ Split · ↓ Skip · Mine →") sits under the deck. Reduced motion skips the throw. Three **choice** buttons share a 3-column grid with 10px gaps: sunken surface at 12px radius, 14px 16px, label 18px 600 with a trailing keycap pill, hint in label size; hover to accent wash with a 1px lift at 150ms. The foot wraps a bucket radio group (bucket chips, 6px gaps) against a label-size line stating the exact rule condition, any collision note in ink 600, and a Skip link with an inline keycap. An Undo link with a Z keycap sits before Close in the header, disabled until something has been answered; it reverts the last answer (removes the rule it wrote, or unskips). Keys: 1 / 2 / 3 choose, S skips, Z undoes, Escape closes. Phone: 16px padding, header wraps and the bar stretches, line and choices stack to one column. Done state is one 18px 600 line.
 
 <!-- review: triage first pass disposition fix, seven findings, all applied; verdict pass pending at time of writing. -->
+### Runway Card (signature)
+"Safe to spend today": a plain `.card`, 20px 24px 22px, mounted 16px under the hero (and under the triage card when open) on the Overview for the Card and Mine copies; it is the only place a budget lives. Before a budget exists it is a one-row setup: title (18px 600) over a two-line label-size explanation, a "Budget per statement" field (140px) and the primary "Start the runway" pill; the number is stored once and is editable from a "Budget · change" link. With a budget the card reads top to bottom: a 13px 600 muted label, the safe-to-spend figure at `clamp(36px, 5vw, 52px)` 700 (danger ink when the day is already overspent, counting via `tweenMoney`), a right-aligned label-size column of what is left, days to the end of the cycle and the budget link, then a **pace** pill (accent wash and dot when on or ahead, danger wash when behind). A sunken panel (12px radius, 14px 16px) holds the **cycle calendar**: header row of "Cycle · from – to" (14px 600) against the even daily allowance, a grid of day cells at `minmax(40px, 1fr)` (seven columns on phone) each with the day number (11px, ink once past, 700 today), a 24px well carrying a dot that grows with the day's general spend (5px grey when nothing, 8–24px by square root of the share of the biggest day, accent under the allowance, danger over), and a 10px figure beneath future days showing the projected safe amount in muted ink ("today" under today); today carries a 2px inset accent outline, the selected day an accent wash. A legend line follows. A second sunken panel, **What if I spend today…**, pairs a 120px 18px 600 input with the sentence "→ tomorrow's safe-to-spend becomes <b>" and a chip row (Nothing, $25, $60, $120, $250; the matching chip inverts to ink on canvas); it is hidden once the cycle has one day or none left. The card ends with the **selected day**: a label-size head (Today or "Tue, 20 Oct" against the day's total) over rows of bucket dot, details, an optional "share of" note and the copy's figure, or a one-line empty state that tells future days the grey figure is their allowance. A statement whose cycle has ended shows "Left at the end of the cycle", every day as past, and no what-if. Phone: 16px padding, the top stacks, the side column left-aligns.
+
 ### Over Time Card (signature)
 A plain `.card` spanning the full bucket grid, shown only when more than one statement is loaded (18px 20px). Left, a text block (2px gaps, top-aligned): "Over time" at 600 body size, a label-size subline naming the copy ("my share per statement"), the delta at headline size (24/600/-0.02em, 14px above) signed with + or − and coloured danger when spend rose, then "vs <previous month>" in label size. Right, one button per statement in a column grid: value / bar / label stacked with 6px gaps, text centred, 12px radius as the focus shape; the bar is a 12px-radius sunken track filling the 150px height, its fill `--line` scaled on Y from the bottom over 400ms `--ease` (bar height is the statement's share of the largest), hover to muted ink; the current month's fill is the accent and its value and label turn ink at 600. Clicking a bar selects that statement, the same as a month pill. Values tween with the shared 500ms expoOut; a change in statement count snaps instead of tweening.
 

@@ -3,8 +3,8 @@ node_modules
 .vercel
 .netlify
 .wrangler
-/.svelte-kit
-/build
+/frontend/.svelte-kit
+/frontend/build
 .DS_Store
 Thumbs.db
 .env
@@ -14,3 +14,10 @@ Thumbs.db
 .impeccable/review/
 .impeccable/live/
 .impeccable/questions/
+
+# backend
+__pycache__/
+*.py[cod]
+.venv/
+*.sqlite3
+staticfiles/

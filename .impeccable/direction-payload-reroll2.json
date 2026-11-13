@@ -1,0 +1,131 @@
+{
+  "title": "Choose Clarifi's visual world",
+  "question": "Bolder re-roll, round 2. Six new foreign forms, the first dealt leads. Everything shown before is eliminated. Lock one, re-roll again, or keep the category standard (what ships today).",
+  "options": [
+    {
+      "id": "challenger-acetate",
+      "label": "Manual Acetate Tab Board",
+      "kicker": "THE ROLL",
+      "lineage": "boxed-software reference manuals: a stepped tab rail of coloured divider boards, content on punched acetate leaves hinged above",
+      "thesis": "Six buckets are six divider boards; the open bucket extends its tab and becomes the whole ground, and every line sits on a milk-acetate leaf a millimetre above it.",
+      "palette": ["#F4F3EF", "#1A1A1A", "#22C55E", "#3B82F6", "#F59E0B", "#8B5CF6", "#06B6D4", "#EF4444"],
+      "materials": ["milk acetate leaves", "full-strength board hue per bucket", "punched holes", "vermilion errata slip", "mono machine voice"],
+      "viewport": "A stepped tab rail runs down the right edge, one tab per bucket, height proportional to its spend this month. The open tab's hue floods the board. Lines ride on clear leaves at a 62-character measure; figures in mono. Selected is a punched hole, excluded lies face-down, a conflict wears a vermilion errata slip. Every change is a 90ms two-frame hinge, nothing eases.",
+      "risk": "Ply is the only rank, so money tables must carry hierarchy with position and mono alone; a wrong leaf alpha turns the reading field muddy.",
+      "raised": [
+        {"from": "challenger-transit", "raise": "The open bucket burns at full strength while the other tabs dim; the rail never shrinks to a miniature."},
+        {"from": "challenger-warm-app", "raise": "The one saturated action colour appears only where something can actually be pressed."},
+        {"from": "challenger-orienteering", "raise": "Triage rides as a layer above the lines and never edits a rule until you commit."},
+        {"from": "challenger-wallet", "raise": "An excluded line is stamped VOID in place; nothing disappears, it cancels."},
+        {"from": "challenger-datamatics", "raise": "All figures in one mono face at data density, tight tabular columns."}
+      ],
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "month · Import", "x": 0, "y": 0, "w": 10, "h": 1},
+        {"label": "headline figure on acetate", "x": 0, "y": 1, "w": 10, "h": 2, "accent": true},
+        {"label": "lines on hinged leaves, 62ch measure", "x": 0, "y": 3, "w": 10, "h": 7},
+        {"label": "stepped tab rail: six buckets", "x": 10, "y": 0, "w": 2, "h": 10}
+      ]},
+      "hero": "https://impeccable.style/worlds/cards/rw-manual-acetate-tab-board-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/rw-manual-acetate-tab-board.webp"
+    },
+    {
+      "id": "challenger-wallet",
+      "label": "Jet-age Ticket Wallet",
+      "verdict": "competitive",
+      "lineage": "airline ticket wallets: carbon-copy coupons, one leg per sheet, VOID stamps",
+      "thesis": "Each statement is a coupon in the wallet; figures strike in carbon purple, excluded lines are stamped VOID, and the wallet always shows what months remain.",
+      "palette": ["#FFFFFF", "#0B2A5B", "#C8102E", "#5B2C83", "#D9D6CE"],
+      "materials": ["crisp coupon stock", "carrier navy and red", "carbon purple numerals", "hairline fare boxes", "red VOID stamp"],
+      "viewport": "A tabbed coupon per month across the top; the open coupon's fare boxes hold Income, Spend, Put away. Lines are ruled fields beneath, carbon numerals in fixed columns. Excluded stamps VOID; nothing is deleted.",
+      "case": "Beats the leader on state clarity: validated, used and void map exactly onto mine, partner's and excluded. Loses on audience: a wallet of coupons is a journey, not a household month.",
+      "risk": "Coupon chrome eats width; on a phone it must collapse to one stub column.",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "coupon tabs: Sept · Oct", "x": 0, "y": 0, "w": 12, "h": 1},
+        {"label": "fare boxes: Income · Spend · Put away", "x": 0, "y": 1, "w": 12, "h": 2, "accent": true},
+        {"label": "ruled line fields, carbon numerals", "x": 0, "y": 3, "w": 12, "h": 7}
+      ]},
+      "hero": "https://impeccable.style/worlds/cards/vernacular-ephemera-jet-age-ticket-wallet-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/vernacular-ephemera-jet-age-ticket-wallet.webp"
+    },
+    {
+      "id": "challenger-transit",
+      "label": "Midnight Transit Diagram",
+      "verdict": "competitive",
+      "lineage": "metropolitan rail maps as midnight-blue enamel murals",
+      "thesis": "Six buckets are six coloured lines; each transaction is a station in date order, and a rule that moves a line is an interchange.",
+      "palette": ["#0B1F3A", "#FFFFFF", "#E32017", "#0019A8", "#FFD300", "#00782A"],
+      "materials": ["midnight enamel", "porcelain station ticks", "line inks at 45 and 90 degrees", "interchange circles"],
+      "viewport": "The month as a diagram: lines bend only at 45 and 90 degrees, stations labelled at one fixed size, the chosen bucket burning brightest while the rest dim.",
+      "case": "Beats the leader on audience: everyone reads a tube map. Loses on clarity: amounts have no place on a route diagram, so the money moves to a side list.",
+      "risk": "Pretty on sample data; a real 90-line month tangles.",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "month · Import", "x": 0, "y": 0, "w": 12, "h": 1},
+        {"label": "six-line diagram, stations by date", "x": 0, "y": 1, "w": 8, "h": 9, "accent": true},
+        {"label": "amounts for the focused line", "x": 8, "y": 1, "w": 4, "h": 9}
+      ]},
+      "hero": "https://impeccable.style/worlds/cards/wayfinding-cartography-signage-midnight-transit-diagram-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/wayfinding-cartography-signage-midnight-transit-diagram.webp"
+    },
+    {
+      "id": "challenger-orienteering",
+      "label": "Orienteering Map",
+      "verdict": "declined",
+      "lineage": "ISOM orienteering maps: fixed terrain colours beneath, the purple course above",
+      "thesis": "Rules are the terrain, fixed colours; this month's unsorted lines are purple controls you punch in order.",
+      "palette": ["#FFFFFF", "#7A5C2E", "#F2D45C", "#5B8C3A", "#3C7FBF", "#A12DB3"],
+      "materials": ["ISOM inks", "contour texture", "purple course", "coded control descriptions"],
+      "viewport": "A fixed-scale field of lines coloured by rule, with numbered purple circles on each unsorted one and a description row beside.",
+      "case": "Loses both: no one navigates money by contour, and the terrain metaphor adds nothing to a list.",
+      "kept": "The course layer never edits the terrain: triage commits rules only when you say so.",
+      "risk": "Decorative texture under figures.",
+      "hero": "https://impeccable.style/worlds/cards/notation-diagram-systems-orienteering-map-hero.webp"
+    },
+    {
+      "id": "challenger-warm-app",
+      "label": "Warm Consumer App Surface",
+      "verdict": "declined",
+      "lineage": "soft-cornered card apps on a warm ground with one action colour",
+      "thesis": "Cards in a single column, a bottom bar for the thumb, one bright colour only where you can press.",
+      "palette": ["#FAF6F0", "#FFFFFF", "#1A1A1A", "#FF5A1F"],
+      "materials": ["warm tinted ground", "white cards", "large radii", "rounded humanist sans"],
+      "viewport": "Stacked cards, persistent bottom bar.",
+      "case": "Loses by being the standing exit in a warmer coat; it is already on the table as the canon card.",
+      "kept": "Action colour reserved strictly for pressable things.",
+      "risk": "Not bolder; it is the category.",
+      "hero": "https://impeccable.style/worlds/cards/digital-design-canon-warm-consumer-app-surface-hero.webp"
+    },
+    {
+      "id": "challenger-datamatics",
+      "label": "Datamatics Field",
+      "verdict": "declined",
+      "lineage": "Ikeda's data-sublime: black and white barcode columns, sine lattices, frame inversion",
+      "thesis": "The month as a hairline bar field, amounts as bar height, mono numerals packed in the margin.",
+      "palette": ["#000000", "#FFFFFF"],
+      "materials": ["pixel-crisp bars", "hairline rules", "one mono face", "full-frame inversion"],
+      "viewport": "A wall of vertical bars for every line; selecting a column pulls its figures into focus.",
+      "case": "Loses both: strobing is hostile to a money task and pure black and white forbids the six bucket hues.",
+      "kept": "One mono face at data density, tight tabular columns.",
+      "risk": "Art piece, not a tool.",
+      "hero": "https://impeccable.style/worlds/cards/ikeda-datamatics-hero.webp"
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code", "toggle": false},
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard (what ships today)",
+    "thesis": "Modern consumer fintech at Revolut/Wise craft: pill nav, hero figure, group cards, lines list, light and dark by system.",
+    "palette": ["#FFFFFF", "#0B0F14", "#00C2A8", "#F3F4F6"],
+    "materials": ["soft cards", "20/28px radii", "Figtree", "bucket dots and chips"],
+    "viewport": "Month pills, headline figure, Spend and Put away cards, Over time bars, lines beneath.",
+    "risk": "Recognisably the category by design; that was the standing choice recorded in PRODUCT.md.",
+    "wireframe": {"cols": 12, "rows": 10, "regions": [
+      {"label": "pill nav", "x": 0, "y": 0, "w": 12, "h": 1},
+      {"label": "hero figure + months", "x": 0, "y": 1, "w": 12, "h": 3, "accent": true},
+      {"label": "Spend card", "x": 0, "y": 4, "w": 6, "h": 3},
+      {"label": "Put away card", "x": 6, "y": 4, "w": 6, "h": 3},
+      {"label": "Over time", "x": 0, "y": 7, "w": 12, "h": 3}
+    ]}
+  },
+  "steer": true
+}

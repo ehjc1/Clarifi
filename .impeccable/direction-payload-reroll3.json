@@ -1,0 +1,142 @@
+{
+  "title": "Choose Clarifi's visual world",
+  "question": "Bolder re-roll, round 3. Six new foreign forms, the first dealt leads. Three hands shown so far with no steer; type one line in the steer box if you re-roll again. Lock one, re-roll, or keep the category standard (what ships today).",
+  "options": [
+    {
+      "id": "challenger-lexicon",
+      "label": "Lexicon Shoulder and Plate",
+      "kicker": "THE ROLL",
+      "lineage": "nineteenth-century lexicon pages: fixed measure, shoulder margin, guide words, colour quarantined in a bordered plate",
+      "thesis": "The statement is a lexicon: every line an entry at one measure, guide words naming the dates in view, and all colour locked inside one bordered plate, the bucket chart.",
+      "palette": ["#F3EDDF", "#141414", "#D33A2C", "#F2C230", "#1E8F5A", "#2448B5", "#C64B7A", "#6D4A2E"],
+      "materials": ["warm uncoated cream", "engraving black", "head rule with guide words", "shoulder thumb index", "one chromolithographed plate", "struck-and-replaced corrections"],
+      "viewport": "A head rule carries two guide words: the first and last date in view, recomputed as you scroll. Entries run at a 55-72 character measure, figures in mono in the machine voice. The shoulder margin is the bucket index, the current range struck through. The only colour on the page is the plate: a bordered figure of six bucket bars in seven-ink chromolithograph hues. A line moved by a new rule is struck and replaced, never faded.",
+      "risk": "Bookish by default; if the plate is small or the serif carries figures, it reads as an antique and the money disappears into prose.",
+      "raised": [
+        {"from": "challenger-metro", "raise": "One chosen accent owns every live state; nothing else on the page is interactive colour."},
+        {"from": "challenger-splitflap", "raise": "A changed line restyles in place without breaking the grid; the cascade is visible, the layout never jumps."},
+        {"from": "challenger-zoo", "raise": "A focused bucket owns the view: its entries swell to the full measure, the rest recede to the shoulder."},
+        {"from": "challenger-laban", "raise": "Share is a fill, not a number: solid at 100%, hatched at 50%, dotted at 0%."},
+        {"from": "challenger-doujin", "raise": "Sorted lines stay struck by hand in the triage history, persisted locally."}
+      ],
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "head rule: guide words 03 Oct — 28 Oct · Import", "x": 0, "y": 0, "w": 12, "h": 1},
+        {"label": "shoulder: bucket thumb index", "x": 0, "y": 1, "w": 2, "h": 9},
+        {"label": "entries at 55-72ch, mono figures", "x": 2, "y": 1, "w": 6, "h": 9},
+        {"label": "the plate: six bucket bars, only colour on the page", "x": 8, "y": 1, "w": 4, "h": 5, "accent": true},
+        {"label": "rules as apparatus notes", "x": 8, "y": 6, "w": 4, "h": 4}
+      ]},
+      "hero": "https://impeccable.style/worlds/cards/rw-lexicon-shoulder-and-plate-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/rw-lexicon-shoulder-and-plate.webp"
+    },
+    {
+      "id": "challenger-metro",
+      "label": "Metro Typographic Tiles",
+      "verdict": "wins",
+      "lineage": "Metro: flat tiles and giant lowercase on black, headlines cropped off the edge, type as the whole interface",
+      "thesis": "october in giant light lowercase cropped off the right edge; six flat tiles in bucket hues carry the figures; a tile flips when a rule changes its total.",
+      "palette": ["#000000", "#FFFFFF", "#22C55E", "#3B82F6", "#F59E0B", "#8B5CF6", "#06B6D4", "#EF4444"],
+      "materials": ["pure black ground", "flat colour tiles, no gradients", "white light-weight lowercase", "square grid", "3D tilt on press"],
+      "viewport": "One wide panorama slides behind the viewport: overview, lines, rules as panes, the next pane's header peeking in. Overview is a strict grid of square tiles, one per bucket, each a flat field of its hue with a giant figure. Press tilts the tile; a changed total flips it. No borders, no button chrome: tiles are the only doors.",
+      "case": "Beats the leader on both axes: everyone has held this interface, and a flat tile with one giant figure is the clearest money readout on the table. Loses only in the lines list, where tiles give way to a plain ranked table on black.",
+      "risk": "Reads as Windows Phone nostalgia if the tiles bevel, the type gains weight, or the panorama is replaced by tabs.",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "october (giant, cropped off right edge)", "x": 0, "y": 0, "w": 12, "h": 2, "accent": true},
+        {"label": "spend tile", "x": 0, "y": 2, "w": 4, "h": 4},
+        {"label": "put away tile", "x": 4, "y": 2, "w": 4, "h": 4},
+        {"label": "income tile", "x": 8, "y": 2, "w": 4, "h": 4},
+        {"label": "fixed", "x": 0, "y": 6, "w": 2, "h": 2},
+        {"label": "general", "x": 2, "y": 6, "w": 2, "h": 2},
+        {"label": "mortgage", "x": 4, "y": 6, "w": 2, "h": 2},
+        {"label": "savings", "x": 6, "y": 6, "w": 2, "h": 2},
+        {"label": "investments", "x": 8, "y": 6, "w": 2, "h": 2},
+        {"label": "lines → (next pane peeks in)", "x": 10, "y": 6, "w": 2, "h": 4}
+      ]},
+      "hero": "https://impeccable.style/worlds/cards/digital-design-canon-metro-typographic-tiles-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/digital-design-canon-metro-typographic-tiles.webp"
+    },
+    {
+      "id": "challenger-splitflap",
+      "label": "Split-flap Concourse Board",
+      "verdict": "competitive",
+      "lineage": "rail concourse split-flap departure boards",
+      "thesis": "Lines are board rows ranked by date in fixed character cells; sorting a line flaps its bucket column letter by letter, conflicts light the amber lamp, excluded drops to dim red.",
+      "palette": ["#0C0C0C", "#F4F4F4", "#8E8E8E", "#F0A000", "#C0392B"],
+      "materials": ["matte black flaps", "white painted condensed caps", "brushed steel frame", "amber row lamps"],
+      "viewport": "The whole statement as one ruled board: date, merchant, amount, share, bucket in fixed columns. Columns never move; only flaps change. Overview is a summary board above with six rows.",
+      "case": "Beats the leader on audience: every traveller reads this board. Loses on clarity for the overview: a board ranks rows, it does not show proportion.",
+      "risk": "Per-character flip animation on a 90-line month is noise; reduced motion must collapse to a single update.",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "summary board: six bucket rows", "x": 0, "y": 0, "w": 12, "h": 3, "accent": true},
+        {"label": "DATE", "x": 0, "y": 3, "w": 2, "h": 7},
+        {"label": "MERCHANT", "x": 2, "y": 3, "w": 5, "h": 7},
+        {"label": "AMOUNT", "x": 7, "y": 3, "w": 2, "h": 7},
+        {"label": "SHARE", "x": 9, "y": 3, "w": 1, "h": 7},
+        {"label": "BUCKET", "x": 10, "y": 3, "w": 2, "h": 7}
+      ]},
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-split-flap-concourse-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/signals-instruments-split-flap-concourse.webp"
+    },
+    {
+      "id": "challenger-zoo",
+      "label": "Zoo and Gardens Guide Map",
+      "verdict": "declined",
+      "lineage": "fold-out zoo guide maps: swelling lobes of flat colour, capsules as labels",
+      "thesis": "Each bucket a lobe of flat colour sized by spend, coastlines between them doing all the dividing, capsules as controls.",
+      "palette": ["#F5F1E4", "#8ED462", "#2C2E2A", "#F5E211", "#FF705D", "#2BA0FF"],
+      "materials": ["flat unmodulated colour", "cream water", "SVG coastlines", "yellow and coral capsules"],
+      "viewport": "One lobe dominates each screen; scrolling redraws the coast.",
+      "case": "Loses both: a guide map is a day out, not a budget, and lobes show proportion but never a figure.",
+      "kept": "A focused bucket owns the view; the rest recede.",
+      "risk": "Charming and imprecise about money.",
+      "hero": "https://impeccable.style/worlds/cards/aww2-zoo-gardens-guide-map-hero.webp"
+    },
+    {
+      "id": "challenger-laban",
+      "label": "Labanotation Score",
+      "verdict": "declined",
+      "lineage": "dance notation: a vertical centre staff read upward, block length is duration, shading is level",
+      "thesis": "Partner's column left, mine right, time flowing upward; each line a block whose height is its amount and whose fill is its share.",
+      "palette": ["#FFFFFF", "#000000", "#BDBDBD"],
+      "materials": ["score paper", "black symbol blocks", "hatched and dotted fills", "pale grey beat band"],
+      "viewport": "A centre staff with blocks flanking it, future above, count numerals in the margin.",
+      "case": "Loses both: nobody reads a dance score, and reading time upward fights every statement ever printed.",
+      "kept": "Share as fill: solid 100%, hatched 50%, dotted 0%.",
+      "risk": "Unreadable without a legend.",
+      "hero": "https://impeccable.style/worlds/cards/notation-diagram-systems-labanotation-hero.webp"
+    },
+    {
+      "id": "challenger-doujin",
+      "label": "Convention Circle Catalog",
+      "verdict": "declined",
+      "lineage": "newsprint convention catalogs: hundreds of stamp-size cells, circled in biro, struck when visited",
+      "thesis": "Every line a stamp-size cell in a numbered grid; the one you are sorting is circled in pen, sorted ones struck by hand.",
+      "palette": ["#E9E6DC", "#1A1A1A", "#2962FF"],
+      "materials": ["cheap newsprint", "single-ink black", "biro circles and strikes", "one spot colour on dividers"],
+      "viewport": "A packed grid of transaction cells with a hall map keyed to bucket codes.",
+      "case": "Loses both: a fan catalog is foreign to the household and stamp-size cells cannot hold a legible amount.",
+      "kept": "Sorted lines stay struck by hand, persisted locally.",
+      "risk": "Dense to the point of hostility.",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-doujin-event-catalog-hero.webp"
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code", "toggle": false},
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard (what ships today)",
+    "thesis": "Modern consumer fintech at Revolut/Wise craft: pill nav, hero figure, group cards, lines list, light and dark by system.",
+    "palette": ["#FFFFFF", "#0B0F14", "#00C2A8", "#F3F4F6"],
+    "materials": ["soft cards", "20/28px radii", "Figtree", "bucket dots and chips"],
+    "viewport": "Month pills, headline figure, Spend and Put away cards, Over time bars, lines beneath.",
+    "risk": "Recognisably the category by design; that was the standing choice recorded in PRODUCT.md.",
+    "wireframe": {"cols": 12, "rows": 10, "regions": [
+      {"label": "pill nav", "x": 0, "y": 0, "w": 12, "h": 1},
+      {"label": "hero figure + months", "x": 0, "y": 1, "w": 12, "h": 3, "accent": true},
+      {"label": "Spend card", "x": 0, "y": 4, "w": 6, "h": 3},
+      {"label": "Put away card", "x": 6, "y": 4, "w": 6, "h": 3},
+      {"label": "Over time", "x": 0, "y": 7, "w": 12, "h": 3}
+    ]}
+  },
+  "steer": true
+}

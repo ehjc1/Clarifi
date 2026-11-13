@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseAnz, parseCsv } from '../src/lib/anz';
+import { cardLabel, parseAnz, parseCsv, parseStatement } from '../src/lib/anz';
 import { composeRule, score } from '../src/lib/rules';
 import type { Rule } from '../src/lib/types';
 
@@ -25,6 +25,25 @@ describe('anz', () => {
 		expect(t[0]).toMatchObject({ date: '2026-10-03', details: 'PAK N SAVE ALBANY', amount: 86.4 });
 		expect(t[2].details).toBe('SPARK NZ "BROADBAND"');
 		expect(t[4].amount).toBe(-1500);
+		expect(t[0].card).toBe('4321-****-1234');
+		expect(cardLabel('4321-****-1234')).toBe('····1234');
+		expect(cardLabel('E CHEW')).toBe('E CHEW');
+	});
+});
+
+const amex = `Date,Description,Card Member,Account #,Amount
+28/10/2026,"COUNTDOWN PONSONBY",E CHEW,-11007,54.20
+30/10/2026,"PAYMENT RECEIVED - THANK YOU",E CHEW,-11007,-800.00`;
+
+describe('amex', () => {
+	it('detects Amex by header or filename and keeps its sign convention', () => {
+		const a = parseStatement(amex);
+		expect(a.bank).toBe('amex');
+		expect(a.txns.map((t) => t.amount)).toEqual([54.2, -800]);
+		expect(a.txns[0].source).toBe('amex');
+		expect(a.txns[0].card).toBe('E CHEW');
+		expect(parseStatement(csv).bank).toBe('anz');
+		expect(parseStatement('Date,Description,Amount\n01/10/2026,X,5', 'activity.csv').bank).toBe('amex');
 	});
 });
 
@@ -61,5 +80,36 @@ describe('statements', () => {
 		const st = makeStatement(parseAnz(csv), true);
 		expect(st).toMatchObject({ id: '2026-10', from: '2026-10-01', to: '2026-10-06', synthetic: true });
 		expect(st.label).toMatch(/Oct(ober)? 2026/);
+	});
+});
+
+describe('swipe', () => {
+	it('maps a throw to the dominant axis past the threshold, nothing inside it', async () => {
+		const { swipeAction, pull } = await import('../src/lib/swipe');
+		expect(swipeAction(120, 10)).toBe('mine');
+		expect(swipeAction(-120, 30)).toBe('partner');
+		expect(swipeAction(20, -100)).toBe('split');
+		expect(swipeAction(-5, 95)).toBe('skip');
+		expect(swipeAction(80, -80)).toBeNull();
+		expect(pull(0)).toBe(0); expect(pull(90)).toBe(1);
+	});
+});
+
+describe('runway', () => {
+	it('paces a budget evenly over the days left and clamps a finished cycle', async () => {
+		const { runway } = await import('../src/lib/runway');
+		const rows = [{ date: '2026-10-01', mine: 20 }, { date: '2026-10-02', mine: 30 }, { date: '2026-10-05', mine: 10 }] as never[];
+		const v = (r: { mine: number }) => r.mine;
+		const r = runway(rows, v as never, 300, '2026-10-01', '2026-10-10', '2026-10-05');
+		expect(r.daysLeft).toBe(6);
+		expect(r.remaining).toBe(250);
+		expect(r.safeToday).toBeCloseTo(250 / 6 - 10);
+		expect(r.pace).toBeCloseTo(30 * 4 - 50); // 4 elapsed days at $30 vs $50 spent
+		expect(r.cells).toHaveLength(10);
+		expect(r.cells[4]).toMatchObject({ today: true, spend: 10 });
+		expect(runway(rows, v as never, 300, '2026-10-01', '2026-10-10', '2026-10-05', 100).tomorrow).toBeCloseTo((250 - 10 - 100) / 5);
+		const done = runway(rows, v as never, 300, '2026-10-01', '2026-10-10', '2026-11-06');
+		expect(done).toMatchObject({ ended: true, daysLeft: 0, left: 240 });
+		expect(done.cells.every((c) => c.past)).toBe(true);
 	});
 });

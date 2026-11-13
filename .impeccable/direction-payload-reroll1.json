@@ -1,0 +1,134 @@
+{
+  "title": "Choose Clarifi's visual world",
+  "question": "Bolder re-roll, round 1. No grounded directions this hand: six foreign forms at full commitment, the first dealt leads. Lock one, re-roll again, or keep the category standard (what ships today).",
+  "options": [
+    {
+      "id": "challenger-specimen",
+      "label": "Variable Font Specimen",
+      "kicker": "THE ROLL",
+      "lineage": "interactive type specimens where one axis slider morphs every glyph live",
+      "thesis": "Your share is the axis: drag a rule from 0% to 100% and every line, bucket and the headline re-weigh under your finger.",
+      "palette": ["#FAFAF7", "#0B0F14", "#00C2A8", "#8A8F98"],
+      "materials": ["near-white paper", "ink black", "one accent", "monospace readout"],
+      "viewport": "One enormous figure fills the first viewport: what this month cost you. Beneath it, a strict baseline grid of every line, tiny mono labels, no cards. Open a rule and its share control is a range slider; as you drag, the giant figure and every affected line morph continuously, with a live readout of the share value.",
+      "risk": "Scale contrast is the whole hierarchy; if the small type goes under 12px or the grid loosens, it reads as a type demo, not a budget.",
+      "raised": [
+        {"from": "challenger-wayfinding", "raise": "Triage shows one line at a time with how many remain, like the next junction and its distance."},
+        {"from": "challenger-console", "raise": "Panels divide by 1px seams, never shadow; Remove statement sits alone with empty space around it."},
+        {"from": "challenger-jcard", "raise": "Income is the tape length: the spend bar may not overflow it without a visible overrun."},
+        {"from": "challenger-sleeve", "raise": "Buckets ride as a six-hue coded strip on every statement; hover decodes a hue to its name."},
+        {"from": "challenger-atlas", "raise": "Amounts sit on one fixed scale ramp across all views, never rescaled per card."}
+      ],
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "wordmark · month · Import", "x": 0, "y": 0, "w": 12, "h": 1},
+        {"label": "giant figure: this month, mine", "x": 0, "y": 1, "w": 8, "h": 4, "accent": true},
+        {"label": "share slider + live readout", "x": 8, "y": 1, "w": 4, "h": 4},
+        {"label": "every line on a strict baseline grid", "x": 0, "y": 5, "w": 12, "h": 5}
+      ]},
+      "hero": "https://impeccable.style/worlds/cards/variable-font-specimen-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/variable-font-specimen.webp"
+    },
+    {
+      "id": "challenger-console",
+      "label": "Dark-first Developer Console",
+      "verdict": "competitive",
+      "lineage": "graphite working surfaces with hairline seams and isolated destructive actions",
+      "thesis": "Clarifi as a console: persistent tiled panels for statement, lines and rules, state in syntax-derived accents, delete kept out of reach.",
+      "palette": ["#111417", "#1A1E23", "#2EF2D2", "#F0B429", "#E5484D"],
+      "materials": ["graphite ground", "1px seams", "one step of elevation", "mono figures"],
+      "viewport": "Three panels tile the width and persist: statement figures left, lines centre, rules right. Navigation swaps panel contents, never the layout. Primary action takes the single accent; Remove statement is outline-only until focused.",
+      "case": "Beats the leader on audience for you (you build systems in this world) and holds clarity. Loses on audience for the public later, and the brief pinned light-plus-dark, so dark-first becomes dark-primary with a light step.",
+      "risk": "Sits one step from Linear and Vercel; the familiar in a different coat.",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "statement panel", "x": 0, "y": 0, "w": 3, "h": 10},
+        {"label": "lines panel", "x": 3, "y": 0, "w": 6, "h": 10, "accent": true},
+        {"label": "rules panel", "x": 9, "y": 0, "w": 3, "h": 8},
+        {"label": "Remove statement (isolated)", "x": 9, "y": 9, "w": 3, "h": 1}
+      ]},
+      "hero": "https://impeccable.style/worlds/cards/digital-design-canon-dark-first-developer-console-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/digital-design-canon-dark-first-developer-console.webp"
+    },
+    {
+      "id": "challenger-wayfinding",
+      "label": "Terminal Yellow Wayfinding",
+      "verdict": "competitive",
+      "lineage": "international airport sign systems: yellow bands, black humanist sans, pictograms, arrows by edge rule",
+      "thesis": "Sorting a statement is a concourse: each unsorted line is a junction, three yellow bands point Partner's, Split, Mine, and the band tells you how many lines remain.",
+      "palette": ["#F5C400", "#0A0A0A", "#FFFFFF", "#F2F2F0"],
+      "materials": ["saturated yellow panels", "black humanist sans", "white pictograms on black squares", "sticky bands"],
+      "viewport": "A sticky yellow band carries the current line in sentence case with a pictogram for its bucket. Three arrowed choices lock to the panel edges. Below the band, the sorted corridor scrolls past. Small screens collapse to the one next decision with the amount monumental.",
+      "case": "Beats the leader on audience: everyone reads an airport sign. Loses on clarity for the overview, where there is no corridor and yellow everywhere fights money figures.",
+      "risk": "Yellow is reserved for wayfinding and nothing else, so the dashboard must go near-monochrome to earn it.",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "yellow band: current line + pictogram", "x": 0, "y": 0, "w": 12, "h": 2, "accent": true},
+        {"label": "← Partner's", "x": 0, "y": 2, "w": 4, "h": 1},
+        {"label": "Split", "x": 4, "y": 2, "w": 4, "h": 1},
+        {"label": "Mine →", "x": 8, "y": 2, "w": 4, "h": 1},
+        {"label": "sorted corridor scrolls beneath", "x": 0, "y": 3, "w": 12, "h": 7}
+      ]},
+      "hero": "https://impeccable.style/worlds/cards/wayfinding-cartography-signage-terminal-yellow-wayfinding-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/wayfinding-cartography-signage-terminal-yellow-wayfinding.webp"
+    },
+    {
+      "id": "challenger-jcard",
+      "label": "Cassette J-card",
+      "verdict": "declined",
+      "lineage": "hand-lettered mixtape inlays, side A / side B timed to fit the tape",
+      "thesis": "Side A is Mine, Side B is Partner's; every line has a running total and the side must not overflow the tape.",
+      "palette": ["#FFFFFF", "#1F4FBF", "#8C8C8C", "#D32F2F"],
+      "materials": ["lined inlay stock", "ballpoint blue", "pencil grey", "one brand stripe"],
+      "viewport": "A folded card: spine shows the month, front flap the totals, inner fold the two ruled tracklists.",
+      "case": "Loses both: handwriting fights tabular money and a mixtape is not where anyone keeps a budget.",
+      "kept": "The hard cap: income is the tape length and spend may not overflow it unseen.",
+      "risk": "Nostalgia costume on a finance tool.",
+      "hero": "https://impeccable.style/worlds/cards/vernacular-ephemera-cassette-j-card-hero.webp"
+    },
+    {
+      "id": "challenger-sleeve",
+      "label": "Factory Catalog Sleeve",
+      "verdict": "declined",
+      "lineage": "Saville's Factory Records identity: fac numbers, pulsar plot, colour-code strips for words",
+      "thesis": "Each statement is a catalog entry, spend as a stacked white pulse on black, buckets spelled as a strip of hue blocks.",
+      "palette": ["#000000", "#FFFFFF", "#22C55E", "#3B82F6", "#F59E0B", "#8B5CF6"],
+      "materials": ["matte black", "white hairline plot", "coded colour strip", "engraved caps"],
+      "viewport": "A pulsar stack of monthly spend lines owns the field; the statement id is the only headline.",
+      "case": "Loses both: replacing words with codes is hostile for money, and the audience is not sleeve collectors.",
+      "kept": "The six bucket hues as a coded strip decoded on hover.",
+      "risk": "Beautiful and unreadable.",
+      "hero": "https://impeccable.style/worlds/cards/brand-identity-canon-saville-catalog-sleeve-hero.webp"
+    },
+    {
+      "id": "challenger-atlas",
+      "label": "Star Atlas",
+      "verdict": "declined",
+      "lineage": "celestial charts: magnitude as dot size, constellation lines faint beneath the data",
+      "thesis": "Transactions as stars sized by amount, buckets as constellations, the selected line ringed in night-vision red.",
+      "palette": ["#0B1A3A", "#F2F2F2", "#F59E0B", "#E5484D"],
+      "materials": ["deep navy chart", "chalk-white dots", "amber annotations", "red selection ring"],
+      "viewport": "A canvas scatter of this month's lines by date and amount, bucket lines faint, an index of names pointing into the chart.",
+      "case": "Loses both: a scatter has no tabular list to reconcile against a statement, and the audience does not navigate money by sky.",
+      "kept": "One fixed scale ramp for amounts across every view.",
+      "risk": "Pretty on sample data, illegible on a real 90-line month.",
+      "hero": "https://impeccable.style/worlds/cards/notation-diagram-systems-star-atlas-hero.webp"
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code", "toggle": false},
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard (what ships today)",
+    "thesis": "Modern consumer fintech at Revolut/Wise craft: pill nav, hero figure, group cards, lines list, light and dark by system.",
+    "palette": ["#FFFFFF", "#0B0F14", "#00C2A8", "#F3F4F6"],
+    "materials": ["soft cards", "20/28px radii", "Figtree", "bucket dots and chips"],
+    "viewport": "Month pills, headline figure, Spend and Put away cards, Over time bars, lines beneath.",
+    "risk": "Recognisably the category by design; that was the standing choice recorded in PRODUCT.md.",
+    "wireframe": {"cols": 12, "rows": 10, "regions": [
+      {"label": "pill nav", "x": 0, "y": 0, "w": 12, "h": 1},
+      {"label": "hero figure + months", "x": 0, "y": 1, "w": 12, "h": 3, "accent": true},
+      {"label": "Spend card", "x": 0, "y": 4, "w": 6, "h": 3},
+      {"label": "Put away card", "x": 6, "y": 4, "w": 6, "h": 3},
+      {"label": "Over time", "x": 0, "y": 7, "w": 12, "h": 3}
+    ]}
+  },
+  "steer": true
+}

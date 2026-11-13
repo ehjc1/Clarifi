@@ -4,16 +4,31 @@ A simple, minimal and robust financial tracker for your personal needs. Giving f
 
 Clarifi turns a **shared credit card statement** into **your** budget. Import the ANZ CSV, write share rules ("Pak'nSave over $50 is my partner's", "Contact Energy is 50/50", "Spark is 0% mine"), and the sheet shows every line as `card amount × my share = mine`, summed into income, fixed, general, investments, savings and mortgage.
 
-Nothing leaves your browser. Parsing and storage are local; export JSON to back up.
+Signed out, nothing leaves your browser: parsing and storage are local, export JSON to back up. Sign in and the same data is saved to your account (Django + Postgres) so it follows you between devices.
 
 ## Run
 
+Backend (needs [uv](https://docs.astral.sh/uv/); settings read `backend/.env` if present, copy `backend/.env.example`; sqlite unless `DATABASE_URL` is set, Postgres via `compose.yaml`):
+
 ```bash
+cd backend
+uv sync
+uv run manage.py migrate
+uv run manage.py runserver     # http://localhost:8000/api/
+uv run manage.py test
+```
+
+Frontend (proxies `/api` to the backend; works without it, local-only):
+
+```bash
+cd frontend
 npm install
 npm run dev            # http://localhost:5173  (add ?sample for a synthetic statement)
 npm run build && npm run preview
 npx vitest run
 ```
+
+API: `/api/auth/{csrf,register,login,logout,me}/`, `/api/finance/snapshot/` (GET / PUT the whole per-user data set), `/api/finance/{statements,rules,incomes}/`.
 
 ## How it reads
 
@@ -29,4 +44,4 @@ npx vitest run
 
 ## Status
 
-Beta. CSV import only (ANZ column names unverified against a real export; the parser is header-driven). PDF import, multi-month history and accounts are not built.
+Beta. CSV import only (ANZ column names unverified against a real export; the parser is header-driven). PDF import is not built.

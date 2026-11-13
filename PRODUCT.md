@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-SvelteKit (Svelte 5, TypeScript) with `@sveltejs/adapter-static`, browser-only. No backend. Statements are parsed in the browser and all data lives in the browser (localStorage/IndexedDB) with JSON export/import. Chosen by Eugene on 2026-11-01 so bank data never leaves the device and hosting is free static files.
+SvelteKit (Svelte 5, TypeScript) with `@sveltejs/adapter-static` in `frontend/`; Django + Django REST Framework + Postgres in `backend/` (added 2026-11-06 at Eugene's request, matching the earlier Documents/Clarifi plan). Statements are parsed in the browser and kept in localStorage with JSON export/import; signing in mirrors the same data to the account. The 2026-11-01 choice of browser-only remains the signed-out default.
 
 ## Users
 
@@ -42,7 +42,7 @@ Share rules, not categories, are the primary mechanism. Every budgeting app cate
 
 Name: Clarifi. README tagline: "A simple, minimal and robust financial tracker for your personal needs. Giving freedom and flexibility back to the user!" Repo: github.com/ehjc1/Clarifi. No logo.
 
-Standing visual preference (Eugene, 2026-11-01, after rejecting the "Payslip Arithmetic" direction as "horrible, I want something modern"): the category standard for modern consumer fintech, executed at the craft level of Revolut and Wise. Bold colour blocks, large rounded cards, playful but precise. Light and dark themes following the system setting. No paper, ledger, or printed-form metaphors. Typeface: Figtree, self-hosted (chosen over Geist, which the design detector flags as overused; Figtree's rounded geometric fits the playful-but-precise register).
+Standing visual preference (Eugene, 2026-11-01, after rejecting the "Payslip Arithmetic" direction as "horrible, I want something modern"): the category standard for modern consumer fintech, executed at the craft level of Revolut and Wise. Since 2026-11-08 the concrete direction is "Clarifi Hybrid" from Eugene's claude.ai/design project (violet accent, sidebar shell, safe-to-spend hero, pay-cycle calendar, swipe pile); see the first section of `DESIGN.md`. Bold colour blocks, large rounded cards, playful but precise. Light and dark themes following the system setting. No paper, ledger, or printed-form metaphors. Typeface: Figtree, self-hosted (chosen over Geist, which the design detector flags as overused; Figtree's rounded geometric fits the playful-but-precise register).
 
 ## Evidence on Hand
 
@@ -52,6 +52,6 @@ None. No real statement in the repo; demonstration data must be authored and lab
 
 1. Explain every number: any dashboard figure traces back to rows and the rule that set their share.
 2. Rules over manual edits: a fix should become a rule so next month is automatic.
-3. Local by default: no network calls with financial data.
+3. Local by default: no network calls with financial data unless the user signs in.
 4. Minimal and robust (the README's own words): few screens, no decoration that slows the monthly ritual.
 5. Leave the door open for public use without building it now.

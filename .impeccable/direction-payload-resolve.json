@@ -1,0 +1,28 @@
+{
+  "title": "Clarifi's visual world",
+  "question": "Your steer names the category standard: Revolut / Wise. That is already the recorded brand commitment and what ships on beta today. Lock it to confirm and keep building on the current design, or re-roll safer for conventional fintech alternates against those two.",
+  "options": [
+    {
+      "id": "canon-revolut-wise",
+      "label": "Revolut / Wise canon (what ships today)",
+      "kicker": "YOUR STEER",
+      "lineage": "modern consumer fintech, executed at Revolut and Wise craft level",
+      "thesis": "One headline figure, pill navigation, soft group cards, a clean lines list, light and dark by system, one teal-mint accent, Figtree.",
+      "palette": ["#FFFFFF", "#0B0F14", "#00C2A8", "#F3F4F6", "#22C55E", "#3B82F6", "#F59E0B", "#8B5CF6"],
+      "materials": ["soft cards, 20/28px radii", "pill nav and chips", "tabular figures", "bucket dots and bars", "500ms expoOut money tweens"],
+      "viewport": "Month pills and status chip, the headline figure for this month, Income / Spend / Put away, Spend and Put away group cards with stacked bars, Over time bars, triage one line at a time, lines list beneath.",
+      "risk": "Recognisably the category by design; distinction has to come from precision and from the share-rule mechanism, not from the look.",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "pill nav: Overview · Lines · Rules · Import", "x": 0, "y": 0, "w": 12, "h": 1},
+        {"label": "hero figure + month pills", "x": 0, "y": 1, "w": 12, "h": 3, "accent": true},
+        {"label": "Spend card", "x": 0, "y": 4, "w": 6, "h": 3},
+        {"label": "Put away card", "x": 6, "y": 4, "w": 6, "h": 3},
+        {"label": "Over time", "x": 0, "y": 7, "w": 12, "h": 3}
+      ]}
+    }
+  ],
+  "reroll": {"registers": ["safer"]},
+  "buildPath": {"value": "code", "toggle": false},
+  "canon": false,
+  "steer": true
+}
