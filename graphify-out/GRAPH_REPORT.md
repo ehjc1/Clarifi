@@ -1,16 +1,16 @@
-# Graph Report - Clarifi  (2026-11-01)
+# Graph Report - Clarifi  (2026-11-14)
 
 ## Corpus Check
-- 30 files · ~22,117 words
+- 66 files · ~36,954 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 157 nodes · 170 edges · 20 communities (16 shown, 4 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
+- 329 nodes · 503 edges · 38 communities (30 shown, 8 thin omitted)
+- Extraction: 84% EXTRACTED · 16% INFERRED · 0% AMBIGUOUS · INFERRED: 80 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `cb4a245c`
+- Built from commit: `d76ce9cb`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -27,48 +27,67 @@
 - [[_COMMUNITY_Community 9|Community 9]]
 - [[_COMMUNITY_Community 10|Community 10]]
 - [[_COMMUNITY_Community 11|Community 11]]
+- [[_COMMUNITY_Community 17|Community 17]]
+- [[_COMMUNITY_Community 18|Community 18]]
 - [[_COMMUNITY_Community 19|Community 19]]
 - [[_COMMUNITY_Community 20|Community 20]]
+- [[_COMMUNITY_Community 21|Community 21]]
+- [[_COMMUNITY_Community 22|Community 22]]
+- [[_COMMUNITY_Community 23|Community 23]]
+- [[_COMMUNITY_Community 24|Community 24]]
+- [[_COMMUNITY_Community 26|Community 26]]
+- [[_COMMUNITY_Community 27|Community 27]]
+- [[_COMMUNITY_Community 28|Community 28]]
+- [[_COMMUNITY_Community 29|Community 29]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `Components` - 12 edges
-2. `Product` - 11 edges
-3. `Design System: Clarifi` - 9 edges
-4. `scripts` - 7 edges
-5. `Colors` - 5 edges
-6. `Clarifi` - 4 edges
-7. `Txn` - 4 edges
-8. `Rule` - 4 edges
-9. `Clarifi — Project Context` - 4 edges
-10. `parseAnz()` - 4 edges
+1. `Rule` - 22 edges
+2. `Income` - 20 edges
+3. `Statement` - 19 edges
+4. `Line` - 18 edges
+5. `RuleSerializer` - 14 edges
+6. `OwnedViewSet` - 14 edges
+7. `SnapshotView` - 14 edges
+8. `Components` - 13 edges
+9. `SnapshotSerializer` - 13 edges
+10. `RuleViewSet` - 13 edges
 
 ## Surprising Connections (you probably didn't know these)
-- None detected - all connections are within the same source files.
+- `SnapshotTests` --uses--> `Rule`  [INFERRED]
+  backend/finance/tests.py → backend/finance/models.py
+- `LineInline` --uses--> `Income`  [INFERRED]
+  backend/finance/admin.py → backend/finance/models.py
+- `LineInline` --uses--> `Line`  [INFERRED]
+  backend/finance/admin.py → backend/finance/models.py
+- `LineInline` --uses--> `Preferences`  [INFERRED]
+  backend/finance/admin.py → backend/finance/models.py
+- `LineInline` --uses--> `Rule`  [INFERRED]
+  backend/finance/admin.py → backend/finance/models.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (20 total, 4 thin omitted)
+## Communities (38 total, 8 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.25
-Nodes (8): devDependencies, playwright, svelte-check, @sveltejs/kit, @sveltejs/vite-plugin-svelte, typescript, vite, vitest
+Cohesion: 0.18
+Nodes (26): LineInline, StatementAdmin, Income, Line, Meta, Owned, Preferences, Mirror of the frontend data shape (frontend/src/lib/types.ts), one owner per row (+18 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.11
-Nodes (19): find(), parseAnz(), parseCsv(), composeRule(), score(), titleCase(), Data, load() (+11 more)
+Cohesion: 0.08
+Nodes (29): api, ApiError, call(), csrfToken(), Me, addDays(), Day, isoDate() (+21 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.12
-Nodes (15): dependencies, @sveltejs/adapter-static, imports, #lib, name, private, scripts, build (+7 more)
+Cohesion: 0.08
+Nodes (23): dependencies, @sveltejs/adapter-static, devDependencies, playwright, svelte-check, @sveltejs/kit, @sveltejs/vite-plugin-svelte, typescript (+15 more)
 
 ### Community 3 - "Community 3"
 Cohesion: 0.17
 Nodes (11): Brand Commitments, Capabilities and Constraints, Evidence on Hand, Operating Context, Platform, Positioning, Product, Product Principles (+3 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.10
-Nodes (20): #lib/anz, #lib/components/BucketLine.svelte, lines, shown, sums, total, svelte/easing, #lib/components/GroupCard.svelte (+12 more)
+Cohesion: 0.07
+Nodes (26): #lib/components/Account.svelte, #lib/anz, #lib/components/BucketLine.svelte, lines, shown, sums, total, svelte/easing (+18 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.40
@@ -82,33 +101,57 @@ Nodes (4): Clarifi, How it reads, Run, Status
 Cohesion: 0.40
 Nodes (4): compilerOptions, strict, extends, include
 
+### Community 8 - "Community 8"
+Cohesion: 0.33
+Nodes (4): #lib/assets/favicon.svg, ../app.css, ./$types, ./$types
+
+### Community 9 - "Community 9"
+Cohesion: 0.16
+Nodes (15): BANKS, cardLabel(), detectBank(), find(), parseAnz(), parseCsv(), parseStatement(), f (+7 more)
+
+### Community 17 - "Community 17"
+Cohesion: 0.08
+Nodes (23): dependencies, @sveltejs/adapter-static, devDependencies, playwright, svelte-check, @sveltejs/kit, @sveltejs/vite-plugin-svelte, typescript (+15 more)
+
+### Community 18 - "Community 18"
+Cohesion: 0.28
+Nodes (8): CsrfView, LoginView, LogoutView, me(), MeView, Session auth for the browser app: csrf, register, login, logout, me., RegisterView, APIView
+
 ### Community 19 - "Community 19"
-Cohesion: 0.11
-Nodes (18): Bucket (fixed, six), Colors, Design System: Clarifi, Do:, Do's and Don'ts, Don't:, Elevation & Depth, Hierarchy (+10 more)
+Cohesion: 0.06
+Nodes (32): Bucket (fixed, six), Buttons, Cards / Containers, Chips, Colors, Components, Design System: Clarifi, Do: (+24 more)
 
 ### Community 20 - "Community 20"
 Cohesion: 0.17
-Nodes (12): Buttons, Cards / Containers, Chips, Components, Group Card (signature), Hero (signature), Inputs / Fields, Lines List (signature) (+4 more)
+Nodes (3): AuthTests, APITestCase, SnapshotTests
+
+### Community 21 - "Community 21"
+Cohesion: 0.40
+Nodes (3): AccountsConfig, AppConfig, FinanceConfig
+
+### Community 22 - "Community 22"
+Cohesion: 0.40
+Nodes (4): compilerOptions, strict, extends, include
 
 ## Knowledge Gaps
-- **81 isolated node(s):** `Overview`, `Primary`, `Bucket (fixed, six)`, `Neutral`, `Named Rules` (+76 more)
+- **116 isolated node(s):** `PKB link (read this first)`, `Project`, `Conventions`, `Hybrid redesign (2026-11-08) — read this first`, `Overview` (+111 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `devDependencies` connect `Community 0` to `Community 2`, `Community 4`?**
-  _High betweenness centrality (0.060) - this node is a cross-community bridge._
-- **Why does `svelte` connect `Community 4` to `Community 0`?**
-  _High betweenness centrality (0.050) - this node is a cross-community bridge._
-- **Why does `Design System: Clarifi` connect `Community 19` to `Community 20`?**
+- **Why does `devDependencies` connect `Community 17` to `Community 4`?**
   _High betweenness centrality (0.029) - this node is a cross-community bridge._
-- **What connects `Overview`, `Primary`, `Bucket (fixed, six)` to the rest of the system?**
-  _81 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.11264367816091954 - nodes in this community are weakly interconnected._
-- **Should `Community 2` be split into smaller, more focused modules?**
-  _Cohesion score 0.125 - nodes in this community are weakly interconnected._
-- **Should `Community 4` be split into smaller, more focused modules?**
-  _Cohesion score 0.10461538461538461 - nodes in this community are weakly interconnected._
+- **Why does `devDependencies` connect `Community 2` to `Community 4`?**
+  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+- **Why does `svelte` connect `Community 4` to `Community 17`?**
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
+- **Are the 14 inferred relationships involving `Rule` (e.g. with `LineInline` and `StatementAdmin`) actually correct?**
+  _`Rule` has 14 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 13 inferred relationships involving `Income` (e.g. with `LineInline` and `StatementAdmin`) actually correct?**
+  _`Income` has 13 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 13 inferred relationships involving `Statement` (e.g. with `LineInline` and `StatementAdmin`) actually correct?**
+  _`Statement` has 13 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 13 inferred relationships involving `Line` (e.g. with `LineInline` and `StatementAdmin`) actually correct?**
+  _`Line` has 13 INFERRED edges - model-reasoned connections that need verification._
